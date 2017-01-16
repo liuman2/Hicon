@@ -1,0 +1,15 @@
+# project
+project_name: HICON
+
+# project server prefix
+server_prefix: ''
+
+# express parameter
+express_port: 85
+
+# Http Proxy
+proxy_ip: 112.74.133.212
+proxy_port: 8732
+
+# static data
+use_static_data: false

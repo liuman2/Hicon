@@ -1,0 +1,36 @@
+<div id="curve" data-role="view" data-use-native-scrolling="true" data-init="hicon.curve.init" data-after-show="hicon.curve.aftershow" data-show="hicon.curve.show" data-transition="overlay:left" data-persist="true">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.curve.events.doBack">返回</a>
+            <span data-role="view-title">水质参数曲线</span>
+        </div>
+    </header>
+
+    <ul id="select-period" data-role="buttongroup" data-index="0" data-select="hicon.curve.events.selectButton">
+        <li style="min-width: 100px">
+            按日
+        </li>
+        <li style="min-width: 100px">
+            按月
+        </li>
+    </ul>
+
+    <div id="curveSearch">
+        <div>
+            <a data-role="button"  class="km-default"  data-click="hicon.curve.events.prev" style="min-width: 50px">
+                <span class="km-text"><<</span>
+            </a>
+        </div>
+        <div>
+            <input id="txtCurveDay" type="date" value="" data-ko="event: {change: hicon.curve.data.search}" />
+            <input id="txtCurveMonth" type="month" style="display:none;" value="" data-ko="event: {change: hicon.curve.data.search}" />
+        </div>
+        <div>
+            <a data-role="button"  class="km-default" data-click="hicon.curve.events.next"  style="min-width: 50px">
+                <span class="km-text">>></span>
+            </a>
+        </div>
+    </div>
+    <div id='curveChart'>
+    </div>
+</div>

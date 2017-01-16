@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+%param-basic {
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+}
+
+.param_do {
+    background: url(../content/img/do.png) no-repeat;
+    @extend %param-basic;
+}
+
+.param_wt {
+    background: url(../content/img/wt.png) no-repeat;
+    @extend %param-basic;
+}
+
+.param_ph {
+    background: url(../content/img/ph.png) no-repeat;
+    @extend %param-basic;
+}
+
+.param_sat {
+    background: url(../content/img/sat.png) no-repeat;
+    @extend %param-basic;
+}
+
+.param_tds{
+    background: url(../content/img/tds.png) no-repeat;
+    @extend %param-basic;
+}
+.param_ntu {
+    background: url(../content/img/ntu.png) no-repeat;
+    @extend %param-basic;
+}
+.param_orp {
+    background: url(../content/img/orp.png) no-repeat;
+    @extend %param-basic;
+}
+.param_sal{
+    background: url(../content/img/sal.png) no-repeat;
+    @extend %param-basic;
+}
+
+
+%device-img-basic {
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+}
+
+.img-cy {
+    text-align: center;
+    background: url(../content/img/cy.png) no-repeat left center;
+    width: 48px;
+    height: 48px;
+}
+
+.img-te {
+    text-align: center;
+    background: url(../content/img/te.png) no-repeat left center;
+    width: 48px;
+    height: 48px;
+}
+
+.img-js {
+    text-align: center;
+    background: url(../content/img/js.png) no-repeat left center;
+    width: 48px;
+    height: 48px;
+}
+
+
+.device_cy {
+    background: url(../content/img/devices.png) no-repeat;
+    @extend %device-img-basic;
+}
+
+.device_dg {
+    background: url(../content/img/dg.png) no-repeat;
+    @extend %device-img-basic;
+}
+
+.device_jr {
+    background: url(../content/img/jr.png) no-repeat;
+    @extend %device-img-basic;
+}
+
+.device_js {
+    background: url(../content/img/js.png) no-repeat;
+    @extend %device-img-basic;
+}
+
+.device_sx {
+    background: url(../content/img/devices.png) -192px -0px no-repeat;
+    @extend %device-img-basic;
+}
+
+.device_te {
+    background: url(../content/img/te.png) no-repeat;
+    @extend %device-img-basic;
+}
+
+
+.device_zl {
+    background: url(../content/img/zl.png) no-repeat;
+    @extend %device-img-basic;
+}
+
+.device_zy {
+    background: url(../content/img/zy.png) no-repeat;
+    @extend %device-img-basic;
+}
+
+.fishery_img {
+    background: url(../content/img/fishery.gif) -0px -0px no-repeat;
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+}
+.img-box {
+    margin-left: auto;
+    margin-right: auto;
+}
+.logo_img {
+    text-align:center;
+    background: url(../content/img/logo.png) -0px -0px no-repeat;
+    height: 152px;
+    width: 152px;
+    overflow: hidden;
+}
+
+.pool_img {
+    background: url(../content/img/fish-pool.gif) -0px -0px no-repeat;
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+}
+
+.warn_green_img {
+    background: url(../content/img/green.gif) -0px -0px no-repeat;
+    height: 16px;
+    width: 16px;
+    overflow: hidden;
+}
+.warn_red_img {
+    background: url(../content/img/red.gif) -0px -0px no-repeat;
+    height: 16px;
+    width: 16px;
+    overflow: hidden;
+    margin-right: 8px;
+}
+
+.warn_gray_img {
+    background: url(../content/img/gray.gif) -0px -0px no-repeat;
+    height: 16px;
+    width: 16px;
+    overflow: hidden;
+    color: #ccc;
+}

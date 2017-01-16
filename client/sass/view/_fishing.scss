@@ -1,0 +1,270 @@
+@charset "UTF-8";
+
+.f-banner {
+    border: 0;
+    height: 112px;
+    color: #fff;
+}
+
+.fhb {
+    background: rgba(82, 172, 227, 0.78) !important;
+}
+
+.f-header {
+    // border-top: 1px solid #dee0e0;
+    // border-bottom: 1px solid #dee0e0;
+    // line-height: 85px;
+    font-size: 12px !important;
+    margin-bottom: 10px;
+}
+
+.fl {
+    float: left;
+    display: inline;
+}
+
+.fr {
+    float: right;
+    display: inline;
+}
+
+.f-desc {
+    float: left;
+    margin-left:10px;
+    /* span {
+        display: block;
+    } */
+}
+
+.bl {
+    display: block;
+}
+
+.red {
+    color: red;
+}
+.limegreen {
+    color: limegreen !important;
+}
+
+
+.w-icon {
+    padding: 25px 0 25px 10px;
+    img {
+        width: 50px;
+    }
+}
+.tq {
+    padding: 0 15px;
+}
+.w-wd {
+    position: relative;
+    padding: 20px 0;
+    margin-top: 8px;
+    span {
+        display: block;
+        margin-bottom: 15px;
+    }
+}
+
+.line-l {
+    line-height: 0;
+    font-size: 0;
+    background: rgba(255, 255, 255, 0.3);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#4CFFFFFF,endColorstr=#4CFFFFFF);
+    width: 1px;
+    height: 100px;
+    margin-top: 5px;
+}
+.posa {
+    position: absolute;
+}
+
+.f-cs {
+    text-align: center;
+    margin: 10px 0 0 10px;
+    span {
+        display: block;
+        margin-top: 5px;
+    }
+}
+
+.f-name {
+    color: #fd7f0e;
+}
+
+.n-cl {
+    color: #fd7f0e;
+}
+
+
+#flish-listview {
+    font-size: 12px !important;
+    li {
+        padding: .7em !important;
+    }
+}
+
+.device-box {
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+    width: 65px
+}
+
+.esclip {
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+    max-width:190px;
+}
+
+.f9{
+    font-size: 9px;
+}
+.f12{
+    font-size: 12px;
+}
+.f16 {
+    font-size: 16px;
+}
+.f20 {
+    font-size: 20px;
+}
+
+
+#ul-pond-w-params, #ul-pond-d-params {
+    li {
+        border: none;
+    }
+}
+
+#ul-pond-w-params li, #ul-pond-d-params li {
+    padding: 0 !important;
+}
+
+.attri-container {
+    padding-top: 1px;
+    border: 1px solid #eee;
+    margin: 0 5px;
+}
+.attr-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    td, th {
+        border: 1px solid #fff;
+        padding: 8px;
+    }
+    tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+    .attr-header {
+        background: #ddd !important;
+
+        a {
+            background-color:transparent!important;
+            border:none!important;
+            color:#3193d5!important;
+        }
+    }
+    .bute-row {
+        margin: 1px;
+        background: #fff;
+    }
+    .param-row {
+        background: #f1f9ff !important;
+    }
+    .th-img {
+        text-align: center;
+        vertical-align: middle;
+        width: 61px;
+    }
+    .attr-bute-name, .attr-header {
+        font: 12px Arial, Helvetica, sans-serif;
+        color: #666;
+        font-weight: bold;
+    }
+    .attr-pos-value, .attr-pos-name {
+        font: 12px Arial, Helvetica, sans-serif;
+        color: #666;
+    }
+}
+
+#curveSearch, #deviceLogSearch {
+    text-align: center;
+    margin-top: 10px;
+    div {
+        width: 39%;
+        &:first-child {
+            width: 30%;
+        }
+        &:last-child {
+            width: 30%;
+        }
+
+        float: left;
+        input {
+            width: 100%;height: 30px;
+        }
+    }
+}
+
+.heading-main {
+    text-align: center;
+    font: bold 22px/26px Arial, Helvetica, sans-serif !important;
+    margin: 10px 0  !important;
+    color: #DB6803  !important;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+#curveSearch, #deviceLogSearch {
+    margin-bottom: 10px;
+    line-height: 33px;
+    height: 33px;
+}
+
+.hicon-footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    padding-bottom: 8px;
+    color: #CCC;
+    word-spacing: 3px;
+    zoom: 1;
+    text-align: center;
+}
+
+.four-col-special {
+    margin: 0;
+    padding: 0 0 0 5px;
+
+    li {
+        display: inline-block;
+        width: 22%;
+        margin: 5px 0;
+        padding: 20px 0;
+        vertical-align: top;
+        text-align: center;
+
+        span {
+            font-size: 12px;
+        }
+    }
+
+    .enabled {
+        border: 3px solid #3193d5;
+        max-width: 100px;
+        max-height: 70px;
+    }
+    .disabled {
+        border: 3px solid #ccc;
+        color: #ccc;
+        max-width: 100px;
+        max-height: 70px;
+    }
+}

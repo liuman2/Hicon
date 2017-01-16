@@ -1,0 +1,69 @@
+@charset "UTF-8";
+#login {
+    .action-buttons {
+        text-align: center;
+        a {
+            margin-top: 25px;
+            width: 60%;
+        }
+    }
+
+    .rember {
+        text-align: left;
+        vertical-align: left;
+    }
+
+    .rember-label {
+        display: inline!important;
+        margin-right: 15px;
+
+
+        font-size: 1.2em !important;
+        line-height: 1.5em !important;
+        padding-left: 1.5em !important;
+        margin-left: 0 !important;;
+    }
+
+    .retrieve {
+        margin: 15px;
+        float: right;
+        a {
+            text-decoration: underline !important;
+            color: #000;
+        }
+    }
+}
+
+.banner {
+    // text-align: center;
+    // color: rgba(255,255,255,.85);
+    // height: 70px;
+    // line-height: 70px;
+    // background: url(../content/img/banner.png) no-repeat left center;
+    // // background-color: #3193d5 !important;
+    // background-color: rgba(82, 172, 227, 0.78) !important
+
+    background-image: url(../content/img/header_bg.gif);
+    border-bottom: 1px solid #dc7d35;
+    padding: 10px 10px;
+}
+
+.logo {
+    background: url(../content/img/banner.png) no-repeat;
+    width: 330px;
+    height: 45px;
+    float: left;
+    text-indent: -9999px;
+    overflow: hidden;
+    margin: 0 10px 0 0;
+}
+
+.encryption {
+    width: 113px;
+    float: right;
+}
+.banner:after {
+    content: "";
+    display: block;
+    clear: both;
+}

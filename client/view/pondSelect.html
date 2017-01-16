@@ -1,0 +1,39 @@
+<div id="pondSelect" data-role="view" data-use-native-scrolling="true" data-init="hicon.pondSelect.init" data-after-show="hicon.pondSelect.aftershow" data-show="hicon.pondSelect.show" data-transition="overlay:left" data-persist="true">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.pondSelect.events.doBack">返回</a>
+            <span data-role="view-title">子用户鱼池设置</span>
+        </div>
+    </header>
+
+    <ul data-role="listview" id="subAccountList" data-click="hicon.pondSelect.events.itemClick">
+        <!-- ko if: $data.pondList().length == 0-->
+        <li style="padding: 0;">
+            <div class="alert-info">
+                该帐号当前没有可选鱼池.
+            </div>
+        </li>
+        <!-- /ko -->
+
+        <!-- ko foreach: $data.pondList -->
+        <li>
+            <label>
+                <input type="checkbox"  data-ko="checked: $data.selected"/>
+                <span>鱼池: </span>
+                <span data-ko="text: $data.Name"></span>
+            </label>
+        </li>
+        <!-- /ko -->
+
+        <li>
+            <div style="clear: both; text-align: center;">
+                <a data-role="button" data-command-key="ok" class="km-bluebtn" style="width: 40%;">
+                    <span class="km-text">确定</span>
+                </a>
+                <a id="btnLogin" data-command-key="cancel" data-role="button" class="chooseBtn" style="width: 50%;">
+                    <span class="km-text">取消</span>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>

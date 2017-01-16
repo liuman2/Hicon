@@ -1,0 +1,26 @@
+<div id="deviceCurve" data-role="view" data-use-native-scrolling="true" data-init="hicon.deviceCurve.init" data-after-show="hicon.deviceCurve.aftershow" data-show="hicon.deviceCurve.show" data-transition="overlay:left" data-persist="true">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.deviceCurve.events.doBack">返回</a>
+            <span data-role="view-title">设备运行状况曲线</span>
+        </div>
+    </header>
+
+    <div id="curveSearch">
+        <div>
+            <a data-role="button"  class="km-default"  data-click="hicon.deviceCurve.events.prev">
+                <span class="km-text"><<</span>
+            </a>
+        </div>
+        <div>
+            <input id="txtDeviceCurveDay" type="date" value="" data-ko="event: {change: hicon.deviceCurve.data.search}" />
+        </div>
+        <div>
+            <a data-role="button"  class="km-default" data-click="hicon.deviceCurve.events.next">
+                <span class="km-text">>></span>
+            </a>
+        </div>
+    </div>
+    <div id='deviceCurveChart'>
+    </div>
+</div>

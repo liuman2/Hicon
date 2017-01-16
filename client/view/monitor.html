@@ -1,0 +1,92 @@
+<div id="monitor" data-role="view" data-use-native-scrolling="true" data-init="hicon.monitor.init" data-show="hicon.monitor.show" data-after-show="hicon.monitor.aftershow" data-transition="overlay:left" data-persist="true">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.monitor.events.doBack">返回</a>
+            <!-- <a data-align="right" data-role="button" class="clearButton" data-click="hicon.monitor.events.save">保存</a> -->
+            <span data-role="view-title" data-ko="text: currentPond().Name"></span>
+        </div>
+    </header>
+
+    <ul data-role="listview" data-click="hicon.monitor.events.itemClick">
+        <li>
+            <div>
+                <span style="color: #9da2a 4;">监测主机:</span>
+                <a data-command-key="barcodeScan" class="tableButton" style="font-size: 1.5em; color:#00acc1;"><span class="km-icon km-camera"></span></a>
+                <input id="monitorDtuNo" type="text" value="" placeholder="输入或扫描" data-ko="value: currentPond().MonitorDtuNo" />
+            </div>
+        </li>
+        <li>
+            <span>
+                <a data-role="button" data-command-key="currentPosition" class="km-default km-justified km-widget km-button km-bluebtn">
+                    <span class="km-text">获取鱼池海拔高度</span>
+                </a>
+            </span>
+        </li>
+        <li>
+            <label>
+                海拔:
+                <input type="text" id="regAltitudeMonitor" name="regAltitude" placeholder="海拔" data-ko="value: currentPond().Altitude" />
+            </label>
+            <label style="float: right;">米</label>
+        </li>
+        <li>
+            <label>
+                注册时，离本设备所在的养殖池越近，定位越准确，监测的数据就越精确
+            </label>
+        </li>
+
+        <li>
+            <label>
+                鱼池名称:
+                <input type="text" id="txtPondName" value="" placeholder="鱼池名称" data-ko="value: currentPond().Name" />
+            </label>
+        </li>
+        <li>
+            <label>
+                鱼池水深:
+                <input type="number" id="txtPondDepth" value="" placeholder="鱼池水深" data-ko="value: currentPond().Acreage"/>
+            </label>
+            <label style="float: right;">米</label>
+        </li>
+        <li>
+            <label>
+                盐度:
+                <input type="number" value="" placeholder="请输入0-40的整数" data-ko="value: currentPond().Salinity"/>
+            </label>
+        </li>
+        <li>
+            <label>
+                养殖水体类型:
+                <select id="ddlPondType">
+                    <option value="">请选择</option>
+                    <option value="1">池塘</option>
+                    <option value="2">水库</option>
+                    <option value="3">海域</option>
+                    <option value="4">河江</option>
+                    <option value="5">室内池</option>
+                    <option value="6">网箱</option>
+                </select>
+            </label>
+        </li>
+        <li>
+            <label>
+                养殖种类:
+                <select id="ddlFishType">
+                    <option value="">请选择</option>
+                    <option value="热带种类">热带种类</option>
+                    <option value="亚热带种类">亚热带种类</option>
+                    <option value="温带种类">温带种类</option>
+                    <option value="冷水种类">冷水种类</option>
+                    <option value="亚冷水种类">亚冷水种类</option>
+                </select>
+            </label>
+        </li>
+        <li>
+            <span>
+                <a data-role="button" data-click="hicon.monitor.events.save" class="km-default km-justified km-widget km-button km-bluebtn">
+                    <span class="km-text">保存</span>
+                </a>
+            </span>
+        </li>
+    </ul>
+</div>

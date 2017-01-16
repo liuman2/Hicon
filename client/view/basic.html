@@ -1,0 +1,85 @@
+<div id="basic" data-role="view" data-use-native-scrolling="true" data-init="hicon.basic.init" data-after-show="hicon.basic.aftershow" data-show="hicon.basic.show" data-transition="overlay:left" data-persist="true">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.basic.events.doBack">返回</a>
+            <!-- <a data-align="right" data-role="button" class="clearButton" data-click="hicon.basic.events.save">保存</a> -->
+            <span data-role="view-title">渔场资料</span>
+        </div>
+    </header>
+
+    <ul data-role="listview">
+        <li>
+            <label>
+                渔场名称:
+                <input type="text" value="" placeholder="渔场名称" data-ko="value: basic().Name" />
+            </label>
+        </li>
+        <li>
+            <label>
+                负责人:
+                <input type="text" value="" placeholder="负责人" data-ko="value: basic().Head"/>
+            </label>
+        </li>
+        <li>
+            <label>
+                省份:
+                <select id="ddlProvince">
+                </select>
+            </label>
+        </li>
+        <li>
+            <label>
+                城市:
+                <select id="ddlCity">
+                </select>
+            </label>
+        </li>
+        <li>
+            <label>
+                区县:
+                <select id="ddlCounty">
+                </select>
+            </label>
+        </li>
+
+        <li>
+            <label>
+                地址:
+                <input type="text" value="" placeholder="渔场所在地址" data-ko="value: basic().Address"/>
+            </label>
+        </li>
+        <li>
+            <span>
+                <a data-role="button" data-click="hicon.basic.events.getCurrentPosition" class="km-default km-justified km-widget km-button km-bluebtn">
+                    <span class="km-text">修改当前经纬度</span>
+                </a>
+            </span>
+        </li>
+        <li>
+            <label>
+                经度:
+                <input type="text" id="txtBscLongitude" placeholder="经度" data-ko="value: basic().Longitude"/>
+            </label>
+        </li>
+
+        <li>
+            <label>
+                纬度:
+                <input type="text" id="txtBscLatitude" placeholder="纬度" data-ko="value: basic().Latitude"/>
+            </label>
+        </li>
+        <!-- <li>
+            <label>
+                海拔:
+                <input type="text" id="txtBscAltitude" placeholder="海拔" data-ko="value: basic().Altitude"/>
+            </label>
+        </li> -->
+        <li>
+            <span>
+                <a data-role="button" data-click="hicon.basic.events.save" class="km-default km-justified km-widget km-button km-bluebtn">
+                    <span class="km-text">保存</span>
+                </a>
+            </span>
+        </li>
+    </ul>
+</div>

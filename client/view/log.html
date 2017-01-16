@@ -1,0 +1,37 @@
+<div id="log" data-role="view" data-use-native-scrolling="true" data-init="hicon.log.init" data-after-show="hicon.log.aftershow" data-show="hicon.log.show" data-transition="overlay:left" data-persist="true">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.log.events.doBack">返回</a>
+            <span data-role="view-title">事件</span>
+        </div>
+
+        <ul data-role="listview" id="logList">
+            <li>
+                <label>
+                    开始时间:
+                    <input id="dtEventStart" type="date" value="" />
+                </label>
+            </li>
+            <li>
+                <label>
+                    结束时间:
+                    <input id="dtEventEnd" type="date" value="" />
+                </label>
+            </li>
+            <li>
+                <span>
+                    <a data-role="button" data-click="hicon.log.events.doSearch" class="km-default km-justified km-widget km-button km-bluebtn">
+                        <span class="km-text">查询</span>
+                    </a>
+                </span>
+            </li>
+        </ul>
+
+    </header>
+
+    <ul data-role="listview"  data-ko="foreach: $data.logList()">
+        <li>
+            <span data-ko="text: $data"></span>
+        </li>
+    </ul>
+</div>

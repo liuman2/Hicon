@@ -1,0 +1,13 @@
+<div id="buescan" data-role="view" data-use-native-scrolling="true" data-init="hicon.bueSacn.init" data-after-show="hicon.bueSacn.aftershow" data-show="hicon.bueSacn.show" data-transition="overlay:left" data-persist="true">
+  <header data-role="header">
+    <div data-role="navbar">
+      <span data-role="view-title">蓝牙搜索</span>
+      <a data-align="right" data-role="button" class="clearButton" data-click="hicon.bueSacn.events.skip">跳过</a>
+    </div>
+  </header>
+  <ul data-role="listview" data-click="hicon.bueSacn.events.itemClick" data-ko="foreach: $data.bueDevices()">
+    <li class="bue-item" data-command-key="deviceClick">
+      <span data-ko="text: $data.name"></span>
+    </li>
+  </ul>
+</div>

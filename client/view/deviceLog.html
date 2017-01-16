@@ -1,0 +1,33 @@
+<div id="deviceLog" data-role="view" data-use-native-scrolling="true" data-init="hicon.deviceLog.init" data-after-show="hicon.deviceLog.aftershow" data-show="hicon.deviceLog.show" data-transition="overlay:left" data-persist="true">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.deviceLog.events.doBack">返回</a>
+            <span data-role="view-title" data-ko="text: $data.title">日志</span>
+        </div>
+    </header>
+
+    <div id="deviceLogSearch">
+        <div>
+            <a data-role="button"  class="km-default"  data-click="hicon.deviceLog.events.prev">
+                <span class="km-text"><<</span>
+            </a>
+        </div>
+        <div>
+            <input id="txtDeviceLogDay" type="date" value="" data-ko="event: {change: hicon.deviceLog.data.search}" />
+        </div>
+        <div>
+            <a data-role="button"  class="km-default" data-click="hicon.deviceLog.events.next">
+                <span class="km-text">>></span>
+            </a>
+        </div>
+    </div>
+
+    <ul data-role="listview"  data-ko="foreach: $data.logList()">
+        <li>
+            <span data-ko="text: $data.Stamp"></span>
+            <span data-ko="text: $data.CtrTypeDesc"></span>
+            <span data-ko="text: $data.ActionDesc"></span>
+            <span data-ko="text: $data.Desc"></span>
+        </li>
+    </ul>
+</div>

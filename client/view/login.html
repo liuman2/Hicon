@@ -1,0 +1,60 @@
+<div id="login" data-role="view" data-use-native-scrolling="true" data-transition="overlay:left" data-persist="true" data-show="hicon.login.show" data-model="modelViewLogin">
+  <header data-role="header">
+    <div data-role="navbar">
+      <!-- <a data-align="right" data-role="button" class="clearButton" data-click="hicon.login.events.doRegister">注册</a> -->
+      <span data-role="view-title">登录</span>
+    </div>
+  </header>
+  <!-- <div class="banner"></div> -->
+  <div class="banner">
+    <strong class="logo"></strong>
+    <div class="encryption">
+    </div>
+  </div>
+  <ul data-role="listview">
+    <li>
+      <label for="username" class="km-required km-label-left">手机号码
+        <input type="text" id="username" placeholder="手机号码" />
+      </label>
+    </li>
+    <li>
+      <label for="password" class="km-required km-label-left">密码
+        <input type="password" id="password" placeholder="密码" />
+      </label>
+    </li>
+    <li>
+      <label for="identity" class="km-required km-label-left">登录身份
+        <select id="identity">
+          <option value="">选择登录身份</option>
+          <option value="0">海控在线</option>
+          <option value="99">海控在手</option>
+          <option value="1">增氧控制</option>
+          <option value="2">水泵控制</option>
+          <option value="3">投饵控制</option>
+        </select>
+      </label>
+    </li>
+    <li>
+      <div class="rember">
+        <input type="checkbox" class="km-checkbox" id="chkRember" data-bind="events: { change: rember }" />
+        <label class="km-checkbox-label rember-label" for="chkRember">记住密码</label>
+        <!-- <input type="checkbox" class="km-checkbox" id="chkAutoLogin" data-bind="events: { change: autoLogin }" />
+                <label class="km-checkbox-label rember-label" for="chkAutoLogin">自动登录</label> -->
+      </div>
+    </li>
+    <li>
+      <div style="clear: both; text-align: center;">
+        <a id="btnLogin" data-role="button" data-click="hicon.login.events.doLogin" class="km-bluebtn" style="width: 50%;">
+          <span class="km-text">登录</span>
+        </a>
+        <a data-role="button" data-click="hicon.login.events.doRegister" class="chooseBtn" style="width: 40%;">
+          <span class="km-text">注册</span>
+        </a>
+      </div>
+    </li>
+  </ul>
+  <div class="retrieve">
+    <a data-role="button" class="clearButton" data-click="hicon.login.events.help">使用帮助</a>
+    <a data-role="button" class="clearButton" data-click="hicon.login.events.retrieve">忘记密码?</a>
+  </div>
+</div>

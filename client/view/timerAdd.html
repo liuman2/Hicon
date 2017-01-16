@@ -1,0 +1,62 @@
+<div id="timerAdd" data-role="view" data-use-native-scrolling="true" data-init="hicon.timerAdd.init" data-show="hicon.timerAdd.show" data-after-show="hicon.timerAdd.aftershow" data-transition="overlay:left" data-persist="true">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.timerAdd.events.doBack">返回</a>
+            <!-- <a data-align="right" data-role="button" class="clearButton" data-click="hicon.timerAdd.events.save">保存</a> -->
+            <span data-role="view-title">新增定时设置</span>
+        </div>
+    </header>
+
+    <ul data-role="listview">
+        <li>
+            <label for="timerOpt" class="km-required km-label-left">操作:
+                <input type="text" id="timerOpt" name="timerOpt" value="启动" readonly="true" />
+            </label>
+        </li>
+        <li>
+            <label>周期:
+                <select id="ddlTimerPeriod" data-ko="event: { change: hicon.timerAdd.events.change }">
+                    <option value="0">仅一次</option>
+                    <option value="1">每天</option>
+                </select>
+            </label>
+        </li>
+        <li id="liTimerDay" style="display:none;">
+            <label>
+                开始时间:
+                <!-- <input id="dtTimerDay" type="datetime-local" value="" /> -->
+                <input id="dtTimerDay" type="text" value="" />
+            </label>
+        </li>
+        <li id="liTimerTime" style="display:none;">
+            <label>
+                开始时间:
+                <!-- <input id="dtTimerTime" type="time" value="" /> -->
+                <input id="dtTimerTime" type="text" value="" />
+            </label>
+        </li>
+        <li>
+            <label>时长:
+                <!-- ko if: $data.isFeed() == false -->
+                <select id="ddlTimerSpan" data-ko="options: sysIntervals,
+                    optionsText: 'Description',
+                    optionsValue: 'Val'">
+                </select>
+                <!-- /ko -->
+
+                <!-- ko if: $data.isFeed() == true-->
+                    <input type="number" id="ddlTimerSpan" />
+                    <label style="float: right; margin-top: 3px; color: #333;">分钟</label>
+                <!-- /ko -->
+
+            </label>
+        </li>
+        <li>
+            <span>
+                <a data-role="button" data-click="hicon.timerAdd.events.save" class="km-default km-justified km-widget km-button km-bluebtn">
+                    <span class="km-text">保存</span>
+                </a>
+            </span>
+        </li>
+    </ul>
+</div>

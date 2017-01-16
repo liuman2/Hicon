@@ -1,0 +1,29 @@
+<div id="about" data-role="view" data-use-native-scrolling="true" data-init="hicon.about.init" data-after-show="hicon.about.aftershow" data-show="hicon.about.show" data-transition="overlay:left" data-persist="true">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.about.events.doBack">返回</a>
+            <span data-role="view-title">关于</span>
+        </div>
+    </header>
+    <div style="text-align:center;">
+        <div class="img-box logo_img">
+        </div>
+        <div style="margin-top:15px;">
+            V0.1.8 Beta
+        </div>
+        <div style="margin-top:15px;">
+            产品服务热线：400-877-5077
+        </div>
+    </div>
+    <ul data-role="listview" data-click="hicon.about.events.itemClick">
+        <li>
+            <li data-icon="refresh"><a style="color:#000 !important;" data-command-key="checkVersion">检查新版本</a></li>
+        </li>
+        <li><a style="color:#000 !important;" data-command-key="help">使用帮助</a></li>
+    </ul>
+    <div class="hicon-footer">
+        <div>厦门海控自动化系统工程有限公司 版权所有</div>
+        <div>Copyright ©2014-2015</div>
+        <div>All Rights Reserved.</div>
+    </div>
+</div>

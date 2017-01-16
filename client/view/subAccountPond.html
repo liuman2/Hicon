@@ -1,0 +1,40 @@
+<div id="subAccountPond" data-role="view" data-use-native-scrolling="true" data-init="hicon.subAccountPond.init" data-after-show="hicon.subAccountPond.aftershow" data-show="hicon.subAccountPond.show" data-transition="overlay:left" data-persist="true">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.subAccountPond.events.doBack">返回</a>
+            <span data-role="view-title">子用户鱼池设置</span>
+        </div>
+    </header>
+
+    <ul data-role="listview" id="subAccountList" data-click="hicon.subAccountPond.events.itemClick">
+        <li style="padding: 0;">
+            <div class="alert-info">
+                您可以在该页面设置子帐号所负责的鱼池.
+            </div>
+        </li>
+        <!-- ko foreach: $data.pondList -->
+        <li  style="height: 50px;">
+            <div>
+                <span>鱼池: </span>
+                <span data-ko="text: $data.Name"></span>
+            </div>
+            <div class="actionButtonContainers" style="top:0;">
+                <div data-command-key="trash" class="actionButtonContainer">
+                    <a data-role="button" class="clearButton" data-icon="trash"></a>
+                </div>
+            </div>
+        </li>
+        <!-- /ko -->
+
+        <li>
+            <div style="clear: both; text-align: center;">
+                <a data-role="button" data-command-key="add" class="chooseBtn" style="width: 40%;">
+                    <span class="km-text">选择鱼池</span>
+                </a>
+                <a id="btnLogin" data-command-key="save" data-role="button" class="km-bluebtn" style="width: 50%;">
+                    <span class="km-text">保存</span>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>

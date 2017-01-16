@@ -1,0 +1,46 @@
+<div id="retrieve" data-role="view" data-use-native-scrolling="true" data-show="hicon.retrieve.show" data-transition="overlay:left" data-persist="true">
+    <header data-role="header">
+        <div data-role="navbar">
+            <!-- <a data-align="left" data-role="button" class="clearButton" data-click="hicon.retrieve.events.doBack">返回</a> -->
+            <a id="back-button" class="nav-button" data-align="left" data-role="backbutton">Back</a>
+            <span data-role="view-title">取回密码</span>
+        </div>
+    </header>
+
+    <ul data-role="listview" id="retrieveToken">
+        <li style="padding: .2em .7em !important;">
+            <input type="tel" class="form-input" id="retriMobile" name="retriMobile" placeholder="手机号码" />
+            <a class="form-right-button km-bluebtn" data-role="button" data-click="hicon.retrieve.events.getToken">获取验证码</a>
+        </li>
+        <li>
+            <input type="text" class="form-input" id="retriToken" name="retriToken" placeholder="验证码" />
+        </li>
+
+        <li>
+            <span>
+                <a data-role="button" data-click="hicon.retrieve.events.next" class="km-default km-justified km-widget km-button km-bluebtn">
+                    <span class="km-text">下一步</span>
+                </a>
+            </span>
+        </li>
+    </ul>
+
+    <ul  data-role="listview" id="retrieveReset" style="display: none;" >
+        <li>
+            <input type="password" class="form-input" id="retriPassword" name="retriPassword" placeholder="请输入新密码" />
+        </li>
+
+        <li>
+            <input type="password" class="form-input" id="retriConfirmPassword" name="retriConfirmPassword" placeholder="确认新密码" />
+        </li>
+
+        <li>
+            <span>
+                <a data-role="button" data-click="hicon.retrieve.events.reset" class="km-default km-justified km-widget km-button km-bluebtn">
+                    <span class="km-text">重置密码</span>
+                </a>
+            </span>
+        </li>
+    </ul>
+
+</div>

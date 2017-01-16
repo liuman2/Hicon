@@ -1,0 +1,839 @@
+@charset "UTF-8";
+/* line 3, ../sass/view/_hicon.scss */
+body {
+  font: 12px Arial, Helvetica, sans-serif !important;
+  color: #666;
+}
+
+/* line 8, ../sass/view/_hicon.scss */
+.km-nova {
+  font: normal 12px '微软雅黑','Microsoft YaHei',NokiaPureTextLight,sans-serif !important;
+  /*font: normal 0.9em '微软雅黑','Microsoft YaHei',NokiaPureTextLight,sans-serif;*/
+}
+
+/* line 14, ../sass/view/_hicon.scss */
+.km-nova .km-checkbox:checked + .km-checkbox-label:after, .km-nova .km-radio:checked + .km-radio-label:after {
+  color: #3193d5 !important;
+}
+
+/* line 18, ../sass/view/_hicon.scss */
+.km-nova .km-radio:checked + .km-radio-label:after {
+  background: #3193d5;
+}
+
+/* line 22, ../sass/view/_hicon.scss */
+.km-nova .km-radio-label:before {
+  left: -10px !important;
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+}
+
+/* line 28, ../sass/view/_hicon.scss */
+.km-nova input.km-radio:checked + .km-radio-label:after {
+  width: 1.0rem !important;
+  height: 1.0rem !important;
+  top: 55% !important;
+  left: -0.5rem !important;
+}
+
+/* line 35, ../sass/view/_hicon.scss */
+.km-events:after, .km-events:before {
+  content: "\e0c1";
+}
+
+/* line 39, ../sass/view/_hicon.scss */
+.km-barcode:after, .km-barcode:before {
+  content: "\e104";
+}
+
+/* line 43, ../sass/view/_hicon.scss */
+.param-radio .km-nova .km-radio-label {
+  line-height: 1.5em !important;
+  padding-left: 1.3em !important;
+}
+
+/* line 48, ../sass/view/_hicon.scss */
+.param-radio .km-nova .km-checkbox-label, .km-nova .km-radio-label {
+  font-size: 0.8em !important;
+}
+
+/* line 52, ../sass/view/_hicon.scss */
+.param-radio .km-nova .km-checkbox-label, .km-nova .km-radio-label {
+  margin-left: 0 !important;
+  padding-left: 1.25em !important;
+}
+
+/* .param-radio .km-nova .km-radio-label:before {
+    left: -8px !important;
+} */
+/* line 61, ../sass/view/_hicon.scss */
+.km-nova .km-button.km-state-active {
+  background: #1D71A9 !important;
+  color: white;
+}
+
+/* line 65, ../sass/view/_hicon.scss */
+.km-nova .km-bluebtn {
+  color: #fff;
+  background: #3193d5;
+  border-color: #3193d5;
+}
+
+/* line 80, ../sass/view/_hicon.scss */
+.km-nova .clearButton:active,
+.km-nova .tableButton:active,
+.km-nova .blueBtn:active,
+.km-nova .greenBtn:active,
+.km-nova .grayBtn:active,
+.km-nova .toolBarButton:active {
+  background: #1d71a9 !important;
+  color: #fff !important;
+}
+
+/* line 90, ../sass/view/_hicon.scss */
+.km-nova .km-button.clearButton:active,
+.km-nova .km-button.clearButton.km-state-active,
+.km-nova .km-button.tableButton:active,
+.km-nova .km-button.tableButton.km-state-active,
+.km-nova .km-button.toolBarButton:active,
+.km-nova .km-button.toolBarButton.km-state-active {
+  background: rgba(5, 70, 121, 0.8) !important;
+  color: #fff !important;
+}
+
+/* line 100, ../sass/view/_hicon.scss */
+.clearButton, .toolBarButton {
+  background: transparent !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+/* line 110, ../sass/view/_hicon.scss */
+.tableButton {
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+/* line 119, ../sass/view/_hicon.scss */
+.km-navbar a.clearButton, .km-navbar a.toolBarButton, .km-navbar a.tableButton {
+  padding-bottom: 0px;
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: 0px;
+  font-size: 1.2em;
+  height: 100%;
+  line-height: 2.8em !important;
+}
+
+/* line 128, ../sass/view/_hicon.scss */
+.km-navbar a.clearButton .km-icon, .km-navbar a.tableButton .km-icon {
+  width: auto !important;
+  min-width: 0;
+  display: inline-block !important;
+}
+
+/* line 134, ../sass/view/_hicon.scss */
+.km-navbar a.toolBarButton, .km-footer .km-navbar .clearButton, .km-modalview .km-navbar .clearButton, .km-footer .km-navbar .tableButton {
+  text-decoration: underline;
+}
+
+/* line 138, ../sass/view/_hicon.scss */
+.km-navbar a[data-role=backbutton] {
+  color: #fff !important;
+}
+
+/* line 143, ../sass/view/_hicon.scss */
+.km-btn-gray {
+  color: #fff !important;
+  background: #888e90 !important;
+  border-color: #888e90 !important;
+}
+
+/* line 149, ../sass/view/_hicon.scss */
+.km-hicon-event:after,
+.km-hicon-event:before {
+  content: "\e000";
+}
+
+/* line 155, ../sass/view/_hicon.scss */
+div.actionButtonContainers {
+  height: 100%;
+  position: absolute;
+  right: 0em;
+  width: 4em;
+}
+
+/* line 162, ../sass/view/_hicon.scss */
+div.actionButtonContainer > a {
+  font-size: 1.8em;
+  padding: 0px !important;
+  padding-right: 0.5em !important;
+  display: table-cell;
+  line-height: 200% !important;
+}
+
+/* line 170, ../sass/view/_hicon.scss */
+div.actionButtonContainer > a > span {
+  background-image: none !important;
+}
+
+/* line 174, ../sass/view/_hicon.scss */
+div.actionButtonContainer > a > span.km-trash {
+  color: red;
+}
+
+/* line 178, ../sass/view/_hicon.scss */
+div.actionButtonContainer > a > span.km-compose, div.actionButtonContainer > a > span.km-edit, .button-select .km-compose {
+  color: #7b7b7b;
+}
+
+/* line 182, ../sass/view/_hicon.scss */
+div.actionButtonContainer > a > span {
+  width: 3em !important;
+}
+
+/* line 186, ../sass/view/_hicon.scss */
+#popup_container {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  min-width: 300px;
+  /* Dialog will be no smaller than this */
+  max-width: 600px;
+  /* Dialog will wrap after this width */
+  background: #fff;
+  border: solid 5px #52ace3;
+  color: #000;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 199, ../sass/view/_hicon.scss */
+#popup_title {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.75em;
+  color: #fff;
+  background: #52ace3;
+  border-bottom: solid 1px #52ace3;
+  cursor: default;
+  padding: 0em;
+  margin: 0em;
+}
+
+/* line 213, ../sass/view/_hicon.scss */
+#popup_message {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+/* line 218, ../sass/view/_hicon.scss */
+#popup_panel {
+  text-align: center;
+  margin: 1em 0em 0em 1em;
+}
+
+/* line 223, ../sass/view/_hicon.scss */
+#popup_prompt {
+  margin: .5em 0em;
+}
+
+/* line 231, ../sass/view/_hicon.scss */
+.form-input {
+  margin-left: .7em !important;
+  left: 0 !important;
+}
+
+/* line 236, ../sass/view/_hicon.scss */
+.form-right-button {
+  right: 0 !important;
+  float: right !important;
+  padding: .3em .7em !important;
+}
+
+/* line 242, ../sass/view/_hicon.scss */
+.sm-li {
+  padding: .2em .7em !important;
+}
+
+/* line 250, ../sass/view/_hicon.scss */
+.hi-li-font {
+  font: 12px Arial, Helvetica, sans-serif !important;
+  font-weight: bold !important;
+}
+
+/* line 255, ../sass/view/_hicon.scss */
+.alert-info {
+  padding: 5px;
+  border: 1px solid transparent;
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+/* line 3, ../sass/view/_login.scss */
+#login .action-buttons {
+  text-align: center;
+}
+/* line 5, ../sass/view/_login.scss */
+#login .action-buttons a {
+  margin-top: 25px;
+  width: 60%;
+}
+/* line 11, ../sass/view/_login.scss */
+#login .rember {
+  text-align: left;
+  vertical-align: left;
+}
+/* line 16, ../sass/view/_login.scss */
+#login .rember-label {
+  display: inline !important;
+  margin-right: 15px;
+  font-size: 1.2em !important;
+  line-height: 1.5em !important;
+  padding-left: 1.5em !important;
+  margin-left: 0 !important;
+}
+/* line 27, ../sass/view/_login.scss */
+#login .retrieve {
+  margin: 15px;
+  float: right;
+}
+/* line 30, ../sass/view/_login.scss */
+#login .retrieve a {
+  text-decoration: underline !important;
+  color: #000;
+}
+
+/* line 37, ../sass/view/_login.scss */
+.banner {
+  background-image: url(../content/img/header_bg.gif);
+  border-bottom: 1px solid #dc7d35;
+  padding: 10px 10px;
+}
+
+/* line 51, ../sass/view/_login.scss */
+.logo {
+  background: url(../content/img/banner.png) no-repeat;
+  width: 330px;
+  height: 45px;
+  float: left;
+  text-indent: -9999px;
+  overflow: hidden;
+  margin: 0 10px 0 0;
+}
+
+/* line 61, ../sass/view/_login.scss */
+.encryption {
+  width: 113px;
+  float: right;
+}
+
+/* line 65, ../sass/view/_login.scss */
+.banner:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* line 3, ../sass/view/_fishing.scss */
+.f-banner {
+  border: 0;
+  height: 112px;
+  color: #fff;
+}
+
+/* line 9, ../sass/view/_fishing.scss */
+.fhb {
+  background: rgba(82, 172, 227, 0.78) !important;
+}
+
+/* line 13, ../sass/view/_fishing.scss */
+.f-header {
+  font-size: 12px !important;
+  margin-bottom: 10px;
+}
+
+/* line 21, ../sass/view/_fishing.scss */
+.fl {
+  float: left;
+  display: inline;
+}
+
+/* line 26, ../sass/view/_fishing.scss */
+.fr {
+  float: right;
+  display: inline;
+}
+
+/* line 31, ../sass/view/_fishing.scss */
+.f-desc {
+  float: left;
+  margin-left: 10px;
+  /* span {
+      display: block;
+  } */
+}
+
+/* line 39, ../sass/view/_fishing.scss */
+.bl {
+  display: block;
+}
+
+/* line 43, ../sass/view/_fishing.scss */
+.red {
+  color: red;
+}
+
+/* line 46, ../sass/view/_fishing.scss */
+.limegreen {
+  color: limegreen !important;
+}
+
+/* line 51, ../sass/view/_fishing.scss */
+.w-icon {
+  padding: 25px 0 25px 10px;
+}
+/* line 53, ../sass/view/_fishing.scss */
+.w-icon img {
+  width: 50px;
+}
+
+/* line 57, ../sass/view/_fishing.scss */
+.tq {
+  padding: 0 15px;
+}
+
+/* line 60, ../sass/view/_fishing.scss */
+.w-wd {
+  position: relative;
+  padding: 20px 0;
+  margin-top: 8px;
+}
+/* line 64, ../sass/view/_fishing.scss */
+.w-wd span {
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* line 70, ../sass/view/_fishing.scss */
+.line-l {
+  line-height: 0;
+  font-size: 0;
+  background: rgba(255, 255, 255, 0.3);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#4CFFFFFF,endColorstr=#4CFFFFFF);
+  width: 1px;
+  height: 100px;
+  margin-top: 5px;
+}
+
+/* line 79, ../sass/view/_fishing.scss */
+.posa {
+  position: absolute;
+}
+
+/* line 83, ../sass/view/_fishing.scss */
+.f-cs {
+  text-align: center;
+  margin: 10px 0 0 10px;
+}
+/* line 86, ../sass/view/_fishing.scss */
+.f-cs span {
+  display: block;
+  margin-top: 5px;
+}
+
+/* line 92, ../sass/view/_fishing.scss */
+.f-name {
+  color: #fd7f0e;
+}
+
+/* line 96, ../sass/view/_fishing.scss */
+.n-cl {
+  color: #fd7f0e;
+}
+
+/* line 101, ../sass/view/_fishing.scss */
+#flish-listview {
+  font-size: 12px !important;
+}
+/* line 103, ../sass/view/_fishing.scss */
+#flish-listview li {
+  padding: .7em !important;
+}
+
+/* line 108, ../sass/view/_fishing.scss */
+.device-box {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 65px;
+}
+
+/* line 115, ../sass/view/_fishing.scss */
+.esclip {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 190px;
+}
+
+/* line 122, ../sass/view/_fishing.scss */
+.f9 {
+  font-size: 9px;
+}
+
+/* line 125, ../sass/view/_fishing.scss */
+.f12 {
+  font-size: 12px;
+}
+
+/* line 128, ../sass/view/_fishing.scss */
+.f16 {
+  font-size: 16px;
+}
+
+/* line 131, ../sass/view/_fishing.scss */
+.f20 {
+  font-size: 20px;
+}
+
+/* line 137, ../sass/view/_fishing.scss */
+#ul-pond-w-params li, #ul-pond-d-params li {
+  border: none;
+}
+
+/* line 142, ../sass/view/_fishing.scss */
+#ul-pond-w-params li, #ul-pond-d-params li {
+  padding: 0 !important;
+}
+
+/* line 146, ../sass/view/_fishing.scss */
+.attri-container {
+  padding-top: 1px;
+  border: 1px solid #eee;
+  margin: 0 5px;
+}
+
+/* line 151, ../sass/view/_fishing.scss */
+.attr-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+/* line 155, ../sass/view/_fishing.scss */
+.attr-table td, .attr-table th {
+  border: 1px solid #fff;
+  padding: 8px;
+}
+/* line 159, ../sass/view/_fishing.scss */
+.attr-table tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+/* line 164, ../sass/view/_fishing.scss */
+.attr-table .attr-header {
+  background: #ddd !important;
+}
+/* line 167, ../sass/view/_fishing.scss */
+.attr-table .attr-header a {
+  background-color: transparent !important;
+  border: none !important;
+  color: #3193d5 !important;
+}
+/* line 173, ../sass/view/_fishing.scss */
+.attr-table .bute-row {
+  margin: 1px;
+  background: #fff;
+}
+/* line 177, ../sass/view/_fishing.scss */
+.attr-table .param-row {
+  background: #f1f9ff !important;
+}
+/* line 180, ../sass/view/_fishing.scss */
+.attr-table .th-img {
+  text-align: center;
+  vertical-align: middle;
+  width: 61px;
+}
+/* line 185, ../sass/view/_fishing.scss */
+.attr-table .attr-bute-name, .attr-table .attr-header {
+  font: 12px Arial, Helvetica, sans-serif;
+  color: #666;
+  font-weight: bold;
+}
+/* line 190, ../sass/view/_fishing.scss */
+.attr-table .attr-pos-value, .attr-table .attr-pos-name {
+  font: 12px Arial, Helvetica, sans-serif;
+  color: #666;
+}
+
+/* line 196, ../sass/view/_fishing.scss */
+#curveSearch, #deviceLogSearch {
+  text-align: center;
+  margin-top: 10px;
+}
+/* line 199, ../sass/view/_fishing.scss */
+#curveSearch div, #deviceLogSearch div {
+  width: 39%;
+  float: left;
+}
+/* line 201, ../sass/view/_fishing.scss */
+#curveSearch div:first-child, #deviceLogSearch div:first-child {
+  width: 30%;
+}
+/* line 204, ../sass/view/_fishing.scss */
+#curveSearch div:last-child, #deviceLogSearch div:last-child {
+  width: 30%;
+}
+/* line 209, ../sass/view/_fishing.scss */
+#curveSearch div input, #deviceLogSearch div input {
+  width: 100%;
+  height: 30px;
+}
+
+/* line 215, ../sass/view/_fishing.scss */
+.heading-main {
+  text-align: center;
+  font: bold 22px/26px Arial, Helvetica, sans-serif !important;
+  margin: 10px 0  !important;
+  color: #DB6803  !important;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+/* line 224, ../sass/view/_fishing.scss */
+#curveSearch, #deviceLogSearch {
+  margin-bottom: 10px;
+  line-height: 33px;
+  height: 33px;
+}
+
+/* line 230, ../sass/view/_fishing.scss */
+.hicon-footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  padding-bottom: 8px;
+  color: #CCC;
+  word-spacing: 3px;
+  zoom: 1;
+  text-align: center;
+}
+
+/* line 242, ../sass/view/_fishing.scss */
+.four-col-special {
+  margin: 0;
+  padding: 0 0 0 5px;
+}
+/* line 246, ../sass/view/_fishing.scss */
+.four-col-special li {
+  display: inline-block;
+  width: 22%;
+  margin: 5px 0;
+  padding: 20px 0;
+  vertical-align: top;
+  text-align: center;
+}
+/* line 254, ../sass/view/_fishing.scss */
+.four-col-special li span {
+  font-size: 12px;
+}
+/* line 259, ../sass/view/_fishing.scss */
+.four-col-special .enabled {
+  border: 3px solid #3193d5;
+  max-width: 100px;
+  max-height: 70px;
+}
+/* line 264, ../sass/view/_fishing.scss */
+.four-col-special .disabled {
+  border: 3px solid #ccc;
+  color: #ccc;
+  max-width: 100px;
+  max-height: 70px;
+}
+
+/* line 3, ../sass/view/_paramImgs.scss */
+.param_do, .param_wt, .param_ph, .param_sat, .param_tds, .param_ntu, .param_orp, .param_sal {
+  height: 70px;
+  width: 70px;
+  overflow: hidden;
+}
+
+/* line 9, ../sass/view/_paramImgs.scss */
+.param_do {
+  background: url(../content/img/do.png) no-repeat;
+}
+
+/* line 14, ../sass/view/_paramImgs.scss */
+.param_wt {
+  background: url(../content/img/wt.png) no-repeat;
+}
+
+/* line 19, ../sass/view/_paramImgs.scss */
+.param_ph {
+  background: url(../content/img/ph.png) no-repeat;
+}
+
+/* line 24, ../sass/view/_paramImgs.scss */
+.param_sat {
+  background: url(../content/img/sat.png) no-repeat;
+}
+
+/* line 29, ../sass/view/_paramImgs.scss */
+.param_tds {
+  background: url(../content/img/tds.png) no-repeat;
+}
+
+/* line 33, ../sass/view/_paramImgs.scss */
+.param_ntu {
+  background: url(../content/img/ntu.png) no-repeat;
+}
+
+/* line 37, ../sass/view/_paramImgs.scss */
+.param_orp {
+  background: url(../content/img/orp.png) no-repeat;
+}
+
+/* line 41, ../sass/view/_paramImgs.scss */
+.param_sal {
+  background: url(../content/img/sal.png) no-repeat;
+}
+
+/* line 47, ../sass/view/_paramImgs.scss */
+.device_cy, .device_dg, .device_jr, .device_js, .device_sx, .device_te, .device_zl, .device_zy {
+  height: 70px;
+  width: 70px;
+  overflow: hidden;
+}
+
+/* line 53, ../sass/view/_paramImgs.scss */
+.img-cy {
+  text-align: center;
+  background: url(../content/img/cy.png) no-repeat left center;
+  width: 48px;
+  height: 48px;
+}
+
+/* line 60, ../sass/view/_paramImgs.scss */
+.img-te {
+  text-align: center;
+  background: url(../content/img/te.png) no-repeat left center;
+  width: 48px;
+  height: 48px;
+}
+
+/* line 67, ../sass/view/_paramImgs.scss */
+.img-js {
+  text-align: center;
+  background: url(../content/img/js.png) no-repeat left center;
+  width: 48px;
+  height: 48px;
+}
+
+/* line 75, ../sass/view/_paramImgs.scss */
+.device_cy {
+  background: url(../content/img/devices.png) no-repeat;
+}
+
+/* line 80, ../sass/view/_paramImgs.scss */
+.device_dg {
+  background: url(../content/img/dg.png) no-repeat;
+}
+
+/* line 85, ../sass/view/_paramImgs.scss */
+.device_jr {
+  background: url(../content/img/jr.png) no-repeat;
+}
+
+/* line 90, ../sass/view/_paramImgs.scss */
+.device_js {
+  background: url(../content/img/js.png) no-repeat;
+}
+
+/* line 95, ../sass/view/_paramImgs.scss */
+.device_sx {
+  background: url(../content/img/devices.png) -192px 0px no-repeat;
+}
+
+/* line 100, ../sass/view/_paramImgs.scss */
+.device_te {
+  background: url(../content/img/te.png) no-repeat;
+}
+
+/* line 106, ../sass/view/_paramImgs.scss */
+.device_zl {
+  background: url(../content/img/zl.png) no-repeat;
+}
+
+/* line 111, ../sass/view/_paramImgs.scss */
+.device_zy {
+  background: url(../content/img/zy.png) no-repeat;
+}
+
+/* line 116, ../sass/view/_paramImgs.scss */
+.fishery_img {
+  background: url(../content/img/fishery.gif) 0px 0px no-repeat;
+  height: 80px;
+  width: 80px;
+  overflow: hidden;
+}
+
+/* line 122, ../sass/view/_paramImgs.scss */
+.img-box {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 126, ../sass/view/_paramImgs.scss */
+.logo_img {
+  text-align: center;
+  background: url(../content/img/logo.png) 0px 0px no-repeat;
+  height: 152px;
+  width: 152px;
+  overflow: hidden;
+}
+
+/* line 134, ../sass/view/_paramImgs.scss */
+.pool_img {
+  background: url(../content/img/fish-pool.gif) 0px 0px no-repeat;
+  height: 80px;
+  width: 80px;
+  overflow: hidden;
+}
+
+/* line 141, ../sass/view/_paramImgs.scss */
+.warn_green_img {
+  background: url(../content/img/green.gif) 0px 0px no-repeat;
+  height: 16px;
+  width: 16px;
+  overflow: hidden;
+}
+
+/* line 147, ../sass/view/_paramImgs.scss */
+.warn_red_img {
+  background: url(../content/img/red.gif) 0px 0px no-repeat;
+  height: 16px;
+  width: 16px;
+  overflow: hidden;
+  margin-right: 8px;
+}
+
+/* line 155, ../sass/view/_paramImgs.scss */
+.warn_gray_img {
+  background: url(../content/img/gray.gif) 0px 0px no-repeat;
+  height: 16px;
+  width: 16px;
+  overflow: hidden;
+  color: #ccc;
+}
