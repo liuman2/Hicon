@@ -837,3 +837,120 @@ div.actionButtonContainer > a > span {
   overflow: hidden;
   color: #ccc;
 }
+
+/* line 3, ../sass/view/_bue.scss */
+.bue .flex {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;
+  /* NEW, Spec - Firefox, Chrome, Opera */
+  align-items: center;
+}
+/* line 6, ../sass/view/_bue.scss */
+.bue .pond {
+  padding: 10px;
+  background-color: #f2f4f8;
+  margin-bottom: 10px;
+}
+/* line 11, ../sass/view/_bue.scss */
+.bue .pond-name {
+  color: #009aec;
+  -webkit-box-flex: 1;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  -webkit-flex: 1;
+  /* Safari 6.1+. iOS 7.1+, BB10 */
+  -ms-flex: 1;
+  /* IE 10 */
+  flex: 1;
+  /* NEW, Spec - Firefox, Chrome, Opera */
+}
+/* line 15, ../sass/view/_bue.scss */
+.bue .param-list {
+  display: block;
+  width: 100%;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
+  text-align: center;
+}
+/* line 26, ../sass/view/_bue.scss */
+.bue .param-box {
+  margin: 0px;
+  padding: 11px 15px;
+  vertical-align: top;
+  border: 1px solid #eee;
+  font-size: 16px;
+  display: inline-block;
+  width: 32%;
+  height: 80px;
+  margin: 0.333%;
+}
+/* line 40, ../sass/view/_bue.scss */
+.bue .param-name {
+  font-size: 12px;
+}
+/* line 43, ../sass/view/_bue.scss */
+.bue .param-value {
+  font-size: 28px;
+  color: #fa3c3c;
+}
+/* line 47, ../sass/view/_bue.scss */
+.bue .status {
+  margin: 5px;
+}
+/* line 50, ../sass/view/_bue.scss */
+.bue .btn {
+  margin: 10px;
+  text-align: center;
+}
+/* line 53, ../sass/view/_bue.scss */
+.bue .btn .start {
+  background-color: #009aec;
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+  color: #fff;
+  width: 120px;
+  font-size: 16px;
+  text-align: center;
+}
+/* line 64, ../sass/view/_bue.scss */
+.bue .opt-list {
+  padding: 0px;
+  margin: 10px;
+  text-align: center;
+}
+/* line 68, ../sass/view/_bue.scss */
+.bue .opt-list .opt {
+  display: inline-block;
+  margin: 0 10px;
+}
+/* line 72, ../sass/view/_bue.scss */
+.bue .opt-list .opt-name {
+  line-height: 48px;
+  font-size: 20px;
+  display: inline-block;
+  width: 48px;
+  border-radius: 50%;
+  text-align: center;
+}
+/* line 79, ../sass/view/_bue.scss */
+.bue .opt-list .opt-name.t {
+  color: #ffc03c;
+  border: 1px solid #ffc03c;
+}
+/* line 83, ../sass/view/_bue.scss */
+.bue .opt-list .opt-name.h {
+  color: #82c650;
+  border: 1px solid #82c650;
+}
+/* line 88, ../sass/view/_bue.scss */
+.bue .opt-list .opt-desc {
+  margin: 10px 0;
+}
