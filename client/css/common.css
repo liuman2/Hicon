@@ -919,19 +919,21 @@ div.actionButtonContainer > a > span {
   width: 120px;
   font-size: 16px;
   text-align: center;
+  padding: 0;
 }
-/* line 64, ../sass/view/_bue.scss */
+/* line 65, ../sass/view/_bue.scss */
 .bue .opt-list {
   padding: 0px;
   margin: 10px;
   text-align: center;
 }
-/* line 68, ../sass/view/_bue.scss */
+/* line 69, ../sass/view/_bue.scss */
 .bue .opt-list .opt {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 30px;
+  border: none;
 }
-/* line 72, ../sass/view/_bue.scss */
+/* line 74, ../sass/view/_bue.scss */
 .bue .opt-list .opt-name {
   line-height: 48px;
   font-size: 20px;
@@ -940,17 +942,17 @@ div.actionButtonContainer > a > span {
   border-radius: 50%;
   text-align: center;
 }
-/* line 79, ../sass/view/_bue.scss */
+/* line 81, ../sass/view/_bue.scss */
 .bue .opt-list .opt-name.t {
   color: #ffc03c;
   border: 1px solid #ffc03c;
 }
-/* line 83, ../sass/view/_bue.scss */
+/* line 85, ../sass/view/_bue.scss */
 .bue .opt-list .opt-name.h {
   color: #82c650;
   border: 1px solid #82c650;
 }
-/* line 88, ../sass/view/_bue.scss */
+/* line 90, ../sass/view/_bue.scss */
 .bue .opt-list .opt-desc {
   margin: 10px 0;
 }

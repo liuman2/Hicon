@@ -15,11 +15,9 @@ hicon.bueMain = (function() {
   };
 
   view.show = function(e) {
-
   };
 
   view.aftershow = function(e) {
-
   };
 
   view.events = {
@@ -27,7 +25,13 @@ hicon.bueMain = (function() {
       // hicon.navigation.main();
     },
     itemClick: function(e) {
-
+      var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
+      switch (commandKey) {
+        case 'pond':
+          break;
+        case 'test':
+          break;
+      }
     }
   };
   return view;

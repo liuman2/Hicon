@@ -45,7 +45,6 @@ hicon.bueSacn = (function() {
   };
 
   view.aftershow = function(e) {
-
   };
 
   view.events = {
