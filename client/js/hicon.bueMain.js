@@ -28,6 +28,10 @@ hicon.bueMain = (function() {
       var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
       switch (commandKey) {
         case 'pond':
+          hicon.navigation.buePond();
+          break;
+        case 'history':
+          hicon.navigation.bueHistory();
           break;
         case 'test':
           break;

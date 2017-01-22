@@ -575,14 +575,14 @@ hicon.main = (function() {
                             $('#oxygen-stander-down').val(currentAi.Lower);
                             // 上限启动临界值
                             $('#oxygen-start-up').val(currentAi.UpperLimit);
-                        
+
 
 
                             // 下限标准
                             $('#oxygen-start-down').val(currentAi.LowerLimit);
                             // 下限启动临界值
                             $('#oxygen-stop-down').val(currentAi.LowerHysteresis);
-                            
+
                             $("#modalview-oxygen").kendoMobileModalView('open');
                         },
                         error: function() {
@@ -598,14 +598,14 @@ hicon.main = (function() {
                             $('#oxygen-start-down').val(currentAi.LowerLimit);
                             // 下限启动临界值
                             $('#oxygen-stop-down').val(currentAi.LowerHysteresis);
-                            
-                            $("#modalview-oxygen").kendoMobileModalView('open');                            
+
+                            $("#modalview-oxygen").kendoMobileModalView('open');
                         }
                     });
 
 
-                    
-                   
+
+
                     break;
                 case 'line-chart':
                     hicon.sessionStorage.saveJson('CURRENT_AI', ai);
@@ -659,7 +659,7 @@ hicon.main = (function() {
         },
         // 新增鱼池
         addPond: function(e) {
-            // hicon.navigation.pondEdit();           
+            // hicon.navigation.pondEdit();
             hicon.utils.confirm({
                 message: '确定添加鱼池吗?',
                 ok: function() {
@@ -1091,7 +1091,7 @@ hicon.main = (function() {
                                 App.hideLoading();
                             }
                         });
-                        
+
                     } else {
                         var cfg = {
                             text: data.ErrorMsg ? data.ErrorMsg : '恢复默认值失败',

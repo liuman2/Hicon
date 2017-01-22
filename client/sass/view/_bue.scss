@@ -91,4 +91,54 @@
       margin: 10px 0;
     }
   }
+  .pond-field {
+    display: inline-block;
+    width: 56px;
+    color: #999;
+  }
+  .history-tip {
+    padding: 0 0 0 10px !important;
+    background-color: #f69c55 !important;
+    p {
+      color: #fff;
+    }
+    .tip {
+      @include box-flex(1);
+    }
+    .close {
+      padding: 5px 5px 5px 10px;
+      color: #fff;
+    }
+  }
+  .history-pond {
+    padding: 0 10px !important;
+    background-color: #f2f4f8 !important;
+    p {
+      color: #009aec;
+    }
+  }
+  .history-item {
+    padding: 0 0 10px 0 !important;
+    border: none !important;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      tbody tr:nth-child(even) {
+        background-color: #ddd;
+      }
+    }
+    .history-header {
+      background-color: #3193d5;
+    }
+    .first-field {
+      padding-left: 10px;
+    }
+    tr {
+      height: 36px
+    }
+    th {
+      font-weight: normal;
+      color: #fff;
+    }
+  }
 }

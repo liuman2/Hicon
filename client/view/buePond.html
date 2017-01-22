@@ -1,0 +1,55 @@
+<div id="buepond" data-role="view" data-use-native-scrolling="true" data-init="hicon.buePond.init" data-after-show="hicon.buePond.aftershow" data-show="hicon.bueSacn.show" data-transition="overlay:left" data-persist="true">
+  <header data-role="header">
+    <div data-role="navbar">
+      <a data-align="left" data-role="button" class="clearButton" data-click="hicon.buePond.events.doBack">返回</a>
+      <span data-role="view-title">池塘管理</span>
+      <a data-align="right" data-role="button" class="clearButton" data-click="hicon.buePond.events.addPond" data-pond-add>新增鱼池</a>
+    </div>
+  </header>
+  <ul data-role="listview" data-click="hicon.buePond.events.itemClick" class="bue">
+    <li class="pond-item" data-command-key="pondClick">
+      <p>
+        <span class="pond-field">池塘编号:</span>
+        <span>1</span>
+      </p>
+      <p>
+        <span class="pond-field">池塘名称:</span>
+        <span>xxx</span>
+      </p>
+      <p>
+        <span class="pond-field">盐度:</span>
+        <span>50</span>
+      </p>
+    </li>
+  </ul>
+</div>
+<div data-role="modalview" id="modalview-buepond" style="width: 80%; ">
+  <div data-role="header">
+    <div data-role="navbar">
+      <span>新增池塘</span>
+    </div>
+  </div>
+  <ul data-role="listview" data-style="inset">
+    <li>
+      <label for="water-stander-up">池塘编号:
+        <input type="number" id="buePondCode" placeholder="请输入池塘编号" />
+      </label>
+    </li>
+    <li>
+      <label for="water-stander-up">池塘名称:
+        <input type="text" id="buePondName" placeholder="请输入池塘名称" />
+      </label>
+    </li>
+    <li>
+      <label for="water-stander-up">盐度:
+        <input type="number" id="buePondSalt" placeholder="请输入盐度" />
+      </label>
+    </li>
+  </ul>
+  <div data-role="footer">
+    <div data-role="navbar">
+      <a data-click="hicon.buePond.events.cancel" class="km-default" type="button" data-role="button" data-align="right">取消</a>
+      <a data-click="hicon.buePond.events.save" class="km-default" type="button" data-role="button" data-align="right">保存</a>
+    </div>
+  </div>
+</div>

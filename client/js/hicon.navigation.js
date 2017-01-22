@@ -170,5 +170,17 @@ hicon.navigation = (function() {
     });
   };
 
+  self.buePond = function() {
+    $LAB.script('./js/hicon.buePond.js').wait(function() {
+      App.navigate("view/buePond.html");
+    });
+  };
+
+  self.bueHistory = function() {
+    $LAB.script('./js/hicon.bueHistory.js').wait(function() {
+      App.navigate("view/bueHistory.html");
+    });
+  };
+
   return self;
 }());

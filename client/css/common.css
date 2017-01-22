@@ -956,3 +956,74 @@ div.actionButtonContainer > a > span {
 .bue .opt-list .opt-desc {
   margin: 10px 0;
 }
+/* line 94, ../sass/view/_bue.scss */
+.bue .pond-field {
+  display: inline-block;
+  width: 56px;
+  color: #999;
+}
+/* line 99, ../sass/view/_bue.scss */
+.bue .history-tip {
+  padding: 0 0 0 10px !important;
+  background-color: #f69c55 !important;
+}
+/* line 102, ../sass/view/_bue.scss */
+.bue .history-tip p {
+  color: #fff;
+}
+/* line 105, ../sass/view/_bue.scss */
+.bue .history-tip .tip {
+  -webkit-box-flex: 1;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  -webkit-flex: 1;
+  /* Safari 6.1+. iOS 7.1+, BB10 */
+  -ms-flex: 1;
+  /* IE 10 */
+  flex: 1;
+  /* NEW, Spec - Firefox, Chrome, Opera */
+}
+/* line 108, ../sass/view/_bue.scss */
+.bue .history-tip .close {
+  padding: 5px 5px 5px 10px;
+  color: #fff;
+}
+/* line 113, ../sass/view/_bue.scss */
+.bue .history-pond {
+  padding: 0 10px !important;
+  background-color: #f2f4f8 !important;
+}
+/* line 116, ../sass/view/_bue.scss */
+.bue .history-pond p {
+  color: #009aec;
+}
+/* line 120, ../sass/view/_bue.scss */
+.bue .history-item {
+  padding: 0 0 10px 0 !important;
+  border: none !important;
+}
+/* line 123, ../sass/view/_bue.scss */
+.bue .history-item table {
+  width: 100%;
+  border-collapse: collapse;
+}
+/* line 126, ../sass/view/_bue.scss */
+.bue .history-item table tbody tr:nth-child(even) {
+  background-color: #ddd;
+}
+/* line 130, ../sass/view/_bue.scss */
+.bue .history-item .history-header {
+  background-color: #3193d5;
+}
+/* line 133, ../sass/view/_bue.scss */
+.bue .history-item .first-field {
+  padding-left: 10px;
+}
+/* line 136, ../sass/view/_bue.scss */
+.bue .history-item tr {
+  height: 36px;
+}
+/* line 139, ../sass/view/_bue.scss */
+.bue .history-item th {
+  font-weight: normal;
+  color: #fff;
+}
