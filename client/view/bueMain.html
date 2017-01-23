@@ -65,9 +65,27 @@
       </li>
     </ul>
     <div class="status">
-      <span>网络状态：</span><span>在线</span>
-      <span>蓝牙状态：</span><span>在线</span>
-      <span>溶氧传感器状态：</span><span>在线</span>
+      <span>网络状态：</span>
+      <!-- ko if: netWorkOnline() == true-->
+      <span class="limegreen">在线</span>
+      <!-- /ko -->
+      <!-- ko if: netWorkOnline() == false-->
+       <span class="red">离线</span>
+      <!-- /ko -->
+      <span>蓝牙状态：</span>
+      <!-- ko if: bueOnline() == true-->
+      <span class="limegreen">在线</span>
+      <!-- /ko -->
+      <!-- ko if: bueOnline() == false-->
+       <span class="red">离线</span>
+      <!-- /ko -->
+      <span>溶氧传感器状态：</span>
+      <!-- ko if: deviceOnline() == true-->
+      <span class="limegreen">在线</span>
+      <!-- /ko -->
+      <!-- ko if: deviceOnline() == false-->
+       <span class="red">离线</span>
+      <!-- /ko -->
     </div>
     <ul class="btn" data-role="listview" data-click="hicon.bueMain.events.itemClick">
       <li class="start" data-command-key="test">开始测水</li>

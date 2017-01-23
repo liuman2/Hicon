@@ -164,7 +164,6 @@
 
             try {
               window.plugins.jPushPlugin.init();
-              $LAB.script("js/hicon.db.js")
             } catch (e) {
 
             }

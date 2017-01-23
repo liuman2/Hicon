@@ -21,7 +21,7 @@ hicon.bueHistory = (function() {
   view.aftershow = function(e) {
     setTimeout(function() {
       $('#history-tip').remove();
-    }, 10000)
+    }, 15000)
   };
 
   view.events = {

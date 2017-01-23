@@ -6,19 +6,19 @@
       <a data-align="right" data-role="button" class="clearButton" data-click="hicon.buePond.events.addPond" data-pond-add>新增鱼池</a>
     </div>
   </header>
-  <ul data-role="listview" data-click="hicon.buePond.events.itemClick" class="bue">
+  <ul data-role="listview" data-click="hicon.buePond.events.itemClick" data-ko="foreach: $data.ponds()" class="bue">
     <li class="pond-item" data-command-key="pondClick">
       <p>
         <span class="pond-field">池塘编号:</span>
-        <span>1</span>
+        <span data-ko="text: $data.code"></span>
       </p>
       <p>
         <span class="pond-field">池塘名称:</span>
-        <span>xxx</span>
+        <span data-ko="text: $data.name">xxx</span>
       </p>
       <p>
         <span class="pond-field">盐度:</span>
-        <span>50</span>
+        <span data-ko="text: $data.salt">50</span>
       </p>
     </li>
   </ul>
@@ -32,17 +32,17 @@
   <ul data-role="listview" data-style="inset">
     <li>
       <label for="water-stander-up">池塘编号:
-        <input type="number" id="buePondCode" placeholder="请输入池塘编号" />
+        <input type="number" id="buePondCode" placeholder="请输入池塘编号" data-ko="value: pond().code" />
       </label>
     </li>
     <li>
       <label for="water-stander-up">池塘名称:
-        <input type="text" id="buePondName" placeholder="请输入池塘名称" />
+        <input type="text" id="buePondName" placeholder="请输入池塘名称" data-ko="value: pond().name" />
       </label>
     </li>
     <li>
       <label for="water-stander-up">盐度:
-        <input type="number" id="buePondSalt" placeholder="请输入盐度" />
+        <input type="number" id="buePondSalt" placeholder="请输入盐度" data-ko="value: pond().salt" />
       </label>
     </li>
   </ul>

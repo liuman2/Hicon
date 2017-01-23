@@ -16,39 +16,48 @@ hicon.bueSacn = (function() {
   };
 
   view.show = function(e) {
-
-    // ble.scan([], 10, function(scanDevice) {
-    //   console.log(JSON.stringify(scanDevice));
-
-    //   var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
-    //   if (bueDevice) {
-    //     if (bueDevice.id == scanDevice.id) {
-    //       hicon.navigation.bueMain();
-    //       return;
-    //     }
-    //   }
-    //   var _devices = [];
-    //   _devices.push(scanDevice);
-    //   viewModelBueScan.bueDevices(_devices);
-    // }, function() {
-    //   console.log(1111111111)
-    // });
-
-    var scanDevice = {
-      "name": "TI SensorTag",
-      "id": "BD922605-1B07-4D55-8D09-B66653E51BBA",
-      "rssi": -79,
-    };
     var _devices = [];
-    _devices.push(scanDevice);
-    viewModelBueScan.bueDevices(_devices);
+    var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
+    ble.startScan([], function(device) {
+      if (bueDevice) {
+        if (bueDevice.id == device.id) {
+          ble.stopScan();
+          hicon.navigation.bueMain();
+          return;
+        }
+      }
+      _devices.push(device);
+      viewModelBueScan.bueDevices(_devices);
+    }, function() {
+      console.log('scan failed')
+    });
+
+    setTimeout(ble.stopScan,
+      30000,
+      function() {
+        if (!_devices.length) {
+          var cfg = {
+            text: '没有扫描到蓝牙设备',
+            type: 'error'
+          };
+          hicon.utils.noty(cfg);
+        }
+      },
+      function() {
+        var cfg = {
+          text: '没有扫描到蓝牙设备',
+          type: 'error'
+        };
+        hicon.utils.noty(cfg);
+      }
+    );
   };
 
-  view.aftershow = function(e) {
-  };
+  view.aftershow = function(e) {};
 
   view.events = {
     skip: function() {
+      ble.stopScan();
       hicon.navigation.bueMain();
     },
     doBack: function() {
