@@ -22,23 +22,23 @@ hicon.db = (function() {
     });
   }
 
-  self.getBluetooth = function(onSuccess, onFailed) {
-    HICONDB.transaction(function(tx) {
-      var ponds = [];
-      tx.executeSql('SELECT * FROM Pond', [], function(tx, rs) {
-        if (rs.rows.length) {
-          for (var i = 0, max = rs.rows.length; i < max; i++) {
-            var row = rs.rows.item(i);
-            console.log(JSON.stringify(row))
-            ponds.push(row);
-          }
-        }
-        onSuccess(ponds);
-      }, function(tx, error) {
-        onFailed(ponds);
-      });
-    });
-  }
+  // self.getBluetooth = function(onSuccess, onFailed) {
+  //   HICONDB.transaction(function(tx) {
+  //     var ponds = [];
+  //     tx.executeSql('SELECT * FROM Pond', [], function(tx, rs) {
+  //       if (rs.rows.length) {
+  //         for (var i = 0, max = rs.rows.length; i < max; i++) {
+  //           var row = rs.rows.item(i);
+  //           console.log(JSON.stringify(row))
+  //           ponds.push(row);
+  //         }
+  //       }
+  //       onSuccess(ponds);
+  //     }, function(tx, error) {
+  //       onFailed(ponds);
+  //     });
+  //   });
+  // }
 
 
   self.getAllPond = function(onSuccess, onFailed) {

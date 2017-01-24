@@ -141,4 +141,19 @@
       color: #fff;
     }
   }
+  .pond-item {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .pond-info {
+    @include box-flex(1);
+  }
+  .pond-oprator {
+    a {
+      font-size: 1.1em!important;
+    }
+    .edit {
+      color: #009aec;
+    }
+  }
 }

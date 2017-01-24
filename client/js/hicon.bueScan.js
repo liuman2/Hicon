@@ -57,7 +57,7 @@ hicon.bueSacn = (function() {
 
   view.events = {
     skip: function() {
-      ble.stopScan();
+      // ble.stopScan();
       hicon.navigation.bueMain();
     },
     doBack: function() {

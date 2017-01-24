@@ -1027,3 +1027,27 @@ div.actionButtonContainer > a > span {
   font-weight: normal;
   color: #fff;
 }
+/* line 144, ../sass/view/_bue.scss */
+.bue .pond-item {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+/* line 148, ../sass/view/_bue.scss */
+.bue .pond-info {
+  -webkit-box-flex: 1;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  -webkit-flex: 1;
+  /* Safari 6.1+. iOS 7.1+, BB10 */
+  -ms-flex: 1;
+  /* IE 10 */
+  flex: 1;
+  /* NEW, Spec - Firefox, Chrome, Opera */
+}
+/* line 152, ../sass/view/_bue.scss */
+.bue .pond-oprator a {
+  font-size: 1.1em !important;
+}
+/* line 155, ../sass/view/_bue.scss */
+.bue .pond-oprator .edit {
+  color: #009aec;
+}

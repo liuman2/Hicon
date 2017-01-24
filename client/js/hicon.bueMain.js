@@ -67,13 +67,11 @@ hicon.bueMain = (function() {
         );
       }
     }, 1000);
-
-
   };
 
   view.events = {
     doBack: function() {
-      // hicon.navigation.main();
+      hicon.navigation.main();
     },
     itemClick: function(e) {
       var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;

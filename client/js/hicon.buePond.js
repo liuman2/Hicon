@@ -8,7 +8,7 @@ hicon.buePond = (function() {
   view.defineModel = function() {
     var self = this;
     self.initPondModalDone = false;
-    self.ponds = ko.observable({
+    self.pond = ko.observable({
       id: null,
       code: '',
       name: '',
@@ -54,10 +54,21 @@ hicon.buePond = (function() {
       var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
 
       switch (commandKey) {
-
+        case 'edit':
+          alert(0)
+          break;
+        case 'delete':
+          alert(1)
+          break;
       }
     },
     addPond: function() {
+      viewModelBuePond.pond({
+        id: null,
+        code: '',
+        name: '',
+        salt: ''
+      });
       $("#modalview-buepond").kendoMobileModalView('open');
     },
     save: function() {
@@ -79,9 +90,22 @@ hicon.buePond = (function() {
         return;
       }
 
-      hicon.db.insertPond(viewModelBuePond.pond());
+      hicon.db.getPondByCode(viewModelBuePond.pond().code, function(pond) {
+        if (pond != null) {
+          var cfg = {
+            text: '该池塘编号已存在',
+            type: 'error'
+          };
+          hicon.utils.noty(cfg);
+          return;
+        }
 
-      $("#modalview-buepond").kendoMobileModalView('close');
+        hicon.db.insertPond(viewModelBuePond.pond());
+        $("#modalview-buepond").kendoMobileModalView('close');
+        hicon.db.getAllPond(function(result) {
+          viewModelBuePond.ponds(result);
+        }, null);
+      })
     },
     cancel: function() {
       $("#modalview-buepond").kendoMobileModalView('close');

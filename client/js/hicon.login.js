@@ -77,6 +77,7 @@ hicon.login = (function() {
               ble.enable();
               hicon.navigation.bueScan();
             });
+            // hicon.navigation.bueScan();
             return;
           }
 
