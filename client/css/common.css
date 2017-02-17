@@ -280,6 +280,11 @@ div.actionButtonContainer > a > span {
   border-color: #d6e9c6;
 }
 
+/* line 265, ../sass/view/_hicon.scss */
+.km-check:before, .km-check:after {
+  content: "\e037";
+}
+
 /* line 3, ../sass/view/_login.scss */
 #login .action-buttons {
   text-align: center;

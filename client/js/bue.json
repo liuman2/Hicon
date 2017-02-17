@@ -1,0 +1,123 @@
+{
+  "0": {
+    "characteristics": [{
+      "characteristic": "2a00",
+      "service": "1800",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "characteristic": "2a01",
+      "service": "1800",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "characteristic": "2a02",
+      "service": "1800",
+      "properties": [
+        "Read",
+        "Write"
+      ]
+    }, {
+      "characteristic": "2a03",
+      "service": "1800",
+      "properties": [
+        "Write"
+      ]
+    }, {
+      "characteristic": "2a04",
+      "service": "1800",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "descriptors": [{
+        "uuid": "2902"
+      }],
+      "characteristic": "2a05",
+      "service": "1801",
+      "properties": [
+        "Indicate"
+      ]
+    }, {
+      "characteristic": "2a23",
+      "service": "180a",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "characteristic": "2a24",
+      "service": "180a",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "characteristic": "2a25",
+      "service": "180a",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "characteristic": "2a26",
+      "service": "180a",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "characteristic": "2a27",
+      "service": "180a",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "characteristic": "2a28",
+      "service": "180a",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "characteristic": "2a29",
+      "service": "180a",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "characteristic": "2a2a",
+      "service": "180a",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "characteristic": "2a50",
+      "service": "180a",
+      "properties": [
+        "Read"
+      ]
+    }, {
+      "descriptors": [{
+        "uuid": "2902"
+      }, {
+        "uuid": "2901"
+      }],
+      "characteristic": "ffe1",
+      "service": "ffe0",
+      "properties": [
+        "Read",
+        "WriteWithoutResponse",
+        "Write",
+        "Notify"
+      ]
+    }],
+    "advertising": {},
+    "id": "98:5D:AD:20:F6:C3",
+    "services": [
+      "1800",
+      "1801",
+      "180a",
+      "ffe0"
+    ],
+    "rssi": -80,
+    "name": "HICON:AD:20:F6:C3\r\n"
+  }
+}

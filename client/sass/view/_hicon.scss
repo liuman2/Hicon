@@ -262,3 +262,7 @@ div.actionButtonContainer > a {
     background-color: #dff0d8;
     border-color: #d6e9c6;
 }
+.km-check:before, .km-check:after
+{
+    content: "\e037";
+}

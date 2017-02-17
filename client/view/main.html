@@ -220,6 +220,17 @@
                         </tr>
                         <!-- /ko -->
 
+                        <!-- ko if: $data.AiParam == 'PH'-->
+                        <tr class="param-row">
+                            <th class="attr-bute-name">校准:</th>
+                            <td></td>
+                            <td>
+                                <a data-role="button" class="tableButton km-bluebtn" data-icon="check" data-command-key="setting">校准</a>
+                                <a data-role="button" class="tableButton km-bluebtn" data-icon="settings" data-command-key="setting">设定</a>
+                            </td>
+                        </tr>
+                        <!-- /ko -->
+
                         <!-- ko if: $data.AiType == 1-->
                         <tr class="param-row">
                             <th class="attr-bute-name">参数设定:</th>

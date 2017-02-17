@@ -83,6 +83,13 @@ hicon.bueMain = (function() {
           hicon.navigation.bueHistory();
           break;
         case 'test':
+          //
+          var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
+          ble.read(bueDevice.id, '1800', '2a00', function() {
+            console.log('aaaaaaaaaaaaaaaa')
+          }, function() {
+console.log('bbbbbbbbbbbbbbbbbbbbbb')
+          });
           break;
       }
     }
