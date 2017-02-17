@@ -225,7 +225,7 @@
                             <th class="attr-bute-name">校准:</th>
                             <td></td>
                             <td>
-                                <a data-role="button" class="tableButton km-bluebtn" data-icon="check" data-command-key="setting">校准</a>
+                                <a data-role="button" class="tableButton km-bluebtn" data-icon="check" data-command-key="phCheck">校准</a>
                                 <a data-role="button" class="tableButton km-bluebtn" data-icon="settings" data-command-key="setting">设定</a>
                             </td>
                         </tr>
@@ -423,6 +423,35 @@
         <div data-role="navbar">
             <a data-click="hicon.main.events.setOxygenDefault" class="km-default" type="button" data-role="button" data-align="right">恢复默认值</a>
             <a data-click="hicon.main.events.saveOxygen" class="km-default" type="button" data-role="button" data-align="right">保存</a>
+        </div>
+    </div>
+</div>
+
+<div data-role="modalview" id="modalview-phCheck" style="width: 80%;">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span>PH校准</span>
+            <a data-click="hicon.main.events.modalPHClose" data-role="button" data-align="right">关闭</a>
+        </div>
+    </div>
+
+    <ul data-role="listview" data-style="inset">
+        <li>
+            <label for="oxygen-stander-up">校准值:
+              <select>
+                <option value="-1"></option>
+                <option value="4.0">4.0</option>
+                <option value="6.86">6.86</option>
+                <option value="7.0">7.0</option>
+              </select>
+            </label>
+        </li>
+    </ul>
+
+    <div data-role="footer">
+        <div data-role="navbar">
+            <a data-click="hicon.main.events.modalPHClose" class="km-default" type="button" data-role="button" data-align="right">取消</a>
+            <a data-click="hicon.main.events.savePHCheck" class="km-default" type="button" data-role="button" data-align="right">校准</a>
         </div>
     </div>
 </div>
