@@ -40,6 +40,8 @@ hicon.main = (function() {
     self.deviceSBList = ko.observableArray([]); // 水泵设备
     self.deviceTEList = ko.observableArray([]); // 投饵设备
 
+    self.currentPh = ko.observable();
+
     var currentAi = null;
   };
 
@@ -641,7 +643,15 @@ hicon.main = (function() {
           });
           break;
         case 'phCheck':
+          if ($('#lbPhCheck').html() != '校准') {
+            return;
+          }
+          viewModelMain.currentPh(ai);
           $("#modalview-phCheck").kendoMobileModalView('open');
+          break;
+        case 'phSetting':
+          viewModelMain.currentPh(ai);
+          $("#modalview-ph").kendoMobileModalView('open');
           break;
       }
     },
@@ -1106,6 +1116,49 @@ hicon.main = (function() {
           App.hideLoading();
         }
       });
+    },
+    savePHCheck: function() {
+      // App.showLoading();
+      var userInfo = hicon.localStorage.getJson('USER_INFO');
+      $('#lbPhCheck').html('校准中...');
+      hicon.server.ajax({
+        url: 'AiAdjust',
+        type: 'post',
+        data: {
+          UserID: userInfo.UserID,
+          PondID: viewModelMain.currentPond().PondID,
+          AiSN: viewModelMain.currentPh().items.length == 1 ? viewModelMain.currentPh().items[0].AiSN : viewModelMain.currentPh().items[1].AiSN,
+          adval: $('#PHCheck').val()
+        },
+        success: function(data) {
+          // App.hideLoading();
+          $('#lbPhCheck').html('校准')
+          if (data.Result) {
+            var cfg = {
+              text: data.ErrorMsg ? data.ErrorMsg : '校准成功',
+              type: 'success'
+            };
+            hicon.utils.noty(cfg);
+          } else {
+            var cfg = {
+              text: data.ErrorMsg ? data.ErrorMsg : '校准失败',
+              type: 'error'
+            };
+            hicon.utils.noty(cfg);
+          }
+        },
+        error: function() {
+          // App.hideLoading();
+          $('#lbPhCheck').html('校准');
+          var cfg = {
+            text: data.ErrorMsg ? data.ErrorMsg : '校准失败',
+            type: 'error'
+          };
+          hicon.utils.noty(cfg);
+        }
+      });
+
+      $("#modalview-phCheck").kendoMobileModalView('close');
     }
   };
 

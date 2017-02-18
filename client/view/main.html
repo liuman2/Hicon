@@ -225,8 +225,10 @@
                             <th class="attr-bute-name">校准:</th>
                             <td></td>
                             <td>
-                                <a data-role="button" class="tableButton km-bluebtn" data-icon="check" data-command-key="phCheck">校准</a>
-                                <a data-role="button" class="tableButton km-bluebtn" data-icon="settings" data-command-key="setting">设定</a>
+                                <a data-role="button" class="tableButton km-bluebtn" data-icon="check" data-command-key="phCheck">
+                                  <span id="lbPhCheck">校准</span>
+                                </a>
+                                <a data-role="button" class="tableButton km-bluebtn" data-icon="settings" data-command-key="phSetting">设定</a>
                             </td>
                         </tr>
                         <!-- /ko -->
@@ -438,8 +440,7 @@
     <ul data-role="listview" data-style="inset">
         <li>
             <label for="oxygen-stander-up">校准值:
-              <select>
-                <option value="-1"></option>
+              <select id="PHCheck">
                 <option value="4.0">4.0</option>
                 <option value="6.86">6.86</option>
                 <option value="7.0">7.0</option>
@@ -452,6 +453,45 @@
         <div data-role="navbar">
             <a data-click="hicon.main.events.modalPHClose" class="km-default" type="button" data-role="button" data-align="right">取消</a>
             <a data-click="hicon.main.events.savePHCheck" class="km-default" type="button" data-role="button" data-align="right">校准</a>
+        </div>
+    </div>
+</div>
+
+<div data-role="modalview" id="modalview-ph" style="width: 80%;">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span>PH</span>
+            <a data-click="hicon.main.events.modalPHSettingClose" data-role="button" data-align="right">关闭</a>
+        </div>
+    </div>
+
+    <ul data-role="listview" data-style="inset">
+        <li style="display: none;">
+            <label for="ph-stander-up">上限标准值:<input type="number" id="ph-stander-up" /></label></li>
+        <li style="display: none;">
+            <label for="ph-stander-down">下限标准值:<input type="number" id="ph-stander-down" /></label></li>
+        <li style="display: none;">
+            <label for="ph-start-up">上限启动临界值:<input type="number" id="ph-start-up" /></label>
+        </li>
+
+        <li>
+            <label for="ph-start-up">下层PH:低于<input type="number" id="ph-start-down" style="text-align: right;margin-right: 90px;" /></label>
+            <label style="float: right; margin-top: 3px; color: #333;">预警</label>
+        </li>
+        <li>
+            <label for="ph-start-down">下层PH:达到<input type="number" id="ph-stop-down" style="text-align: right;margin-right: 90px;" /></label>
+            <label style="float: right; margin-top: 3px; color: #333;">停止</label>
+        </li>
+        <!-- <li>
+            <input type="checkbox" data-radio-index="1" id="ph-check"  class="km-checkbox"  data-role="device-auto">
+            <label class="km-checkbox-label rember-label" for="ph-check" >根据下层PH启闭PH机</label>
+        </li> -->
+    </ul>
+
+    <div data-role="footer">
+        <div data-role="navbar">
+            <a data-click="hicon.main.events.setPHDefault" class="km-default" type="button" data-role="button" data-align="right">恢复默认值</a>
+            <a data-click="hicon.main.events.savePHSetting" class="km-default" type="button" data-role="button" data-align="right">保存</a>
         </div>
     </div>
 </div>
