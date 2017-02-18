@@ -766,6 +766,9 @@ hicon.main = (function() {
     modalOxygenClose: function() {
       $("#modalview-oxygen").kendoMobileModalView('close');
     },
+    modalPHSettingClose: function() {
+      $("#modalview-ph").kendoMobileModalView('close');
+    },
     modalPHClose: function() {
       $("#modalview-phCheck").kendoMobileModalView('close');
     },
@@ -886,6 +889,65 @@ hicon.main = (function() {
         }
       });
     },
+
+    setPHDefault: function() {
+      var userInfo = hicon.localStorage.getJson('USER_INFO');
+      App.showLoading();
+      hicon.server.ajax({
+        url: 'AiSetDefault',
+        type: 'post',
+        data: {
+          UserID: userInfo.UserID,
+          PondID: viewModelMain.currentPond().PondID,
+          AiSN: viewModelMain.currentPh().items.length == 1 ? viewModelMain.currentPh().items[0].AiSN : viewModelMain.currentPh().items[1].AiSN
+        },
+        success: function(data) {
+          App.hideLoading();
+          if (data.Result) {
+            view.data.getCurrentPondAis();
+            setTimeout(function() {
+              view.data.getLastestDeviceData();
+            }, 1500);
+
+            hicon.utils.aiGets(userInfo.UserID, viewModelMain.currentPond().PondID, function(ais) {
+              var items = $.grep(ais, function(_ai) {
+                return viewModelMain.currentPh().AiParam == _ai.AiParam
+              });
+
+              var _currentAi = null;
+
+              if (items.length > 1) {
+                _currentAi = items[1];
+              } else {
+                _currentAi = items[0];
+              }
+
+              if (_currentAi != null) {
+                // 上限标准
+                $('#ph-stander-up').val(_currentAi.Upper);
+                // 下限标准
+                $('#ph-stander-down').val(_currentAi.Lower);
+                // 上限启动临界值
+                $('#ph-start-up').val(_currentAi.UpperLimit);
+
+                $('#ph-start-down').val(_currentAi.LowerLimit);
+                $('#ph-stop-down').val(_currentAi.LowerHysteresis);
+              }
+            });
+          } else {
+            var cfg = {
+              text: data.ErrorMsg ? data.ErrorMsg : '恢复默认值失败',
+              type: 'error'
+            };
+            hicon.utils.noty(cfg);
+          }
+        },
+        error: function() {
+          App.hideLoading();
+        }
+      });
+    },
+
     saveWater: function() {
       App.showLoading();
       var userInfo = hicon.localStorage.getJson('USER_INFO');
@@ -1032,6 +1094,78 @@ hicon.main = (function() {
             currentAi.UpperLimit = $('#oxygen-start-up').val();
             currentAi.Lower = $('#oxygen-stander-down').val();
             currentAi.Upper = $('#oxygen-stander-up').val();
+
+            // $("#modalview-water").kendoMobileModalView('close');
+            var cfg = {
+              text: data.ErrorMsg ? data.ErrorMsg : '修改成功',
+              type: 'success'
+            };
+            hicon.utils.noty(cfg);
+
+            setTimeout(function() {
+              view.data.getLastestDeviceData();
+            }, 1000)
+          } else {
+            var cfg = {
+              text: data.ErrorMsg ? data.ErrorMsg : '保存失败',
+              type: 'error'
+            };
+            hicon.utils.noty(cfg);
+          }
+        },
+        error: function() {
+          App.hideLoading();
+        }
+      });
+    },
+
+    savePHSetting: function() {
+      App.showLoading();
+      var userInfo = hicon.localStorage.getJson('USER_INFO');
+
+      // hicon.server.ajax({
+      //   url: 'PondSetOxygenControl',
+      //   type: 'post',
+      //   data: {
+      //     UserID: userInfo.UserID,
+      //     PondID: viewModelMain.currentPond().PondID,
+      //     isoxygen: $('#oxygen-check').prop('checked')
+      //   },
+      //   success: function() {
+      //     console.log(arguments)
+      //   }
+      // });
+
+      hicon.server.ajax({
+        url: 'AiModify',
+        type: 'post',
+        data: {
+          UserID: userInfo.UserID,
+          model: {
+            PondID: viewModelMain.currentPond().PondID,
+            AiSN: viewModelMain.currentPh().items.length == 1 ? viewModelMain.currentPh().items[0].AiSN : viewModelMain.currentPh().items[1].AiSN,
+            AiParam: viewModelMain.currentPh().AiParam,
+            FixPos: viewModelMain.currentPh().items.length == 1 ? viewModelMain.currentPh().items[0].FixPos : viewModelMain.currentPh().items[1].FixPos,
+            LowerLimit: $('#ph-start-down').val() || null,
+            LowerHysteresis: $('#ph-stop-down').val() || null,
+
+            UpperLimit: $('#ph-start-up').val(),
+            Lower: $('#ph-stander-down').val(),
+            Upper: $('#ph-stander-up').val(),
+
+
+            AiType: 0
+          }
+        },
+        success: function(data) {
+          App.hideLoading();
+          if (data.Result) {
+            currentAi.LowerLimit = $('#ph-start-down').val();
+            currentAi.LowerHysteresis = $('#ph-stop-down').val();
+
+            currentAi.UpperLimit = $('#ph-start-up').val();
+            currentAi.Lower = $('#ph-stander-down').val();
+            currentAi.Upper = $('#ph-stander-up').val();
 
             // $("#modalview-water").kendoMobileModalView('close');
             var cfg = {
