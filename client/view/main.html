@@ -408,11 +408,11 @@
         </li>
 
         <li>
-            <label for="saturation-start-up">下层溶氧:低于<input type="number" id="oxygen-start-down" style="text-align: right;margin-right: 90px;" /></label>
+            <label for="oxygen-start-down">下层溶氧:低于<input type="number" id="oxygen-start-down" style="text-align: right;margin-right: 90px;" /></label>
             <label style="float: right; margin-top: 3px; color: #333;">mg/L 启动</label>
         </li>
         <li>
-            <label for="saturation-start-down">下层溶氧:达到<input type="number" id="oxygen-stop-down" style="text-align: right;margin-right: 90px;" /></label>
+            <label for="oxygen-start-down">下层溶氧:达到<input type="number" id="oxygen-stop-down" style="text-align: right;margin-right: 90px;" /></label>
             <label style="float: right; margin-top: 3px; color: #333;">mg/L 停止</label>
         </li>
         <li>
@@ -432,7 +432,7 @@
 <div data-role="modalview" id="modalview-phCheck" style="width: 80%;">
     <div data-role="header">
         <div data-role="navbar">
-            <span>PH校准</span>
+            <span>pH校准</span>
             <a data-click="hicon.main.events.modalPHClose" data-role="button" data-align="right">关闭</a>
         </div>
     </div>
@@ -460,7 +460,7 @@
 <div data-role="modalview" id="modalview-ph" style="width: 80%;">
     <div data-role="header">
         <div data-role="navbar">
-            <span>PH</span>
+            <span>pH</span>
             <a data-click="hicon.main.events.modalPHSettingClose" data-role="button" data-align="right">关闭</a>
         </div>
     </div>
@@ -475,12 +475,12 @@
         </li>
 
         <li>
-            <label for="ph-start-up">下层PH:低于<input type="number" id="ph-start-down" style="text-align: right;margin-right: 90px;" /></label>
+            <label for="ph-start-up"> 上层pH:低于<input type="number" id="ph-start-down" style="text-align: right;margin-right: 90px;" /></label>
             <label style="float: right; margin-top: 3px; color: #333;">预警</label>
         </li>
         <li>
-            <label for="ph-start-down">下层PH:达到<input type="number" id="ph-stop-down" style="text-align: right;margin-right: 90px;" /></label>
-            <label style="float: right; margin-top: 3px; color: #333;">停止</label>
+            <label for="ph-stop-down">上层pH:超过<input type="number" id="ph-stop-down" style="text-align: right;margin-right: 90px;" /></label>
+            <label style="float: right; margin-top: 3px; color: #333;">预警</label>
         </li>
         <!-- <li>
             <input type="checkbox" data-radio-index="1" id="ph-check"  class="km-checkbox"  data-role="device-auto">

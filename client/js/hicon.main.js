@@ -40,7 +40,7 @@ hicon.main = (function() {
     self.deviceSBList = ko.observableArray([]); // 水泵设备
     self.deviceTEList = ko.observableArray([]); // 投饵设备
 
-    self.currentPh = ko.observable();
+    self.currentpH = ko.observable();
 
     var currentAi = null;
   };
@@ -646,11 +646,28 @@ hicon.main = (function() {
           if ($('#lbPhCheck').html() != '校准') {
             return;
           }
-          viewModelMain.currentPh(ai);
+          viewModelMain.currentpH(ai);
           $("#modalview-phCheck").kendoMobileModalView('open');
           break;
         case 'phSetting':
-          viewModelMain.currentPh(ai);
+          viewModelMain.currentpH(ai);
+          if (ai.items.length > 1) {
+            currentAi = ai.items[1];
+          } else {
+            currentAi = ai.items[0];
+          }
+           // 上限标准
+          $('#ph-stander-up').val(currentAi.Upper);
+          // 下限标准
+          $('#ph-stander-down').val(currentAi.Lower);
+          // 上限启动临界值
+          $('#ph-start-up').val(currentAi.UpperLimit);
+
+          // 下限标准
+          $('#ph-start-down').val(currentAi.LowerLimit);
+          // 下限启动临界值
+          $('#ph-stop-down').val(currentAi.LowerHysteresis);
+
           $("#modalview-ph").kendoMobileModalView('open');
           break;
       }
@@ -899,7 +916,7 @@ hicon.main = (function() {
         data: {
           UserID: userInfo.UserID,
           PondID: viewModelMain.currentPond().PondID,
-          AiSN: viewModelMain.currentPh().items.length == 1 ? viewModelMain.currentPh().items[0].AiSN : viewModelMain.currentPh().items[1].AiSN
+          AiSN: viewModelMain.currentpH().items.length == 1 ? viewModelMain.currentpH().items[0].AiSN : viewModelMain.currentpH().items[1].AiSN
         },
         success: function(data) {
           App.hideLoading();
@@ -911,7 +928,7 @@ hicon.main = (function() {
 
             hicon.utils.aiGets(userInfo.UserID, viewModelMain.currentPond().PondID, function(ais) {
               var items = $.grep(ais, function(_ai) {
-                return viewModelMain.currentPh().AiParam == _ai.AiParam
+                return viewModelMain.currentpH().AiParam == _ai.AiParam
               });
 
               var _currentAi = null;
@@ -1143,9 +1160,9 @@ hicon.main = (function() {
           UserID: userInfo.UserID,
           model: {
             PondID: viewModelMain.currentPond().PondID,
-            AiSN: viewModelMain.currentPh().items.length == 1 ? viewModelMain.currentPh().items[0].AiSN : viewModelMain.currentPh().items[1].AiSN,
-            AiParam: viewModelMain.currentPh().AiParam,
-            FixPos: viewModelMain.currentPh().items.length == 1 ? viewModelMain.currentPh().items[0].FixPos : viewModelMain.currentPh().items[1].FixPos,
+            AiSN: viewModelMain.currentpH().items.length == 1 ? viewModelMain.currentpH().items[0].AiSN : viewModelMain.currentpH().items[1].AiSN,
+            AiParam: viewModelMain.currentpH().AiParam,
+            FixPos: viewModelMain.currentpH().items.length == 1 ? viewModelMain.currentpH().items[0].FixPos : viewModelMain.currentpH().items[1].FixPos,
             LowerLimit: $('#ph-start-down').val() || null,
             LowerHysteresis: $('#ph-stop-down').val() || null,
 
@@ -1261,7 +1278,7 @@ hicon.main = (function() {
         data: {
           UserID: userInfo.UserID,
           PondID: viewModelMain.currentPond().PondID,
-          AiSN: viewModelMain.currentPh().items.length == 1 ? viewModelMain.currentPh().items[0].AiSN : viewModelMain.currentPh().items[1].AiSN,
+          AiSN: viewModelMain.currentpH().items.length == 1 ? viewModelMain.currentpH().items[0].AiSN : viewModelMain.currentpH().items[1].AiSN,
           adval: $('#PHCheck').val()
         },
         success: function(data) {
