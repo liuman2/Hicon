@@ -22,6 +22,7 @@ hicon.bueMain = (function() {
   view.aftershow = function(e) {
     var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
     if (bueDevice) {
+	  console.log(JSON.stringify(bueDevice));
       ble.connect(bueDevice.id, function() {
         console.log('connect')
         console.log(JSON.stringify(arguments))
@@ -57,21 +58,23 @@ hicon.bueMain = (function() {
           },
           function() {
             viewModelBueMain.deviceOnline(false);
-            if (viewModelBueMain.netWorkOnline() && viewModelBueMain.bueOnline()) {
-              ble.connect(bueDevice.id, function() {
-                console.log('connect')
-                console.log(JSON.stringify(arguments))
-              }, null);
-            }
           }
         );
       }
     }, 1000);
+
+
   };
+  
+    function toHexString(buffer) {
+    return Array.prototype.map.call(new Uint8Array(buffer), function(byte) {
+      return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+    }).join('')
+  }
 
   view.events = {
     doBack: function() {
-      hicon.navigation.main();
+      // hicon.navigation.main();
     },
     itemClick: function(e) {
       var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
@@ -83,13 +86,39 @@ hicon.bueMain = (function() {
           hicon.navigation.bueHistory();
           break;
         case 'test':
-          //
-          var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
-          ble.read(bueDevice.id, '1800', '2a00', function() {
-            console.log('aaaaaaaaaaaaaaaa')
+        var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
+          //ble.read(bueDevice.id, '1800', '2a00', function() {
+          //  console.log(JSON.stringify(arguments))
+          //}, function() {
+		  //  console.log(JSON.stringify(arguments))
+          //});
+          
+          //ble.read(bueDevice.id, '0000180a-0000-1000-8000-00805f9b34fb', '00002a24-0000-1000-8000-00805f9b34fb', function(data) {
+          //  console.log()
+          //  var s = String.fromCharCode.apply(null, new Uint8Array(data))
+          //  console.log(s)
+          //  alert(s)
+          //  var a = new Uint8Array(data);
+          //  console.log(JSON.stringify(a))
+        	
+          //}, function() {
+			//console.log(JSON.stringify(arguments))
+          //});
+          
+          ble.startNotification(bueDevice.id, '0000ffe0-0000-1000-8000-00805f9b34fb', '0000ffe1-0000-1000-8000-00805f9b34fb', function(data) {
+            //var s = String.fromCharCode.apply(null, new Uint8Array(data))
+            //console.log(s)
+            // var  buffer = new Uint8Array(data).buffer;
+            
+            console.log(JSON.stringify(new Uint8Array(data)))
+            
+                        
+			console.log(toHexString(data)); // = 04080c10
+
           }, function() {
-console.log('bbbbbbbbbbbbbbbbbbbbbb')
+			console.log(JSON.stringify(arguments))
           });
+          
           break;
       }
     }
