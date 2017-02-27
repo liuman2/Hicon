@@ -1,0 +1,30 @@
+<div id="buepondList" data-role="view" data-use-native-scrolling="true" data-init="hicon.buePondList.init" data-after-show="hicon.buePondList.aftershow" data-show="hicon.buePondList.show" data-transition="overlay:left" data-persist="true">
+  <header data-role="header">
+    <div data-role="navbar">
+      <a data-align="left" data-role="button" class="clearButton" data-click="hicon.buePondList.events.doBack">返回</a>
+      <span data-role="view-title">池塘选择</span>
+    </div>
+  </header>
+  <ul data-role="listview" data-click="hicon.buePondList.events.itemClick" data-ko="foreach: $data.ponds()" class="bue">
+    <li class="pond-item flex" data-command-key="pondClick">
+      <div class="pond-info">
+        <p>
+          <span class="pond-field">池塘编号:</span>
+          <span data-ko="text: $data.code"></span>
+        </p>
+        <p>
+          <span class="pond-field">池塘名称:</span>
+          <span data-ko="text: $data.name">xxx</span>
+        </p>
+      </div>
+      <!-- <div class="pond-oprator">
+        <div data-command-key="edit" class="actionButtonContainer">
+          <a data-role="button" class="clearButton" data-icon="compose"></a>
+        </div>
+        <div data-command-key="delete" class="actionButtonContainer">
+          <a data-role="button" class="clearButton" data-icon="trash"></a>
+        </div>
+      </div> -->
+    </li>
+  </ul>
+</div>

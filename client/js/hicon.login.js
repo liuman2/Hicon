@@ -73,11 +73,11 @@ hicon.login = (function() {
           hicon.localStorage.saveJson('USER_INFO', user);
 
           if ($('#identity').val() == 99) {
-            $LAB.script("js/hicon.db.js").wait(function() {
-              ble.enable();
-              hicon.navigation.bueScan();
-            });
-            // hicon.navigation.bueScan();
+            // $LAB.script("js/hicon.db.js").wait(function() {
+            //   ble.enable();
+            //   hicon.navigation.bueScan();
+            // });
+            hicon.navigation.bueMain();
             return;
           }
 

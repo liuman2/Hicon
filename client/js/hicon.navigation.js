@@ -182,5 +182,11 @@ hicon.navigation = (function() {
     });
   };
 
+  self.buePondSelect = function() {
+    $LAB.script('./js/hicon.buePondList.js').wait(function() {
+      App.navigate("view/buePondList.html");
+    });
+  };
+
   return self;
 }());

@@ -6,14 +6,16 @@
     </div>
   </header>
   <div data-role="listview" data-view="view" class="bue">
-    <div class="flex pond">
-      <div class="pond-name">
-        当前池：ddd
-      </div>
-      <div>
-        选择其他池塘
-      </div>
-    </div>
+    <ul data-role="listview" data-click="hicon.bueMain.events.itemClick">
+      <li class="flex pond">
+        <div class="pond-name">
+          当前池：ddd
+        </div>
+        <div data-command-key="select">
+          选择其他池塘
+        </div>
+      </li>
+    </ul>
     <ul class="param-list">
       <li class="param-box">
         <div class="param-name">

@@ -55,10 +55,8 @@ hicon.buePond = (function() {
 
       switch (commandKey) {
         case 'edit':
-          alert(0)
           break;
         case 'delete':
-          alert(1)
           break;
       }
     },

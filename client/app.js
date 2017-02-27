@@ -150,7 +150,6 @@
                   hicon.navigation.subAccountPond();
                   return false;
                 }
-
               } catch (e) {
                 navigator.app.exitApp();
               }
