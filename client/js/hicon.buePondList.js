@@ -26,9 +26,18 @@ hicon.buePondList = (function() {
   };
 
   view.aftershow = function(e) {
-    hicon.db.getAllPond(function(result) {
-      viewModelBuePondList.ponds(result);
-    }, null);
+
+    // hicon.db.getAllPond(function(result) {
+    //   viewModelBuePondList.ponds(result);
+    // }, null);
+
+    viewModelBuePondList.ponds([{
+      code: '001',
+      name: '池1'
+    },{
+      code: '002',
+      name: '池2'
+    }]);
   };
 
   view.events = {
@@ -36,7 +45,8 @@ hicon.buePondList = (function() {
       hicon.navigation.bueMain();
     },
     itemClick: function(e) {
-      var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
+      var pond = ko.dataFor(e.target.closest("li")[0]);
+      hicon.localStorage.saveJson('BUE_CURRET_POND', pond);
       hicon.navigation.bueMain();
     }
   };

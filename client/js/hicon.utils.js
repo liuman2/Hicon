@@ -55,6 +55,22 @@ hicon.utils.confirm = function(cfg) {
     });
 };
 
+hicon.utils.alert = function(cfg) {
+    $.Zebra_Dialog(cfg.message, {
+        type: cfg.type || 'question',
+        title: cfg.title || '提醒',
+        modal: true,
+        center_buttons: false,
+        overlay_close: false,
+        width: 250,
+        height: 800,
+        buttons: [{
+            caption: '确定',
+            callback: cfg.ok
+        }]
+    });
+};
+
 hicon.utils.newGuid = function() {
     var S4 = function() {
         return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
@@ -178,7 +194,7 @@ hicon.utils.detectUA = function ($, userAgent) {
 hicon.utils.checkAppVersion = function(showMsg) {
     $.getJSON('http://m.xmhicon.com/app/app_version.json?timeStamp='+new Date().getTime(), {
         format: "json"
-    }).done(function(data) {                    
+    }).done(function(data) {
         var serverVersion = hicon.utils.os.android ? data.android.version : data.iOS.version,
             isForced = hicon.utils.os.android ? data.android.forced : data.iOS.forced,
             upgrateUrl = hicon.utils.os.android ? data.android.url : data.iOS.url;

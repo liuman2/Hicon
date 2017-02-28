@@ -57,7 +57,7 @@ hicon.bueSacn = (function() {
 
   view.events = {
     skip: function() {
-      // ble.stopScan();
+      ble.stopScan();
       hicon.navigation.bueMain();
     },
     doBack: function() {
@@ -70,6 +70,7 @@ hicon.bueSacn = (function() {
         case 'deviceClick':
           var device = ko.dataFor(e.target.closest("li")[0]);
           hicon.localStorage.saveJson('BUE_DEVICE', device);
+          ble.stopScan();
           hicon.navigation.bueMain();
           break;
       }

@@ -10,6 +10,10 @@ hicon.bueMain = (function() {
     self.bueOnline = ko.observable(false);
     self.netWorkOnline = ko.observable(hicon.utils.main.isOnLine());
     self.deviceOnline = ko.observable(false);
+    self.currentPond = ko.observable({
+      code: '',
+      name: '未选择'
+    });
   };
 
   view.init = function() {
@@ -21,47 +25,35 @@ hicon.bueMain = (function() {
 
   view.aftershow = function(e) {
     var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
-    if (bueDevice) {
-      console.log(JSON.stringify(bueDevice));
-      ble.connect(bueDevice.id, function() {
-        console.log('connect')
-        console.log(JSON.stringify(arguments))
-      }, function() {
-        console.log('un connect')
-        console.log(JSON.stringify(arguments))
-      });
+    // setInterval(function() {
+    //   // 检测蓝牙状态
+    //   ble.isEnabled(function() {
+    //     viewModelBueMain.bueOnline(true);
+    //   }, function() {
+    //     viewModelBueMain.bueOnline(false);
+    //   });
 
-      ble.startStateNotifications(
-        function(state) {
-          console.log("Bluetooth is " + state);
-        }
-      );
-    }
+    //   // 检测网络状态
+    //   viewModelBueMain.netWorkOnline(hicon.utils.main.isOnLine());
 
-    setInterval(function() {
-      // 检测蓝牙状态
-      ble.isEnabled(function() {
-        viewModelBueMain.bueOnline(true);
-      }, function() {
-        viewModelBueMain.bueOnline(false);
-      });
+    //   // 传感器状态
+    //   if (bueDevice) {
+    //     ble.isConnected(
+    //       bueDevice.id,
+    //       function() {
+    //         viewModelBueMain.deviceOnline(true);
+    //       },
+    //       function() {
+    //         viewModelBueMain.deviceOnline(false);
+    //       }
+    //     );
+    //   }
+    // }, 1000);
 
-      // 检测网络状态
-      viewModelBueMain.netWorkOnline(hicon.utils.main.isOnLine());
-
-      // 传感器状态
-      if (bueDevice) {
-        ble.isConnected(
-          bueDevice.id,
-          function() {
-            viewModelBueMain.deviceOnline(true);
-          },
-          function() {
-            viewModelBueMain.deviceOnline(false);
-          }
-        );
-      }
-    }, 1000);
+     var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
+     if (currentPond) {
+       viewModelBueMain.currentPond(currentPond);
+     }
   };
 
   function toHexString(buffer) {
@@ -87,7 +79,18 @@ hicon.bueMain = (function() {
           hicon.navigation.bueHistory();
           break;
         case 'test':
+          var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
+          if (!currentPond) {
+            hicon.utils.alert({
+              message: '请选择池塘',
+              ok: function() {
+                hicon.navigation.buePondSelect();
+              }
+            })
+            return;
+          }
           var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
+
           //ble.read(bueDevice.id, '1800', '2a00', function() {
           //  console.log(JSON.stringify(arguments))
           //}, function() {

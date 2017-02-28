@@ -8,8 +8,7 @@
   <div data-role="listview" data-view="view" class="bue">
     <ul data-role="listview" data-click="hicon.bueMain.events.itemClick">
       <li class="flex pond">
-        <div class="pond-name">
-          当前池：ddd
+        <div class="pond-name" data-ko="text: '当前池：' + $data.currentPond().name">
         </div>
         <div data-command-key="select">
           选择其他池塘
