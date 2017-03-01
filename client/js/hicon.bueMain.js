@@ -3,129 +3,229 @@ var viewModelBueMain = null;
 
 hicon.bueMain = (function() {
 
-  var view = {};
+    var view = {};
 
-  view.defineModel = function() {
-    var self = this;
-    self.bueOnline = ko.observable(false);
-    self.netWorkOnline = ko.observable(hicon.utils.main.isOnLine());
-    self.deviceOnline = ko.observable(false);
-    self.currentPond = ko.observable({
-      code: '',
-      name: '未选择'
-    });
-  };
+    view.defineModel = function() {
+      var self = this;
+      self.bueOnline = ko.observable(false);
+      self.netWorkOnline = ko.observable(hicon.utils.main.isOnLine());
+      self.deviceOnline = ko.observable(false);
+      self.currentPond = ko.observable({
+        code: '',
+        name: '未选择'
+      });
 
-  view.init = function() {
-    viewModelBueMain = new view.defineModel();
-    ko.applyBindings(viewModelBueMain, document.getElementById("buemain"));
-  };
+      self.service_uuid = hicon.utils.os.ios ? 'ffe0' : '0000ffe0-0000-1000-8000-00805f9b34fb';
+      self.characteristic_uuid = hicon.utils.os.ios ? 'ffe1' : '0000ffe1-0000-1000-8000-00805f9b34fb';
+      self.bueDevice = {
+        id: ''
+      }
+    };
 
-  view.show = function(e) {};
+    view.init = function() {
+      viewModelBueMain = new view.defineModel();
+      ko.applyBindings(viewModelBueMain, document.getElementById("buemain"));
+    };
 
-  view.aftershow = function(e) {
-    var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
-    // setInterval(function() {
-    //   // 检测蓝牙状态
-    //   ble.isEnabled(function() {
-    //     viewModelBueMain.bueOnline(true);
-    //   }, function() {
-    //     viewModelBueMain.bueOnline(false);
-    //   });
+    view.show = function(e) {};
 
-    //   // 检测网络状态
-    //   viewModelBueMain.netWorkOnline(hicon.utils.main.isOnLine());
+    view.aftershow = function(e) {
+      var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
+      // setInterval(function() {
+      //   // 检测蓝牙状态
+      //   ble.isEnabled(function() {
+      //     viewModelBueMain.bueOnline(true);
+      //   }, function() {
+      //     viewModelBueMain.bueOnline(false);
+      //   });
 
-    //   // 传感器状态
-    //   if (bueDevice) {
-    //     ble.isConnected(
-    //       bueDevice.id,
-    //       function() {
-    //         viewModelBueMain.deviceOnline(true);
-    //       },
-    //       function() {
-    //         viewModelBueMain.deviceOnline(false);
-    //       }
-    //     );
+      //   // 检测网络状态
+      //   viewModelBueMain.netWorkOnline(hicon.utils.main.isOnLine());
+
+      //   // 传感器状态
+      //   if (bueDevice) {
+      //     ble.isConnected(
+      //       bueDevice.id,
+      //       function() {
+      //         viewModelBueMain.deviceOnline(true);
+      //       },
+      //       function() {
+      //         viewModelBueMain.deviceOnline(false);
+      //       }
+      //     );
+      //   }
+      // }, 1000);
+
+      var device = hicon.localStorage.getJson('BUE_DEVICE');
+      if (device) {
+        viewModelBueMain.bueDevice = device;
+      }
+      var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
+      if (currentPond) {
+        viewModelBueMain.currentPond(currentPond);
+      }
+    };
+
+    function toHexString(buffer) {
+      return Array.prototype.map.call(new Uint8Array(buffer), function(byte) {
+        return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+      }).join('')
+    }
+
+    function stringToBytes(string) {
+      var array = new Uint8Array(string.length);
+      for (var i = 0, l = string.length; i < l; i++) {
+        array[i] = string.charCodeAt(i);
+      }
+      return array.buffer;
+    }
+
+    // function parseHexString(str) {
+    //   var result = [];
+    //   while (str.length >= 8) {
+    //     result.push(parseInt(str.substring(0, 8), 16));
+
+    //     str = str.substring(8, str.length);
     //   }
-    // }, 1000);
+    //   return result;
+    // }
+    // function createHexString(arr) {
+    //   var result = "";
+    //   var z;
+    //   for (var i = 0; i < arr.length; i++) {
+    //     var str = arr[i].toString(16);
 
-     var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
-     if (currentPond) {
-       viewModelBueMain.currentPond(currentPond);
-     }
-  };
+    //     z = 8 - str.length + 1;
+    //     str = Array(z).join("0") + str;
 
-  function toHexString(buffer) {
-    return Array.prototype.map.call(new Uint8Array(buffer), function(byte) {
-      return ('0' + (byte & 0xFF).toString(16)).slice(-2);
-    }).join('')
-  }
+    //     result += str;
+    //   }
+    //   return result;
+    // }
 
-  view.events = {
-    doBack: function() {
-      // hicon.navigation.main();
-    },
-    itemClick: function(e) {
-      var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
-      switch (commandKey) {
-        case 'select':
-          hicon.navigation.buePondSelect();
-          break;
-        case 'pond':
-          hicon.navigation.buePond();
-          break;
-        case 'history':
-          hicon.navigation.bueHistory();
-          break;
-        case 'test':
-          var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
-          if (!currentPond) {
+    view.events = {
+      doBack: function() {
+        // hicon.navigation.main();
+      },
+      itemClick: function(e) {
+        var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
+        switch (commandKey) {
+          case 'select':
+            hicon.navigation.buePondSelect();
+            break;
+          case 'pond':
+            hicon.navigation.buePond();
+            break;
+          case 'history':
+            hicon.navigation.bueHistory();
+            break;
+          case 'monitor':
+            if ($('#btnMonitor').html() != '开始测水') {
+              return;
+            }
+
+            var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
+            if (!currentPond) {
+              hicon.utils.alert({
+                message: '请选择池塘',
+                ok: function() {
+                  hicon.navigation.buePondSelect();
+                }
+              })
+              return;
+            }
+
+            $('#btnMonitor').html('检测中...');
+            //
+            view.bueLib.write('', function(data) {
+              console.log(data)
+              if (data.success) {
+
+              }
+            });
+
+            break;
+        }
+      }
+    };
+
+    view.bueLib = {
+        startNotification: function() {
+          var bueDeviceId = viewModelBueMain.bueDevice.id;
+          if (!bueDeviceId) {
             hicon.utils.alert({
-              message: '请选择池塘',
-              ok: function() {
-                hicon.navigation.buePondSelect();
+                message: '您还没选择设备',
+                ok: function() {
+                  hicon.navigation.bueScan);
               }
             })
-            return;
-          }
-          var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
+          return;
+        }
 
-          //ble.read(bueDevice.id, '1800', '2a00', function() {
-          //  console.log(JSON.stringify(arguments))
-          //}, function() {
-          //  console.log(JSON.stringify(arguments))
-          //});
+          var service_uuid = viewModelBueMain.service_uuid;
+        var characteristic_uuid = viewModelBueMain.characteristic_uuid;
+        var success = function(response) {
+          var hexData = toHexString(data);
 
-          //ble.read(bueDevice.id, '0000180a-0000-1000-8000-00805f9b34fb', '00002a24-0000-1000-8000-00805f9b34fb', function(data) {
-          //  console.log()
-          //  var s = String.fromCharCode.apply(null, new Uint8Array(data))
-          //  console.log(s)
-          //  alert(s)
-          //  var a = new Uint8Array(data);
-          //  console.log(JSON.stringify(a))
-
-          //}, function() {
-          //console.log(JSON.stringify(arguments))
-          //});
-
-          ble.startNotification(bueDevice.id, '0000ffe0-0000-1000-8000-00805f9b34fb', '0000ffe1-0000-1000-8000-00805f9b34fb', function(data) {
-            //var s = String.fromCharCode.apply(null, new Uint8Array(data))
-            //console.log(s)
-            // var  buffer = new Uint8Array(data).buffer;
-
-            console.log(JSON.stringify(new Uint8Array(data)))
-
-
-            console.log(toHexString(data)); // = 04080c10
-
-          }, function() {
-            console.log(JSON.stringify(arguments))
-          });
-
-          break;
+        };
+        var failure = function() {
+          console.log(JSON.stringify(arguments))
+        }
+        ble.startNotification(bueDevice.id, service_uuid, characteristic_uuid, success, failure);
+      },
+      stopNotification: function() {
+        var bueDeviceId = viewModelBueMain.bueDevice.id;
+        var service_uuid = viewModelBueMain.service_uuid;
+        var characteristic_uuid = viewModelBueMain.characteristic_uuid;
+        ble.stopNotification(bueDeviceId, service_uuid, characteristic_uuid, null, null);
+      },
+      writeWithoutResponse: function(data) {
+        var bueDeviceId = viewModelBueMain.bueDevice.id;
+        if (!bueDeviceId) {
+          hicon.utils.alert({
+              message: '您还没选择设备',
+              ok: function() {
+                hicon.navigation.bueScan);
+            }
+          })
+        return;
       }
+    var service_uuid = viewModelBueMain.service_uuid;
+    var characteristic_uuid = viewModelBueMain.characteristic_uuid;
+    var success = function(response) {
+
+    };
+    var failure = function(response) {
+
     }
+    ble.writeWithoutResponse(bueDeviceId, service_uuid, characteristic_uuid, data, success, failure);
+  },
+  write: function(data, callback) {
+    var bueDeviceId = viewModelBueMain.bueDevice.id;
+    if (!bueDeviceId) {
+      hicon.utils.alert({
+          message: '您还没选择设备',
+          ok: function() {
+            hicon.navigation.bueScan);
+        }
+      })
+    return;
+  }
+  var service_uuid = viewModelBueMain.service_uuid;
+  var characteristic_uuid = viewModelBueMain.characteristic_uuid;
+  var success = function(response) {
+    callback({
+      success: true,
+      response: response
+    });
   };
-  return view;
+  var failure = function(response) {
+    callback({
+      success: false
+    });
+  }
+  ble.write(bueDeviceId, service_uuid, characteristic_uuid, data, success, failure);
+}
+}
+return view;
 }());
