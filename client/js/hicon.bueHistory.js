@@ -34,6 +34,14 @@ hicon.bueHistory = (function() {
       viewModelHistory.currentPond(currentPond);
 
       hicon.db.getHistoryByPondCode(currentPond.code, function(result) {
+        result = result || [];
+        if (result.length) {
+          $.each(result, function(i, item) {
+            item.day = moment(item.dateCreated).format('MM-DD');
+            item.time = moment(item.dateCreated).format('HH:mm');
+          })
+        }
+
         viewModelHistory.list(result);
       }, null);
     }

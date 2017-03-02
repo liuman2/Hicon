@@ -32,25 +32,7 @@ hicon.bueSacn = (function() {
       console.log('scan failed')
     });
 
-    setTimeout(ble.stopScan,
-      30000,
-      function() {
-        if (!_devices.length) {
-          var cfg = {
-            text: '没有扫描到蓝牙设备',
-            type: 'error'
-          };
-          hicon.utils.noty(cfg);
-        }
-      },
-      function() {
-        var cfg = {
-          text: '没有扫描到蓝牙设备',
-          type: 'error'
-        };
-        hicon.utils.noty(cfg);
-      }
-    );
+    setTimeout(ble.stopScan, 30000);
   };
 
   view.aftershow = function(e) {};

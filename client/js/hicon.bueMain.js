@@ -78,14 +78,14 @@ hicon.bueMain = (function() {
     }
 
     self.checkingData = ko.observable({
-      pondCode: '',
-      ox: '',
-      ph: '',
-      water: '',
-      power: '',
-      hpa: '',
-      sat: '',
-      salt: '',
+      pondCode: '--',
+      ox: '--',
+      ph: '--',
+      water: '--',
+      power: '--',
+      hpa: '--',
+      sat: '--',
+      salt: '--',
     });
   };
 
@@ -127,6 +127,15 @@ hicon.bueMain = (function() {
 
     var device = hicon.localStorage.getJson('BUE_DEVICE');
     if (device) {
+
+      ble.connect(device.id, function() {
+        console.log('connect')
+        console.log(JSON.stringify(arguments))
+      }, function() {
+        console.log('un connect')
+        console.log(JSON.stringify(arguments))
+      });
+
       viewModelBueMain.bueDevice = device;
     }
     var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
@@ -207,11 +216,17 @@ hicon.bueMain = (function() {
                     monitorData.hpa = decResult.value.hpa;
                     monitorData.sat = decResult.value.sat;
                     monitorData.salt = decResult.value.sat;
+                    viewModelBueMain.checkingData(monitorData);
+                    setTimeout(function() {
+                      $('#btnMonitor').html('pH检测中...');
+                      startCheck('55aa23');
+                    }, 1000);
                   }
                   if (decResult.type == 'ph') {
                     view.bueLib.stopNotification();
                     monitorData.ph = decResult.value.ph;
                     viewModelBueMain.checkingData(monitorData);
+                    $('#btnMonitor').html('开始测水');
                     view.bueLib.saveCheckData(monitorData);
                   }
                 }, function() {
@@ -264,7 +279,7 @@ hicon.bueMain = (function() {
         console.log(JSON.stringify(arguments))
         failureCallback()
       };
-      ble.startNotification(bueDevice.id, service_uuid, characteristic_uuid, success, failure);
+      ble.startNotification(bueDeviceId, service_uuid, characteristic_uuid, success, failure);
     },
     stopNotification: function() {
       var bueDeviceId = viewModelBueMain.bueDevice.id;
@@ -273,16 +288,6 @@ hicon.bueMain = (function() {
       ble.stopNotification(bueDeviceId, service_uuid, characteristic_uuid, null, null);
     },
     writeWithoutResponse: function(data) {
-      // var bueDeviceId = viewModelBueMain.bueDevice.id;
-      // if (!bueDeviceId) {
-      //   hicon.utils.alert({
-      //     message: '您还没选择设备',
-      //     ok: function() {
-      //       hicon.navigation.bueScan();
-      //     }
-      //   })
-      //   return;
-      // }
       var service_uuid = viewModelBueMain.service_uuid;
       var characteristic_uuid = viewModelBueMain.characteristic_uuid;
       var success = function(response) {
@@ -291,19 +296,10 @@ hicon.bueMain = (function() {
       var failure = function(response) {
 
       }
+      var bueDeviceId = viewModelBueMain.bueDevice.id;
       ble.writeWithoutResponse(bueDeviceId, service_uuid, characteristic_uuid, data, success, failure);
     },
     write: function(data, callback) {
-      // var bueDeviceId = viewModelBueMain.bueDevice.id;
-      // if (!bueDeviceId) {
-      //   hicon.utils.alert({
-      //     message: '您还没选择设备',
-      //     ok: function() {
-      //       hicon.navigation.bueScan();
-      //     }
-      //   });
-      //   return;
-      // }
       var service_uuid = viewModelBueMain.service_uuid;
       var characteristic_uuid = viewModelBueMain.characteristic_uuid;
       var success = function(response) {
@@ -318,13 +314,14 @@ hicon.bueMain = (function() {
         });
       }
 
-      var sendData = stringToBytes(hex2a('55aa23'));
+      var sendData = stringToBytes(hex2a(data));
 
+      var bueDeviceId = viewModelBueMain.bueDevice.id;
       ble.write(bueDeviceId, service_uuid, characteristic_uuid, sendData, success, failure);
     },
     saveCheckData: function(checkData) {
       hicon.db.getPondByCode(checkData.pondCode, function(pond) {
-        if (pond != null) {
+        if (pond == null) {
           hicon.db.insertPond({
             code: checkData.pondCode,
             name: '',
@@ -345,7 +342,7 @@ hicon.bueMain = (function() {
       });
     },
     internalChecking: function() {
-      setInterval(function() {
+      var startAutoChecking = function() {
         if ($('#btnMonitor').html() != '开始测水') {
           return;
         }
@@ -406,9 +403,14 @@ hicon.bueMain = (function() {
           isChecking = false;
           console.log('auto checking failed');
         })
-      }, 1000 * 60)
+      }
+      setInterval(function() {
+        startAutoChecking();
+      }, 1000 * 60);
+
+      startAutoChecking();
     }
   }
-}
-return view;
+
+  return view;
 }());
