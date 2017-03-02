@@ -98,6 +98,11 @@ hicon.bueMain = (function() {
 
   view.aftershow = function(e) {
     var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
+    if (bueDevice) {
+      ble.connect(bueDevice.id, null, null);
+      viewModelBueMain.bueDevice = bueDevice;
+    }
+
     setInterval(function() {
       // 检测蓝牙状态
       ble.isEnabled(function() {
@@ -118,30 +123,26 @@ hicon.bueMain = (function() {
           },
           function() {
             viewModelBueMain.deviceOnline(false);
+
+            ble.scan([], 5000, function(device) {
+              if (bueDevice.id == device.id) {
+                // ble.stopScan();
+                ble.connect(bueDevice.id, null, null);
+              }
+            }, function() {
+              console.log('scan failed')
+            });
           }
         );
       }
-    }, 1000);
+    }, 5000);
 
-    view.bueLib.internalChecking();
-
-    var device = hicon.localStorage.getJson('BUE_DEVICE');
-    if (device) {
-
-      ble.connect(device.id, function() {
-        console.log('connect')
-        console.log(JSON.stringify(arguments))
-      }, function() {
-        console.log('un connect')
-        console.log(JSON.stringify(arguments))
-      });
-
-      viewModelBueMain.bueDevice = device;
-    }
     var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
     if (currentPond) {
       viewModelBueMain.currentPond(currentPond);
     }
+
+    view.bueLib.internalChecking();
   };
 
   view.events = {
@@ -174,14 +175,36 @@ hicon.bueMain = (function() {
             return;
           }
 
-          var bueDeviceId = viewModelBueMain.bueDevice.id;
-          if (!bueDeviceId) {
+          var bueDevice = viewModelBueMain.bueDevice;
+          if (!bueDevice) {
             hicon.utils.alert({
               message: '您还没选择设备',
               ok: function() {
                 hicon.navigation.bueScan();
               }
             })
+            return;
+          }
+
+          var bueDeviceId = viewModelBueMain.bueDevice.id;
+
+          if (!viewModelBueMain.deviceOnline()) {
+            setTimeout(function() {
+              hicon.utils.confirm({
+                message: '未连接上设备是否重新连接?',
+                ok: function() {
+                  ble.scan([], 5000, function(device) {
+                    if (bueDeviceId == device.id) {
+                      // ble.stopScan();
+                      ble.connect(bueDeviceId, null, null);
+                    }
+                  }, function() {
+                    console.log('scan failed')
+                  });
+                }
+              });
+            }, 400)
+
             return;
           }
 
@@ -202,7 +225,6 @@ hicon.bueMain = (function() {
                 view.bueLib.startNotification(function(hexResult) {
                   if (hexResult.length < 5 && hexResult.substring(0, 4).toLowerCase() != '55aa01') {
                     var decResult = hex2decimal(hexResult);
-
                     return;
                   }
 
@@ -249,6 +271,24 @@ hicon.bueMain = (function() {
                     }, 2000);
                   }
                 })
+              } else {
+                if (sendData == '55aa21') {
+                  view.bueLib.stopNotification();
+                  $('#btnMonitor').html('溶氧检测失败...');
+                  setTimeout(function() {
+                    $('#btnMonitor').html('pH检测中...');
+                    startCheck('55aa23');
+                  }, 2000);
+                }
+                if (sendData == '55aa23') {
+                  view.bueLib.stopNotification();
+                  $('#btnMonitor').html('pH检测失败...');
+                  setTimeout(function() {
+                    $('#btnMonitor').html('开始测水');
+                    viewModelBueMain.checkingData(monitorData);
+                    view.bueLib.saveCheckData(monitorData);
+                  }, 2000);
+                }
               }
             })
           }
@@ -346,8 +386,14 @@ hicon.bueMain = (function() {
         if ($('#btnMonitor').html() != '开始测水') {
           return;
         }
-        var bueDeviceId = viewModelBueMain.bueDevice.id;
-        if (!bueDeviceId) {
+        var bueDevice = viewModelBueMain.bueDevice;
+        if (!bueDevice) {
+          return;
+        }
+
+        var bueDeviceId = bueDevice.id;
+
+        if (!viewModelBueMain.deviceOnline()) {
           return;
         }
 
