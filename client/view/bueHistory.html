@@ -1,4 +1,4 @@
-<div id="buehistory" data-role="view" data-use-native-scrolling="true" data-init="hicon.bueHistory.init" data-after-show="hicon.bueHistory.aftershow" data-show="hicon.bueSacn.show" data-transition="overlay:left" data-persist="true">
+<div id="buehistory" data-role="view" data-use-native-scrolling="true" data-init="hicon.bueHistory.init" data-after-show="hicon.bueHistory.aftershow" data-show="hicon.bueHistory.show" data-transition="overlay:left" data-persist="true">
   <header data-role="header">
     <div data-role="navbar">
       <a data-align="left" data-role="button" class="clearButton" data-click="hicon.bueHistory.events.doBack">返回</a>
@@ -36,8 +36,8 @@
             <th data-command-key="pressure">气压</th>
           </tr>
         </thead>
-        <tbody>
-          <tr data-ko="foreach: $data.list()">
+        <tbody data-ko="foreach: $data.list()">
+          <tr>
             <td class="first-field" data-ko="text: $data.day">12-03</td>
             <td data-ko="text: $data.time">17:55</td>
             <td data-ko="text: $data.oxygen">6.66</td>
