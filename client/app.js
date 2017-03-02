@@ -179,6 +179,7 @@
       .script("vendor/jquery/jquery.min.js").wait()
       .script("vendor/noty/jquery.noty.packaged.min.js")
       .script("vendor/kendo/kendo.mobile.min.js")
+      .script("vendor/moment/moment.js")
       .script("vendor/zebraDialog/zebra_dialog.js").wait(function() {
         window.App = new kendo.mobile.Application($(document.body), {
           transition: "slide",

@@ -7,6 +7,12 @@ hicon.bueHistory = (function() {
 
   view.defineModel = function() {
     var self = this;
+
+    self.currentPond = ko.observable({
+      code: '',
+      name: '未选择'
+    });
+    self.list = ko.observableArray([]);
   };
 
   view.init = function() {
@@ -22,6 +28,15 @@ hicon.bueHistory = (function() {
     setTimeout(function() {
       $('#history-tip').remove();
     }, 15000)
+
+    var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
+    if (currentPond) {
+      viewModelHistory.currentPond(currentPond);
+
+      hicon.db.getHistoryByPondCode(currentPond.code, function(result) {
+        viewModelHistory.list(result);
+      }, null);
+    }
   };
 
   view.events = {

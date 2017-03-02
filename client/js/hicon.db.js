@@ -9,7 +9,7 @@ hicon.db = (function() {
       var tables = [
         'CREATE TABLE IF NOT EXISTS Bluetooth (id, name, PRIMARY KEY ([id]))',
         'CREATE TABLE IF NOT EXISTS Pond (id INTEGER PRIMARY KEY AUTOINCREMENT, code, name, salt)',
-        'CREATE TABLE IF NOT EXISTS History (id INTEGER PRIMARY KEY AUTOINCREMENT, code, dateCreated, oxygen, water, ph, saturation, pressure)',
+        'CREATE TABLE IF NOT EXISTS History (id INTEGER PRIMARY KEY AUTOINCREMENT, code, dateCreated, oxygen, water, ph, saturation, hpa)',
       ];
 
       for (var i = 0, max = tables.length; i < max; i++) {
@@ -60,7 +60,7 @@ hicon.db = (function() {
   }
 
   self.insertPond = function(pond) {
-    console.log(pond)
+    // console.log(pond)
     HICONDB.transaction(function(tx) {
       tx.executeSql('INSERT INTO Pond VALUES (?,?,?,?)', [null, pond.code, pond.name, pond.salt]);
     }, function(error) {
@@ -79,6 +79,25 @@ hicon.db = (function() {
     });
   }
 
+  self.insertHistory = function(history) {
+    // code, dateCreated, oxygen, water, ph, saturation, hpa
+    HICONDB.transaction(function(tx) {
+      tx.executeSql('INSERT INTO History VALUES (?,?,?,?,?,?,?,?)', [null,
+        history.code,
+        history.dateCreated,
+        history.oxygen,
+        history.water,
+        history.ph,
+        history.saturation,
+        history.hpa,
+      ]);
+    }, function(error) {
+      console.log('Transaction ERROR: ' + error.message);
+    }, function() {
+      console.log('Populated database OK');
+    });
+  }
+
   self.getPondByCode = function(code, onSuccess, onFailed) {
     HICONDB.transaction(function(tx) {
       var pond = null;
@@ -89,6 +108,23 @@ hicon.db = (function() {
         onSuccess(pond);
       }, function(tx, error) {
         onFailed(pond);
+      });
+    });
+  }
+
+  self.getHistoryByPondCode = function(code, onSuccess, onFailed) {
+    HICONDB.transaction(function(tx) {
+      var histories = [];
+      tx.executeSql('SELECT * FROM History where code=?', [code], function(tx, rs) {
+        if (rs.rows.length) {
+          for (var i = 0, max = rs.rows.length; i < max; i++) {
+            var row = rs.rows.item(i);
+            histories.push(row);
+          }
+        }
+        onSuccess(histories);
+      }, function(tx, error) {
+        onFailed(histories);
       });
     });
   }
