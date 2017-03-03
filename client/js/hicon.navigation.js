@@ -188,5 +188,13 @@ hicon.navigation = (function() {
     });
   };
 
+  self.bueCurve = function() {
+    $LAB.script("vendor/highcharts/highcharts.js").wait()
+      .script("vendor/highcharts/dark-green.js").wait()
+      .script('./js/hicon.bueCurve.js').wait(function() {
+        App.navigate("view/bueCurve.html");
+      });
+  };
+
   return self;
 }());

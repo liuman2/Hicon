@@ -12,16 +12,16 @@
       </p>
       <div class="close" data-command-key="close">x</div>
     </li>
-    <li class="history-pond">
-      <p>
+    <li class="flex pond">
+      <div class="pond-name">
         <span>当前池: </span>
-        <span style="margin-right: 10px;">xxx</span>
+        <span style="margin-right: 10px;" data-ko="text: $data.currentPond().name">xxx</span>
         <span>盐度: </span>
-        <span>50</span>
-      </p>
-      <p>
-
-      </p>
+        <span data-ko="text: $data.currentPond().salt"></span>
+      </div>
+      <div data-command-key="select">
+        选择其他池塘
+      </div>
     </li>
     <li class="history-item">
       <table>
@@ -30,21 +30,21 @@
             <th class="first-field">日期</th>
             <th>时间</th>
             <th data-command-key="oxygen">溶氧</th>
-            <th data-command-key="temp">水温</th>
+            <th data-command-key="water">水温</th>
             <th data-command-key="ph">pH</th>
             <th data-command-key="saturation">饱和度</th>
-            <th data-command-key="pressure">气压</th>
+            <th data-command-key="hpa">气压</th>
           </tr>
         </thead>
         <tbody data-ko="foreach: $data.list()">
           <tr>
-            <td class="first-field" data-ko="text: $data.day">12-03</td>
-            <td data-ko="text: $data.time">17:55</td>
-            <td data-ko="text: $data.oxygen">6.66</td>
-            <td data-ko="text: $data.water">33</td>
-            <td data-ko="text: $data.ph">3.2</td>
-            <td data-ko="text: $data.saturation">66</td>
-            <td data-ko="text: $data.hpa">133</td>
+            <td class="first-field" data-ko="text: $data.day"></td>
+            <td data-ko="text: $data.time"></td>
+            <td data-ko="text: $data.oxygen"></td>
+            <td data-ko="text: $data.water"></td>
+            <td data-ko="text: $data.ph"></td>
+            <td data-ko="text: $data.saturation"></td>
+            <td data-ko="text: $data.hpa"></td>
           </tr>
         </tbody>
       </table>

@@ -1,0 +1,34 @@
+<div id="bueCurve" data-role="view" data-use-native-scrolling="true" data-init="hicon.bueCurve.init" data-after-show="hicon.bueCurve.aftershow" data-show="hicon.bueCurve.show" data-transition="overlay:left" data-persist="true">
+  <header data-role="header">
+    <div data-role="navbar">
+      <a data-align="left" data-role="button" class="clearButton" data-click="hicon.bueCurve.events.doBack">返回</a>
+      <span data-role="view-title">水质参数曲线</span>
+    </div>
+  </header>
+  <!-- <ul id="select-period-bue" data-role="buttongroup" data-index="0" data-select="hicon.bueCurve.events.selectButton">
+    <li style="min-width: 100px">
+      按日
+    </li>
+    <li style="min-width: 100px">
+      按月
+    </li>
+  </ul> -->
+  <div id="curveSearch">
+    <div>
+      <a data-role="button" class="km-default" data-click="hicon.bueCurve.events.prev" style="min-width: 50px">
+        <span class="km-text"><<</span>
+      </a>
+    </div>
+    <div>
+      <input id="txtCurveDayBue" type="date" value="" data-ko="event: {change: hicon.bueCurve.data.search}" />
+      <!-- <input id="txtCurveMonthBue" type="month" style="display:none;" value="" data-ko="event: {change: hicon.curve.data.search}" /> -->
+    </div>
+    <div>
+      <a data-role="button" class="km-default" data-click="hicon.bueCurve.events.next" style="min-width: 50px">
+        <span class="km-text">>></span>
+      </a>
+    </div>
+  </div>
+  <div id='bueCurveChart'>
+  </div>
+</div>

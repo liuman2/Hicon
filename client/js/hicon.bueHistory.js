@@ -57,15 +57,28 @@ hicon.bueHistory = (function() {
         case 'close':
           $('#history-tip').remove();
           break;
-        case 'oxygen':
+        case 'select':
+          hicon.navigation.buePondSelect();
           break;
-        case 'temp':
+        case 'oxygen':
+          hicon.localStorage.saveJson('BUE_CURVE_AI', 'oxygen');
+          hicon.navigation.bueCurve();
+          break;
+        case 'water':
+          hicon.localStorage.saveJson('BUE_CURVE_AI', 'water');
+          hicon.navigation.bueCurve();
           break;
         case 'ph':
+          hicon.localStorage.saveJson('BUE_CURVE_AI', 'ph');
+          hicon.navigation.bueCurve();
           break;
         case 'saturation':
+          hicon.localStorage.saveJson('BUE_CURVE_AI', 'saturation');
+          hicon.navigation.bueCurve();
           break;
-        case 'pressure':
+        case 'hpa':
+          hicon.localStorage.saveJson('BUE_CURVE_AI', 'hpa');
+          hicon.navigation.bueCurve();
           break;
       }
     },

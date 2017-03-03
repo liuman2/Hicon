@@ -39,11 +39,6 @@ hicon.buePond = (function() {
     hicon.db.getAllPond(function(result) {
       viewModelBuePond.ponds(result);
     }, null);
-
-    // TODO: 测试
-    // hicon.db.getPondByCode('999', function(pond) {
-    //   console.log(JSON.stringify(pond))
-    // }, null);
   };
 
   view.events = {

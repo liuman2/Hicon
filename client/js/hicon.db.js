@@ -9,7 +9,7 @@ hicon.db = (function() {
       var tables = [
         'CREATE TABLE IF NOT EXISTS Bluetooth (id, name, PRIMARY KEY ([id]))',
         'CREATE TABLE IF NOT EXISTS Pond (id INTEGER PRIMARY KEY AUTOINCREMENT, code, name, salt)',
-        'CREATE TABLE IF NOT EXISTS History (id INTEGER PRIMARY KEY AUTOINCREMENT, code, dateCreated, oxygen, water, ph, saturation, hpa)',
+        'CREATE TABLE IF NOT EXISTS History (id INTEGER PRIMARY KEY AUTOINCREMENT, code, dateCreated DATETIME, oxygen, water, ph, saturation, hpa)',
       ];
 
       for (var i = 0, max = tables.length; i < max; i++) {
@@ -55,6 +55,24 @@ hicon.db = (function() {
         onSuccess(ponds);
       }, function(tx, error) {
         onFailed(ponds);
+      });
+    });
+  }
+
+  self.searchHistory = function(query, onSuccess, onFailed) {
+    HICONDB.transaction(function(tx) {
+      var results = [];
+      tx.executeSql('SELECT dateCreated, ' + query.field + ' FROM History WHERE code=? AND dateCreated>=? AND dateCreated<=?', [query.code, query.start, query.end], function(tx, rs) {
+        if (rs.rows.length) {
+          for (var i = 0, max = rs.rows.length; i < max; i++) {
+            var row = rs.rows.item(i);
+            console.log(JSON.stringify(row))
+            results.push(row);
+          }
+        }
+        onSuccess(results);
+      }, function(tx, error) {
+        onFailed(results);
       });
     });
   }
