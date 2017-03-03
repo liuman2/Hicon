@@ -232,12 +232,12 @@ hicon.bueMain = (function() {
                   var decResult = hex2decimal(hexResult);
                   if (decResult.type == 'ox') {
                     view.bueLib.stopNotification();
-                    monitorData.ox = decResult.value.ox;
-                    monitorData.water = decResult.value.water;
-                    monitorData.power = decResult.value.power;
-                    monitorData.hpa = decResult.value.hpa;
-                    monitorData.sat = decResult.value.sat;
-                    monitorData.salt = decResult.value.sat;
+                    monitorData.ox = isNaN(decResult.value.ox) ? '' : decResult.value.ox;
+                    monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
+                    monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
+                    monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
+                    monitorData.sat = isNaN(decResult.value.sat) ? '' : decResult.value.sat;
+                    monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
                     viewModelBueMain.checkingData(monitorData);
                     setTimeout(function() {
                       $('#btnMonitor').html('pH检测中...');
@@ -246,7 +246,7 @@ hicon.bueMain = (function() {
                   }
                   if (decResult.type == 'ph') {
                     view.bueLib.stopNotification();
-                    monitorData.ph = decResult.value.ph;
+                    monitorData.ph = decResult.value.ph || '';
                     viewModelBueMain.checkingData(monitorData);
                     $('#btnMonitor').html('开始测水');
                     view.bueLib.saveCheckData(monitorData);
@@ -365,7 +365,7 @@ hicon.bueMain = (function() {
           hicon.db.insertPond({
             code: checkData.pondCode,
             name: '',
-            salt: checkData.salt || ''
+            salt: isNaN(checkData.salt) ? '' : checkData.salt
           });
         }
       });
@@ -374,11 +374,11 @@ hicon.bueMain = (function() {
       hicon.db.insertHistory({
         code: checkData.pondCode,
         dateCreated: moment(newDate).format('YYYY-MM-DD HH:mm'),
-        oxygen: checkData.ox,
-        water: checkData.water,
-        ph: checkData.ph,
-        saturation: checkData.sat,
-        hpa: checkData.hpa
+        oxygen: isNaN(checkData.ox) ? '' : checkData.ox,
+        water: isNaN(checkData.water) ? '' : checkData.water,
+        ph: isNaN(checkData.ph) ? '' : checkData.ph,
+        saturation: isNaN(checkData.sat) ? '' : checkData.sat,
+        hpa: isNaN(checkData.hpa) ? '' : checkData.hpa
       });
     },
     internalChecking: function() {
@@ -419,22 +419,22 @@ hicon.bueMain = (function() {
           // 检测返回 hex转decimal
           var decResult = hex2decimal(hexResult);
           if (decResult.type == 'ox') {
-            monitorData.ox = decResult.value.ox;
+            monitorData.ox = isNaN(decResult.ox) ? '' : decResult.ox;
             monitorData.ph = null;
-            monitorData.water = decResult.value.water;
-            monitorData.power = decResult.value.power;
-            monitorData.hpa = decResult.value.hpa;
-            monitorData.sat = decResult.value.sat;
-            monitorData.salt = decResult.value.sat;
+            monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
+            monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
+            monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
+            monitorData.sat = isNaN(decResult.value.sat) ? '' : decResult.value.sat;
+            monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
           }
           if (decResult.type == 'ph') {
             monitorData.ox = null;
-            monitorData.ph = decResult.value.ph;
-            monitorData.water = decResult.value.water;
-            monitorData.power = decResult.value.power;
-            monitorData.hpa = decResult.value.hpa;
+            monitorData.ph = isNaN(decResult.value.ph) ? '' : decResult.value.ph;
+            monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
+            monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
+            monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
             monitorData.sat = null;
-            monitorData.salt = decResult.value.sat;
+            monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
           }
 
           if (decResult.type == 'pond') {
