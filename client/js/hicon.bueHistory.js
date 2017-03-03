@@ -61,23 +61,23 @@ hicon.bueHistory = (function() {
           hicon.navigation.buePondSelect();
           break;
         case 'oxygen':
-          hicon.localStorage.saveJson('BUE_CURVE_AI', 'oxygen');
+          hicon.sessionStorage.item('BUE_CURVE_AI', 'oxygen');
           hicon.navigation.bueCurve();
           break;
         case 'water':
-          hicon.localStorage.saveJson('BUE_CURVE_AI', 'water');
+          hicon.sessionStorage.item('BUE_CURVE_AI', 'water');
           hicon.navigation.bueCurve();
           break;
         case 'ph':
-          hicon.localStorage.saveJson('BUE_CURVE_AI', 'ph');
+          hicon.sessionStorage.item('BUE_CURVE_AI', 'ph');
           hicon.navigation.bueCurve();
           break;
         case 'saturation':
-          hicon.localStorage.saveJson('BUE_CURVE_AI', 'saturation');
+          hicon.sessionStorage.item('BUE_CURVE_AI', 'saturation');
           hicon.navigation.bueCurve();
           break;
         case 'hpa':
-          hicon.localStorage.saveJson('BUE_CURVE_AI', 'hpa');
+          hicon.sessionStorage.item('BUE_CURVE_AI', 'hpa');
           hicon.navigation.bueCurve();
           break;
       }

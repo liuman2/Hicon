@@ -24,7 +24,7 @@ hicon.bueCurve = (function() {
 
   view.aftershow = function(e) {
     $('#txtCurveDayBue').val(hicon.utils.dateFormat(new Date(), 'yyyy-mm-dd'));
-    viewModelBueCurve.currentAi = hicon.sessionStorage.getJson('BUE_CURVE_AI');
+    viewModelBueCurve.currentAi = hicon.sessionStorage.item('BUE_CURVE_AI');
     viewModelBueCurve.curve1 = [];
     if (!viewModelBueCurve.currentAi) {
       return;
@@ -126,70 +126,35 @@ hicon.bueCurve = (function() {
       var xqd = new Date($('#txtCurveDayBue').val().replace(/-/gi, '/'));
       var categories = [];
 
-      if (viewModelBueCurve.searchType == 0) {
-        categories = [
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 0, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 2, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 4, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 6, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 8, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 10, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 12, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 14, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 16, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 18, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 20, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 22, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 23, 59, 59)
-        ]
-      } else {
-        categories = [
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 1, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 2, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 3, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 4, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 5, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 6, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 7, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 8, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 9, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 10, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 11, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 12, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 13, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 14, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 15, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 16, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 17, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 18, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 19, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 20, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 21, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 22, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 23, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 24, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 25, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 26, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 27, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 28, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 29, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 30, 0, 0),
-          Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), 31, 0, 0),
-        ]
-      }
+      categories = [
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 0, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 2, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 4, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 6, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 8, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 10, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 12, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 14, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 16, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 18, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 20, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 22, 0, 0),
+        Date.UTC(xqd.getFullYear(), xqd.getUTCMonth(), xqd.getUTCDate(), 23, 59, 59)
+      ]
+
       for (var i = 0, max = viewModelBueCurve.curve1.length; i < max; i++) {
 
         var curve = viewModelBueCurve.curve1[i];
-        var dt = new Date(curve.Stamp.replace(/-/gi, '/'));
+        var dt = new Date(curve.dateCreated.replace(/-/gi, '/'));
 
         var x = Date.UTC(dt.getFullYear(), dt.getMonth(), dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()),
-          y = curve.AiValue;
+          y = curve[viewModelBueCurve.currentAi];
 
         curve1.push([x, y]);
       }
 
       rptData.push({
-        // name: '上层',
+        name: viewModelBueCurve.reportName,
         color: 'rgb(5,250,224)',
         data: curve1
       });
@@ -295,8 +260,7 @@ hicon.bueCurve = (function() {
 
   view.events = {
     doBack: function() {
-      hicon.sessionStorage.item('IDENTITY', 0);
-      hicon.navigation.main();
+      hicon.navigation.bueHistory();
     },
     selectButton: function(e) {
       var index = this.current().index();

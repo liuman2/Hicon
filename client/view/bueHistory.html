@@ -15,7 +15,7 @@
     <li class="flex pond">
       <div class="pond-name">
         <span>当前池: </span>
-        <span style="margin-right: 10px;" data-ko="text: $data.currentPond().name">xxx</span>
+        <span style="margin-right: 10px;" data-ko="text: ($data.currentPond().name || ($data.currentPond().code + '号池'))">xxx</span>
         <span>盐度: </span>
         <span data-ko="text: $data.currentPond().salt"></span>
       </div>
