@@ -33,28 +33,39 @@ hicon.bueMain = (function() {
     return a;
   }
 
-  function hex2decimal(hex) {
-    var arrs = hexStringToByte(hex);
-    // parseInt(h,16)
-    if (hex.length > 4) {
+  // var hex = {
+  //   ox: 'edd23841',
+  //   water: '00809D41',
+  //   ph: '00000000',
+  //   power: '00AEC340',
+  // }
+  // window.nativeApp.Hex2Float(hex, function(data) {
+  //   console.log(JSON.stringify(data))
+  // });
+
+  //         溶氧值/ph  水温      电量      气压  饱和度  盐度
+  // 55AA01  EDD23841   00809D41  00AEC340  03F6  0080    00    08   C8
+
+  function getHexString(hex) {
+    if (hex.length == 44) {
       // 检测类型:01-溶氧, 02-PH
       var typeId = hex.substr(4, 2);
       return {
         type: typeId == '01' ? 'ox' : 'ph',
         value: {
-          ox: parseInt(arrs[3] + '' + arrs[4] + '' + arrs[5] + '' + arrs[6], 16),
-          ph: parseInt(arrs[3] + '' + arrs[4] + '' + arrs[5] + '' + arrs[6], 16),
-          water: parseInt(arrs[7] + '' + arrs[8] + '' + arrs[9] + '' + arrs[10], 16),
-          power: parseInt(arrs[11] + '' + arrs[12] + '' + arrs[13] + '' + arrs[14], 16),
-          hpa: parseInt(arrs[15] + '' + arrs[16], 16), // 气压值
-          sat: parseInt(arrs[17] + '' + arrs[18], 16), // 饱和度
-          salt: parseInt(arrs[19], 16), // 盐度
+          ox: hex.substr(6, 8),
+          ph: hex.substr(6, 8),
+          water: hex.substr(14, 8),
+          power: hex.substr(22, 8),
+          hpa: parseInt(hex.substr(30, 4), 16), // 气压值
+          sat: parseInt(hex.substr(34, 4), 16),  // 饱和度
+          salt: parseInt(hex.substr(38, 2), 16), // 盐度
         }
       }
-    } else {
+    } else if (hex.length == 4) {
       return {
         type: 'pond',
-        value: parseInt(arrs[0], 16)
+        value: parseInt(hex.substr(0, 2), 16)
       }
     }
   }
@@ -224,29 +235,29 @@ hicon.bueMain = (function() {
               if (data.success) {
                 view.bueLib.startNotification(function(hexResult) {
                   if (hexResult.length < 5 && hexResult.substring(0, 4).toLowerCase() != '55aa01') {
-                    var decResult = hex2decimal(hexResult);
+                    var HexObj = getHexString(hexResult);
                     return;
                   }
 
                   // 检测返回 hex转decimal
-                  var decResult = hex2decimal(hexResult);
-                  if (decResult.type == 'ox') {
+                  var HexObj = getHexString(hexResult);
+                  if (HexObj.type == 'ox') {
                     view.bueLib.stopNotification();
-                    monitorData.ox = isNaN(decResult.value.ox) ? '' : decResult.value.ox;
-                    monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
-                    monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
-                    monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
-                    monitorData.sat = isNaN(decResult.value.sat) ? '' : decResult.value.sat;
-                    monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
-                    viewModelBueMain.checkingData(monitorData);
+                    // monitorData.ox = isNaN(decResult.value.ox) ? '' : decResult.value.ox;
+                    // monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
+                    // monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
+                    // monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
+                    // monitorData.sat = isNaN(decResult.value.sat) ? '' : decResult.value.sat;
+                    // monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
+                    // viewModelBueMain.checkingData(monitorData);
                     setTimeout(function() {
                       $('#btnMonitor').html('pH检测中...');
                       startCheck('55aa23');
                     }, 1000);
                   }
-                  if (decResult.type == 'ph') {
+                  if (HexObj.type == 'ph') {
                     view.bueLib.stopNotification();
-                    monitorData.ph = decResult.value.ph || '';
+                    // monitorData.ph = decResult.value.ph || '';
                     viewModelBueMain.checkingData(monitorData);
                     $('#btnMonitor').html('开始测水');
                     view.bueLib.saveCheckData(monitorData);
@@ -417,28 +428,28 @@ hicon.bueMain = (function() {
         isChecking = true;
         view.bueLib.startNotification(function(hexResult) {
           // 检测返回 hex转decimal
-          var decResult = hex2decimal(hexResult);
-          if (decResult.type == 'ox') {
-            monitorData.ox = isNaN(decResult.ox) ? '' : decResult.ox;
-            monitorData.ph = null;
-            monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
-            monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
-            monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
-            monitorData.sat = isNaN(decResult.value.sat) ? '' : decResult.value.sat;
-            monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
+          var hexObj = getHexString(hexResult);
+          if (hexObj.type == 'ox') {
+            // monitorData.ox = isNaN(decResult.ox) ? '' : decResult.ox;
+            // monitorData.ph = null;
+            // monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
+            // monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
+            // monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
+            // monitorData.sat = isNaN(decResult.value.sat) ? '' : decResult.value.sat;
+            // monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
           }
-          if (decResult.type == 'ph') {
-            monitorData.ox = null;
-            monitorData.ph = isNaN(decResult.value.ph) ? '' : decResult.value.ph;
-            monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
-            monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
-            monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
-            monitorData.sat = null;
-            monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
+          if (hexObj.type == 'ph') {
+            // monitorData.ox = null;
+            // monitorData.ph = isNaN(decResult.value.ph) ? '' : decResult.value.ph;
+            // monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
+            // monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
+            // monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
+            // monitorData.sat = null;
+            // monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
           }
 
-          if (decResult.type == 'pond') {
-            monitorData.pondCode = decResult.value;
+          if (hexObj.type == 'pond') {
+            monitorData.pondCode = hexObj.value;
             view.bueLib.stopNotification();
             isChecking = false;
             if (monitorData.ox != 0 || monitorData.ph != 0) {
