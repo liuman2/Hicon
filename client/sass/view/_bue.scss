@@ -51,15 +51,21 @@
     margin: 10px;
     text-align: center;
     .start {
-      background-color: #009aec;
       display: inline-block;
       height: 34px;
       line-height: 34px;
-      color: #fff;
       width: 120px;
       font-size: 16px;
       text-align: center;
       padding: 0;
+    }
+    .blue {
+      background-color: #009aec;
+      color: #fff;
+    }
+    .gray {
+      background-color: #e6e6e6;
+      color: #333;
     }
   }
   .opt-list {

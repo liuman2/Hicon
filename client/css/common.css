@@ -914,29 +914,37 @@ div.actionButtonContainer > a > span {
 }
 /* line 53, ../sass/view/_bue.scss */
 .bue .btn .start {
-  background-color: #009aec;
   display: inline-block;
   height: 34px;
   line-height: 34px;
-  color: #fff;
   width: 120px;
   font-size: 16px;
   text-align: center;
   padding: 0;
 }
-/* line 65, ../sass/view/_bue.scss */
+/* line 62, ../sass/view/_bue.scss */
+.bue .btn .blue {
+  background-color: #009aec;
+  color: #fff;
+}
+/* line 66, ../sass/view/_bue.scss */
+.bue .btn .gray {
+  background-color: #e6e6e6;
+  color: #333;
+}
+/* line 71, ../sass/view/_bue.scss */
 .bue .opt-list {
   padding: 0px;
   margin: 10px;
   text-align: center;
 }
-/* line 69, ../sass/view/_bue.scss */
+/* line 75, ../sass/view/_bue.scss */
 .bue .opt-list .opt {
   display: inline-block;
   margin: 0 30px;
   border: none;
 }
-/* line 74, ../sass/view/_bue.scss */
+/* line 80, ../sass/view/_bue.scss */
 .bue .opt-list .opt-name {
   line-height: 48px;
   font-size: 20px;
@@ -945,36 +953,36 @@ div.actionButtonContainer > a > span {
   border-radius: 50%;
   text-align: center;
 }
-/* line 81, ../sass/view/_bue.scss */
+/* line 87, ../sass/view/_bue.scss */
 .bue .opt-list .opt-name.t {
   color: #ffc03c;
   border: 1px solid #ffc03c;
 }
-/* line 85, ../sass/view/_bue.scss */
+/* line 91, ../sass/view/_bue.scss */
 .bue .opt-list .opt-name.h {
   color: #82c650;
   border: 1px solid #82c650;
 }
-/* line 90, ../sass/view/_bue.scss */
+/* line 96, ../sass/view/_bue.scss */
 .bue .opt-list .opt-desc {
   margin: 10px 0;
 }
-/* line 94, ../sass/view/_bue.scss */
+/* line 100, ../sass/view/_bue.scss */
 .bue .pond-field {
   display: inline-block;
   width: 56px;
   color: #999;
 }
-/* line 99, ../sass/view/_bue.scss */
+/* line 105, ../sass/view/_bue.scss */
 .bue .history-tip {
   padding: 0 0 0 10px !important;
   background-color: #f69c55 !important;
 }
-/* line 102, ../sass/view/_bue.scss */
+/* line 108, ../sass/view/_bue.scss */
 .bue .history-tip p {
   color: #fff;
 }
-/* line 105, ../sass/view/_bue.scss */
+/* line 111, ../sass/view/_bue.scss */
 .bue .history-tip .tip {
   -webkit-box-flex: 1;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -985,57 +993,57 @@ div.actionButtonContainer > a > span {
   flex: 1;
   /* NEW, Spec - Firefox, Chrome, Opera */
 }
-/* line 108, ../sass/view/_bue.scss */
+/* line 114, ../sass/view/_bue.scss */
 .bue .history-tip .close {
   padding: 5px 5px 5px 10px;
   color: #fff;
 }
-/* line 113, ../sass/view/_bue.scss */
+/* line 119, ../sass/view/_bue.scss */
 .bue .history-pond {
   padding: 0 10px !important;
   background-color: #f2f4f8 !important;
 }
-/* line 116, ../sass/view/_bue.scss */
+/* line 122, ../sass/view/_bue.scss */
 .bue .history-pond p {
   color: #009aec;
 }
-/* line 120, ../sass/view/_bue.scss */
+/* line 126, ../sass/view/_bue.scss */
 .bue .history-item {
   padding: 0 0 10px 0 !important;
   border: none !important;
 }
-/* line 123, ../sass/view/_bue.scss */
+/* line 129, ../sass/view/_bue.scss */
 .bue .history-item table {
   width: 100%;
   border-collapse: collapse;
 }
-/* line 126, ../sass/view/_bue.scss */
+/* line 132, ../sass/view/_bue.scss */
 .bue .history-item table tbody tr:nth-child(even) {
   background-color: #ddd;
 }
-/* line 130, ../sass/view/_bue.scss */
+/* line 136, ../sass/view/_bue.scss */
 .bue .history-item .history-header {
   background-color: #3193d5;
 }
-/* line 133, ../sass/view/_bue.scss */
+/* line 139, ../sass/view/_bue.scss */
 .bue .history-item .first-field {
   padding-left: 10px;
 }
-/* line 136, ../sass/view/_bue.scss */
+/* line 142, ../sass/view/_bue.scss */
 .bue .history-item tr {
   height: 36px;
 }
-/* line 139, ../sass/view/_bue.scss */
+/* line 145, ../sass/view/_bue.scss */
 .bue .history-item th {
   font-weight: normal;
   color: #fff;
 }
-/* line 144, ../sass/view/_bue.scss */
+/* line 150, ../sass/view/_bue.scss */
 .bue .pond-item {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
-/* line 148, ../sass/view/_bue.scss */
+/* line 154, ../sass/view/_bue.scss */
 .bue .pond-info {
   -webkit-box-flex: 1;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1046,11 +1054,11 @@ div.actionButtonContainer > a > span {
   flex: 1;
   /* NEW, Spec - Firefox, Chrome, Opera */
 }
-/* line 152, ../sass/view/_bue.scss */
+/* line 158, ../sass/view/_bue.scss */
 .bue .pond-oprator a {
   font-size: 1.1em !important;
 }
-/* line 155, ../sass/view/_bue.scss */
+/* line 161, ../sass/view/_bue.scss */
 .bue .pond-oprator .edit {
   color: #009aec;
 }

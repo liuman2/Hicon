@@ -25,13 +25,13 @@ hicon.bueMain = (function() {
     return str;
   }
 
-  function hexStringToByte(str) {
-    var a = [];
-    for (var i = 0; i < str.length; i += 2) {
-      a.push("0x" + str.substr(i, 2));
-    }
-    return a;
-  }
+  // function hexStringToByte(str) {
+  //   var a = [];
+  //   for (var i = 0; i < str.length; i += 2) {
+  //     a.push("0x" + str.substr(i, 2));
+  //   }
+  //   return a;
+  // }
 
   // var hex = {
   //   ox: 'edd23841',
@@ -42,23 +42,22 @@ hicon.bueMain = (function() {
   // window.nativeApp.Hex2Float(hex, function(data) {
   //   console.log(JSON.stringify(data))
   // });
-
   //         溶氧值/ph  水温      电量      气压  饱和度  盐度
   // 55AA01  EDD23841   00809D41  00AEC340  03F6  0080    00    08   C8
 
   function getHexString(hex) {
     if (hex.length == 44) {
       // 检测类型:01-溶氧, 02-PH
-      var typeId = hex.substr(4, 2);
+      var typeId = hex.substr(0, 6);
       return {
-        type: typeId == '01' ? 'ox' : 'ph',
+        type: typeId.toLowerCase() == '55aa01' ? 'ox' : 'ph',
         value: {
           ox: hex.substr(6, 8),
           ph: hex.substr(6, 8),
           water: hex.substr(14, 8),
           power: hex.substr(22, 8),
           hpa: parseInt(hex.substr(30, 4), 16), // 气压值
-          sat: parseInt(hex.substr(34, 4), 16),  // 饱和度
+          sat: parseInt(hex.substr(34, 4), 16), // 饱和度
           salt: parseInt(hex.substr(38, 2), 16), // 盐度
         }
       }
@@ -77,6 +76,8 @@ hicon.bueMain = (function() {
     self.bueOnline = ko.observable(false);
     self.netWorkOnline = ko.observable(hicon.utils.main.isOnLine());
     self.deviceOnline = ko.observable(false);
+    self.oxDeviceOnline = ko.observable(false);
+    self.pHDeviceOnline = ko.observable(false);
     self.currentPond = ko.observable({
       code: '',
       name: '未选择'
@@ -98,6 +99,10 @@ hicon.bueMain = (function() {
       sat: '--',
       salt: '--',
     });
+
+    self.isMonitoring = ko.observable(false);
+    self.autoCheckingHex = '';
+    self.autoCheckingIsSame = '';
   };
 
   view.init = function() {
@@ -105,7 +110,10 @@ hicon.bueMain = (function() {
     ko.applyBindings(viewModelBueMain, document.getElementById("buemain"));
   };
 
-  view.show = function(e) {};
+  view.show = function(e) {
+    viewModelBueMain.autoCheckingHex = '';
+    viewModelBueMain.autoCheckingIsSame = false;
+  };
 
   view.aftershow = function(e) {
     var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
@@ -114,46 +122,16 @@ hicon.bueMain = (function() {
       viewModelBueMain.bueDevice = bueDevice;
     }
 
-    setInterval(function() {
-      // 检测蓝牙状态
-      ble.isEnabled(function() {
-        viewModelBueMain.bueOnline(true);
-      }, function() {
-        viewModelBueMain.bueOnline(false);
-      });
-
-      // 检测网络状态
-      viewModelBueMain.netWorkOnline(hicon.utils.main.isOnLine());
-
-      // 传感器状态
-      if (bueDevice) {
-        ble.isConnected(
-          bueDevice.id,
-          function() {
-            viewModelBueMain.deviceOnline(true);
-          },
-          function() {
-            viewModelBueMain.deviceOnline(false);
-
-            ble.scan([], 5000, function(device) {
-              if (bueDevice.id == device.id) {
-                // ble.stopScan();
-                ble.connect(bueDevice.id, null, null);
-              }
-            }, function() {
-              console.log('scan failed')
-            });
-          }
-        );
-      }
-    }, 5000);
-
     var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
     if (currentPond) {
       viewModelBueMain.currentPond(currentPond);
     }
 
+    view.bueLib.checkingStatus();
     view.bueLib.internalChecking();
+    setInterval(function() {
+      view.bueLib.checkingStatus();
+    }, 5000);
   };
 
   view.events = {
@@ -170,8 +148,59 @@ hicon.bueMain = (function() {
         case 'history':
           hicon.navigation.bueHistory();
           break;
-        case 'monitor':
-          if ($('#btnMonitor').html() != '开始测水') {
+        case 'monitorOx':
+          if (viewModelBueMain.isMonitoring()) {
+            return;
+          }
+
+          var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
+          if (!currentPond) {
+            hicon.utils.alert({
+              message: '请选择池塘',
+              ok: function() {
+                hicon.navigation.buePondSelect();
+              }
+            })
+            return;
+          }
+
+          var bueDevice = viewModelBueMain.bueDevice;
+          if (!bueDevice) {
+            hicon.utils.alert({
+              message: '您还没选择设备',
+              ok: function() {
+                hicon.navigation.bueScan();
+              }
+            })
+            return;
+          }
+          var bueDeviceId = viewModelBueMain.bueDevice.id;
+
+          if (!viewModelBueMain.deviceOnline()) {
+            setTimeout(function() {
+              hicon.utils.confirm({
+                message: '未连接上设备是否重新连接?',
+                ok: function() {
+                  ble.scan([], 5000, function(device) {
+                    if (bueDeviceId == device.id) {
+                      // ble.stopScan();
+                      ble.connect(bueDeviceId, null, null);
+                    }
+                  }, function() {
+                    console.log('scan failed')
+                  });
+                }
+              });
+            }, 400);
+            return;
+          }
+
+          $('#btnOxMonitor').html('溶氧检测中...');
+          viewModelBueMain.isMonitoring(true);
+          view.bueLib.startCheck('55aa21');
+          break;
+        case 'monitorPh':
+          if (viewModelBueMain.isMonitoring()) {
             return;
           }
 
@@ -198,7 +227,6 @@ hicon.bueMain = (function() {
           }
 
           var bueDeviceId = viewModelBueMain.bueDevice.id;
-
           if (!viewModelBueMain.deviceOnline()) {
             setTimeout(function() {
               hicon.utils.confirm({
@@ -214,100 +242,13 @@ hicon.bueMain = (function() {
                   });
                 }
               });
-            }, 400)
-
+            }, 400);
             return;
           }
 
-          var monitorData = {
-            pondCode: currentPond.code,
-            ox: null,
-            ph: null,
-            water: null,
-            power: null,
-            hpa: null,
-            sat: null,
-            salt: null
-          };
-
-          var startCheck = function(sendData) {
-            view.bueLib.write(sendData, function(data) {
-              if (data.success) {
-                view.bueLib.startNotification(function(hexResult) {
-                  if (hexResult.length < 5 && hexResult.substring(0, 4).toLowerCase() != '55aa01') {
-                    var HexObj = getHexString(hexResult);
-                    return;
-                  }
-
-                  // 检测返回 hex转decimal
-                  var HexObj = getHexString(hexResult);
-                  if (HexObj.type == 'ox') {
-                    view.bueLib.stopNotification();
-                    // monitorData.ox = isNaN(decResult.value.ox) ? '' : decResult.value.ox;
-                    // monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
-                    // monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
-                    // monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
-                    // monitorData.sat = isNaN(decResult.value.sat) ? '' : decResult.value.sat;
-                    // monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
-                    // viewModelBueMain.checkingData(monitorData);
-                    setTimeout(function() {
-                      $('#btnMonitor').html('pH检测中...');
-                      startCheck('55aa23');
-                    }, 1000);
-                  }
-                  if (HexObj.type == 'ph') {
-                    view.bueLib.stopNotification();
-                    // monitorData.ph = decResult.value.ph || '';
-                    viewModelBueMain.checkingData(monitorData);
-                    $('#btnMonitor').html('开始测水');
-                    view.bueLib.saveCheckData(monitorData);
-                  }
-                }, function() {
-                  console.log('failed');
-                  if (sendData == '55aa21') {
-                    view.bueLib.stopNotification();
-                    $('#btnMonitor').html('溶氧检测失败...');
-                    setTimeout(function() {
-                      $('#btnMonitor').html('pH检测中...');
-                      startCheck('55aa23');
-                    }, 2000);
-                  }
-                  if (sendData == '55aa23') {
-                    view.bueLib.stopNotification();
-                    $('#btnMonitor').html('pH检测失败...');
-                    setTimeout(function() {
-                      $('#btnMonitor').html('开始测水');
-                      viewModelBueMain.checkingData(monitorData);
-                      view.bueLib.saveCheckData(monitorData);
-                    }, 2000);
-                  }
-                })
-              } else {
-                if (sendData == '55aa21') {
-                  view.bueLib.stopNotification();
-                  $('#btnMonitor').html('溶氧检测失败...');
-                  setTimeout(function() {
-                    $('#btnMonitor').html('pH检测中...');
-                    startCheck('55aa23');
-                  }, 2000);
-                }
-                if (sendData == '55aa23') {
-                  view.bueLib.stopNotification();
-                  $('#btnMonitor').html('pH检测失败...');
-                  setTimeout(function() {
-                    $('#btnMonitor').html('开始测水');
-                    viewModelBueMain.checkingData(monitorData);
-                    view.bueLib.saveCheckData(monitorData);
-                  }, 2000);
-                }
-              }
-            })
-          }
-
-          $('#btnMonitor').html('溶氧检测中...');
-          //检测溶氧
-          var checkCode = '55aa21';
-          startCheck(checkCode);
+          $('#btnPhMonitor').html('pH检测中...');
+          viewModelBueMain.isMonitoring(true);
+          view.bueLib.startCheck('55aa23');
           break;
       }
     }
@@ -370,6 +311,70 @@ hicon.bueMain = (function() {
       var bueDeviceId = viewModelBueMain.bueDevice.id;
       ble.write(bueDeviceId, service_uuid, characteristic_uuid, sendData, success, failure);
     },
+    startCheck: function(sendData) {
+      view.bueLib.write(sendData, function(data) {
+        if (data.success) {
+          view.bueLib.startNotification(function(hexResult) {
+            if (hexResult.length < 5 && (hexResult.substring(0, 4).toLowerCase() != '55aa01' || hexResult.substring(0, 4).toLowerCase() != '55aa02')) {
+              return;
+            }
+
+            var HexObj = getHexString(hexResult);
+            view.bueLib.stopNotification();
+
+            if (HexObj.type == 'ox') {
+              setTimeout(function() {
+                $('#btnOxMonitor').html('开始测溶氧');
+              }, 500);
+            }
+            if (HexObj.type == 'ph') {
+              setTimeout(function() {
+                $('#btnPhMonitor').html('开始测pH');
+              }, 500);
+            }
+            viewModelBueMain.isMonitoring(false);
+            var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
+            HexObj.pondCode = currentPond;
+            view.bueLib.saveCheckData(HexObj);
+          }, function() {
+            console.log('failed');
+            view.bueLib.stopNotification();
+
+            if (HexObj.type == 'ox') {
+              $('#btnOxMonitor').html('检测溶氧失败');
+              setTimeout(function() {
+                $('#btnOxMonitor').html('开始测溶氧');
+                viewModelBueMain.isMonitoring(false);
+              }, 600);
+            }
+            if (HexObj.type == 'ph') {
+              $('#btnPhMonitor').html('检测pH失败');
+              setTimeout(function() {
+                $('#btnPhMonitor').html('开始测pH');
+                viewModelBueMain.isMonitoring(false);
+              }, 600);
+            }
+          })
+        } else {
+          view.bueLib.stopNotification();
+          if (sendData == '55aa21') {
+            $('#btnOxMonitor').html('检测溶氧失败');
+            setTimeout(function() {
+              $('#btnOxMonitor').html('开始测溶氧');
+              viewModelBueMain.isMonitoring(false);
+            }, 600);
+          }
+
+          if (sendData == '55aa23') {
+            $('#btnPhMonitor').html('检测pH失败');
+            setTimeout(function() {
+              $('#btnPhMonitor').html('开始测pH');
+              viewModelBueMain.isMonitoring(false);
+            }, 600);
+          }
+        }
+      })
+    },
     saveCheckData: function(checkData) {
       hicon.db.getPondByCode(checkData.pondCode, function(pond) {
         if (pond == null) {
@@ -381,20 +386,28 @@ hicon.bueMain = (function() {
         }
       });
 
-      var newDate = new Date();
-      hicon.db.insertHistory({
-        code: checkData.pondCode,
-        dateCreated: moment(newDate).format('YYYY-MM-DD HH:mm'),
-        oxygen: isNaN(checkData.ox) ? '' : checkData.ox,
-        water: isNaN(checkData.water) ? '' : checkData.water,
-        ph: isNaN(checkData.ph) ? '' : checkData.ph,
-        saturation: isNaN(checkData.sat) ? '' : checkData.sat,
-        hpa: isNaN(checkData.hpa) ? '' : checkData.hpa
+      var hex = {
+        ox: checkData.ox,
+        water: checkData.water,
+        ph: checkData.ph,
+      };
+      window.nativeApp.Hex2Float(hex, function(data) {
+        console.log(JSON.stringify(data))
+        var newDate = new Date();
+        hicon.db.insertHistory({
+          code: checkData.pondCode,
+          dateCreated: moment(newDate).format('YYYY-MM-DD HH:mm'),
+          oxygen: isNaN(data.ox) ? '' : data.ox,
+          water: isNaN(data.water) ? '' : data.water,
+          ph: isNaN(data.ph) ? '' : data.ph,
+          saturation: isNaN(checkData.sat) ? '' : checkData.sat,
+          hpa: isNaN(checkData.hpa) ? '' : checkData.hpa
+        });
       });
     },
     internalChecking: function() {
       var startAutoChecking = function() {
-        if ($('#btnMonitor').html() != '开始测水') {
+        if (viewModelBueMain.isMonitoring()) {
           return;
         }
         var bueDevice = viewModelBueMain.bueDevice;
@@ -427,32 +440,30 @@ hicon.bueMain = (function() {
 
         isChecking = true;
         view.bueLib.startNotification(function(hexResult) {
-          // 检测返回 hex转decimal
           var hexObj = getHexString(hexResult);
-          if (hexObj.type == 'ox') {
-            // monitorData.ox = isNaN(decResult.ox) ? '' : decResult.ox;
-            // monitorData.ph = null;
-            // monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
-            // monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
-            // monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
-            // monitorData.sat = isNaN(decResult.value.sat) ? '' : decResult.value.sat;
-            // monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
-          }
-          if (hexObj.type == 'ph') {
-            // monitorData.ox = null;
-            // monitorData.ph = isNaN(decResult.value.ph) ? '' : decResult.value.ph;
-            // monitorData.water = isNaN(decResult.value.water) ? '' : decResult.value.water;
-            // monitorData.power = isNaN(decResult.value.power) ? '' : decResult.value.power;
-            // monitorData.hpa = isNaN(decResult.value.hpa) ? '' : decResult.value.hpa;
-            // monitorData.sat = null;
-            // monitorData.salt = isNaN(decResult.value.salt) ? '' : decResult.value.salt;
+          if (hexObj.type == 'ox' || hexObj.type == 'ph') {
+
+            if (hexResult != viewModelBueMain.autoCheckingHex) {
+              viewModelBueMain.autoCheckingHex = hexResult;
+              viewModelBueMain.autoCheckingIsSame = false;
+            } else {
+              viewModelBueMain.autoCheckingIsSame = true;
+            }
+
+            monitorData.ox = hexObj.value.ox;
+            monitorData.ph = hexObj.value.ph;
+            monitorData.water = hexObj.value.water;
+            monitorData.power = hexObj.value.power;
+            monitorData.hpa = isNaN(hexObj.value.hpa) ? '' : hexObj.value.hpa;
+            monitorData.sat = isNaN(hexObj.value.sat) ? '' : hexObj.value.sat;
+            monitorData.salt = isNaN(hexObj.value.salt) ? '' : hexObj.value.salt;
           }
 
           if (hexObj.type == 'pond') {
             monitorData.pondCode = hexObj.value;
             view.bueLib.stopNotification();
             isChecking = false;
-            if (monitorData.ox != 0 || monitorData.ph != 0) {
+            if (viewModelBueMain.autoCheckingIsSame) {
               view.bueLib.saveCheckData(monitorData);
             }
           }
@@ -463,9 +474,70 @@ hicon.bueMain = (function() {
       }
       setInterval(function() {
         startAutoChecking();
-      }, 1000 * 60);
+      }, 1000 * 10);
 
       startAutoChecking();
+    },
+    checkDeviceStatus: function() {
+      view.bueLib.write('55aa08', function(data) {
+        if (!data.success) {
+          viewModelBueMain.oxDeviceOnline(false);
+          viewModelBueMain.pHDeviceOnline(false);
+          return;
+        }
+
+        var hexData = toHexString(data.response);
+        console.log('device status: ' + hexData);
+        if (hexData.length < 10) {
+          viewModelBueMain.oxDeviceOnline(false);
+          viewModelBueMain.pHDeviceOnline(false);
+          return;
+        }
+        // 0X55 0XAA 0X09  O1 H1
+        // 55aa09 O1 H1
+        if (hexData.toLowerCase().substr(0, 6) != '55aa09') {
+          viewModelBueMain.oxDeviceOnline(false);
+          viewModelBueMain.pHDeviceOnline(false);
+          return;
+        }
+        viewModelBueMain.oxDeviceOnline(!!parseInt(hexData.toLowerCase().substr(6, 2), 16));
+        viewModelBueMain.pHDeviceOnline(!!parseInt(hexData.toLowerCase().substr(8, 2), 16));
+      })
+    }
+    checkingStatus: function() {
+      // 检测蓝牙状态
+      ble.isEnabled(function() {
+        viewModelBueMain.bueOnline(true);
+      }, function() {
+        viewModelBueMain.bueOnline(false);
+      });
+
+      // 检测网络状态
+      viewModelBueMain.netWorkOnline(hicon.utils.main.isOnLine());
+
+      // 传感器状态
+      var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
+      if (bueDevice) {
+        ble.isConnected(
+          bueDevice.id,
+          function() {
+            viewModelBueMain.deviceOnline(true);
+
+            view.bueLib.checkDeviceStatus();
+          },
+          function() {
+            viewModelBueMain.deviceOnline(false);
+            ble.scan([], 5000, function(device) {
+              if (bueDevice.id == device.id) {
+                // ble.stopScan();
+                ble.connect(bueDevice.id, null, null);
+              }
+            }, function() {
+              console.log('scan failed')
+            });
+          }
+        );
+      }
     }
   }
 

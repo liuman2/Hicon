@@ -18,21 +18,21 @@ hicon.bueSacn = (function() {
   view.show = function(e) {
     var _devices = [];
     var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
-    ble.startScan([], function(device) {
-      if (bueDevice) {
-        if (bueDevice.id == device.id) {
-          ble.stopScan();
-          hicon.navigation.bueMain();
-          return;
-        }
-      }
-      _devices.push(device);
-      viewModelBueScan.bueDevices(_devices);
-    }, function() {
-      console.log('scan failed')
-    });
+    // ble.startScan([], function(device) {
+    //   if (bueDevice) {
+    //     if (bueDevice.id == device.id) {
+    //       ble.stopScan();
+    //       hicon.navigation.bueMain();
+    //       return;
+    //     }
+    //   }
+    //   _devices.push(device);
+    //   viewModelBueScan.bueDevices(_devices);
+    // }, function() {
+    //   console.log('scan failed')
+    // });
 
-    setTimeout(ble.stopScan, 30000);
+    // setTimeout(ble.stopScan, 30000);
   };
 
   view.aftershow = function(e) {};
