@@ -67,12 +67,21 @@
       <!-- ko if: netWorkOnline() == false-->
        <span class="red">离线</span>
       <!-- /ko -->
-      <span>蓝牙状态：</span>
+      <span>手机蓝牙：</span>
       <!-- ko if: bueOnline() == true-->
       <span class="limegreen">已开启</span>
       <!-- /ko -->
       <!-- ko if: bueOnline() == false-->
        <span class="red">未开启</span>
+      <!-- /ko -->
+    </div>
+    <div class="status">
+      <span>设备蓝牙：</span>
+      <!-- ko if: deviceOnline() == true-->
+      <span class="limegreen">在线</span>
+      <!-- /ko -->
+      <!-- ko if: deviceOnline() == false-->
+       <span class="red">离线</span>
       <!-- /ko -->
       <span>溶氧传感器：</span>
       <!-- ko if: oxDeviceOnline() == true-->
@@ -90,8 +99,8 @@
       <!-- /ko -->
     </div>
     <ul class="btn" data-role="listview" data-click="hicon.bueMain.events.itemClick">
-      <li class="start" data-ko="css: { 'blue': isMonitoring() == false, 'gray': isMonitoring() == true }" data-command-key="monitorOx" id="btnOxMonitor">开始测溶氧</li>
-      <li class="start" data-ko="css: { 'blue': isMonitoring() == false, 'gray': isMonitoring() == true }" data-command-key="monitorPh" id="btnPhMonitor">开始测pH</li>
+      <li class="start" data-ko="css: { 'blue':  $data.isMonitoring() == false, 'gray':  $data.isMonitoring() == true }" data-command-key="monitorOx" id="btnOxMonitor">开始测溶氧</li>
+      <li class="start" data-ko="css: { 'blue':  $data.isMonitoring() == false, 'gray':  $data.isMonitoring() == true }" data-command-key="monitorPh" id="btnPhMonitor">开始测pH</li>
     </ul>
     <ul class="opt-list" data-role="listview" data-click="hicon.bueMain.events.itemClick">
       <li class="opt" data-command-key="pond">
