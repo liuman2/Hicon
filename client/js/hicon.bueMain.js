@@ -153,6 +153,15 @@ hicon.bueMain = (function() {
             return;
           }
 
+          if (viewModelBueMain.oxDeviceOnline()) {
+            hicon.utils.alert({
+              message: '溶氧传感器不在线',
+              ok: function() {
+              }
+            })
+            return;
+          }
+
           var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
           if (!currentPond) {
             hicon.utils.alert({
@@ -201,6 +210,15 @@ hicon.bueMain = (function() {
           break;
         case 'monitorPh':
           if (viewModelBueMain.isMonitoring()) {
+            return;
+          }
+
+          if (viewModelBueMain.pHDeviceOnline()) {
+            hicon.utils.alert({
+              message: 'pH传感器不在线',
+              ok: function() {
+              }
+            })
             return;
           }
 
