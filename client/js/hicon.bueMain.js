@@ -25,14 +25,6 @@ hicon.bueMain = (function() {
     return str;
   }
 
-  // function hexStringToByte(str) {
-  //   var a = [];
-  //   for (var i = 0; i < str.length; i += 2) {
-  //     a.push("0x" + str.substr(i, 2));
-  //   }
-  //   return a;
-  // }
-
   function getHexString(hex) {
     if (hex.length == 40) {
       // 检测类型:01-溶氧, 02-PH
@@ -414,12 +406,13 @@ hicon.bueMain = (function() {
         var appData = JSON.parse(data);
         console.log(JSON.stringify(data))
         var newDate = new Date();
+
         hicon.db.insertHistory({
           code: checkData.pondCode,
           dateCreated: moment(newDate).format('YYYY-MM-DD HH:mm'),
-          oxygen: isNaN(appData.ox) ? '' : appData.ox,
-          water: isNaN(appData.water) ? '' : appData.water,
-          ph: isNaN(appData.ph) ? '' : appData.ph,
+          oxygen: ((isNaN(appData.ox) ? '' : appData.ox)-0.0).toFixed(2),
+          water: ((isNaN(appData.water) ? '' : appData.water)-0.0).toFixed(2),
+          ph: ((isNaN(appData.ph) ? '' : appData.ph)-0.0).toFixed(2),
           saturation: isNaN(checkData.value.sat) ? '' : checkData.value.sat,
           hpa: isNaN(checkData.value.hpa) ? '' : checkData.value.hpa
         });
@@ -428,9 +421,9 @@ hicon.bueMain = (function() {
           console.log("isInternal")
           console.log("data.ox " + appData.ox)
           viewModelBueMain.checkingData({
-            ox: appData.ox,
-            water: appData.water,
-            ph: appData.ph,
+            ox: ((isNaN(appData.ox) ? '' : appData.ox)-0.0).toFixed(2),
+            water: ((isNaN(appData.water) ? '' : appData.water)-0.0).toFixed(2),
+            ph: ((isNaN(appData.ph) ? '' : appData.ph)-0.0).toFixed(2),
             salt: checkData.value.salt,
             hpa: checkData.value.hpa,
             sat: checkData.value.sat,
