@@ -107,14 +107,19 @@ hicon.bueMain = (function() {
       viewModelBueMain.currentPond(currentPond);
     }
 
-    view.bueLib.checkingStatus();
+    setTimeout(function() {
+      view.bueLib.checkingStatus();
+    }, 300);
+
     setInterval(function() {
       view.bueLib.checkingStatus();
-    }, 1000 * 30);
+    }, 1000 * 20);
 
     setTimeout(function() {
       view.bueLib.internalChecking();
     }, 3000)
+
+    view.bueLib.checkDeviceStatus();
   };
 
   view.events = {
@@ -133,15 +138,6 @@ hicon.bueMain = (function() {
           break;
         case 'monitorOx':
           if (viewModelBueMain.isMonitoring()) {
-            return;
-          }
-
-          if (!viewModelBueMain.oxDeviceOnline()) {
-            hicon.utils.alert({
-              message: '没检测到溶氧传感器',
-              ok: function() {
-              }
-            })
             return;
           }
 
@@ -192,21 +188,22 @@ hicon.bueMain = (function() {
             return;
           }
 
+          if (!viewModelBueMain.oxDeviceOnline()) {
+            hicon.utils.alert({
+              message: '没检测到溶氧传感器',
+              ok: function() {
+                view.bueLib.checkDeviceStatus();
+              }
+            })
+            return;
+          }
+
           $('#btnOxMonitor').html('溶氧检测中...');
           viewModelBueMain.isMonitoring(true);
           view.bueLib.startCheck('55aa21');
           break;
         case 'monitorPh':
           if (viewModelBueMain.isMonitoring()) {
-            return;
-          }
-
-          if (!viewModelBueMain.pHDeviceOnline()) {
-            hicon.utils.alert({
-              message: '没检测到pH传感器',
-              ok: function() {
-              }
-            })
             return;
           }
 
@@ -249,6 +246,16 @@ hicon.bueMain = (function() {
                 }
               });
             }, 400);
+            return;
+          }
+
+          if (!viewModelBueMain.pHDeviceOnline()) {
+            hicon.utils.alert({
+              message: '没检测到pH传感器',
+              ok: function() {
+                view.bueLib.checkDeviceStatus();
+              }
+            })
             return;
           }
 
@@ -343,8 +350,16 @@ hicon.bueMain = (function() {
             }
             viewModelBueMain.isMonitoring(false);
             var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
-            HexObj.pondCode = currentPond.code;
-            view.bueLib.saveCheckData(HexObj, false);
+            view.bueLib.saveCheckData({
+              ox: HexObj.value.ox,
+              ph: HexObj.value.ph,
+              water: HexObj.value.water,
+              power: HexObj.value.power,
+              hpa: HexObj.value.hpa,
+              sat: HexObj.value.sat,
+              salt: HexObj.value.salt,
+              pondCode: currentPond.code
+            }, false);
           }, function() {
             console.log('failed');
             view.bueLib.stopNotification();
@@ -391,15 +406,15 @@ hicon.bueMain = (function() {
           hicon.db.insertPond({
             code: checkData.pondCode,
             name: '',
-            salt: isNaN(checkData.value.salt) ? '' : checkData.value.salt
+            salt: isNaN(checkData.salt) ? '' : checkData.salt
           });
         }
       });
 
       var hex = {
-        ox: checkData.value.ox,
-        water: checkData.value.water,
-        ph: checkData.value.ph,
+        ox: checkData.ox,
+        water: checkData.water,
+        ph: checkData.ph,
       };
       console.log(JSON.stringify(hex))
       window.nativeApp.Hex2Float(hex, function(data) {
@@ -410,23 +425,25 @@ hicon.bueMain = (function() {
         hicon.db.insertHistory({
           code: checkData.pondCode,
           dateCreated: moment(newDate).format('YYYY-MM-DD HH:mm'),
-          oxygen: ((isNaN(appData.ox) ? '' : appData.ox)-0.0).toFixed(2),
-          water: ((isNaN(appData.water) ? '' : appData.water)-0.0).toFixed(2),
-          ph: ((isNaN(appData.ph) ? '' : appData.ph)-0.0).toFixed(2),
-          saturation: isNaN(checkData.value.sat) ? '' : checkData.value.sat,
-          hpa: isNaN(checkData.value.hpa) ? '' : checkData.value.hpa
+          oxygen: ((isNaN(appData.ox) ? '' : appData.ox) - 0.0).toFixed(2),
+          water: ((isNaN(appData.water) ? '' : appData.water) - 0.0).toFixed(2),
+          ph: ((isNaN(appData.ph) ? '' : appData.ph) - 0.0).toFixed(2),
+          saturation: isNaN(checkData.sat) ? '' : checkData.sat,
+          hpa: isNaN(checkData.hpa) ? '' : checkData.hpa
         });
 
         if (!isInternal) {
           console.log("isInternal")
           console.log("data.ox " + appData.ox)
+          console.log("data.ph " + appData.ph)
+          console.log("data.ph " + ((isNaN(appData.ph) ? '' : appData.ph) - 0.0).toFixed(2))
           viewModelBueMain.checkingData({
-            ox: ((isNaN(appData.ox) ? '' : appData.ox)-0.0).toFixed(2),
-            water: ((isNaN(appData.water) ? '' : appData.water)-0.0).toFixed(2),
-            ph: ((isNaN(appData.ph) ? '' : appData.ph)-0.0).toFixed(2),
-            salt: checkData.value.salt,
-            hpa: checkData.value.hpa,
-            sat: checkData.value.sat,
+            ox: ((isNaN(appData.ox) ? '' : appData.ox) - 0.0).toFixed(2),
+            water: ((isNaN(appData.water) ? '' : appData.water) - 0.0).toFixed(2),
+            ph: ((isNaN(appData.ph) ? '' : appData.ph) - 0.0).toFixed(2),
+            salt: checkData.salt,
+            hpa: checkData.hpa,
+            sat: checkData.sat,
             pondCode: '',
             power: '--'
           });
@@ -435,6 +452,7 @@ hicon.bueMain = (function() {
       });
     },
     internalChecking: function() {
+      console.log('internalChecking 01')
       var startAutoChecking = function() {
         if (viewModelBueMain.isMonitoring()) {
           return;
@@ -466,10 +484,15 @@ hicon.bueMain = (function() {
         if (isChecking) {
           return;
         }
-
+        console.log('internalChecking 02')
         isChecking = true;
         view.bueLib.startNotification(function(hexResult) {
+          console.log('internalChecking 03')
           console.log('startNotification: ' + hexResult);
+          if (hexResult.length >= 40 && hexResult.substr(0, 6) == '55aa09') {
+            view.bueLib.stopNotification();
+            return;
+          }
           if (hexResult.length > 10 && hexResult.substr(0, 6) == '55aa09') {
             console.log('startNotification: ' + hexResult);
 
@@ -501,11 +524,12 @@ hicon.bueMain = (function() {
             monitorData.pondCode = hexObj.value;
             view.bueLib.stopNotification();
             isChecking = false;
-            if (viewModelBueMain.autoCheckingIsSame) {
+            if (!viewModelBueMain.autoCheckingIsSame) {
               view.bueLib.saveCheckData(monitorData, true);
             }
           }
         }, function() {
+          console.log('internalChecking 04')
           isChecking = false;
           console.log('auto checking failed');
         })
@@ -515,6 +539,7 @@ hicon.bueMain = (function() {
       }, 1000 * 30);
 
       startAutoChecking();
+      console.log('internalChecking 06')
     },
     checkDeviceStatus: function() {
       if (viewModelBueMain.isMonitoring()) {
@@ -530,22 +555,21 @@ hicon.bueMain = (function() {
           return;
         }
 
-        // var hexData = toHexString(data.response);
-        // console.log('device status: ' + hexData);
-        // if (hexData.length < 10) {
-        //   viewModelBueMain.oxDeviceOnline(false);
-        //   viewModelBueMain.pHDeviceOnline(false);
-        //   return;
-        // }
-        // // 0X55 0XAA 0X09  O1 H1
-        // // 55aa09 O1 H1
-        // if (hexData.toLowerCase().substr(0, 6) != '55aa09') {
-        //   viewModelBueMain.oxDeviceOnline(false);
-        //   viewModelBueMain.pHDeviceOnline(false);
-        //   return;
-        // }
-        // viewModelBueMain.oxDeviceOnline(!!parseInt(hexData.toLowerCase().substr(6, 2), 16));
-        // viewModelBueMain.pHDeviceOnline(!!parseInt(hexData.toLowerCase().substr(8, 2), 16));
+        view.bueLib.startNotification(function(hexResult) {
+          view.bueLib.stopNotification();
+          console.log('55aa08 startCheck:' + hexResult)
+          if (hexResult.length > 10 && hexResult.substr(0, 6) == '55aa09') {
+            console.log('startNotification: ' + hexResult);
+
+            viewModelBueMain.oxDeviceOnline(!!parseInt(hexResult.toLowerCase().substr(6, 2), 16));
+            viewModelBueMain.pHDeviceOnline(!!parseInt(hexResult.toLowerCase().substr(8, 2), 16));
+            return;
+          }
+
+        }, function() {
+          console.log('55aa08 failed' + JSON.stringify(arguments));
+          view.bueLib.stopNotification();
+        })
       })
     },
     checkingStatus: function() {
@@ -572,14 +596,12 @@ hicon.bueMain = (function() {
           function() {
             console.log('deviceOnline 1')
             viewModelBueMain.deviceOnline(true);
-            view.bueLib.checkDeviceStatus();
           },
           function() {
             console.log('deviceOnline 0')
             viewModelBueMain.deviceOnline(false);
             ble.scan([], 5000, function(device) {
               if (bueDevice.id == device.id) {
-                // ble.stopScan();
                 ble.connect(bueDevice.id, null, null);
               }
             }, function() {
