@@ -48,7 +48,7 @@
                   hicon.navigation.login();
                   return false;
                 }
-                if (hash.indexOf('#view/main.html') >= 0) {
+                if (hash.indexOf('#view/main.html') >= 0 || hash.indexOf('#view/buemain.html')) {
                   if (!$('#modalview-water').closest('.km-modalview-root').is(":hidden")) {
                     hicon.main.events.modalWaterClose();
                     return;

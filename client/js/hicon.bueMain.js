@@ -123,7 +123,27 @@ hicon.bueMain = (function() {
   };
 
   view.events = {
-    doBack: function() {},
+    logout: function() {
+      var user = hicon.localStorage.getJson('USER_INFO');
+      if (!user) {
+        location.href = "index.html";
+        return;
+      }
+      hicon.server.ajax({
+        url: 'UserLogoff',
+        type: 'post',
+        data: {
+          UserID: user.UserID
+        },
+        success: function(data) {
+          App.hideLoading();
+          location.href = "index.html";
+        },
+        error: function() {
+          location.href = "index.html";
+        }
+      });
+    },
     itemClick: function(e) {
       var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
       switch (commandKey) {
