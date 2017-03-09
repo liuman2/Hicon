@@ -38,6 +38,7 @@ hicon.bueMain = (function() {
     self.autoCheckingHex = '';
     self.autoCheckingIsSame = '';
     // self.isStartNotification = false;
+    self.isDisconnect = false;
   };
 
   view.init = function() {
@@ -58,10 +59,19 @@ hicon.bueMain = (function() {
       view.bueLib.checkingStatus();
     }, 600);
     setInterval(function() {
+      if (viewModelBueMain.isDisconnect) {
+        return;
+      }
       view.bueLib.checkingStatus();
     }, 1000 * 10);
 
-
+    setInterval(function() {
+      view.bueLib.stopNotification();
+      if (viewModelBueMain.isDisconnect) {
+        return;
+      }
+      view.bueLib.startNotification();
+    }, 1000 * 5);
   };
 
   view.show = function(e) {
@@ -73,31 +83,50 @@ hicon.bueMain = (function() {
     if (currentPond) {
       viewModelBueMain.currentPond(currentPond);
     }
-
-    view.bueLib.startNotification();
   };
 
   view.events = {
     logout: function() {
-      var user = hicon.localStorage.getJson('USER_INFO');
-      if (!user) {
-        location.href = "index.html";
-        return;
-      }
-      hicon.server.ajax({
-        url: 'UserLogoff',
-        type: 'post',
-        data: {
-          UserID: user.UserID
-        },
-        success: function(data) {
-          App.hideLoading();
-          location.href = "index.html";
-        },
-        error: function() {
-          location.href = "index.html";
+      viewModelBueMain.isDisconnect = true;
+
+      var userLogout = function() {
+        var user = hicon.localStorage.getJson('USER_INFO');
+        if (!user) {
+          window.location.href = "index.html";
+          window.location.reload();
+          return;
         }
-      });
+        hicon.server.ajax({
+          url: 'UserLogoff',
+          type: 'post',
+          data: {
+            UserID: user.UserID
+          },
+          success: function(data) {
+            window.location.href = "index.html";
+            window.location.reload();
+          },
+          error: function() {
+            window.location.href = "index.html";
+            window.location.reload();
+          }
+        });
+      };
+
+      if (viewModelBueMain.bueDevice) {
+        var service_uuid = viewModelBueMain.service_uuid;
+        var characteristic_uuid = viewModelBueMain.characteristic_uuid;
+
+        ble.stopNotification(viewModelBueMain.bueDevice.id, service_uuid, characteristic_uuid, null, null);
+        ble.stopScan();
+        ble.disconnect(viewModelBueMain.bueDevice.id, function() {
+          userLogout();
+        }, function() {
+          userLogout();
+        });
+      } else {
+        userLogout();
+      }
     },
     itemClick: function(e) {
       var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
@@ -132,7 +161,7 @@ hicon.bueMain = (function() {
       }
 
       var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
-      var HexObj = hicon.utils.getHexString(hexResult);
+      var HexObj = hicon.utils.getHexString(hexStr);
       console.log('HexObj: ' + JSON.stringify(HexObj));
 
       var hex = {
@@ -216,15 +245,21 @@ hicon.bueMain = (function() {
         return;
       }
 
+      if (!viewModelBueMain.deviceOnline()) {
+        return;
+      }
+
       var service_uuid = viewModelBueMain.service_uuid;
       var characteristic_uuid = viewModelBueMain.characteristic_uuid;
 
       var success = function(response) {
+        console.log('startNotification success ')
         var hexData = hicon.utils.toHexString(response);
         view.bueLib.doNotificationResponse(hexData);
       };
 
       var failure = function() {
+        console.log('startNotification failure ')
         if (viewModelBueMain.isMonitoring()) {
           $('#btnOxMonitor').html('开始测溶氧');
           $('#btnPhMonitor').html('开始测pH');
@@ -309,10 +344,13 @@ hicon.bueMain = (function() {
       switch (sendData) {
         case '55aa21':
           if (!viewModelBueMain.oxDeviceOnline()) {
-            hicon.utils.alert({
-              message: '没检测到溶氧传感器',
-              ok: function() {}
-            })
+            setTimeout(function() {
+              hicon.utils.alert({
+                message: '没检测到溶氧传感器',
+                ok: function() {}
+              })
+            }, 400)
+
             isDeviceOnLine = false;
           } else {
             $('#btnOxMonitor').html('溶氧检测中...');
@@ -320,15 +358,21 @@ hicon.bueMain = (function() {
           break;
         case '55aa23':
           if (!viewModelBueMain.pHDeviceOnline()) {
-            hicon.utils.alert({
-              message: '没检测到pH传感器',
-              ok: function() {}
-            })
+            setTimeout(function() {
+              hicon.utils.alert({
+                message: '没检测到pH传感器',
+                ok: function() {}
+              })
+            }, 400)
+
             isDeviceOnLine = false;
           } else {
             $('#btnPhMonitor').html('pH检测中...');
           }
           break;
+      }
+      if (!isDeviceOnLine) {
+        return;
       }
       viewModelBueMain.isMonitoring(true);
       view.bueLib.write(sendData, function(data) {
@@ -364,11 +408,12 @@ hicon.bueMain = (function() {
       })
     },
     checkingStatus: function() {
+      console.log('checkingStatus 0')
       if (viewModelBueMain.isMonitoring()) {
         return;
       }
 
-      console.log('checkingStatus')
+      console.log('checkingStatus 1')
         // 检测蓝牙状态
       ble.isEnabled(function() {
         viewModelBueMain.bueOnline(true);
@@ -397,6 +442,7 @@ hicon.bueMain = (function() {
             console.log('Peripheral isConnected false')
             viewModelBueMain.deviceOnline(false);
             ble.scan([], 8000, function(device) {
+              console.log('scan ...')
               if (bueDevice.id == device.id) {
                 ble.connect(bueDevice.id, null, null);
               }

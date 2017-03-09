@@ -16,8 +16,15 @@ hicon.bueSacn = (function() {
   };
 
   view.show = function(e) {
+
+  };
+
+  view.aftershow = function(e) {
     var _devices = [];
     var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
+    if (bueDevice) {
+      ble.disconnect(bueDevice.id, null, null);
+    }
     ble.startScan([], function(device) {
       if (bueDevice) {
         if (bueDevice.id == device.id) {
@@ -35,8 +42,6 @@ hicon.bueSacn = (function() {
 
     setTimeout(ble.stopScan, 30000);
   };
-
-  view.aftershow = function(e) {};
 
   view.events = {
     skip: function() {

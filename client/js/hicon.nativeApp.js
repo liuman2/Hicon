@@ -18,6 +18,16 @@
     return cordova.exec(success, null, "NativeApp", "Hex2Float", [hex]);
   };
 
+  NativeApp.prototype.restartApp = function(success) {
+    if (hicon.utils.os.android) {
+      return cordova.exec(success, null, "NativeApp", "restartApp", []);
+    } else {
+      if ($.isFunction(success)) {
+        success(false);
+      }
+    }
+  };
+
   window.nativeApp = new NativeApp();
 
 }());

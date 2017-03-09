@@ -148,7 +148,7 @@ hicon.bueCurve = (function() {
         var dt = new Date(curve.dateCreated.replace(/-/gi, '/'));
 
         var x = Date.UTC(dt.getFullYear(), dt.getMonth(), dt.getDate(), dt.getHours(), dt.getMinutes(), dt.getSeconds()),
-          y = curve[viewModelBueCurve.currentAi];
+          y = curve[viewModelBueCurve.currentAi] - 0;
 
         curve1.push([x, y]);
       }
