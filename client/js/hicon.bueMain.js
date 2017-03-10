@@ -39,6 +39,9 @@ hicon.bueMain = (function() {
     self.autoCheckingIsSame = '';
     // self.isStartNotification = false;
     self.isDisconnect = false;
+    self.statusInterval = null;
+    self.notifyInterval = null;
+
   };
 
   view.init = function() {
@@ -58,14 +61,14 @@ hicon.bueMain = (function() {
     setTimeout(function() {
       view.bueLib.checkingStatus();
     }, 600);
-    setInterval(function() {
+    viewModelBueMain.statusInterval = setInterval(function() {
       if (viewModelBueMain.isDisconnect) {
         return;
       }
       view.bueLib.checkingStatus();
     }, 1000 * 10);
 
-    setInterval(function() {
+    viewModelBueMain.notifyInterval = setInterval(function() {
       view.bueLib.stopNotification();
       if (viewModelBueMain.isDisconnect) {
         return;
@@ -75,7 +78,18 @@ hicon.bueMain = (function() {
   };
 
   view.show = function(e) {
-
+    viewModelBueMain.isDisconnect = false;
+    if (!viewModelBueMain.statusInterval) {
+      viewModelBueMain.statusInterval = setInterval(function() {
+        view.bueLib.checkingStatus();
+      }, 1000 * 10);
+    }
+    if (!viewModelBueMain.notifyInterval) {
+      viewModelBueMain.notifyInterval = setInterval(function() {
+        view.bueLib.stopNotification();
+        view.bueLib.startNotification();
+      }, 1000 * 5);
+    }
   };
 
   view.aftershow = function(e) {
@@ -88,6 +102,13 @@ hicon.bueMain = (function() {
   view.events = {
     logout: function() {
       viewModelBueMain.isDisconnect = true;
+
+      if (viewModelBueMain.statusInterval) {
+        clearInterval(viewModelBueMain.statusInterval);
+      }
+      if (viewModelBueMain.notifyInterval) {
+        clearInterval(viewModelBueMain.notifyInterval);
+      }
 
       var userLogout = function() {
         var user = hicon.localStorage.getJson('USER_INFO');
