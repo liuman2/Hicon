@@ -83,7 +83,6 @@ hicon.bueMain = (function() {
     }
     if (!viewModelBueMain.notifyInterval) {
       viewModelBueMain.notifyInterval = setInterval(function() {
-        view.bueLib.stopNotification();
         view.bueLib.startNotification();
       }, 1000 * 5);
     }
@@ -169,12 +168,14 @@ hicon.bueMain = (function() {
   };
 
   view.bueLib = {
-    analysisHex: function(hexStr) {
+    analysisHex: function(hexStr, prefixStr) {
       if (!viewModelBueMain.isMonitoring()) {
         // 自动检测
         if (hexStr == viewModelBueMain.autoCheckingHex) {
           return;
         }
+        viewModelBueMain.autoCheckingHex = hexStr;
+      } else {
         viewModelBueMain.autoCheckingHex = hexStr;
       }
 
@@ -197,9 +198,9 @@ hicon.bueMain = (function() {
         }
 
         var decimalObj = {
-          pondCode: viewModelBueMain.isMonitoring() ? currentPond.code : HexObj.pondCode,
-          ox: ((isNaN(appData.ox) ? '' : appData.ox) - 0.0).toFixed(2),
-          ph: ((isNaN(appData.ph) ? '' : appData.ph) - 0.0).toFixed(2),
+          pondCode: viewModelBueMain.isMonitoring() ? (currentPond.code - 0) : (HexObj.pondCode - 0),
+          ox: prefixStr == '55aa01' ? (((isNaN(appData.ox) ? '' : appData.ox) - 0.0).toFixed(2)) : '',
+          ph: prefixStr == '55aa02' ? (((isNaN(appData.ph) ? '' : appData.ph) - 0.0).toFixed(2)) : '',
           water: ((isNaN(appData.water) ? '' : appData.water) - 0.0).toFixed(2),
           salt: HexObj.salt,
           hpa: HexObj.hpa,
@@ -239,8 +240,8 @@ hicon.bueMain = (function() {
       if (viewModelBueMain.isMonitoring()) {
         $('#btnOxMonitor').html('开始测溶氧');
         $('#btnPhMonitor').html('开始测pH');
-        viewModelBueMain.isMonitoring(false);
       }
+      viewModelBueMain.isMonitoring(false);
     },
     doNotificationResponse: function(hexResult) {
       console.log('notificaton result: ' + hexResult);
@@ -248,7 +249,9 @@ hicon.bueMain = (function() {
       switch (prefixStr) {
         case '55aa01':
         case '55aa02':
-          view.bueLib.analysisHex(hexResult);
+          if (hexResult.length == 40) {
+            view.bueLib.analysisHex(hexResult, prefixStr);
+          }
           break;
         case '55aa09':
           viewModelBueMain.oxDeviceOnline(!!parseInt(hexResult.toLowerCase().substr(6, 2), 16));
@@ -364,7 +367,7 @@ hicon.bueMain = (function() {
           if (!viewModelBueMain.oxDeviceOnline()) {
             setTimeout(function() {
               hicon.utils.alert({
-                message: '没检测到溶氧传感器',
+                message: '没检测到溶氧传感器,请确定是否已经连接传感器或重启设备',
                 ok: function() {}
               })
             }, 400)
@@ -378,7 +381,7 @@ hicon.bueMain = (function() {
           if (!viewModelBueMain.pHDeviceOnline()) {
             setTimeout(function() {
               hicon.utils.alert({
-                message: '没检测到pH传感器',
+                message: '没检测到pH传感器,请确定是否已经连接传感器或重启设备',
                 ok: function() {}
               })
             }, 400)
@@ -395,6 +398,7 @@ hicon.bueMain = (function() {
       viewModelBueMain.isMonitoring(true);
       view.bueLib.write(sendData, function(data) {
         if (!data.success) {
+          alert('检测失败，请重试')
           if (sendData == '55aa21') {
             $('#btnOxMonitor').html('检测溶氧失败');
             setTimeout(function() {

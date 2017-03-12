@@ -48,7 +48,7 @@
                   hicon.navigation.login();
                   return false;
                 }
-                if (hash.indexOf('#view/main.html') >= 0 || hash.indexOf('#view/buemain.html')) {
+                if (hash.indexOf('#view/main.html') >= 0) {
                   if (!$('#modalview-water').closest('.km-modalview-root').is(":hidden")) {
                     hicon.main.events.modalWaterClose();
                     return;
@@ -57,6 +57,29 @@
                   hicon.utils.confirm({
                     message: '您确定要退出程序？',
                     ok: function() {
+                      navigator.app.exitApp();
+                    }
+                  });
+                  return false;
+                }
+                if (hash.indexOf('#view/buemain.html') >= 0) {
+                  hicon.utils.confirm({
+                    message: '您确定要退出程序？',
+                    ok: function() {
+                      if (viewModelBueMain.statusInterval) {
+                        clearInterval(viewModelBueMain.statusInterval);
+                      }
+                      if (viewModelBueMain.notifyInterval) {
+                        clearInterval(viewModelBueMain.notifyInterval);
+                      }
+
+                      var service_uuid = viewModelBueMain.service_uuid;
+                      var characteristic_uuid = viewModelBueMain.characteristic_uuid;
+
+                      ble.stopNotification(viewModelBueMain.bueDevice.id, service_uuid, characteristic_uuid, null, null);
+                      ble.stopScan();
+                      ble.disconnect(viewModelBueMain.bueDevice.id);
+
                       navigator.app.exitApp();
                     }
                   });
@@ -197,23 +220,32 @@
   }
   H(function() {
     if ("item" in c) {
-      if (!c[0]) { H(arguments.callee, 25);
-        return }
-      c = c[0] }
+      if (!c[0]) {
+        H(arguments.callee, 25);
+        return
+      }
+      c = c[0]
+    }
     var a = b.createElement("script"),
       e = false;
     a.onload = a[E] = function() {
       if ((a[D] && a[D] !== "complete" && a[D] !== "loaded") || e) {
-        return false }
+        return false
+      }
       a.onload = a[E] = null;
       e = true;
-      f() };
+      f()
+    };
 
     a.src = "vendor/lab/LAB.min.js";
 
     c.insertBefore(a, c.firstChild)
   }, 0);
-  if (b[D] == null && b[G]) { b[D] = "loading";
-    b[G](F, d = function() { b.removeEventListener(F, d, false);
-      b[D] = "complete" }, false) }
+  if (b[D] == null && b[G]) {
+    b[D] = "loading";
+    b[G](F, d = function() {
+      b.removeEventListener(F, d, false);
+      b[D] = "complete"
+    }, false)
+  }
 })(this, document);

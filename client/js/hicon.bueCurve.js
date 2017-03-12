@@ -96,8 +96,8 @@ hicon.bueCurve = (function() {
           viewModelBueCurve.reportName = '水温';
           break;
         case 'ph':
-          yMin = 0;
-          yMax = 20;
+          yMin = 1;
+          yMax = 14;
           lower = 6;
           upper = 9;
           viewModelBueCurve.reportName = 'pH';
@@ -111,14 +111,17 @@ hicon.bueCurve = (function() {
           break;
         case 'hpa':
           yMin = 0;
-          yMax = 500;
-          lower = 60;
-          upper = 150;
+          yMax = 2000;
+          lower = 0;
+          upper = 0;
           viewModelBueCurve.reportName = '气压';
           break;
       }
 
       var yTickInterval = Math.floor((yMax - yMin) / 10);
+      if (viewModelBueCurve.currentAi == 'hpa') {
+        yTickInterval = Math.floor((yMax - yMin) / 100);
+      }
 
       var rptData = [],
         curve1 = [];

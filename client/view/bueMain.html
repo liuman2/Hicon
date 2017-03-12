@@ -20,7 +20,7 @@
         <div class="param-name">
           溶氧
         </div>
-        <div class="param-value" data-ko="text: $data.checkingData().ox">
+        <div class="param-value" data-ko="text: ($data.checkingData().ox == '' ? '--' : $data.checkingData().ox)">
         </div>
       </li>
       <li class="param-box">
@@ -34,7 +34,7 @@
         <div class="param-name">
           pH
         </div>
-        <div class="param-value" data-ko="text: $data.checkingData().ph">
+        <div class="param-value" data-ko="text: ($data.checkingData().ph == '' ? '--' : $data.checkingData().ph)">
         </div>
       </li>
       <li class="param-box">

@@ -60,7 +60,7 @@ hicon.db = (function() {
   self.insertPond = function(pond) {
     // console.log(pond)
     HICONDB.transaction(function(tx) {
-      tx.executeSql('INSERT INTO Pond VALUES (?,?,?,?)', [null, pond.code, pond.name, pond.salt]);
+      tx.executeSql('INSERT INTO Pond VALUES (?,?,?,?)', [null, (pond.code - 0), pond.name, pond.salt]);
     }, function(error) {
       console.log('Transaction ERROR: ' + error.message);
     }, function() {
