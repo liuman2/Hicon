@@ -379,8 +379,8 @@ hicon.utils.getHexString = function(hex) {
   //         溶氧值/ph  水温      电量  气压  饱和度  盐度  池编号  校验值
   // 55AA01  EDD23841   00809D41  00AE  03F6  0080    00    08      C8
   return {
-    ox: hex.toLowerCase() == '55aa01' ? hex.substr(6, 8) : '',
-    ph: hex.toLowerCase() == '55aa02' ? hex.substr(6, 8) : '',
+    ox: hexResult.substr(0, 6).toLowerCase() == '55aa01' ? hex.substr(6, 8) : '00000000',
+    ph: hexResult.substr(0, 6).toLowerCase() == '55aa02' ? hex.substr(6, 8) : '00000000',
     water: hex.substr(14, 8),
     power: parseInt(hex.substr(22, 4), 16),     // 电量
     hpa: parseInt(hex.substr(26, 4), 16),       // 气压值

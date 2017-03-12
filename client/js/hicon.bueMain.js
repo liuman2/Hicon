@@ -37,7 +37,6 @@ hicon.bueMain = (function() {
     self.isMonitoring = ko.observable(false);
     self.autoCheckingHex = '';
     self.autoCheckingIsSame = '';
-    // self.isStartNotification = false;
     self.isDisconnect = false;
     self.statusInterval = null;
     self.notifyInterval = null;
@@ -50,7 +49,6 @@ hicon.bueMain = (function() {
 
     viewModelBueMain.autoCheckingHex = '';
     viewModelBueMain.autoCheckingIsSame = false;
-    // viewModelBueMain.isStartNotification = false;
 
     var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
     if (bueDevice) {
@@ -69,7 +67,6 @@ hicon.bueMain = (function() {
     }, 1000 * 10);
 
     viewModelBueMain.notifyInterval = setInterval(function() {
-      view.bueLib.stopNotification();
       if (viewModelBueMain.isDisconnect) {
         return;
       }
@@ -454,10 +451,6 @@ hicon.bueMain = (function() {
             console.log('Peripheral isConnected true');
             viewModelBueMain.deviceOnline(true);
             view.bueLib.checkDeviceStatus();
-            // if (!viewModelBueMain.isStartNotification) {
-
-            //   viewModelBueMain.isStartNotification = true;
-            // }
           },
           function() {
             console.log('Peripheral isConnected false')
