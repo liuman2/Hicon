@@ -52,7 +52,7 @@ hicon.bueMain = (function() {
 
     var bueDevice = hicon.localStorage.getJson('BUE_DEVICE');
     if (bueDevice) {
-      ble.connect(bueDevice.id, null, null);
+      // ble.connect(bueDevice.id, null, null);
       viewModelBueMain.bueDevice = bueDevice;
     }
 
