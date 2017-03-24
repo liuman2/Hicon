@@ -285,6 +285,11 @@ div.actionButtonContainer > a > span {
   content: "\e037";
 }
 
+/* line 270, ../sass/view/_hicon.scss */
+.km-curve:before, .km-curve:after {
+  content: "\e050";
+}
+
 /* line 3, ../sass/view/_login.scss */
 #login .action-buttons {
   text-align: center;
@@ -881,8 +886,9 @@ div.actionButtonContainer > a > span {
   padding: 0;
   border-left: 1px solid #eee;
   text-align: center;
+  margin-bottom: 20px;
 }
-/* line 26, ../sass/view/_bue.scss */
+/* line 27, ../sass/view/_bue.scss */
 .bue .param-box {
   margin: 0px;
   padding: 11px 15px;
@@ -894,57 +900,63 @@ div.actionButtonContainer > a > span {
   height: 80px;
   margin: 0.333%;
 }
-/* line 40, ../sass/view/_bue.scss */
+/* line 41, ../sass/view/_bue.scss */
 .bue .param-name {
-  font-size: 12px;
+  font-size: 16px;
 }
-/* line 43, ../sass/view/_bue.scss */
+/* line 44, ../sass/view/_bue.scss */
 .bue .param-value {
-  font-size: 28px;
+  font-size: 20px;
   color: #fa3c3c;
 }
-/* line 47, ../sass/view/_bue.scss */
+/* line 48, ../sass/view/_bue.scss */
+.bue .param-unit {
+  font-size: 14px;
+  color: #333;
+}
+/* line 52, ../sass/view/_bue.scss */
 .bue .status {
   margin: 5px;
+  font-size: 14px;
 }
-/* line 50, ../sass/view/_bue.scss */
+/* line 56, ../sass/view/_bue.scss */
 .bue .btn {
-  margin: 10px;
+  margin: 22px;
   text-align: center;
 }
-/* line 53, ../sass/view/_bue.scss */
+/* line 59, ../sass/view/_bue.scss */
 .bue .btn .start {
   display: inline-block;
-  height: 34px;
-  line-height: 34px;
-  width: 120px;
+  height: 50px;
+  line-height: 50px;
+  width: 150px;
   font-size: 16px;
   text-align: center;
   padding: 0;
 }
-/* line 62, ../sass/view/_bue.scss */
+/* line 68, ../sass/view/_bue.scss */
 .bue .btn .blue {
   background-color: #009aec;
   color: #fff;
 }
-/* line 66, ../sass/view/_bue.scss */
+/* line 72, ../sass/view/_bue.scss */
 .bue .btn .gray {
   background-color: #e6e6e6;
   color: #333;
 }
-/* line 71, ../sass/view/_bue.scss */
+/* line 77, ../sass/view/_bue.scss */
 .bue .opt-list {
   padding: 0px;
   margin: 10px;
   text-align: center;
 }
-/* line 75, ../sass/view/_bue.scss */
+/* line 81, ../sass/view/_bue.scss */
 .bue .opt-list .opt {
   display: inline-block;
   margin: 0 30px;
   border: none;
 }
-/* line 80, ../sass/view/_bue.scss */
+/* line 86, ../sass/view/_bue.scss */
 .bue .opt-list .opt-name {
   line-height: 48px;
   font-size: 20px;
@@ -953,36 +965,36 @@ div.actionButtonContainer > a > span {
   border-radius: 50%;
   text-align: center;
 }
-/* line 87, ../sass/view/_bue.scss */
+/* line 93, ../sass/view/_bue.scss */
 .bue .opt-list .opt-name.t {
   color: #ffc03c;
   border: 1px solid #ffc03c;
 }
-/* line 91, ../sass/view/_bue.scss */
+/* line 97, ../sass/view/_bue.scss */
 .bue .opt-list .opt-name.h {
   color: #82c650;
   border: 1px solid #82c650;
 }
-/* line 96, ../sass/view/_bue.scss */
+/* line 102, ../sass/view/_bue.scss */
 .bue .opt-list .opt-desc {
   margin: 10px 0;
 }
-/* line 100, ../sass/view/_bue.scss */
+/* line 106, ../sass/view/_bue.scss */
 .bue .pond-field {
   display: inline-block;
   width: 56px;
   color: #999;
 }
-/* line 105, ../sass/view/_bue.scss */
+/* line 111, ../sass/view/_bue.scss */
 .bue .history-tip {
   padding: 0 0 0 10px !important;
   background-color: #f69c55 !important;
 }
-/* line 108, ../sass/view/_bue.scss */
+/* line 114, ../sass/view/_bue.scss */
 .bue .history-tip p {
   color: #fff;
 }
-/* line 111, ../sass/view/_bue.scss */
+/* line 117, ../sass/view/_bue.scss */
 .bue .history-tip .tip {
   -webkit-box-flex: 1;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -993,57 +1005,57 @@ div.actionButtonContainer > a > span {
   flex: 1;
   /* NEW, Spec - Firefox, Chrome, Opera */
 }
-/* line 114, ../sass/view/_bue.scss */
+/* line 120, ../sass/view/_bue.scss */
 .bue .history-tip .close {
   padding: 5px 5px 5px 10px;
   color: #fff;
 }
-/* line 119, ../sass/view/_bue.scss */
+/* line 125, ../sass/view/_bue.scss */
 .bue .history-pond {
   padding: 0 10px !important;
   background-color: #f2f4f8 !important;
 }
-/* line 122, ../sass/view/_bue.scss */
+/* line 128, ../sass/view/_bue.scss */
 .bue .history-pond p {
   color: #009aec;
 }
-/* line 126, ../sass/view/_bue.scss */
+/* line 132, ../sass/view/_bue.scss */
 .bue .history-item {
   padding: 0 0 10px 0 !important;
   border: none !important;
 }
-/* line 129, ../sass/view/_bue.scss */
+/* line 135, ../sass/view/_bue.scss */
 .bue .history-item table {
   width: 100%;
   border-collapse: collapse;
 }
-/* line 132, ../sass/view/_bue.scss */
+/* line 138, ../sass/view/_bue.scss */
 .bue .history-item table tbody tr:nth-child(even) {
   background-color: #ddd;
 }
-/* line 136, ../sass/view/_bue.scss */
+/* line 142, ../sass/view/_bue.scss */
 .bue .history-item .history-header {
   background-color: #3193d5;
 }
-/* line 139, ../sass/view/_bue.scss */
+/* line 145, ../sass/view/_bue.scss */
 .bue .history-item .first-field {
   padding-left: 10px;
 }
-/* line 142, ../sass/view/_bue.scss */
+/* line 148, ../sass/view/_bue.scss */
 .bue .history-item tr {
   height: 36px;
 }
-/* line 145, ../sass/view/_bue.scss */
+/* line 151, ../sass/view/_bue.scss */
 .bue .history-item th {
   font-weight: normal;
   color: #fff;
 }
-/* line 150, ../sass/view/_bue.scss */
+/* line 156, ../sass/view/_bue.scss */
 .bue .pond-item {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
-/* line 154, ../sass/view/_bue.scss */
+/* line 160, ../sass/view/_bue.scss */
 .bue .pond-info {
   -webkit-box-flex: 1;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1054,11 +1066,21 @@ div.actionButtonContainer > a > span {
   flex: 1;
   /* NEW, Spec - Firefox, Chrome, Opera */
 }
-/* line 158, ../sass/view/_bue.scss */
+/* line 164, ../sass/view/_bue.scss */
 .bue .pond-oprator a {
   font-size: 1.1em !important;
 }
-/* line 161, ../sass/view/_bue.scss */
+/* line 167, ../sass/view/_bue.scss */
 .bue .pond-oprator .edit {
   color: #009aec;
+}
+
+/* line 172, ../sass/view/_bue.scss */
+.km-nova .km-tabstrip .km-icon {
+  margin-bottom: 0px !important;
+}
+
+/* line 175, ../sass/view/_bue.scss */
+.km-phone .km-tabstrip .km-icon {
+  margin-top: 3px;
 }

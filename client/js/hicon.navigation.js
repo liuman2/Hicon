@@ -165,7 +165,11 @@ hicon.navigation = (function() {
   };
 
   self.bueMain = function() {
-    $LAB.script('./js/hicon.bueMain.js').wait(function() {
+    $LAB
+    .script('./js/hicon.bueMain.js')
+    .script('./js/hicon.buePond.js')
+    .script('./js/hicon.bueHistory.js')
+    .wait(function() {
       App.navigate("view/bueMain.html");
     });
   };

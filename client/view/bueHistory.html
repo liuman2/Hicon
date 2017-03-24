@@ -1,7 +1,7 @@
 <div id="buehistory" data-role="view" data-use-native-scrolling="true" data-init="hicon.bueHistory.init" data-after-show="hicon.bueHistory.aftershow" data-show="hicon.bueHistory.show" data-transition="overlay:left" data-persist="true">
   <header data-role="header">
     <div data-role="navbar">
-      <a data-align="left" data-role="button" class="clearButton" data-click="hicon.bueHistory.events.doBack">返回</a>
+      <!-- <a data-align="left" data-role="button" class="clearButton" data-click="hicon.bueHistory.events.doBack">返回</a> -->
       <span data-role="view-title">历史数据</span>
     </div>
   </header>
@@ -50,4 +50,17 @@
       </table>
     </li>
   </ul>
+  <div data-role="footer">
+    <ul  data-role="listview" class="km-widget km-tabstrip" data-click="hicon.bueHistory.events.itemClick">
+      <li data-command-key="main" class="km-button" data-icon="home">
+        <span class="km-text">首页</span>
+      </li>
+      <li data-command-key="pond" class="km-button" data-icon="organize">
+        <span class="km-text">池塘</span>
+      </li>
+      <li data-command-key="history" class="km-button km-state-active" data-icon="curve">
+        <span class="km-text">数据</span>
+      </li>
+    </ul>
+  </div>
 </div>

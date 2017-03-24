@@ -53,6 +53,20 @@ hicon.buePond = (function() {
           break;
         case 'delete':
           break;
+        case 'main':
+          hicon.navigation.bueMain();
+          break;
+        case 'pond':
+          // hicon.navigation.buePond();
+          break;
+        case 'history':
+          hicon.navigation.bueHistory();
+          break;
+        case 'curve':
+          var pond = ko.dataFor(e.target.closest("li")[0]);
+          hicon.localStorage.saveJson('BUE_CURRET_POND', pond);
+          hicon.navigation.bueHistory();
+          break;
       }
     },
     addPond: function() {

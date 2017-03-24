@@ -390,6 +390,11 @@ hicon.utils.getHexString = function(hex) {
   }
 };
 
+//将一个数字转化成16进制字符串形式
+hicon.utils.toHex = function(num){
+  return num < 16 ? "0" + num.toString(16).toUpperCase() : "" + num.toString(16).toUpperCase();
+}
+
 hicon.utils.main = (function() {
   var self = {};
   self.isOnLine = ko.observable(navigator.connection === undefined || (navigator.connection.type != Connection.NONE && navigator.connection.type != Connection.UNKNOWN)); //ems.utils.isOnLine());

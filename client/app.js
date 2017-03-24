@@ -97,15 +97,15 @@
                   hicon.navigation.controller();
                   return false;
                 }
-                if (hash.indexOf('curve.html') >= 0) {
+                if (hash.indexOf('#view/curve.html') >= 0) {
                   hicon.navigation.main();
                   return false;
                 }
-                if (hash.indexOf('timer.html') >= 0) {
+                if (hash.indexOf('#view/timer.html') >= 0) {
                   hicon.navigation.controller();
                   return false;
                 }
-                if (hash.indexOf('timeradd.html') >= 0) {
+                if (hash.indexOf('#view/timeradd.html') >= 0) {
                   if ($(".dwbg") && $(".dwbg").length > 0) {
                     if ($('#ddlTimerPeriod').val() == '0') {
                       $("#dtTimerDay").scroller("getInst").hide();
@@ -126,7 +126,7 @@
                   hicon.navigation.controller();
                   return false;
                 }
-                if (hash.indexOf('log.html') >= 0) {
+                if (hash.indexOf('#view/log.html') >= 0) {
                   hicon.navigation.main();
                   return false;
                 }
@@ -173,6 +173,29 @@
                   hicon.navigation.subAccountPond();
                   return false;
                 }
+
+                if (hash.indexOf('#view/buepond.html') >= 0) {
+                  if (!$('#modalview-buepond').closest('.km-modalview-root').is(":hidden")) {
+                    hicon.buePond.events.cancel();
+                    return;
+                  }
+
+                  hicon.navigation.bueMain();
+                  return false;
+                }
+                if (hash.indexOf('#view/buehistory.html') >= 0) {
+                  hicon.navigation.bueMain();
+                  return false;
+                }
+                if (hash.indexOf('#view/buecurve.html') >= 0) {
+                  hicon.navigation.bueHistory();
+                  return false;
+                }
+                if (hash.indexOf('#view/buepondlist.html') >= 0) {
+                  window.history.back();
+                  return false;
+                }
+
               } catch (e) {
                 navigator.app.exitApp();
               }

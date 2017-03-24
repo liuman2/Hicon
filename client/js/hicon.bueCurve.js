@@ -63,13 +63,13 @@ hicon.bueCurve = (function() {
 
     showChart: function() {
       if (viewModelBueCurve.curve1.length == 0) {
-        var cfg = {
-          text: '当前无数据',
-          layout: 'center',
-          timeout: 800,
-          type: 'information'
-        };
-        hicon.utils.noty(cfg);
+        // var cfg = {
+        //   text: '当前无数据',
+        //   layout: 'center',
+        //   timeout: 300,
+        //   type: 'information'
+        // };
+        // hicon.utils.noty(cfg);
       }
       // 溶氧 0 - 20
       // 水温 0 - 40
@@ -96,8 +96,8 @@ hicon.bueCurve = (function() {
           viewModelBueCurve.reportName = '水温';
           break;
         case 'ph':
-          yMin = 1;
-          yMax = 14;
+          yMin = 4;
+          yMax = 10;
           lower = 6;
           upper = 9;
           viewModelBueCurve.reportName = 'pH';

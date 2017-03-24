@@ -1,7 +1,7 @@
 <div id="buepond" data-role="view" data-use-native-scrolling="true" data-init="hicon.buePond.init" data-after-show="hicon.buePond.aftershow" data-show="hicon.buePond.show" data-transition="overlay:left" data-persist="true">
   <header data-role="header">
     <div data-role="navbar">
-      <a data-align="left" data-role="button" class="clearButton" data-click="hicon.buePond.events.doBack">返回</a>
+      <!-- <a data-align="left" data-role="button" class="clearButton" data-click="hicon.buePond.events.doBack">返回</a> -->
       <span data-role="view-title">池塘管理</span>
       <a data-align="right" data-role="button" class="clearButton" data-click="hicon.buePond.events.addPond" data-pond-add>新增鱼池</a>
     </div>
@@ -29,9 +29,25 @@
         <div data-command-key="delete" class="actionButtonContainer">
           <!-- <a data-role="button" class="clearButton" data-icon="trash"></a> -->
         </div>
+        <div data-command-key="curve" class="actionButtonContainer">
+          <a data-role="button" class="clearButton" data-icon="curve"></a>
+        </div>
       </div>
     </li>
   </ul>
+  <div data-role="footer">
+    <ul  data-role="listview" class="km-widget km-tabstrip" data-click="hicon.buePond.events.itemClick">
+      <li data-command-key="main" class="km-button" data-icon="home">
+        <span class="km-text">首页</span>
+      </li>
+      <li data-command-key="pond" class="km-button km-state-active" data-icon="organize">
+        <span class="km-text">池塘</span>
+      </li>
+      <li data-command-key="history" class="km-button" data-icon="curve">
+        <span class="km-text">数据</span>
+      </li>
+    </ul>
+  </div>
 </div>
 <div data-role="modalview" id="modalview-buepond" style="width: 80%; ">
   <div data-role="header">

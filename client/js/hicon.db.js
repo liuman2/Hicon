@@ -42,7 +42,7 @@ hicon.db = (function() {
   self.searchHistory = function(query, onSuccess, onFailed) {
     HICONDB.transaction(function(tx) {
       var results = [];
-      tx.executeSql('SELECT dateCreated, ' + query.field + ' FROM History WHERE code=? AND dateCreated>=? AND dateCreated<=? ORDER BY dateCreated DESC limit 0,200', [query.code, query.start, query.end], function(tx, rs) {
+      tx.executeSql('SELECT dateCreated, ' + query.field + ' FROM History WHERE code=? AND dateCreated>=? AND dateCreated<=? ORDER BY dateCreated limit 0,300', [query.code, query.start, query.end], function(tx, rs) {
         if (rs.rows.length) {
           for (var i = 0, max = rs.rows.length; i < max; i++) {
             var row = rs.rows.item(i);
@@ -113,7 +113,7 @@ hicon.db = (function() {
   self.getHistoryByPondCode = function(code, onSuccess, onFailed) {
     HICONDB.transaction(function(tx) {
       var histories = [];
-      tx.executeSql('SELECT * FROM History where code=?', [code], function(tx, rs) {
+      tx.executeSql('SELECT * FROM History where code=? ORDER BY dateCreated DESC limit 0,200', [code], function(tx, rs) {
         if (rs.rows.length) {
           for (var i = 0, max = rs.rows.length; i < max; i++) {
             var row = rs.rows.item(i);

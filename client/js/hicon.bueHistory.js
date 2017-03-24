@@ -80,6 +80,15 @@ hicon.bueHistory = (function() {
           hicon.sessionStorage.item('BUE_CURVE_AI', 'hpa');
           hicon.navigation.bueCurve();
           break;
+        case 'main':
+          hicon.navigation.bueMain();
+          break;
+        case 'pond':
+          hicon.navigation.buePond();
+          break;
+        case 'history':
+          // hicon.navigation.bueHistory();
+          break;
       }
     },
   };

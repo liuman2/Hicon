@@ -24,14 +24,14 @@ hicon.bueMain = (function() {
     }
 
     self.checkingData = ko.observable({
-      pondCode: '--',
-      ox: '--',
-      ph: '--',
-      water: '--',
-      power: '--',
-      hpa: '--',
-      sat: '--',
-      salt: '--',
+      pondCode: '',
+      ox: '',
+      ph: '',
+      water: '',
+      power: '',
+      hpa: '',
+      sat: '',
+      salt: '',
     });
 
     self.isMonitoring = ko.observable(false);
@@ -58,13 +58,13 @@ hicon.bueMain = (function() {
 
     setTimeout(function() {
       view.bueLib.checkingStatus();
-    }, 600);
+    }, 3000);
     viewModelBueMain.statusInterval = setInterval(function() {
       if (viewModelBueMain.isDisconnect) {
         return;
       }
       view.bueLib.checkingStatus();
-    }, 1000 * 10);
+    }, 1000 * 15);
 
     viewModelBueMain.notifyInterval = setInterval(function() {
       if (viewModelBueMain.isDisconnect) {
@@ -86,6 +86,10 @@ hicon.bueMain = (function() {
         view.bueLib.startNotification();
       }, 1000 * 5);
     }
+
+    setTimeout(function() {
+      view.bueLib.checkDeviceStatus();
+    }, 1000 * 30);
   };
 
   view.aftershow = function(e) {
@@ -110,7 +114,6 @@ hicon.bueMain = (function() {
         var user = hicon.localStorage.getJson('USER_INFO');
         if (!user) {
           window.location.href = "index.html";
-          window.location.reload();
           return;
         }
         hicon.server.ajax({
@@ -121,11 +124,9 @@ hicon.bueMain = (function() {
           },
           success: function(data) {
             window.location.href = "index.html";
-            window.location.reload();
           },
           error: function() {
             window.location.href = "index.html";
-            window.location.reload();
           }
         });
       };
@@ -207,7 +208,7 @@ hicon.bueMain = (function() {
           sat: HexObj.sat,
           power: HexObj.power,
         };
-
+        console.log(JSON.stringify(decimalObj))
         if (viewModelBueMain.isMonitoring()) {
           viewModelBueMain.checkingData(decimalObj);
         }
@@ -254,6 +255,7 @@ hicon.bueMain = (function() {
           }
           break;
         case '55aa09':
+          // alert(!!parseInt(hexResult.toLowerCase().substr(6, 2), 16))
           viewModelBueMain.oxDeviceOnline(!!parseInt(hexResult.toLowerCase().substr(6, 2), 16));
           viewModelBueMain.pHDeviceOnline(!!parseInt(hexResult.toLowerCase().substr(8, 2), 16));
           break;
@@ -312,7 +314,13 @@ hicon.bueMain = (function() {
         });
       }
 
-      var sendData = hicon.utils.stringToBytes(hicon.utils.hex2a(data));
+      var hex2a = hicon.utils.hex2a(data);
+      if (data == '55aa21') {
+        var currentPond = hicon.localStorage.getJson('BUE_CURRET_POND');
+        var salt = hicon.utils.toHex((currentPond.salt - 0) || 0);
+        hex2a = hicon.utils.hex2a(data + '' + salt);
+      }
+      var sendData = hicon.utils.stringToBytes(hex2a);
       var bueDeviceId = viewModelBueMain.bueDevice.id;
       ble.write(bueDeviceId, service_uuid, characteristic_uuid, sendData, success, failure);
     },
@@ -368,7 +376,9 @@ hicon.bueMain = (function() {
             setTimeout(function() {
               hicon.utils.alert({
                 message: '没检测到溶氧传感器,请确定是否已经连接传感器或重启设备',
-                ok: function() {}
+                ok: function() {
+                  view.bueLib.checkDeviceStatus();
+                }
               })
             }, 400)
 
@@ -382,7 +392,9 @@ hicon.bueMain = (function() {
             setTimeout(function() {
               hicon.utils.alert({
                 message: '没检测到pH传感器,请确定是否已经连接传感器或重启设备',
-                ok: function() {}
+                ok: function() {
+                  view.bueLib.checkDeviceStatus();
+                }
               })
             }, 400)
 
@@ -421,9 +433,11 @@ hicon.bueMain = (function() {
       if (viewModelBueMain.isMonitoring()) {
         return;
       }
+      console.log('write 55aa08');
       view.bueLib.write('55aa08', function(data) {
         console.log('device status response: ' + JSON.stringify(data));
         if (!data.success) {
+          // alert(1122)
           viewModelBueMain.oxDeviceOnline(false);
           viewModelBueMain.pHDeviceOnline(false);
         }
@@ -454,11 +468,16 @@ hicon.bueMain = (function() {
           function() {
             console.log('Peripheral isConnected true');
             viewModelBueMain.deviceOnline(true);
-            view.bueLib.checkDeviceStatus();
+            if (!viewModelBueMain.oxDeviceOnline() && !viewModelBueMain.pHDeviceOnline()) {
+              // alert(1)
+              view.bueLib.checkDeviceStatus();
+            }
           },
           function() {
             console.log('Peripheral isConnected false')
             viewModelBueMain.deviceOnline(false);
+            viewModelBueMain.oxDeviceOnline(false);
+            viewModelBueMain.pHDeviceOnline(false);
             ble.scan([], 8000, function(device) {
               console.log('scan ...')
               if (bueDevice.id == device.id) {

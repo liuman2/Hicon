@@ -2,7 +2,7 @@
   <header data-role="header">
     <div data-role="navbar">
       <a data-align="right" data-role="button" class="clearButton" data-click="hicon.bueMain.events.logout">退出</a>
-      <span data-role="view-title">海控在手</span>
+      <span data-role="view-title">数据检测</span>
     </div>
   </header>
   <div data-role="listview" data-view="view" class="bue">
@@ -20,42 +20,53 @@
         <div class="param-name">
           溶氧
         </div>
-        <div class="param-value" data-ko="text: ($data.checkingData().ox == '' ? '--' : $data.checkingData().ox)">
+        <div class="param-value">
+          <span data-ko="text: ($data.checkingData().ox === '' ? '--' : $data.checkingData().ox)"></span>
+          <span class="param-unit" data-ko="text: ($data.checkingData().ox == '' ? '' : 'mg/L')"></span>
         </div>
       </li>
       <li class="param-box">
         <div class="param-name">
           水温
         </div>
-        <div class="param-value" data-ko="text: $data.checkingData().water">
+        <div class="param-value">
+          <span data-ko="text: ($data.checkingData().water === '' ? '--' : $data.checkingData().water)"></span>
+          <span class="param-unit" data-ko="text: ($data.checkingData().water == '' ? '' : '℃')"></span>
         </div>
       </li>
       <li class="param-box">
         <div class="param-name">
           pH
         </div>
-        <div class="param-value" data-ko="text: ($data.checkingData().ph == '' ? '--' : $data.checkingData().ph)">
+        <div class="param-value">
+          <span data-ko="text: ($data.checkingData().ph === '' ? '--' : $data.checkingData().ph)"></span>
         </div>
       </li>
       <li class="param-box">
         <div class="param-name">
           盐度
         </div>
-        <div class="param-value" data-ko="text: $data.checkingData().salt">
+        <div class="param-value">
+          <span data-ko="text: ($data.checkingData().salt === '' ? '--' : $data.checkingData().salt)"></span>
+          <span class="param-unit" data-ko="text: ($data.checkingData().salt == '' ? '' : '‰')"></span>
         </div>
       </li>
       <li class="param-box">
         <div class="param-name">
           气压
         </div>
-        <div class="param-value" data-ko="text: $data.checkingData().hpa">
+        <div class="param-value">
+          <span data-ko="text: ($data.checkingData().hpa === '' ? '--' : $data.checkingData().hpa)"></span>
+          <span class="param-unit" data-ko="text: ($data.checkingData().hpa == '' ? '' : 'hpa')"></span>
         </div>
       </li>
       <li class="param-box">
         <div class="param-name">
           饱和度
         </div>
-        <div class="param-value" data-ko="text: $data.checkingData().sat">
+        <div class="param-value">
+          <span data-ko="text: ($data.checkingData().sat === '' ? '--' : $data.checkingData().sat)"></span>
+          <span class="param-unit" data-ko="text: ($data.checkingData().sat === '' ? '' : '%')"></span>
         </div>
       </li>
     </ul>
@@ -102,7 +113,7 @@
       <li class="start" data-ko="css: { 'blue':  $data.isMonitoring() == false, 'gray':  $data.isMonitoring() == true }" data-command-key="monitorOx" id="btnOxMonitor">开始测溶氧</li>
       <li class="start" data-ko="css: { 'blue':  $data.isMonitoring() == false, 'gray':  $data.isMonitoring() == true }" data-command-key="monitorPh" id="btnPhMonitor">开始测pH</li>
     </ul>
-    <ul class="opt-list" data-role="listview" data-click="hicon.bueMain.events.itemClick">
+    <!-- <ul class="opt-list" data-role="listview" data-click="hicon.bueMain.events.itemClick">
       <li class="opt" data-command-key="pond">
         <div class="opt-name t">
           塘
@@ -118,6 +129,19 @@
         <div class="opt-desc">
           历史数据
         </div>
+      </li>
+    </ul> -->
+  </div>
+  <div data-role="footer">
+    <ul  data-role="listview" class="km-widget km-tabstrip" data-click="hicon.bueMain.events.itemClick">
+      <li data-command-key="main" class="km-button km-state-active" data-icon="home">
+        <span class="km-text">首页</span>
+      </li>
+      <li data-command-key="pond" class="km-button" data-icon="organize">
+        <span class="km-text">池塘</span>
+      </li>
+      <li data-command-key="history" class="km-button" data-icon="curve">
+        <span class="km-text">数据</span>
       </li>
     </ul>
   </div>

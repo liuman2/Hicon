@@ -1,0 +1,18 @@
+<div data-role="layout" data-id="mobile-tabstrip" data-show="showDemoLayout"  id="buecontainer" data-role="layout"  data-use-native-scrolling="true" data-init="hicon.bueContainer.init" data-after-show="hicon.bueContainer.aftershow" data-show="hicon.bueMain.show" data-transition="overlay:left" data-persist="true">
+  <header data-role="header">
+    <div data-role="navbar">
+      <span data-role="view-title">海控在手</span>
+      <a data-align="right" data-role="button" class="clearButton" data-click="hicon.bueMain.events.logout">退出</a>
+    </div>
+  </header>
+
+  <div data-role="footer">
+    <div data-role="tabstrip" data-tap="hicon.bueMain.events.itemClick">
+      <a href="#view/bueMain.html" data-icon="home">
+        <span class="km-text">Profile</span>
+      </a>
+      <a data-command-key="pond" data-icon="organize">池塘管理</a>
+      <a data-command-key="history" data-icon="history">历史数据</a>
+    </div>
+  </div>
+</div>
