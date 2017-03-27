@@ -116,7 +116,7 @@ hicon.curve = (function () {
             var hasTwoItems = viewModelCurve.currentAi.items.length > 1;
             var yMin = hasTwoItems ? viewModelCurve.currentAi.items[1].Y_Min : viewModelCurve.currentAi.items[0].Y_Min,
                 yMax = hasTwoItems ? viewModelCurve.currentAi.items[1].Y_Max : viewModelCurve.currentAi.items[0].Y_Max,
-                yTickInterval = Math.floor((yMax - yMin) / 10);
+                yTickInterval = Math.floor((yMax - yMin) / 10) || 1;
 
             var rptData = [],
                 curve1 = [],

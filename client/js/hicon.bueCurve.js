@@ -118,9 +118,9 @@ hicon.bueCurve = (function() {
           break;
       }
 
-      var yTickInterval = Math.floor((yMax - yMin) / 10);
+      var yTickInterval = Math.floor((yMax - yMin) / 10) || 1;
       if (viewModelBueCurve.currentAi == 'hpa') {
-        yTickInterval = Math.floor((yMax - yMin) / 100);
+        yTickInterval = Math.floor((yMax - yMin) / 100) || 1;
       }
 
       var rptData = [],
