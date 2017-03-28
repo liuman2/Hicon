@@ -1,0 +1,32 @@
+<div id="dtuList" data-role="view" data-use-native-scrolling="true" data-init="hicon.dtuList.init" data-after-show="hicon.dtuList.aftershow" data-show="hicon.dtuList.show" data-transition="overlay:left" data-persist="true">
+  <header data-role="header">
+    <div data-role="navbar">
+      <a data-align="left" data-role="button" class="clearButton" data-click="hicon.dtuList.events.doBack">返回</a>
+      <span data-role="view-title" data-ko="text: pond().Name"></span>
+    </div>
+  </header>
+  <ul data-role="listview" data-click="hicon.dtuList.events.itemClick" data-ko="foreach: $data.pond().Dtus" class="bue">
+    <li class="pond-item flex" data-command-key="pondClick">
+      <div class="pond-info">
+        <p>
+          <!-- ko if: $data.DtuNO.substr(0, 1) == '0'-->
+          <span>增氧遥控器</span>
+          <!-- /ko -->
+          <!-- ko if: $data.DtuNO.substr(0, 1) == '1'-->
+          <span>水泵遥控器</span>
+          <!-- /ko -->
+          <!-- ko if: $data.DtuNO.substr(0, 1) == '2'-->
+          <span>投饵遥控器</span>
+          <!-- /ko -->
+        </p>
+          <span data-ko="text: $data.DtuNO"></span>
+        </p>
+      </div>
+      <div class="actionButtonContainers">
+        <div data-command-key="delete" class="actionButtonContainer">
+            <a data-role="button" class="clearButton" data-icon="unlock"></a>
+        </div>
+    </div>
+    </li>
+  </ul>
+</div>

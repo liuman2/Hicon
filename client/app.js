@@ -101,6 +101,10 @@
                   hicon.navigation.main();
                   return false;
                 }
+                if (hash.indexOf('#view/dtulist.html') >= 0) {
+                  hicon.navigation.main();
+                  return false;
+                }
                 if (hash.indexOf('#view/timer.html') >= 0) {
                   hicon.navigation.controller();
                   return false;

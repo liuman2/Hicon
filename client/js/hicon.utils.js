@@ -199,7 +199,7 @@ hicon.utils.checkAppVersion = function(showMsg) {
       isForced = hicon.utils.os.android ? data.android.forced : data.iOS.forced,
       upgrateUrl = hicon.utils.os.android ? data.android.url : data.iOS.url;
 
-    if (serverVersion != '0.1.8') {
+    if (serverVersion != '0.1.9') {
       hicon.utils.confirm({
         message: (isForced === true || isForced === 'true') ? '发现新版本，必须升级后才能继续使用软件' : '发现新版本，是否立即升级?',
         ok: function() {

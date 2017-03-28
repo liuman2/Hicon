@@ -200,5 +200,11 @@ hicon.navigation = (function() {
       });
   };
 
+  self.dtuList = function() {
+    $LAB.script('./js/hicon.dtuList.js').wait(function() {
+      App.navigate("view/dtuList.html");
+    });
+  };
+
   return self;
 }());

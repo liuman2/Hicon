@@ -464,6 +464,10 @@ hicon.main = (function() {
           }
           hicon.navigation.pondEdit();
           break;
+        case 'unlock':
+          hicon.localStorage.saveJson('POND_DTUS', pond);
+          hicon.navigation.dtuList();
+          break;
         case 'delete':
           if (pond.Dtus.length) {
             var cfg = {
