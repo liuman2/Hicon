@@ -10,12 +10,15 @@
       <div class="pond-info">
         <p>
           <!-- ko if: $data.DtuNO.substr(0, 1) == '0'-->
-          <span>增氧遥控器</span>
+          <span>水质监测</span>
           <!-- /ko -->
           <!-- ko if: $data.DtuNO.substr(0, 1) == '1'-->
-          <span>水泵遥控器</span>
+          <span>增氧遥控器</span>
           <!-- /ko -->
           <!-- ko if: $data.DtuNO.substr(0, 1) == '2'-->
+          <span>水泵遥控器</span>
+          <!-- /ko -->
+          <!-- ko if: $data.DtuNO.substr(0, 1) == '3'-->
           <span>投饵遥控器</span>
           <!-- /ko -->
         </p>
