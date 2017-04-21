@@ -113,24 +113,13 @@
       <li class="start" data-ko="css: { 'blue':  $data.isMonitoring() == false, 'gray':  $data.isMonitoring() == true }" data-command-key="monitorOx" id="btnOxMonitor">开始测溶氧</li>
       <li class="start" data-ko="css: { 'blue':  $data.isMonitoring() == false, 'gray':  $data.isMonitoring() == true }" data-command-key="monitorPh" id="btnPhMonitor">开始测pH</li>
     </ul>
-    <!-- <ul class="opt-list" data-role="listview" data-click="hicon.bueMain.events.itemClick">
-      <li class="opt" data-command-key="pond">
-        <div class="opt-name t">
-          塘
-        </div>
-        <div class="opt-desc">
-          池塘管理
-        </div>
-      </li>
-      <li class="opt" data-command-key="history">
-        <div class="opt-name h">
-          史
-        </div>
-        <div class="opt-desc">
-          历史数据
-        </div>
-      </li>
-    </ul> -->
+
+    <!-- ko if: powerAlert() == true-->
+    <div class="power-warning">
+      <span>请更换手持设备电池</span>
+      <span>当前手持设备无法正常工作</span>
+    </div>
+    <!-- /ko -->
   </div>
   <div data-role="footer">
     <ul  data-role="listview" class="km-widget km-tabstrip" data-click="hicon.bueMain.events.itemClick">

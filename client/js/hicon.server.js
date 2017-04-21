@@ -44,5 +44,32 @@ hicon.server = (function() {
         return $.ajax(config);
     };
 
+    proxies.hex = function(options) {
+        var config = {
+            url:  'http://oa.hkzrqy.com/Common/GetHexFloat', /*'http://www.xmhicon.net:8732/service.svc/'+options.url,*/
+            data: JSON.stringify(options.data),
+            type: options.type || 'GET',
+            cache: false,
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+
+            error: function (jqXHR, textStatus, errorThrown) {
+                if (errorThrown === "Unauthorized") {
+                    //TODO Use utility function for this?
+                    window.location.href = "";
+                } else {
+                    if ($.isFunction(options.error)) {
+                        options.error();
+                    }
+                }
+            }
+        };
+
+        if ($.isFunction(options.success)) {
+            config.success = options.success;
+        }
+        return $.ajax(config);
+    };
+
     return proxies;
 }());

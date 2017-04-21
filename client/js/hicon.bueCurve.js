@@ -96,8 +96,8 @@ hicon.bueCurve = (function() {
           viewModelBueCurve.reportName = '水温';
           break;
         case 'ph':
-          yMin = 4;
-          yMax = 10;
+          yMin = 0;
+          yMax = 14;
           lower = 6;
           upper = 9;
           viewModelBueCurve.reportName = 'pH';

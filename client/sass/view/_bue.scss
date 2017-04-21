@@ -122,6 +122,19 @@
       color: #fff;
     }
   }
+  .power-warning {
+    text-align: center;
+    border-radius: 4px;
+    margin: 0 5px;
+    padding: 10PX 0;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    span {
+        display: block;
+        color: #a94442;
+        font-size: 16px;
+    }
+  }
   .history-pond {
     padding: 0 10px !important;
     background-color: #f2f4f8 !important;

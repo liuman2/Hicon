@@ -73,12 +73,9 @@ hicon.login = (function() {
           hicon.localStorage.saveJson('USER_INFO', user);
 
           if ($('#identity').val() == 99) {
-            hicon.navigation.bueMain();
-            return
-
             $LAB.script("js/hicon.db.js").wait(function() {
               ble.enable();
-              hicon.navigation.bueScan();
+              setTimeout(hicon.navigation.bueScan, 400);
             });
             return;
           }

@@ -207,7 +207,7 @@
 
             document.addEventListener("resume", function() {
               try {
-                hicon.utils.checkAppVersion(false);
+                //hicon.utils.checkAppVersion(false);
               } catch (e) {}
             }, false);
 

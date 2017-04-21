@@ -1016,51 +1016,66 @@ div.actionButtonContainer > a > span {
   color: #fff;
 }
 /* line 125, ../sass/view/_bue.scss */
+.bue .power-warning {
+  text-align: center;
+  border-radius: 4px;
+  margin: 0 5px;
+  padding: 10PX 0;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+/* line 132, ../sass/view/_bue.scss */
+.bue .power-warning span {
+  display: block;
+  color: #a94442;
+  font-size: 16px;
+}
+/* line 138, ../sass/view/_bue.scss */
 .bue .history-pond {
   padding: 0 10px !important;
   background-color: #f2f4f8 !important;
 }
-/* line 128, ../sass/view/_bue.scss */
+/* line 141, ../sass/view/_bue.scss */
 .bue .history-pond p {
   color: #009aec;
 }
-/* line 132, ../sass/view/_bue.scss */
+/* line 145, ../sass/view/_bue.scss */
 .bue .history-item {
   padding: 0 0 10px 0 !important;
   border: none !important;
 }
-/* line 135, ../sass/view/_bue.scss */
+/* line 148, ../sass/view/_bue.scss */
 .bue .history-item table {
   width: 100%;
   border-collapse: collapse;
 }
-/* line 138, ../sass/view/_bue.scss */
+/* line 151, ../sass/view/_bue.scss */
 .bue .history-item table tbody tr:nth-child(even) {
   background-color: #ddd;
 }
-/* line 142, ../sass/view/_bue.scss */
+/* line 155, ../sass/view/_bue.scss */
 .bue .history-item .history-header {
   background-color: #3193d5;
 }
-/* line 145, ../sass/view/_bue.scss */
+/* line 158, ../sass/view/_bue.scss */
 .bue .history-item .first-field {
   padding-left: 10px;
 }
-/* line 148, ../sass/view/_bue.scss */
+/* line 161, ../sass/view/_bue.scss */
 .bue .history-item tr {
   height: 36px;
 }
-/* line 151, ../sass/view/_bue.scss */
+/* line 164, ../sass/view/_bue.scss */
 .bue .history-item th {
   font-weight: normal;
   color: #fff;
 }
-/* line 156, ../sass/view/_bue.scss */
+/* line 169, ../sass/view/_bue.scss */
 .bue .pond-item {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
-/* line 160, ../sass/view/_bue.scss */
+/* line 173, ../sass/view/_bue.scss */
 .bue .pond-info {
   -webkit-box-flex: 1;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1071,21 +1086,21 @@ div.actionButtonContainer > a > span {
   flex: 1;
   /* NEW, Spec - Firefox, Chrome, Opera */
 }
-/* line 164, ../sass/view/_bue.scss */
+/* line 177, ../sass/view/_bue.scss */
 .bue .pond-oprator a {
   font-size: 1.1em !important;
 }
-/* line 167, ../sass/view/_bue.scss */
+/* line 180, ../sass/view/_bue.scss */
 .bue .pond-oprator .edit {
   color: #009aec;
 }
 
-/* line 172, ../sass/view/_bue.scss */
+/* line 185, ../sass/view/_bue.scss */
 .km-nova .km-tabstrip .km-icon {
   margin-bottom: 0px !important;
 }
 
-/* line 175, ../sass/view/_bue.scss */
+/* line 188, ../sass/view/_bue.scss */
 .km-phone .km-tabstrip .km-icon {
   margin-top: 3px;
 }

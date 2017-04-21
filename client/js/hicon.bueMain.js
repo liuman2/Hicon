@@ -12,6 +12,7 @@ hicon.bueMain = (function() {
     self.deviceOnline = ko.observable(false);
     self.oxDeviceOnline = ko.observable(false);
     self.pHDeviceOnline = ko.observable(false);
+    self.powerAlert = ko.observable(false);
     self.currentPond = ko.observable({
       code: '',
       name: '未选择'
@@ -71,7 +72,7 @@ hicon.bueMain = (function() {
         return;
       }
       view.bueLib.startNotification();
-    }, 1000 * 5);
+    }, 1000 * 3);
   };
 
   view.show = function(e) {
@@ -84,12 +85,12 @@ hicon.bueMain = (function() {
     if (!viewModelBueMain.notifyInterval) {
       viewModelBueMain.notifyInterval = setInterval(function() {
         view.bueLib.startNotification();
-      }, 1000 * 5);
+      }, 1000 * 3);
     }
 
     setTimeout(function() {
       view.bueLib.checkDeviceStatus();
-    }, 1000 * 30);
+    }, 1000 * 8);
   };
 
   view.aftershow = function(e) {
@@ -190,33 +191,76 @@ hicon.bueMain = (function() {
         ph: HexObj.ph
       };
 
-      window.nativeApp.Hex2Float(hex, function(data) {
-        var appData = JSON.parse(data);
-        console.log('app data: ' + JSON.stringify(data));
+      if (hicon.utils.os.ios) {
+        hicon.server.hex({
+          url: 'http://oa.hkzrqy.com/Common/GetHexFloat',
+          type: 'post',
+          data: hex,
+          success: function(appData) {
+            console.log('datadatadatadatadatadatadata')
+            console.log(appData)
 
-        if (HexObj.power && !isNaN(HexObj.power)) {
-          HexObj.power = (HexObj.power / 100).toFixed(2);
-        }
+            if (HexObj.power && !isNaN(HexObj.power)) {
+              HexObj.power = (HexObj.power / 100).toFixed(2);
+            }
 
-        var decimalObj = {
-          pondCode: viewModelBueMain.isMonitoring() ? (currentPond.code - 0) : (HexObj.pondCode - 0),
-          ox: prefixStr == '55aa01' ? (((isNaN(appData.ox) ? '' : appData.ox) - 0.0).toFixed(2)) : '',
-          ph: prefixStr == '55aa02' ? (((isNaN(appData.ph) ? '' : appData.ph) - 0.0).toFixed(2)) : '',
-          water: ((isNaN(appData.water) ? '' : appData.water) - 0.0).toFixed(2),
-          salt: HexObj.salt,
-          hpa: HexObj.hpa,
-          sat: HexObj.sat,
-          power: HexObj.power,
-        };
-        console.log(JSON.stringify(decimalObj))
-        if (viewModelBueMain.isMonitoring()) {
-          viewModelBueMain.checkingData(decimalObj);
-        }
+            var decimalObj = {
+              pondCode: viewModelBueMain.isMonitoring() ? (currentPond.code - 0) : (HexObj.pondCode - 0),
+              ox: prefixStr == '55aa01' ? (((isNaN(appData.ox) ? '' : appData.ox) - 0.0).toFixed(2)) : '',
+              ph: prefixStr == '55aa02' ? (((isNaN(appData.ph) ? '' : appData.ph) - 0.0).toFixed(2)) : '',
+              water: ((isNaN(appData.water) ? '' : appData.water) - 0.0).toFixed(2),
+              salt: HexObj.salt,
+              hpa: HexObj.hpa,
+              sat: HexObj.sat,
+              power: HexObj.power,
+            };
+            console.log(JSON.stringify(decimalObj))
+            if (viewModelBueMain.isMonitoring()) {
+              viewModelBueMain.checkingData(decimalObj);
+            }
 
-        view.bueLib.saveCheckData(decimalObj);
-      })
+            view.bueLib.saveCheckData(decimalObj);
+          },
+          error: function() {
+
+          }
+        });
+      } else {
+        window.nativeApp.Hex2Float(hex, function(data) {
+          var appData = JSON.parse(data);
+          console.log('app data: ' + JSON.stringify(data));
+
+          if (HexObj.power && !isNaN(HexObj.power)) {
+            HexObj.power = (HexObj.power / 100).toFixed(2);
+          }
+
+          var decimalObj = {
+            pondCode: viewModelBueMain.isMonitoring() ? (currentPond.code - 0) : (HexObj.pondCode - 0),
+            ox: prefixStr == '55aa01' ? (((isNaN(appData.ox) ? '' : appData.ox) - 0.0).toFixed(2)) : '',
+            ph: prefixStr == '55aa02' ? (((isNaN(appData.ph) ? '' : appData.ph) - 0.0).toFixed(2)) : '',
+            water: ((isNaN(appData.water) ? '' : appData.water) - 0.0).toFixed(2),
+            salt: HexObj.salt,
+            hpa: HexObj.hpa,
+            sat: HexObj.sat,
+            power: HexObj.power,
+          };
+          console.log(JSON.stringify(decimalObj))
+          if (viewModelBueMain.isMonitoring()) {
+            viewModelBueMain.checkingData(decimalObj);
+          }
+
+          view.bueLib.saveCheckData(decimalObj);
+        })
+      }
+
     },
     saveCheckData: function(checkData) {
+      if (viewModelBueMain.isMonitoring()) {
+        $('#btnOxMonitor').html('开始测溶氧');
+        $('#btnPhMonitor').html('开始测pH');
+      }
+      viewModelBueMain.isMonitoring(false);
+
       hicon.db.getPondByCode(checkData.pondCode, function(pond) {
         if (pond == null) {
           hicon.db.insertPond({
@@ -238,11 +282,11 @@ hicon.bueMain = (function() {
         hpa: checkData.hpa
       });
 
-      if (viewModelBueMain.isMonitoring()) {
-        $('#btnOxMonitor').html('开始测溶氧');
-        $('#btnPhMonitor').html('开始测pH');
+      if (checkData.power - 0 < 4.8) {
+        viewModelBueMain.powerAlert(true);
+      } else {
+        viewModelBueMain.powerAlert(false);
       }
-      viewModelBueMain.isMonitoring(false);
     },
     doNotificationResponse: function(hexResult) {
       console.log('notificaton result: ' + hexResult);
