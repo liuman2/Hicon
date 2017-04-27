@@ -28,21 +28,38 @@ hicon.register = (function () {
             hicon.utils.noty(cfg);
         }
 
-        var $select = $('#register').find('select');
-        if ($select.length) {
-            var $province = $select.eq(0),
-                $city = $select.eq(1),
-                $county = $select.eq(2);
+        // var $select = $('#register').find('select');
+        // if ($select.length) {
+        //     var $province = $select.eq(0),
+        //         $city = $select.eq(1),
+        //         $county = $select.eq(2);
 
-            var provinceChangeCb = function() {
-                $city.add($county);
-            };
+        //     var provinceChangeCb = function() {
+        //         $city.add($county);
+        //     };
 
-            var cityChangeCb = function() {
-            };
+        //     var cityChangeCb = function() {
+        //     };
 
-            hicon.area.addressInit($province, $city, $county, '请选择省份', '请选择城市', '请选择县/区', provinceChangeCb, cityChangeCb);
-        }
+        //     hicon.area.addressInit($province, $city, $county, '请选择省份', '请选择城市', '请选择县/区', provinceChangeCb, cityChangeCb);
+        // }
+
+        hicon.server.ajax({
+            url: 'AreaGetProvinces',
+            type: 'post',
+            success: function(data) {
+                var $select = $('#register').find('select');
+                var $province = $select.eq(0);
+                $province.append("<option value=''>请选择省份</option>");
+                for(var i=0; i<data.length; i++)
+                {
+                    var item = data[i];
+                    $province.append("<option value='"+ item.AreaID +"'>" + item.Name + "</option>");
+                }
+            },
+            error: function() {
+            }
+        });
 
         $('#userNO').val('');
         $('#token').val('');
@@ -204,6 +221,60 @@ hicon.register = (function () {
             };
             hicon.utils.noty(cfg);
             view.getLocation();
+        },
+        provinceChange: function() {
+            $("#regCity").empty();
+            $("#regCounty").empty();
+            $("#regCity").append("<option value=''>请选择城市</option>");
+            $("#regCounty").append("<option value=''>请选择县</option>");
+            var provinceId = $("#regProvince").val();
+            if (!provinceId) {
+                return;
+            }
+
+            hicon.server.ajax({
+                url: 'AreaGetCities',
+                type: 'post',
+                data: {
+                    AreaID: provinceId - 0
+                },
+                success: function(data) {
+                    var $select = $('#regCity');
+                    for(var i=0; i<data.length; i++)
+                    {
+                        var item = data[i];
+                        $select.append("<option value='"+ item.AreaID +"'>" + item.Name + "</option>");
+                    }
+                },
+                error: function() {
+                }
+            });
+        },
+        cityChange: function() {
+            $("#regCounty").empty();
+            $("#regCounty").append("<option value=''>请选择县</option>");
+            var cityId = $("#regCity").val();
+            if (!cityId) {
+                return;
+            }
+
+            hicon.server.ajax({
+                url: 'AreaGetCounties',
+                type: 'post',
+                data: {
+                    AreaID: cityId - 0
+                },
+                success: function(data) {
+                    var $select = $('#regCounty');
+                    for(var i=0; i<data.length; i++)
+                    {
+                        var item = data[i];
+                        $select.append("<option value='"+ item.AreaID +"'>" + item.Name + "</option>");
+                    }
+                },
+                error: function() {
+                }
+            });
         }
     };
 
@@ -247,6 +318,12 @@ hicon.register = (function () {
         if (!data.address) {
             valMsg.push('渔场所在地址不能为空');
         }
+        // if (!data.Longitude) {
+        //     valMsg.push('经度不能为空');
+        // }
+        // if (!data.Latitude) {
+        //     valMsg.push('纬度不能为空');
+        // }
         if (!data.userNo) {
             valMsg.push('请输入手机号');
         }

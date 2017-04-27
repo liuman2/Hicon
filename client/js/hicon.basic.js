@@ -36,25 +36,28 @@ hicon.basic = (function () {
     };
 
     view.aftershow = function (e) {
-        var $select = $('#basic').find('select');
-        if ($select.length) {
-            var $province = $select.eq(0),
-                $city = $select.eq(1),
-                $county = $select.eq(2);
-
-            var provinceChangeCb = function() {
-                $city.add($county);
-            };
-
-            var cityChangeCb = function() {
-            };
-
-            var provinceText = viewModelBasic.basic().Province || '请选择省份',
-                cityText = viewModelBasic.basic().City || '请选择城市',
-                countyText = viewModelBasic.basic().Zone || '请选择县/区';
-
-            hicon.area.addressInit($province, $city, $county, provinceText, cityText, countyText, provinceChangeCb, cityChangeCb);
-        }
+        hicon.server.ajax({
+            url: 'AreaGetProvinces',
+            type: 'post',
+            success: function(data) {
+                var $province = $('#ddlProvince');
+                $province.append("<option value=''>请选择省份</option>");
+                for(var i=0; i<data.length; i++)
+                {
+                    var item = data[i];
+                    var selected='';
+                    if (viewModelBasic.basic().Province == item.Name) {
+                        selected = 'selected'
+                    }
+                    $province.append("<option " + selected + " value='"+ item.AreaID +"'>" + item.Name + "</option>");
+                    if (selected) {
+                        hicon.basic.events.provinceChange();
+                    }
+                }
+            },
+            error: function() {
+            }
+        });
     };
 
     view.data = {
@@ -87,6 +90,7 @@ hicon.basic = (function () {
             viewModelBasic.basic().Province = $('#ddlProvince').val();
             viewModelBasic.basic().City = $('#ddlCity').val();
             viewModelBasic.basic().Zone = $('#ddlCounty').val();
+            viewModelBasic.basic().AreaID = viewModelBasic.basic().Zone;
 
             viewModelBasic.basic().Longitude = $('#txtBscLongitude').val() || 0;
             viewModelBasic.basic().Latitude = $('#txtBscLatitude').val() || 0;
@@ -173,6 +177,72 @@ hicon.basic = (function () {
                     hicon.utils.noty(cfg);
                 }, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
             }
+        },
+        provinceChange: function() {
+            $("#ddlCity").empty();
+            $("#ddlCounty").empty();
+            $("#ddlCity").append("<option value=''>请选择城市</option>");
+            $("#ddlCounty").append("<option value=''>请选择县</option>");
+            var provinceId = $("#ddlProvince").val();
+            if (!provinceId) {
+                return;
+            }
+
+            hicon.server.ajax({
+                url: 'AreaGetCities',
+                type: 'post',
+                data: {
+                    AreaID: provinceId - 0
+                },
+                success: function(data) {
+                    var $select = $('#ddlCity');
+                    for(var i=0; i<data.length; i++)
+                    {
+                        var item = data[i];
+                        var selected='';
+                        if (viewModelBasic.basic().City == item.Name) {
+                            selected = 'selected'
+                        }
+                        $select.append("<option " + selected + " value='"+ item.AreaID +"'>" + item.Name + "</option>");
+                        if (selected) {
+                            hicon.basic.events.cityChange();
+                        }
+                    }
+                },
+                error: function() {
+                }
+            });
+        },
+        cityChange: function() {
+            $("#ddlCounty").empty();
+            $("#ddlCounty").append("<option value=''>请选择县</option>");
+            var cityId = $("#ddlCity").val();
+            if (!cityId) {
+                return;
+            }
+
+            hicon.server.ajax({
+                url: 'AreaGetCounties',
+                type: 'post',
+                data: {
+                    AreaID: cityId - 0
+                },
+                success: function(data) {
+                    console.log(JSON.stringify(data))
+                    var $select = $('#ddlCounty');
+                    for(var i=0; i<data.length; i++)
+                    {
+                        var item = data[i];
+                        var selected='';
+                        if (viewModelBasic.basic().Zone == item.Name) {
+                            selected = 'selected'
+                        }
+                        $select.append("<option " + selected + " value='"+ item.AreaID +"'>" + item.Name + "</option>");
+                    }
+                },
+                error: function() {
+                }
+            });
         }
     };
 
