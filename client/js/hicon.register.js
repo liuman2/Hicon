@@ -244,17 +244,8 @@ hicon.register = (function () {
         if (!data.city) {
             valMsg.push('请选择城市');
         }
-        if (!data.county) {
-            valMsg.push('请选择县/区');
-        }
         if (!data.address) {
             valMsg.push('渔场所在地址不能为空');
-        }
-        if (!data.Longitude) {
-            valMsg.push('经度不能为空');
-        }
-        if (!data.Latitude) {
-            valMsg.push('纬度不能为空');
         }
         if (!data.userNo) {
             valMsg.push('请输入手机号');

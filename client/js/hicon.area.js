@@ -490,7 +490,7 @@ var provinceList = [
         {name:'五指山市', areaList:[]},
         {name:'琼海市', areaList:[]},
         {name:'儋州市', areaList:[]},
-        {name:'文昌市', areaList:[]},
+        {name:'文昌市', areaList:['翁田镇']},
         {name:'万宁市', areaList:[]},
         {name:'东方市', areaList:[]},
         {name:'澄迈县', areaList:[]},
