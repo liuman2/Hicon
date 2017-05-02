@@ -295,16 +295,21 @@ div.actionButtonContainer > a > span {
   content: "\e100";
 }
 
-/* line 3, ../sass/view/_login.scss */
+/* line 2, ../sass/view/_login.scss */
+#login {
+  background-image: url(../content/img/lg.png);
+  background-size: cover;
+}
+/* line 5, ../sass/view/_login.scss */
 #login .action-buttons {
   text-align: center;
 }
-/* line 5, ../sass/view/_login.scss */
+/* line 7, ../sass/view/_login.scss */
 #login .action-buttons a {
   margin-top: 25px;
   width: 60%;
 }
-/* line 11, ../sass/view/_login.scss */
+/* line 12, ../sass/view/_login.scss */
 #login .rember {
   text-align: left;
   vertical-align: left;
@@ -318,46 +323,35 @@ div.actionButtonContainer > a > span {
   padding-left: 1.5em !important;
   margin-left: 0 !important;
 }
-/* line 27, ../sass/view/_login.scss */
+/* line 25, ../sass/view/_login.scss */
 #login .retrieve {
   margin: 15px;
   float: right;
 }
-/* line 30, ../sass/view/_login.scss */
+/* line 28, ../sass/view/_login.scss */
 #login .retrieve a {
   text-decoration: underline !important;
   color: #000;
 }
-
 /* line 37, ../sass/view/_login.scss */
-.banner {
-  background-image: url(../content/img/header_bg.gif);
-  border-bottom: 1px solid #dc7d35;
+#login .banner {
   padding: 10px 10px;
 }
-
-/* line 51, ../sass/view/_login.scss */
-.logo {
-  background: url(../content/img/banner.png) no-repeat;
-  width: 330px;
-  height: 45px;
-  float: left;
-  text-indent: -9999px;
-  overflow: hidden;
-  margin: 0 10px 0 0;
+/* line 40, ../sass/view/_login.scss */
+#login .logo {
+  background: url(../content/img/icon/logo.png) no-repeat;
+  width: 101px;
+  height: 101px;
+  margin: 0 auto;
+}
+/* line 46, ../sass/view/_login.scss */
+#login .btn-register {
+  border: none;
 }
 
-/* line 61, ../sass/view/_login.scss */
-.encryption {
-  width: 113px;
-  float: right;
-}
-
-/* line 65, ../sass/view/_login.scss */
-.banner:after {
-  content: "";
-  display: block;
-  clear: both;
+/* line 50, ../sass/view/_login.scss */
+.km-content {
+  background-color: transparent !important;
 }
 
 /* line 3, ../sass/view/_fishing.scss */

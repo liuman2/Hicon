@@ -1,16 +1,16 @@
 <div id="login" data-role="view" data-use-native-scrolling="true" data-transition="overlay:left" data-persist="true" data-show="hicon.login.show" data-model="modelViewLogin">
-  <header data-role="header">
-    <div data-role="navbar">
-      <!-- <a data-align="right" data-role="button" class="clearButton" data-click="hicon.login.events.doRegister">注册</a> -->
-      <span data-role="view-title">登录</span>
-    </div>
-  </header>
-  <!-- <div class="banner"></div> -->
+
   <div class="banner">
-    <strong class="logo"></strong>
-    <div class="encryption">
+    <div class="logo">
     </div>
   </div>
+  <div>
+    <a data-role="button" data-click="hicon.login.events.doRegister" class="btn-register" >
+      <span class="km-text">注册</span>
+    </a>
+  </div>
+
+
   <ul data-role="listview">
     <li>
       <label for="username" class="km-required km-label-left">手机号码
@@ -38,8 +38,6 @@
       <div class="rember">
         <input type="checkbox" class="km-checkbox" id="chkRember" data-bind="events: { change: rember }" />
         <label class="km-checkbox-label rember-label" for="chkRember">记住密码</label>
-        <!-- <input type="checkbox" class="km-checkbox" id="chkAutoLogin" data-bind="events: { change: autoLogin }" />
-                <label class="km-checkbox-label rember-label" for="chkAutoLogin">自动登录</label> -->
       </div>
     </li>
     <li>
