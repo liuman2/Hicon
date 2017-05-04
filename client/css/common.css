@@ -301,20 +301,115 @@ div.actionButtonContainer > a > span {
   background-size: cover;
 }
 /* line 5, ../sass/view/_login.scss */
+#login .km-content {
+  background-color: transparent !important;
+}
+/* line 8, ../sass/view/_login.scss */
+#login .reg-row {
+  text-align: right;
+  margin-bottom: 10px;
+}
+/* line 11, ../sass/view/_login.scss */
+#login .reg-row div {
+  width: 340px;
+  margin: 0 auto;
+}
+/* line 16, ../sass/view/_login.scss */
+#login .reg-row a {
+  background: transparent;
+  font-size: 32px;
+  color: #3285C0;
+  padding: 0;
+}
+/* line 24, ../sass/view/_login.scss */
+#login .member-row input[type=checkbox] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  margin: 0;
+  cursor: pointer;
+  vertical-align: middle;
+  border: none;
+  border: none\9;
+  position: relative;
+  text-align: center;
+}
+/* line 38, ../sass/view/_login.scss */
+#login .member-row input[type=checkbox]:checked::after {
+  content: url(../content/img/icon/icon_check_checked.png);
+}
+/* line 41, ../sass/view/_login.scss */
+#login .member-row input[type=checkbox]::after {
+  content: url(../content/img/icon/icon_check_empty.png);
+}
+/* line 44, ../sass/view/_login.scss */
+#login .member-row div {
+  width: 340px;
+  margin: 0 auto;
+  position: relative;
+}
+/* line 49, ../sass/view/_login.scss */
+#login .member-row .btn-forget {
+  position: absolute;
+  right: 0;
+  background: transparent;
+  font-size: 18px;
+  color: #3285C0;
+  padding: 0;
+  border: none;
+}
+/* line 58, ../sass/view/_login.scss */
+#login .member-row label {
+  font-size: 18px;
+  color: #3285C0;
+}
+/* line 63, ../sass/view/_login.scss */
+#login .mb10 {
+  margin-bottom: 10px !important;
+}
+/* line 66, ../sass/view/_login.scss */
+#login .input-row {
+  text-align: center;
+  margin-bottom: 15px;
+}
+/* line 70, ../sass/view/_login.scss */
+#login .input-row input,
+#login .input-row select {
+  width: 340px;
+  height: 45px;
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  -moz-box-shadow: 1px 3px 6px #ccc;
+  -webkit-box-shadow: 1px 3px 6px #ccc;
+  box-shadow: 1px 3px 6px #ccc;
+}
+/* line 81, ../sass/view/_login.scss */
+#login .input-row #btnLogin {
+  width: 340px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 0;
+  padding: 0px;
+  font-size: 20px;
+}
+/* line 90, ../sass/view/_login.scss */
 #login .action-buttons {
   text-align: center;
 }
-/* line 7, ../sass/view/_login.scss */
+/* line 92, ../sass/view/_login.scss */
 #login .action-buttons a {
   margin-top: 25px;
   width: 60%;
 }
-/* line 12, ../sass/view/_login.scss */
+/* line 97, ../sass/view/_login.scss */
 #login .rember {
   text-align: left;
   vertical-align: left;
 }
-/* line 16, ../sass/view/_login.scss */
+/* line 101, ../sass/view/_login.scss */
 #login .rember-label {
   display: inline !important;
   margin-right: 15px;
@@ -323,35 +418,31 @@ div.actionButtonContainer > a > span {
   padding-left: 1.5em !important;
   margin-left: 0 !important;
 }
-/* line 25, ../sass/view/_login.scss */
+/* line 110, ../sass/view/_login.scss */
 #login .retrieve {
   margin: 15px;
   float: right;
 }
-/* line 28, ../sass/view/_login.scss */
+/* line 113, ../sass/view/_login.scss */
 #login .retrieve a {
   text-decoration: underline !important;
   color: #000;
 }
-/* line 37, ../sass/view/_login.scss */
+/* line 118, ../sass/view/_login.scss */
 #login .banner {
   padding: 10px 10px;
+  margin-top: 15px;
 }
-/* line 40, ../sass/view/_login.scss */
+/* line 122, ../sass/view/_login.scss */
 #login .logo {
   background: url(../content/img/icon/logo.png) no-repeat;
   width: 101px;
   height: 101px;
   margin: 0 auto;
 }
-/* line 46, ../sass/view/_login.scss */
+/* line 128, ../sass/view/_login.scss */
 #login .btn-register {
   border: none;
-}
-
-/* line 50, ../sass/view/_login.scss */
-.km-content {
-  background-color: transparent !important;
 }
 
 /* line 3, ../sass/view/_fishing.scss */

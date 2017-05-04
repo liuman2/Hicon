@@ -1,21 +1,48 @@
 <div id="login" data-role="view" data-use-native-scrolling="true" data-transition="overlay:left" data-persist="true" data-show="hicon.login.show" data-model="modelViewLogin">
-
   <div class="banner">
     <div class="logo">
     </div>
   </div>
-  <div>
-    <a data-role="button" data-click="hicon.login.events.doRegister" class="btn-register" >
-      <span class="km-text">注册</span>
+  <div class="reg-row">
+    <div>
+      <a data-role="button" data-click="hicon.login.events.doRegister" class="btn-register">
+        <span class="km-text">注册</span>
+      </a>
+    </div>
+  </div>
+  <div class="input-row">
+    <div>
+      <input type="text" id="username" placeholder="手机号码" />
+    </div>
+  </div>
+  <div class="input-row">
+    <input type="password" id="password" placeholder="密码" />
+  </div>
+  <div class="input-row">
+    <select id="identity">
+      <option value="">选择登录身份</option>
+      <option value="0">海控在线</option>
+      <option value="1">增氧控制</option>
+      <option value="2">水泵控制</option>
+      <option value="3">投饵控制</option>
+      <option value="99">海控在手</option>
+    </select>
+  </div>
+  <div class="input-row mb10">
+    <a id="btnLogin" data-role="button" data-click="hicon.login.events.doLogin" class="km-bluebtn">
+      登录
     </a>
   </div>
-
-
-  <ul data-role="listview">
+  <div class="member-row">
+    <div>
+      <input type="checkbox" id="chkRember" data-bind="events: { change: rember }" />
+      <label for="chkRember">记住密码</label>
+      <a data-role="button" data-click="hicon.login.events.retrieve" class="btn-forget">忘记密码</a>
+    </div>
+  </div>
+  <!-- <ul data-role="listview">
     <li>
-      <label for="username" class="km-required km-label-left">手机号码
-        <input type="text" id="username" placeholder="手机号码" />
-      </label>
+      <input type="text" id="username" placeholder="手机号码" />
     </li>
     <li>
       <label for="password" class="km-required km-label-left">密码
@@ -50,9 +77,9 @@
         </a>
       </div>
     </li>
-  </ul>
-  <div class="retrieve">
+  </ul> -->
+  <!-- <div class="retrieve">
     <a data-role="button" class="clearButton" data-click="hicon.login.events.help">使用帮助</a>
     <a data-role="button" class="clearButton" data-click="hicon.login.events.retrieve">忘记密码?</a>
-  </div>
+  </div> -->
 </div>
