@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* line 3, ../sass/view/_hicon.scss */
+/* line 2, ../sass/view/_hicon.scss */
 body {
   font: 12px Arial, Helvetica, sans-serif !important;
   color: #666;
@@ -7,12 +7,13 @@ body {
 
 /* line 8, ../sass/view/_hicon.scss */
 .km-nova {
-  font: normal 12px '微软雅黑','Microsoft YaHei',NokiaPureTextLight,sans-serif !important;
+  font: normal 12px '微软雅黑', 'Microsoft YaHei', NokiaPureTextLight, sans-serif !important;
   /*font: normal 0.9em '微软雅黑','Microsoft YaHei',NokiaPureTextLight,sans-serif;*/
 }
 
-/* line 14, ../sass/view/_hicon.scss */
-.km-nova .km-checkbox:checked + .km-checkbox-label:after, .km-nova .km-radio:checked + .km-radio-label:after {
+/* line 13, ../sass/view/_hicon.scss */
+.km-nova .km-checkbox:checked + .km-checkbox-label:after,
+.km-nova .km-radio:checked + .km-radio-label:after {
   color: #3193d5 !important;
 }
 
@@ -37,28 +38,32 @@ body {
 }
 
 /* line 35, ../sass/view/_hicon.scss */
-.km-events:after, .km-events:before {
+.km-events:after,
+.km-events:before {
   content: "\e0c1";
 }
 
-/* line 39, ../sass/view/_hicon.scss */
-.km-barcode:after, .km-barcode:before {
+/* line 40, ../sass/view/_hicon.scss */
+.km-barcode:after,
+.km-barcode:before {
   content: "\e104";
 }
 
-/* line 43, ../sass/view/_hicon.scss */
+/* line 45, ../sass/view/_hicon.scss */
 .param-radio .km-nova .km-radio-label {
   line-height: 1.5em !important;
   padding-left: 1.3em !important;
 }
 
-/* line 48, ../sass/view/_hicon.scss */
-.param-radio .km-nova .km-checkbox-label, .km-nova .km-radio-label {
+/* line 50, ../sass/view/_hicon.scss */
+.param-radio .km-nova .km-checkbox-label,
+.km-nova .km-radio-label {
   font-size: 0.8em !important;
 }
 
-/* line 52, ../sass/view/_hicon.scss */
-.param-radio .km-nova .km-checkbox-label, .km-nova .km-radio-label {
+/* line 55, ../sass/view/_hicon.scss */
+.param-radio .km-nova .km-checkbox-label,
+.km-nova .km-radio-label {
   margin-left: 0 !important;
   padding-left: 1.25em !important;
 }
@@ -66,20 +71,20 @@ body {
 /* .param-radio .km-nova .km-radio-label:before {
     left: -8px !important;
 } */
-/* line 61, ../sass/view/_hicon.scss */
+/* line 66, ../sass/view/_hicon.scss */
 .km-nova .km-button.km-state-active {
   background: #1D71A9 !important;
   color: white;
 }
 
-/* line 65, ../sass/view/_hicon.scss */
+/* line 71, ../sass/view/_hicon.scss */
 .km-nova .km-bluebtn {
   color: #fff;
   background: #3193d5;
   border-color: #3193d5;
 }
 
-/* line 80, ../sass/view/_hicon.scss */
+/* line 85, ../sass/view/_hicon.scss */
 .km-nova .clearButton:active,
 .km-nova .tableButton:active,
 .km-nova .blueBtn:active,
@@ -90,7 +95,7 @@ body {
   color: #fff !important;
 }
 
-/* line 90, ../sass/view/_hicon.scss */
+/* line 95, ../sass/view/_hicon.scss */
 .km-nova .km-button.clearButton:active,
 .km-nova .km-button.clearButton.km-state-active,
 .km-nova .km-button.tableButton:active,
@@ -101,8 +106,9 @@ body {
   color: #fff !important;
 }
 
-/* line 100, ../sass/view/_hicon.scss */
-.clearButton, .toolBarButton {
+/* line 105, ../sass/view/_hicon.scss */
+.clearButton,
+.toolBarButton {
   background: transparent !important;
   border: none !important;
   -webkit-box-shadow: none !important;
@@ -112,7 +118,7 @@ body {
   cursor: pointer;
 }
 
-/* line 110, ../sass/view/_hicon.scss */
+/* line 116, ../sass/view/_hicon.scss */
 .tableButton {
   border: none !important;
   -webkit-box-shadow: none !important;
@@ -122,8 +128,10 @@ body {
   cursor: pointer;
 }
 
-/* line 119, ../sass/view/_hicon.scss */
-.km-navbar a.clearButton, .km-navbar a.toolBarButton, .km-navbar a.tableButton {
+/* line 125, ../sass/view/_hicon.scss */
+.km-navbar a.clearButton,
+.km-navbar a.toolBarButton,
+.km-navbar a.tableButton {
   padding-bottom: 0px;
   padding-left: .5em;
   padding-right: .5em;
@@ -133,37 +141,41 @@ body {
   line-height: 2.8em !important;
 }
 
-/* line 128, ../sass/view/_hicon.scss */
-.km-navbar a.clearButton .km-icon, .km-navbar a.tableButton .km-icon {
+/* line 137, ../sass/view/_hicon.scss */
+.km-navbar a.clearButton .km-icon,
+.km-navbar a.tableButton .km-icon {
   width: auto !important;
   min-width: 0;
   display: inline-block !important;
 }
 
-/* line 134, ../sass/view/_hicon.scss */
-.km-navbar a.toolBarButton, .km-footer .km-navbar .clearButton, .km-modalview .km-navbar .clearButton, .km-footer .km-navbar .tableButton {
+/* line 144, ../sass/view/_hicon.scss */
+.km-navbar a.toolBarButton,
+.km-footer .km-navbar .clearButton,
+.km-modalview .km-navbar .clearButton,
+.km-footer .km-navbar .tableButton {
   text-decoration: underline;
 }
 
-/* line 138, ../sass/view/_hicon.scss */
+/* line 152, ../sass/view/_hicon.scss */
 .km-navbar a[data-role=backbutton] {
   color: #fff !important;
 }
 
-/* line 143, ../sass/view/_hicon.scss */
+/* line 157, ../sass/view/_hicon.scss */
 .km-btn-gray {
   color: #fff !important;
   background: #888e90 !important;
   border-color: #888e90 !important;
 }
 
-/* line 149, ../sass/view/_hicon.scss */
+/* line 163, ../sass/view/_hicon.scss */
 .km-hicon-event:after,
 .km-hicon-event:before {
   content: "\e000";
 }
 
-/* line 155, ../sass/view/_hicon.scss */
+/* line 168, ../sass/view/_hicon.scss */
 div.actionButtonContainers {
   height: 100%;
   position: absolute;
@@ -171,7 +183,7 @@ div.actionButtonContainers {
   width: 4em;
 }
 
-/* line 162, ../sass/view/_hicon.scss */
+/* line 175, ../sass/view/_hicon.scss */
 div.actionButtonContainer > a {
   font-size: 1.8em;
   padding: 0px !important;
@@ -180,27 +192,29 @@ div.actionButtonContainer > a {
   line-height: 200% !important;
 }
 
-/* line 170, ../sass/view/_hicon.scss */
+/* line 183, ../sass/view/_hicon.scss */
 div.actionButtonContainer > a > span {
   background-image: none !important;
 }
 
-/* line 174, ../sass/view/_hicon.scss */
+/* line 187, ../sass/view/_hicon.scss */
 div.actionButtonContainer > a > span.km-trash {
   color: red;
 }
 
-/* line 178, ../sass/view/_hicon.scss */
-div.actionButtonContainer > a > span.km-compose, div.actionButtonContainer > a > span.km-edit, .button-select .km-compose {
+/* line 191, ../sass/view/_hicon.scss */
+div.actionButtonContainer > a > span.km-compose,
+div.actionButtonContainer > a > span.km-edit,
+.button-select .km-compose {
   color: #7b7b7b;
 }
 
-/* line 182, ../sass/view/_hicon.scss */
+/* line 197, ../sass/view/_hicon.scss */
 div.actionButtonContainer > a > span {
   width: 3em !important;
 }
 
-/* line 186, ../sass/view/_hicon.scss */
+/* line 201, ../sass/view/_hicon.scss */
 #popup_container {
   font-family: Arial, sans-serif;
   font-size: 12px;
@@ -216,7 +230,7 @@ div.actionButtonContainer > a > span {
   border-radius: 5px;
 }
 
-/* line 199, ../sass/view/_hicon.scss */
+/* line 216, ../sass/view/_hicon.scss */
 #popup_title {
   font-size: 14px;
   font-weight: bold;
@@ -230,48 +244,48 @@ div.actionButtonContainer > a > span {
   margin: 0em;
 }
 
-/* line 213, ../sass/view/_hicon.scss */
+/* line 229, ../sass/view/_hicon.scss */
 #popup_message {
   padding-left: 10px;
   padding-top: 10px;
 }
 
-/* line 218, ../sass/view/_hicon.scss */
+/* line 234, ../sass/view/_hicon.scss */
 #popup_panel {
   text-align: center;
   margin: 1em 0em 0em 1em;
 }
 
-/* line 223, ../sass/view/_hicon.scss */
+/* line 239, ../sass/view/_hicon.scss */
 #popup_prompt {
   margin: .5em 0em;
 }
 
-/* line 231, ../sass/view/_hicon.scss */
+/* line 246, ../sass/view/_hicon.scss */
 .form-input {
   margin-left: .7em !important;
   left: 0 !important;
 }
 
-/* line 236, ../sass/view/_hicon.scss */
+/* line 251, ../sass/view/_hicon.scss */
 .form-right-button {
   right: 0 !important;
   float: right !important;
   padding: .3em .7em !important;
 }
 
-/* line 242, ../sass/view/_hicon.scss */
+/* line 257, ../sass/view/_hicon.scss */
 .sm-li {
   padding: .2em .7em !important;
 }
 
-/* line 250, ../sass/view/_hicon.scss */
+/* line 265, ../sass/view/_hicon.scss */
 .hi-li-font {
   font: 12px Arial, Helvetica, sans-serif !important;
   font-weight: bold !important;
 }
 
-/* line 255, ../sass/view/_hicon.scss */
+/* line 270, ../sass/view/_hicon.scss */
 .alert-info {
   padding: 5px;
   border: 1px solid transparent;
@@ -280,19 +294,102 @@ div.actionButtonContainer > a > span {
   border-color: #d6e9c6;
 }
 
-/* line 265, ../sass/view/_hicon.scss */
-.km-check:before, .km-check:after {
+/* line 280, ../sass/view/_hicon.scss */
+.km-check:before,
+.km-check:after {
   content: "\e037";
 }
 
-/* line 270, ../sass/view/_hicon.scss */
-.km-curve:before, .km-curve:after {
+/* line 285, ../sass/view/_hicon.scss */
+.km-curve:before,
+.km-curve:after {
   content: "\e050";
 }
 
-/* line 274, ../sass/view/_hicon.scss */
-.km-unlock:before, .km-unlock:after {
+/* line 290, ../sass/view/_hicon.scss */
+.km-unlock:before,
+.km-unlock:after {
   content: "\e100";
+}
+
+/* new ui css */
+/* line 298, ../sass/view/_hicon.scss */
+.km-nova .km-navbar {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #328AC5), color-stop(1, #328AC5));
+}
+
+/* line 302, ../sass/view/_hicon.scss */
+.register-wrapper {
+  padding: 24px;
+}
+
+/* line 307, ../sass/view/_hicon.scss */
+#register .km-content {
+  background-color: #F0F7F7;
+}
+
+/* line 312, ../sass/view/_hicon.scss */
+.reg-phone {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+/* line 317, ../sass/view/_hicon.scss */
+.reg-phone input {
+  -webkit-box-flex: 1;
+  flex: 1;
+}
+
+/* line 323, ../sass/view/_hicon.scss */
+.input-row {
+  text-align: center;
+  margin-bottom: 15px;
+}
+/* line 326, ../sass/view/_hicon.scss */
+.input-row input,
+.input-row select {
+  width: 100%;
+  height: 45px;
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  -moz-box-shadow: 1px 3px 6px #ccc;
+  -webkit-box-shadow: 1px 3px 6px #ccc;
+  box-shadow: 1px 3px 6px #ccc;
+}
+/* line 337, ../sass/view/_hicon.scss */
+.input-row #btnLogin {
+  width: 340px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 0;
+  padding: 0px;
+  font-size: 20px;
+}
+/* line 345, ../sass/view/_hicon.scss */
+.input-row .send-code {
+  height: 45px;
+  line-height: 45px;
+  font-size: 14px;
+  vertical-align: middle;
+  border: 1px solid #3193d5;
+  background: #3193d5;
+  color: #fff;
+  padding: 0 5px;
+  border-radius: 0;
+}
+/* line 356, ../sass/view/_hicon.scss */
+.input-row .btn-hicon {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 0;
+  padding: 0px;
+  font-size: 20px;
+  background: #3193d5;
+  border-color: #3193d5;
+  color: #fff;
 }
 
 /* line 2, ../sass/view/_login.scss */
@@ -314,14 +411,14 @@ div.actionButtonContainer > a > span {
   width: 340px;
   margin: 0 auto;
 }
-/* line 16, ../sass/view/_login.scss */
+/* line 15, ../sass/view/_login.scss */
 #login .reg-row a {
   background: transparent;
   font-size: 32px;
   color: #3285C0;
   padding: 0;
 }
-/* line 24, ../sass/view/_login.scss */
+/* line 23, ../sass/view/_login.scss */
 #login .member-row input[type=checkbox] {
   -webkit-appearance: none;
   appearance: none;
@@ -336,21 +433,21 @@ div.actionButtonContainer > a > span {
   position: relative;
   text-align: center;
 }
-/* line 38, ../sass/view/_login.scss */
+/* line 37, ../sass/view/_login.scss */
 #login .member-row input[type=checkbox]:checked::after {
   content: url(../content/img/icon/icon_check_checked.png);
 }
-/* line 41, ../sass/view/_login.scss */
+/* line 40, ../sass/view/_login.scss */
 #login .member-row input[type=checkbox]::after {
   content: url(../content/img/icon/icon_check_empty.png);
 }
-/* line 44, ../sass/view/_login.scss */
+/* line 43, ../sass/view/_login.scss */
 #login .member-row div {
   width: 340px;
   margin: 0 auto;
   position: relative;
 }
-/* line 49, ../sass/view/_login.scss */
+/* line 48, ../sass/view/_login.scss */
 #login .member-row .btn-forget {
   position: absolute;
   right: 0;
@@ -360,56 +457,30 @@ div.actionButtonContainer > a > span {
   padding: 0;
   border: none;
 }
-/* line 58, ../sass/view/_login.scss */
+/* line 57, ../sass/view/_login.scss */
 #login .member-row label {
   font-size: 18px;
   color: #3285C0;
 }
-/* line 63, ../sass/view/_login.scss */
+/* line 62, ../sass/view/_login.scss */
 #login .mb10 {
   margin-bottom: 10px !important;
 }
-/* line 66, ../sass/view/_login.scss */
-#login .input-row {
-  text-align: center;
-  margin-bottom: 15px;
-}
-/* line 70, ../sass/view/_login.scss */
-#login .input-row input,
-#login .input-row select {
-  width: 340px;
-  height: 45px;
-  font-size: 20px;
-  padding: 10px;
-  border: none;
-  -moz-box-shadow: 1px 3px 6px #ccc;
-  -webkit-box-shadow: 1px 3px 6px #ccc;
-  box-shadow: 1px 3px 6px #ccc;
-}
-/* line 81, ../sass/view/_login.scss */
-#login .input-row #btnLogin {
-  width: 340px;
-  height: 45px;
-  line-height: 45px;
-  border-radius: 0;
-  padding: 0px;
-  font-size: 20px;
-}
-/* line 90, ../sass/view/_login.scss */
+/* line 65, ../sass/view/_login.scss */
 #login .action-buttons {
   text-align: center;
 }
-/* line 92, ../sass/view/_login.scss */
+/* line 67, ../sass/view/_login.scss */
 #login .action-buttons a {
   margin-top: 25px;
   width: 60%;
 }
-/* line 97, ../sass/view/_login.scss */
+/* line 72, ../sass/view/_login.scss */
 #login .rember {
   text-align: left;
   vertical-align: left;
 }
-/* line 101, ../sass/view/_login.scss */
+/* line 76, ../sass/view/_login.scss */
 #login .rember-label {
   display: inline !important;
   margin-right: 15px;
@@ -418,31 +489,36 @@ div.actionButtonContainer > a > span {
   padding-left: 1.5em !important;
   margin-left: 0 !important;
 }
-/* line 110, ../sass/view/_login.scss */
+/* line 85, ../sass/view/_login.scss */
 #login .retrieve {
   margin: 15px;
   float: right;
 }
-/* line 113, ../sass/view/_login.scss */
+/* line 88, ../sass/view/_login.scss */
 #login .retrieve a {
   text-decoration: underline !important;
   color: #000;
 }
-/* line 118, ../sass/view/_login.scss */
+/* line 93, ../sass/view/_login.scss */
 #login .banner {
   padding: 10px 10px;
   margin-top: 15px;
 }
-/* line 122, ../sass/view/_login.scss */
+/* line 97, ../sass/view/_login.scss */
 #login .logo {
   background: url(../content/img/icon/logo.png) no-repeat;
   width: 101px;
   height: 101px;
   margin: 0 auto;
 }
-/* line 128, ../sass/view/_login.scss */
+/* line 103, ../sass/view/_login.scss */
 #login .btn-register {
   border: none;
+}
+/* line 107, ../sass/view/_login.scss */
+#login .input-row input,
+#login .input-row select {
+  width: 340px;
 }
 
 /* line 3, ../sass/view/_fishing.scss */

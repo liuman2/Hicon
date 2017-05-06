@@ -39,6 +39,9 @@ hicon.basic = (function () {
         hicon.server.ajax({
             url: 'AreaGetProvinces',
             type: 'post',
+            data: {
+                UserID: 0
+            },
             success: function(data) {
                 var $province = $('#ddlProvince');
                 $province.append("<option value=''>请选择省份</option>");
@@ -192,7 +195,8 @@ hicon.basic = (function () {
                 url: 'AreaGetCities',
                 type: 'post',
                 data: {
-                    AreaID: provinceId - 0
+                    AreaID: provinceId - 0,
+                    UserID: 0
                 },
                 success: function(data) {
                     var $select = $('#ddlCity');
@@ -225,7 +229,8 @@ hicon.basic = (function () {
                 url: 'AreaGetCounties',
                 type: 'post',
                 data: {
-                    AreaID: cityId - 0
+                    AreaID: cityId - 0,
+                    UserID: 0
                 },
                 success: function(data) {
                     console.log(JSON.stringify(data))

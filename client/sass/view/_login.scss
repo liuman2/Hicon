@@ -12,7 +12,6 @@
       width: 340px;
       margin: 0 auto;
     }
-
     a {
       background: transparent;
       font-size: 32px;
@@ -44,7 +43,7 @@
     div {
       width: 340px;
       margin: 0 auto;
-      position:relative;
+      position: relative;
     }
     .btn-forget {
       position: absolute;
@@ -62,30 +61,6 @@
   }
   .mb10 {
     margin-bottom: 10px!important;
-  }
-  .input-row {
-    text-align: center;
-    margin-bottom: 15px;
-
-    input,
-    select {
-      width: 340px;
-      height: 45px;
-      font-size: 20px;
-      padding: 10px;
-      border: none;
-      -moz-box-shadow: 1px 3px 6px #ccc;
-      -webkit-box-shadow: 1px 3px 6px #ccc;
-      box-shadow: 1px 3px 6px #ccc;
-    }
-    #btnLogin {
-      width: 340px;
-      height: 45px;
-      line-height: 45px;
-      border-radius: 0;
-      padding: 0px;
-      font-size: 20px;
-    }
   }
   .action-buttons {
     text-align: center;
@@ -127,5 +102,11 @@
   }
   .btn-register {
     border: none;
+  }
+  .input-row {
+    input,
+    select {
+      width: 340px;
+    }
   }
 }

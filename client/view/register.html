@@ -1,105 +1,178 @@
 <div id="register" data-role="view" data-use-native-scrolling="true" data-init="hicon.register.init" data-show="hicon.register.show" data-after-show="hicon.register.aftershow" data-transition="overlay:left" data-persist="true">
-    <header data-role="header">
-        <div data-role="navbar">
-            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.register.events.doBack">返回</a>
-            <!-- <a data-align="right" data-role="button" class="clearButton" data-click="hicon.register.events.doRegister">完成</a> -->
-            <span data-role="view-title">用户注册</span>
-        </div>
-    </header>
+  <header data-role="header">
+    <div data-role="navbar">
+      <a data-align="left" data-role="button" class="clearButton" data-click="hicon.register.events.doBack">返回</a>
+      <span data-role="view-title">用户注册</span>
+    </div>
+  </header>
+  <div class="register-wrapper">
+    <div class="input-row">
+      <div class="reg-phone">
+        <input type="tel" id="userNO" name="userNO" placeholder="手机号码" />
+        <a class="send-code" data-role="button" data-click="hicon.register.events.doGetValidateCode">获取验证码</a>
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <input type="text" id="token" name="token" placeholder="验证码" />
+      </div>
+    </div>
 
-    <ul data-role="listview">
-        <li>
-            <label>
-                渔场名称:
-                <input type="text"  id="fisheryName" name="fisheryName" placeholder="渔场名称" />
-            </label>
-        </li>
-        <li>
-            <label>
-                负责人:
-                <input type="text" id="fisheryOwner" name="fisheryOwner" placeholder="负责人" />
-            </label>
-        </li>
-        <li>
-             <label>
-                省份:
-               <select type="text"  id="regProvince" name="regProvince" data-ko="event: { change: hicon.register.events.provinceChange }">
-                </select>
-            </label>
-        </li>
-        <li>
-            <label>
-                城市:
-                <select type="text"  id="regCity"  name="regCity" data-ko="event: { change: hicon.register.events.cityChange }">
-                </select>
-            </label>
-        </li>
-        <li>
-            <label>
-                县/区:
-                <select type="text"  id="regCounty" name="regCounty" ></select>
-            </label>
-        </li>
-        <li>
-             <label>
-                渔场所在地址:
-                <input type="text"  id="regAddress" name="regAddress" placeholder="渔场所在地址" />
-            </label>
-        </li>
-        <li>
-            <span>
+    <div class="input-row">
+      <div>
+        <input type="password" id="regPassword" name="regPassword" placeholder="输入密码" />
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <input type="password" id="confirmRegPassword" name="confirmRegPassword" placeholder="确认密码" />
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <input type="text" id="fisheryName" name="fisheryName" placeholder="渔场名称" />
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <input type="text" id="fisheryOwner" name="fisheryOwner" placeholder="负责人" />
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <select type="text" id="regProvince" name="regProvince" data-ko="event: { change: hicon.register.events.provinceChange }">
+        </select>
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <select type="text" id="regCity" name="regCity" data-ko="event: { change: hicon.register.events.cityChange }">
+        </select>
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <select type="text" id="regCounty" name="regCounty"></select>
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <input type="text" id="regAddress" name="regAddress" placeholder="渔场所在地址" />
+      </div>
+    </div>
+
+    <div class="input-row">
+      <div>
+        <a data-role="button" data-click="hicon.register.events.getCurrentPosition" class="btn-hicon">
+          <span class="km-text">获取当前经纬度</span>
+        </a>
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <input type="text" id="regLongitude" name="regLongitude" placeholder="经度" />
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <input type="text" id="regLatitude" name="regLatitude" placeholder="纬度" />
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <a data-role="button" data-click="hicon.register.events.doRegister" class="btn-hicon">
+          <span class="km-text">完成</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- <ul data-role="listview">
+    <li>
+      <label>
+        渔场名称:
+        <input type="text" id="fisheryName" name="fisheryName" placeholder="渔场名称" />
+      </label>
+    </li>
+    <li>
+      <label>
+        负责人:
+        <input type="text" id="fisheryOwner" name="fisheryOwner" placeholder="负责人" />
+      </label>
+    </li>
+    <li>
+      <label>
+        省份:
+        <select type="text" id="regProvince" name="regProvince" data-ko="event: { change: hicon.register.events.provinceChange }">
+        </select>
+      </label>
+    </li>
+    <li>
+      <label>
+        城市:
+        <select type="text" id="regCity" name="regCity" data-ko="event: { change: hicon.register.events.cityChange }">
+        </select>
+      </label>
+    </li>
+    <li>
+      <label>
+        县/区:
+        <select type="text" id="regCounty" name="regCounty"></select>
+      </label>
+    </li>
+    <li>
+      <label>
+        渔场所在地址:
+        <input type="text" id="regAddress" name="regAddress" placeholder="渔场所在地址" />
+      </label>
+    </li>
+    <li>
+      <span>
                 <a data-role="button" data-click="hicon.register.events.getCurrentPosition" class="km-default km-justified km-widget km-button km-bluebtn">
                     <span class="km-text">获取当前经纬度</span>
-                </a>
-            </span>
-        </li>
-        <li>
-            <label>
-                经度:
-                <input type="text" id="regLongitude" name="regLongitude" placeholder="经度" />
-            </label>
-        </li>
-        <li>
-            <label>
-                纬度:
-                <input type="text"  id="regLatitude" name="regLatitude" placeholder="纬度" />
-            </label>
-        </li>
-        <!-- <li>
-            <label>
-                海拔:
-                <input type="text"  id="regAltitude" name="regAltitude" placeholder="海拔"   />
-            </label>
-        </li> -->
-        <li style="padding: .2em .7em !important;">
-            <input type="tel" class="form-input" id="userNO" name="userNO" placeholder="手机号码" />
-            <a class="form-right-button km-bluebtn" data-role="button" data-click="hicon.register.events.doGetValidateCode">获取验证码</a>
-        </li>
-        <li>
-            <label>
-                验证码:
-                <input type="text" id="token" name="token" placeholder="验证码" />
-            </label>
-        </li>
-        <li>
-            <label>
-                设定密码:
-                <input type="password" id="regPassword" name="regPassword" placeholder="输入密码" />
-            </label>
-        </li>
-        <li>
-            <label>
-                确认密码:
-                <input type="password"  id="confirmRegPassword" name="confirmRegPassword" placeholder="确认密码" />
-            </label>
-        </li>
-        <li>
-            <span>
+      </a>
+      </span>
+    </li>
+    <li>
+      <label>
+        经度:
+        <input type="text" id="regLongitude" name="regLongitude" placeholder="经度" />
+      </label>
+    </li>
+    <li>
+      <label>
+        纬度:
+        <input type="text" id="regLatitude" name="regLatitude" placeholder="纬度" />
+      </label>
+    </li>
+    <li style="padding: .2em .7em !important;">
+      <input type="tel" class="form-input" id="userNO" name="userNO" placeholder="手机号码" />
+      <a class="form-right-button km-bluebtn" data-role="button" data-click="hicon.register.events.doGetValidateCode">获取验证码</a>
+    </li>
+    <li>
+      <label>
+        验证码:
+        <input type="text" id="token" name="token" placeholder="验证码" />
+      </label>
+    </li>
+    <li>
+      <label>
+        设定密码:
+        <input type="password" id="regPassword" name="regPassword" placeholder="输入密码" />
+      </label>
+    </li>
+    <li>
+      <label>
+        确认密码:
+        <input type="password" id="confirmRegPassword" name="confirmRegPassword" placeholder="确认密码" />
+      </label>
+    </li>
+    <li>
+      <span>
                 <a data-role="button" data-click="hicon.register.events.doRegister" class="km-default km-justified km-widget km-button km-bluebtn">
                     <span class="km-text">完成</span>
-                </a>
-            </span>
-        </li>
-
-    </ul>
+      </a>
+      </span>
+    </li>
+  </ul> -->
 </div>

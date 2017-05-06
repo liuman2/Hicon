@@ -47,6 +47,9 @@ hicon.register = (function () {
         hicon.server.ajax({
             url: 'AreaGetProvinces',
             type: 'post',
+            data: {
+                UserID: 0
+            },
             success: function(data) {
                 var $select = $('#register').find('select');
                 var $province = $select.eq(0);
@@ -236,7 +239,8 @@ hicon.register = (function () {
                 url: 'AreaGetCities',
                 type: 'post',
                 data: {
-                    AreaID: provinceId - 0
+                    AreaID: provinceId - 0,
+                    UserID: 0
                 },
                 success: function(data) {
                     var $select = $('#regCity');
@@ -262,7 +266,8 @@ hicon.register = (function () {
                 url: 'AreaGetCounties',
                 type: 'post',
                 data: {
-                    AreaID: cityId - 0
+                    AreaID: cityId - 0,
+                    UserID: 0
                 },
                 success: function(data) {
                     var $select = $('#regCounty');
