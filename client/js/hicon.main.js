@@ -212,6 +212,7 @@ hicon.main = (function() {
           }
         },
         error: function() {
+          console.log('eee')
           App.hideLoading();
         }
       });

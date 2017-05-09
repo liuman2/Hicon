@@ -63,11 +63,10 @@ body {
     left: -8px !important;
 } */
 
-.km-nova .km-button.km-state-active {
-  background: #1D71A9 !important;
-  color: white;
-}
-
+// .km-nova .km-button.km-state-active {
+//   background: #1D71A9 !important;
+//   color: white;
+// }
 .km-nova .km-bluebtn {
   color: #fff;
   background: #3193d5;
@@ -306,6 +305,66 @@ div.actionButtonContainer > a > span {
 #register {
   .km-content {
     background-color: #F0F7F7;
+  }
+}
+
+#main {
+  .km-content {
+    background-color: #F0F7F7;
+  }
+  .button-group {
+    margin: 0 3px;
+  }
+  .km-header {
+    background: #C9CACA;
+  }
+  #tabButtonGroup {
+    .km-button {
+      border-width: 0;
+      height: 70px;
+      // width: 21%;
+      border-radius: 0;
+      background: #C9CACA;
+      color: #fff;
+      // font-size: 15px;
+      border-bottom: 1px solid #EAEDF0;
+      border-right: 1px solid #585455;
+      &:last-child {
+        border-right: none;
+      }
+    }
+    .km-state-active {
+      color: #1D71A9;
+      background: #F0F4F7;
+    }
+  }
+  .fisher {
+    height: 100px;
+    background: #fff;
+    padding: 15px 20px;
+    .fisher-name {
+      color: #DB6803;
+    }
+    .fisher-address {
+      color: #358ac6;
+    }
+    .fisher-line {
+      color: #9fa0a0;
+    }
+    .edit {
+      background: url(../content/img/icon/icon_edit.png) -0px -0px no-repeat;
+      height: 26px;
+      width: 26px;
+      overflow: hidden;
+      border: none;
+      top: 22px;
+    }
+  }
+  .fishery_img {
+    background: url(../content/img/icon/icon_address.png) -0px -0px no-repeat;
+    height: 67px;
+    width: 50px;
+    overflow: hidden;
   }
 }
 

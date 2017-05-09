@@ -8,13 +8,7 @@
             <span data-role="view-title" data-ko="text: (tabIndex() == 0 ? '鱼池列表' : currentPond().Name)"></span>
         </div>
 
-        <div class="banner">
-            <strong class="logo"></strong>
-            <div class="encryption">
-            </div>
-        </div>
-
-        <ul id="tabButtonGroup" data-role="buttongroup" data-index="0" data-select="hicon.main.events.selectButton">
+        <ul id="tabButtonGroup" class="button-group" data-role="buttongroup" data-index="0" data-select="hicon.main.events.selectButton">
             <li>
                 鱼池列表
             </li>
@@ -34,24 +28,27 @@
     </header>
 
     <!-- 鱼池列表 -->
-    <div id="pondList" data-role="listview" data-view="view" style="display:none;margin-bottom:20px;">
-      <ul data-role="listview" data-click="hicon.main.events.pondItemClick" style="margin-top: 10px;">
-          <li class="sm-li hi-li-font">
+    <div id="pondList" data-role="listview" data-view="view" style="display:none;margin-top:20px;">
+      <ul data-role="listview" data-click="hicon.main.events.pondItemClick" style="margin-top: 30px;">
+          <li class="fisher">
               <div style="float: left;" class="fishery_img"></div>
               <div class="f-desc">
                   <div>
-                      <span class="f-name n-cl" data-ko="text: '场址：' + $data.fishery().Zone"></span>
+                      <span class="fisher-name" data-ko="text: $data.fishery().Name"></span>
                   </div>
                   <div>
-                      <span class="f-zs">设备总数:0</span>
+                      <span class="fisher-address" data-ko="text: '场址：' + $data.fishery().Zone"></span>
                   </div>
                   <div>
-                      <span class="f-zx">设备在线:0</span>
+                      <span class="fisher-line">设备总数:0</span>
+                  </div>
+                  <div>
+                      <span class="fisher-line">设备在线:0</span>
                   </div>
               </div>
               <div class="actionButtonContainers">
                   <div data-command-key="edit" class="actionButtonContainer">
-                      <a data-role="button" class="clearButton" data-icon="compose" data-command-key="modify"></a>
+                      <a data-role="button" class="edit" data-command-key="modify"></a>
                   </div>
               </div>
           </li>

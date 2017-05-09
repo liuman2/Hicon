@@ -141,7 +141,7 @@ hicon.register = (function () {
                     },
                     Fs: {
                         FisheryID: 0,
-                        AreaID: 0,
+                        AreaID: data.county || data.city,
                         Province: data.province,
                         City: data.city,
                         Zone: data.county,
@@ -150,8 +150,8 @@ hicon.register = (function () {
                         Head: data.fisheryOwner,
                         PondTotal: 0,
                         TotalAcreage: 0,
-                        Longitude: data.Longitude,
-                        Latitude: data.Latitude
+                        Longitude: data.Longitude || 0,
+                        Latitude: data.Latitude || 0
                     }
                 },
                 success: function(data) {

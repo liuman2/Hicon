@@ -71,20 +71,14 @@ body {
 /* .param-radio .km-nova .km-radio-label:before {
     left: -8px !important;
 } */
-/* line 66, ../sass/view/_hicon.scss */
-.km-nova .km-button.km-state-active {
-  background: #1D71A9 !important;
-  color: white;
-}
-
-/* line 71, ../sass/view/_hicon.scss */
+/* line 70, ../sass/view/_hicon.scss */
 .km-nova .km-bluebtn {
   color: #fff;
   background: #3193d5;
   border-color: #3193d5;
 }
 
-/* line 85, ../sass/view/_hicon.scss */
+/* line 84, ../sass/view/_hicon.scss */
 .km-nova .clearButton:active,
 .km-nova .tableButton:active,
 .km-nova .blueBtn:active,
@@ -95,7 +89,7 @@ body {
   color: #fff !important;
 }
 
-/* line 95, ../sass/view/_hicon.scss */
+/* line 94, ../sass/view/_hicon.scss */
 .km-nova .km-button.clearButton:active,
 .km-nova .km-button.clearButton.km-state-active,
 .km-nova .km-button.tableButton:active,
@@ -106,7 +100,7 @@ body {
   color: #fff !important;
 }
 
-/* line 105, ../sass/view/_hicon.scss */
+/* line 104, ../sass/view/_hicon.scss */
 .clearButton,
 .toolBarButton {
   background: transparent !important;
@@ -118,7 +112,7 @@ body {
   cursor: pointer;
 }
 
-/* line 116, ../sass/view/_hicon.scss */
+/* line 115, ../sass/view/_hicon.scss */
 .tableButton {
   border: none !important;
   -webkit-box-shadow: none !important;
@@ -128,7 +122,7 @@ body {
   cursor: pointer;
 }
 
-/* line 125, ../sass/view/_hicon.scss */
+/* line 124, ../sass/view/_hicon.scss */
 .km-navbar a.clearButton,
 .km-navbar a.toolBarButton,
 .km-navbar a.tableButton {
@@ -141,7 +135,7 @@ body {
   line-height: 2.8em !important;
 }
 
-/* line 137, ../sass/view/_hicon.scss */
+/* line 136, ../sass/view/_hicon.scss */
 .km-navbar a.clearButton .km-icon,
 .km-navbar a.tableButton .km-icon {
   width: auto !important;
@@ -149,7 +143,7 @@ body {
   display: inline-block !important;
 }
 
-/* line 144, ../sass/view/_hicon.scss */
+/* line 143, ../sass/view/_hicon.scss */
 .km-navbar a.toolBarButton,
 .km-footer .km-navbar .clearButton,
 .km-modalview .km-navbar .clearButton,
@@ -157,25 +151,25 @@ body {
   text-decoration: underline;
 }
 
-/* line 152, ../sass/view/_hicon.scss */
+/* line 151, ../sass/view/_hicon.scss */
 .km-navbar a[data-role=backbutton] {
   color: #fff !important;
 }
 
-/* line 157, ../sass/view/_hicon.scss */
+/* line 156, ../sass/view/_hicon.scss */
 .km-btn-gray {
   color: #fff !important;
   background: #888e90 !important;
   border-color: #888e90 !important;
 }
 
-/* line 163, ../sass/view/_hicon.scss */
+/* line 162, ../sass/view/_hicon.scss */
 .km-hicon-event:after,
 .km-hicon-event:before {
   content: "\e000";
 }
 
-/* line 168, ../sass/view/_hicon.scss */
+/* line 167, ../sass/view/_hicon.scss */
 div.actionButtonContainers {
   height: 100%;
   position: absolute;
@@ -183,7 +177,7 @@ div.actionButtonContainers {
   width: 4em;
 }
 
-/* line 175, ../sass/view/_hicon.scss */
+/* line 174, ../sass/view/_hicon.scss */
 div.actionButtonContainer > a {
   font-size: 1.8em;
   padding: 0px !important;
@@ -192,29 +186,29 @@ div.actionButtonContainer > a {
   line-height: 200% !important;
 }
 
-/* line 183, ../sass/view/_hicon.scss */
+/* line 182, ../sass/view/_hicon.scss */
 div.actionButtonContainer > a > span {
   background-image: none !important;
 }
 
-/* line 187, ../sass/view/_hicon.scss */
+/* line 186, ../sass/view/_hicon.scss */
 div.actionButtonContainer > a > span.km-trash {
   color: red;
 }
 
-/* line 191, ../sass/view/_hicon.scss */
+/* line 190, ../sass/view/_hicon.scss */
 div.actionButtonContainer > a > span.km-compose,
 div.actionButtonContainer > a > span.km-edit,
 .button-select .km-compose {
   color: #7b7b7b;
 }
 
-/* line 197, ../sass/view/_hicon.scss */
+/* line 196, ../sass/view/_hicon.scss */
 div.actionButtonContainer > a > span {
   width: 3em !important;
 }
 
-/* line 201, ../sass/view/_hicon.scss */
+/* line 200, ../sass/view/_hicon.scss */
 #popup_container {
   font-family: Arial, sans-serif;
   font-size: 12px;
@@ -230,7 +224,7 @@ div.actionButtonContainer > a > span {
   border-radius: 5px;
 }
 
-/* line 216, ../sass/view/_hicon.scss */
+/* line 215, ../sass/view/_hicon.scss */
 #popup_title {
   font-size: 14px;
   font-weight: bold;
@@ -244,48 +238,48 @@ div.actionButtonContainer > a > span {
   margin: 0em;
 }
 
-/* line 229, ../sass/view/_hicon.scss */
+/* line 228, ../sass/view/_hicon.scss */
 #popup_message {
   padding-left: 10px;
   padding-top: 10px;
 }
 
-/* line 234, ../sass/view/_hicon.scss */
+/* line 233, ../sass/view/_hicon.scss */
 #popup_panel {
   text-align: center;
   margin: 1em 0em 0em 1em;
 }
 
-/* line 239, ../sass/view/_hicon.scss */
+/* line 238, ../sass/view/_hicon.scss */
 #popup_prompt {
   margin: .5em 0em;
 }
 
-/* line 246, ../sass/view/_hicon.scss */
+/* line 245, ../sass/view/_hicon.scss */
 .form-input {
   margin-left: .7em !important;
   left: 0 !important;
 }
 
-/* line 251, ../sass/view/_hicon.scss */
+/* line 250, ../sass/view/_hicon.scss */
 .form-right-button {
   right: 0 !important;
   float: right !important;
   padding: .3em .7em !important;
 }
 
-/* line 257, ../sass/view/_hicon.scss */
+/* line 256, ../sass/view/_hicon.scss */
 .sm-li {
   padding: .2em .7em !important;
 }
 
-/* line 265, ../sass/view/_hicon.scss */
+/* line 264, ../sass/view/_hicon.scss */
 .hi-li-font {
   font: 12px Arial, Helvetica, sans-serif !important;
   font-weight: bold !important;
 }
 
-/* line 270, ../sass/view/_hicon.scss */
+/* line 269, ../sass/view/_hicon.scss */
 .alert-info {
   padding: 5px;
   border: 1px solid transparent;
@@ -294,59 +288,125 @@ div.actionButtonContainer > a > span {
   border-color: #d6e9c6;
 }
 
-/* line 280, ../sass/view/_hicon.scss */
+/* line 279, ../sass/view/_hicon.scss */
 .km-check:before,
 .km-check:after {
   content: "\e037";
 }
 
-/* line 285, ../sass/view/_hicon.scss */
+/* line 284, ../sass/view/_hicon.scss */
 .km-curve:before,
 .km-curve:after {
   content: "\e050";
 }
 
-/* line 290, ../sass/view/_hicon.scss */
+/* line 289, ../sass/view/_hicon.scss */
 .km-unlock:before,
 .km-unlock:after {
   content: "\e100";
 }
 
 /* new ui css */
-/* line 298, ../sass/view/_hicon.scss */
+/* line 297, ../sass/view/_hicon.scss */
 .km-nova .km-navbar {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #328AC5), color-stop(1, #328AC5));
 }
 
-/* line 302, ../sass/view/_hicon.scss */
+/* line 301, ../sass/view/_hicon.scss */
 .register-wrapper {
   padding: 24px;
 }
 
-/* line 307, ../sass/view/_hicon.scss */
+/* line 306, ../sass/view/_hicon.scss */
 #register .km-content {
   background-color: #F0F7F7;
 }
 
 /* line 312, ../sass/view/_hicon.scss */
+#main .km-content {
+  background-color: #F0F7F7;
+}
+/* line 315, ../sass/view/_hicon.scss */
+#main .button-group {
+  margin: 0 3px;
+}
+/* line 318, ../sass/view/_hicon.scss */
+#main .km-header {
+  background: #C9CACA;
+}
+/* line 322, ../sass/view/_hicon.scss */
+#main #tabButtonGroup .km-button {
+  border-width: 0;
+  height: 70px;
+  border-radius: 0;
+  background: #C9CACA;
+  color: #fff;
+  border-bottom: 1px solid #EAEDF0;
+  border-right: 1px solid #585455;
+}
+/* line 332, ../sass/view/_hicon.scss */
+#main #tabButtonGroup .km-button:last-child {
+  border-right: none;
+}
+/* line 336, ../sass/view/_hicon.scss */
+#main #tabButtonGroup .km-state-active {
+  color: #1D71A9;
+  background: #F0F4F7;
+}
+/* line 341, ../sass/view/_hicon.scss */
+#main .fisher {
+  height: 100px;
+  background: #fff;
+  padding: 15px 20px;
+}
+/* line 345, ../sass/view/_hicon.scss */
+#main .fisher .fisher-name {
+  color: #DB6803;
+}
+/* line 348, ../sass/view/_hicon.scss */
+#main .fisher .fisher-address {
+  color: #358ac6;
+}
+/* line 351, ../sass/view/_hicon.scss */
+#main .fisher .fisher-line {
+  color: #9fa0a0;
+}
+/* line 354, ../sass/view/_hicon.scss */
+#main .fisher .edit {
+  background: url(../content/img/icon/icon_edit.png) 0px 0px no-repeat;
+  height: 26px;
+  width: 26px;
+  overflow: hidden;
+  border: none;
+  top: 22px;
+}
+/* line 363, ../sass/view/_hicon.scss */
+#main .fishery_img {
+  background: url(../content/img/icon/icon_address.png) 0px 0px no-repeat;
+  height: 67px;
+  width: 50px;
+  overflow: hidden;
+}
+
+/* line 371, ../sass/view/_hicon.scss */
 .reg-phone {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
   align-items: center;
 }
-/* line 317, ../sass/view/_hicon.scss */
+/* line 376, ../sass/view/_hicon.scss */
 .reg-phone input {
   -webkit-box-flex: 1;
   flex: 1;
 }
 
-/* line 323, ../sass/view/_hicon.scss */
+/* line 382, ../sass/view/_hicon.scss */
 .input-row {
   text-align: center;
   margin-bottom: 15px;
 }
-/* line 326, ../sass/view/_hicon.scss */
+/* line 385, ../sass/view/_hicon.scss */
 .input-row input,
 .input-row select {
   width: 100%;
@@ -358,7 +418,7 @@ div.actionButtonContainer > a > span {
   -webkit-box-shadow: 1px 3px 6px #ccc;
   box-shadow: 1px 3px 6px #ccc;
 }
-/* line 337, ../sass/view/_hicon.scss */
+/* line 396, ../sass/view/_hicon.scss */
 .input-row #btnLogin {
   width: 340px;
   height: 45px;
@@ -367,7 +427,7 @@ div.actionButtonContainer > a > span {
   padding: 0px;
   font-size: 20px;
 }
-/* line 345, ../sass/view/_hicon.scss */
+/* line 404, ../sass/view/_hicon.scss */
 .input-row .send-code {
   height: 45px;
   line-height: 45px;
@@ -379,7 +439,7 @@ div.actionButtonContainer > a > span {
   padding: 0 5px;
   border-radius: 0;
 }
-/* line 356, ../sass/view/_hicon.scss */
+/* line 415, ../sass/view/_hicon.scss */
 .input-row .btn-hicon {
   width: 100%;
   height: 45px;
@@ -957,21 +1017,13 @@ div.actionButtonContainer > a > span {
   background: url(../content/img/zy.png) no-repeat;
 }
 
-/* line 116, ../sass/view/_paramImgs.scss */
-.fishery_img {
-  background: url(../content/img/fishery.gif) 0px 0px no-repeat;
-  height: 80px;
-  width: 80px;
-  overflow: hidden;
-}
-
-/* line 122, ../sass/view/_paramImgs.scss */
+/* line 117, ../sass/view/_paramImgs.scss */
 .img-box {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 126, ../sass/view/_paramImgs.scss */
+/* line 121, ../sass/view/_paramImgs.scss */
 .logo_img {
   text-align: center;
   background: url(../content/img/logo.png) 0px 0px no-repeat;
@@ -980,7 +1032,7 @@ div.actionButtonContainer > a > span {
   overflow: hidden;
 }
 
-/* line 134, ../sass/view/_paramImgs.scss */
+/* line 129, ../sass/view/_paramImgs.scss */
 .pool_img {
   background: url(../content/img/fish-pool.gif) 0px 0px no-repeat;
   height: 80px;
@@ -988,7 +1040,7 @@ div.actionButtonContainer > a > span {
   overflow: hidden;
 }
 
-/* line 141, ../sass/view/_paramImgs.scss */
+/* line 136, ../sass/view/_paramImgs.scss */
 .warn_green_img {
   background: url(../content/img/green.gif) 0px 0px no-repeat;
   height: 16px;
@@ -996,7 +1048,7 @@ div.actionButtonContainer > a > span {
   overflow: hidden;
 }
 
-/* line 147, ../sass/view/_paramImgs.scss */
+/* line 142, ../sass/view/_paramImgs.scss */
 .warn_red_img {
   background: url(../content/img/red.gif) 0px 0px no-repeat;
   height: 16px;
@@ -1005,7 +1057,7 @@ div.actionButtonContainer > a > span {
   margin-right: 8px;
 }
 
-/* line 155, ../sass/view/_paramImgs.scss */
+/* line 150, ../sass/view/_paramImgs.scss */
 .warn_gray_img {
   background: url(../content/img/gray.gif) 0px 0px no-repeat;
   height: 16px;
