@@ -171,13 +171,13 @@ hicon.main = (function() {
                 });
 
               if (dtu_0_onlines.length || dtu_0_offlines.length) {
-                d.DTU_0_Desc = '增氧遥控器: <span class="' + (dtu_0_onlines.length ? "limegreen" : "red") + '">' + dtu_0_onlines.length + '</span>台在线, <span class="' + (dtu_0_offlines.length ? "red" : "limegreen") + '">' + dtu_0_offlines.length + '</span>台离线';
+                d.DTU_0_Desc = '增氧遥控器： <span class="' + (dtu_0_onlines.length ? "limegreen" : "red") + '">' + dtu_0_onlines.length + '</span>台在线, <span class="' + (dtu_0_offlines.length ? "red" : "limegreen") + '">' + dtu_0_offlines.length + '</span>台离线';
               }
               if (dtu_1_onlines.length || dtu_1_offlines.length) {
-                d.DTU_1_Desc = '水泵遥控器: <span class="' + (dtu_1_onlines.length ? "limegreen" : "red") + '">' + dtu_1_onlines.length + '</span>台在线, <span class="' + (dtu_1_offlines.length ? "red" : "limegreen") + '">' + dtu_1_offlines.length + '</span>台离线';
+                d.DTU_1_Desc = '水泵遥控器： <span class="' + (dtu_1_onlines.length ? "limegreen" : "red") + '">' + dtu_1_onlines.length + '</span>台在线, <span class="' + (dtu_1_offlines.length ? "red" : "limegreen") + '">' + dtu_1_offlines.length + '</span>台离线';
               };
               if (dtu_2_onlines.length || dtu_2_offlines.length) {
-                d.DTU_2_Desc = '投饵遥控器: <span class="' + (dtu_2_onlines.length ? "limegreen" : "red") + '">' + dtu_2_onlines.length + '</span>台在线, <span class="' + (dtu_2_offlines.length ? "red" : "limegreen") + '">' + dtu_2_offlines.length + '</span>台离线';
+                d.DTU_2_Desc = '投饵遥控器： <span class="' + (dtu_2_onlines.length ? "limegreen" : "red") + '">' + dtu_2_onlines.length + '</span>台在线, <span class="' + (dtu_2_offlines.length ? "red" : "limegreen") + '">' + dtu_2_offlines.length + '</span>台离线';
               };
 
             } else {
@@ -191,8 +191,8 @@ hicon.main = (function() {
 
           viewModelMain.pondList(data);
 
-          $('.f-zx').text('设备在线:' + onlineTotal);
-          $('.f-zs').text('设备总数:' + data.length);
+          $('#onlineNum').text('设备在线: ' + onlineTotal);
+          $('#deviceNum').text('设备总数: ' + data.length);
 
           var index = hicon.sessionStorage.item('CURRENT_INDEX_POND') || 0;
 
@@ -212,7 +212,6 @@ hicon.main = (function() {
           }
         },
         error: function() {
-          console.log('eee')
           App.hideLoading();
         }
       });

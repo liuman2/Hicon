@@ -261,11 +261,6 @@ div.actionButtonContainer > a > span {
   // color: #3193d5 !important;
 }
 
-.hi-li-font {
-  font: 12px Arial, Helvetica, sans-serif !important;
-  font-weight: bold !important;
-}
-
 .alert-info {
   padding: 5px;
   // margin-bottom: 10px;
@@ -342,6 +337,7 @@ div.actionButtonContainer > a > span {
     height: 100px;
     background: #fff;
     padding: 15px 20px;
+    border: none;
     .fisher-name {
       color: #DB6803;
     }
@@ -365,6 +361,112 @@ div.actionButtonContainer > a > span {
     height: 67px;
     width: 50px;
     overflow: hidden;
+  }
+  .pond-list {
+    margin: 40px 20px;
+    .hi-li-font {
+      border-style: none;
+      background: #fff;
+      margin-bottom: 10px;
+      -moz-box-shadow: 1px 3px 6px #ccc;
+      -webkit-box-shadow: 1px 3px 6px #ccc;
+      box-shadow: 1px 3px 6px #ccc;
+      span {
+        color: #9fa0a0;
+      }
+    }
+    .pool_img {
+      background: url(../content/img/icon/icon_pond.png) -0px -0px no-repeat;
+      height: 80px;
+      width: 80px;
+      overflow: hidden;
+    }
+  }
+  .btn-hicon {
+    height: 45px;
+    line-height: 45px;
+    border-radius: 0;
+    padding: 0px;
+    font-size: 20px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    color: #fff;
+    background: #3193d5;
+    border-color: #3193d5;
+    text-align: center;
+  }
+  .param-list {
+    margin: 10px;
+    li {
+      border-style: none;
+    }
+    .param-item {
+      border: 1px solid #DCDBDB;
+      border-radius: 4px;
+      background: #fff;
+      padding: 10px;
+    }
+    .param-img {
+      float: left;
+      margin-right: 50px;
+      &.o2 {
+        background: url(../content/img/icon/o2.png) 0px 45px no-repeat;
+        height: 140px;
+        width: 90px;
+        overflow: hidden;
+      }
+    }
+    .param-content {
+      float: left;
+    }
+    .param-line {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+    }
+    .param-line-name {
+      width: 80px;
+      font-size: 28px;
+      color: #727171;
+      line-height: 73px;
+    }
+    .param-default-value {
+      color: #727171;
+      font-size: 12px;
+      text-align: right;
+    }
+    .param-real-value {
+      color: #358ac6;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .warning-icon {
+      &.green {
+        background: url(../content/img/icon/icon_warning_green.png) 0px 0px no-repeat;
+        height: 34px;
+        width: 34px;
+        overflow: hidden;
+        display: inline-block;
+        background-size: cover;
+      }
+    }
+    .param-num {}
+    .param-real-date {
+      color: #727171;
+      font-size: 12px;
+      text-align: right;
+    }
+    .param-line-value {
+      -webkit-box-flex: 1;
+      flex: 1;
+    }
+    .param-btns {
+      text-align: center;
+      a {
+        margin: 0 30px;
+      }
+    }
   }
 }
 

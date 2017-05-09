@@ -274,12 +274,6 @@ div.actionButtonContainer > a > span {
 }
 
 /* line 264, ../sass/view/_hicon.scss */
-.hi-li-font {
-  font: 12px Arial, Helvetica, sans-serif !important;
-  font-weight: bold !important;
-}
-
-/* line 269, ../sass/view/_hicon.scss */
 .alert-info {
   padding: 5px;
   border: 1px solid transparent;
@@ -288,53 +282,53 @@ div.actionButtonContainer > a > span {
   border-color: #d6e9c6;
 }
 
-/* line 279, ../sass/view/_hicon.scss */
+/* line 274, ../sass/view/_hicon.scss */
 .km-check:before,
 .km-check:after {
   content: "\e037";
 }
 
-/* line 284, ../sass/view/_hicon.scss */
+/* line 279, ../sass/view/_hicon.scss */
 .km-curve:before,
 .km-curve:after {
   content: "\e050";
 }
 
-/* line 289, ../sass/view/_hicon.scss */
+/* line 284, ../sass/view/_hicon.scss */
 .km-unlock:before,
 .km-unlock:after {
   content: "\e100";
 }
 
 /* new ui css */
-/* line 297, ../sass/view/_hicon.scss */
+/* line 292, ../sass/view/_hicon.scss */
 .km-nova .km-navbar {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #328AC5), color-stop(1, #328AC5));
 }
 
-/* line 301, ../sass/view/_hicon.scss */
+/* line 296, ../sass/view/_hicon.scss */
 .register-wrapper {
   padding: 24px;
 }
 
-/* line 306, ../sass/view/_hicon.scss */
+/* line 301, ../sass/view/_hicon.scss */
 #register .km-content {
   background-color: #F0F7F7;
 }
 
-/* line 312, ../sass/view/_hicon.scss */
+/* line 307, ../sass/view/_hicon.scss */
 #main .km-content {
   background-color: #F0F7F7;
 }
-/* line 315, ../sass/view/_hicon.scss */
+/* line 310, ../sass/view/_hicon.scss */
 #main .button-group {
   margin: 0 3px;
 }
-/* line 318, ../sass/view/_hicon.scss */
+/* line 313, ../sass/view/_hicon.scss */
 #main .km-header {
   background: #C9CACA;
 }
-/* line 322, ../sass/view/_hicon.scss */
+/* line 317, ../sass/view/_hicon.scss */
 #main #tabButtonGroup .km-button {
   border-width: 0;
   height: 70px;
@@ -344,34 +338,35 @@ div.actionButtonContainer > a > span {
   border-bottom: 1px solid #EAEDF0;
   border-right: 1px solid #585455;
 }
-/* line 332, ../sass/view/_hicon.scss */
+/* line 327, ../sass/view/_hicon.scss */
 #main #tabButtonGroup .km-button:last-child {
   border-right: none;
 }
-/* line 336, ../sass/view/_hicon.scss */
+/* line 331, ../sass/view/_hicon.scss */
 #main #tabButtonGroup .km-state-active {
   color: #1D71A9;
   background: #F0F4F7;
 }
-/* line 341, ../sass/view/_hicon.scss */
+/* line 336, ../sass/view/_hicon.scss */
 #main .fisher {
   height: 100px;
   background: #fff;
   padding: 15px 20px;
+  border: none;
 }
-/* line 345, ../sass/view/_hicon.scss */
+/* line 341, ../sass/view/_hicon.scss */
 #main .fisher .fisher-name {
   color: #DB6803;
 }
-/* line 348, ../sass/view/_hicon.scss */
+/* line 344, ../sass/view/_hicon.scss */
 #main .fisher .fisher-address {
   color: #358ac6;
 }
-/* line 351, ../sass/view/_hicon.scss */
+/* line 347, ../sass/view/_hicon.scss */
 #main .fisher .fisher-line {
   color: #9fa0a0;
 }
-/* line 354, ../sass/view/_hicon.scss */
+/* line 350, ../sass/view/_hicon.scss */
 #main .fisher .edit {
   background: url(../content/img/icon/icon_edit.png) 0px 0px no-repeat;
   height: 26px;
@@ -380,33 +375,156 @@ div.actionButtonContainer > a > span {
   border: none;
   top: 22px;
 }
-/* line 363, ../sass/view/_hicon.scss */
+/* line 359, ../sass/view/_hicon.scss */
 #main .fishery_img {
   background: url(../content/img/icon/icon_address.png) 0px 0px no-repeat;
   height: 67px;
   width: 50px;
   overflow: hidden;
 }
+/* line 365, ../sass/view/_hicon.scss */
+#main .pond-list {
+  margin: 40px 20px;
+}
+/* line 367, ../sass/view/_hicon.scss */
+#main .pond-list .hi-li-font {
+  border-style: none;
+  background: #fff;
+  margin-bottom: 10px;
+  -moz-box-shadow: 1px 3px 6px #ccc;
+  -webkit-box-shadow: 1px 3px 6px #ccc;
+  box-shadow: 1px 3px 6px #ccc;
+}
+/* line 374, ../sass/view/_hicon.scss */
+#main .pond-list .hi-li-font span {
+  color: #9fa0a0;
+}
+/* line 378, ../sass/view/_hicon.scss */
+#main .pond-list .pool_img {
+  background: url(../content/img/icon/icon_pond.png) 0px 0px no-repeat;
+  height: 80px;
+  width: 80px;
+  overflow: hidden;
+}
+/* line 385, ../sass/view/_hicon.scss */
+#main .btn-hicon {
+  height: 45px;
+  line-height: 45px;
+  border-radius: 0;
+  padding: 0px;
+  font-size: 20px;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  color: #fff;
+  background: #3193d5;
+  border-color: #3193d5;
+  text-align: center;
+}
+/* line 399, ../sass/view/_hicon.scss */
+#main .param-list {
+  margin: 10px;
+}
+/* line 401, ../sass/view/_hicon.scss */
+#main .param-list li {
+  border-style: none;
+}
+/* line 404, ../sass/view/_hicon.scss */
+#main .param-list .param-item {
+  border: 1px solid #DCDBDB;
+  border-radius: 4px;
+  background: #fff;
+  padding: 10px;
+}
+/* line 410, ../sass/view/_hicon.scss */
+#main .param-list .param-img {
+  float: left;
+  margin-right: 50px;
+}
+/* line 413, ../sass/view/_hicon.scss */
+#main .param-list .param-img.o2 {
+  background: url(../content/img/icon/o2.png) 0px 45px no-repeat;
+  height: 140px;
+  width: 90px;
+  overflow: hidden;
+}
+/* line 420, ../sass/view/_hicon.scss */
+#main .param-list .param-content {
+  float: left;
+}
+/* line 423, ../sass/view/_hicon.scss */
+#main .param-list .param-line {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+}
+/* line 428, ../sass/view/_hicon.scss */
+#main .param-list .param-line-name {
+  width: 80px;
+  font-size: 28px;
+  color: #727171;
+  line-height: 73px;
+}
+/* line 434, ../sass/view/_hicon.scss */
+#main .param-list .param-default-value {
+  color: #727171;
+  font-size: 12px;
+  text-align: right;
+}
+/* line 439, ../sass/view/_hicon.scss */
+#main .param-list .param-real-value {
+  color: #358ac6;
+  font-size: 28px;
+  font-weight: bold;
+}
+/* line 445, ../sass/view/_hicon.scss */
+#main .param-list .warning-icon.green {
+  background: url(../content/img/icon/icon_warning_green.png) 0px 0px no-repeat;
+  height: 34px;
+  width: 34px;
+  overflow: hidden;
+  display: inline-block;
+  background-size: cover;
+}
+/* line 455, ../sass/view/_hicon.scss */
+#main .param-list .param-real-date {
+  color: #727171;
+  font-size: 12px;
+  text-align: right;
+}
+/* line 460, ../sass/view/_hicon.scss */
+#main .param-list .param-line-value {
+  -webkit-box-flex: 1;
+  flex: 1;
+}
+/* line 464, ../sass/view/_hicon.scss */
+#main .param-list .param-btns {
+  text-align: center;
+}
+/* line 466, ../sass/view/_hicon.scss */
+#main .param-list .param-btns a {
+  margin: 0 30px;
+}
 
-/* line 371, ../sass/view/_hicon.scss */
+/* line 473, ../sass/view/_hicon.scss */
 .reg-phone {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
   align-items: center;
 }
-/* line 376, ../sass/view/_hicon.scss */
+/* line 478, ../sass/view/_hicon.scss */
 .reg-phone input {
   -webkit-box-flex: 1;
   flex: 1;
 }
 
-/* line 382, ../sass/view/_hicon.scss */
+/* line 484, ../sass/view/_hicon.scss */
 .input-row {
   text-align: center;
   margin-bottom: 15px;
 }
-/* line 385, ../sass/view/_hicon.scss */
+/* line 487, ../sass/view/_hicon.scss */
 .input-row input,
 .input-row select {
   width: 100%;
@@ -418,7 +536,7 @@ div.actionButtonContainer > a > span {
   -webkit-box-shadow: 1px 3px 6px #ccc;
   box-shadow: 1px 3px 6px #ccc;
 }
-/* line 396, ../sass/view/_hicon.scss */
+/* line 498, ../sass/view/_hicon.scss */
 .input-row #btnLogin {
   width: 340px;
   height: 45px;
@@ -427,7 +545,7 @@ div.actionButtonContainer > a > span {
   padding: 0px;
   font-size: 20px;
 }
-/* line 404, ../sass/view/_hicon.scss */
+/* line 506, ../sass/view/_hicon.scss */
 .input-row .send-code {
   height: 45px;
   line-height: 45px;
@@ -439,7 +557,7 @@ div.actionButtonContainer > a > span {
   padding: 0 5px;
   border-radius: 0;
 }
-/* line 415, ../sass/view/_hicon.scss */
+/* line 517, ../sass/view/_hicon.scss */
 .input-row .btn-hicon {
   width: 100%;
   height: 45px;
@@ -627,7 +745,7 @@ div.actionButtonContainer > a > span {
 
 /* line 43, ../sass/view/_fishing.scss */
 .red {
-  color: red;
+  color: red !important;
 }
 
 /* line 46, ../sass/view/_fishing.scss */
@@ -741,16 +859,6 @@ div.actionButtonContainer > a > span {
 /* line 131, ../sass/view/_fishing.scss */
 .f20 {
   font-size: 20px;
-}
-
-/* line 137, ../sass/view/_fishing.scss */
-#ul-pond-w-params li, #ul-pond-d-params li {
-  border: none;
-}
-
-/* line 142, ../sass/view/_fishing.scss */
-#ul-pond-w-params li, #ul-pond-d-params li {
-  padding: 0 !important;
 }
 
 /* line 146, ../sass/view/_fishing.scss */
@@ -1032,15 +1140,7 @@ div.actionButtonContainer > a > span {
   overflow: hidden;
 }
 
-/* line 129, ../sass/view/_paramImgs.scss */
-.pool_img {
-  background: url(../content/img/fish-pool.gif) 0px 0px no-repeat;
-  height: 80px;
-  width: 80px;
-  overflow: hidden;
-}
-
-/* line 136, ../sass/view/_paramImgs.scss */
+/* line 131, ../sass/view/_paramImgs.scss */
 .warn_green_img {
   background: url(../content/img/green.gif) 0px 0px no-repeat;
   height: 16px;
@@ -1048,7 +1148,7 @@ div.actionButtonContainer > a > span {
   overflow: hidden;
 }
 
-/* line 142, ../sass/view/_paramImgs.scss */
+/* line 137, ../sass/view/_paramImgs.scss */
 .warn_red_img {
   background: url(../content/img/red.gif) 0px 0px no-repeat;
   height: 16px;
@@ -1057,7 +1157,7 @@ div.actionButtonContainer > a > span {
   margin-right: 8px;
 }
 
-/* line 150, ../sass/view/_paramImgs.scss */
+/* line 145, ../sass/view/_paramImgs.scss */
 .warn_gray_img {
   background: url(../content/img/gray.gif) 0px 0px no-repeat;
   height: 16px;

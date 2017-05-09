@@ -41,7 +41,7 @@
 }
 
 .red {
-    color: red;
+    color: red !important;
 }
 .limegreen {
     color: limegreen !important;
@@ -133,15 +133,15 @@
 }
 
 
-#ul-pond-w-params, #ul-pond-d-params {
-    li {
-        border: none;
-    }
-}
+// #ul-pond-w-params, #ul-pond-d-params {
+//     li {
+//         border: none;
+//     }
+// }
 
-#ul-pond-w-params li, #ul-pond-d-params li {
-    padding: 0 !important;
-}
+// #ul-pond-w-params li, #ul-pond-d-params li {
+//     padding: 0 !important;
+// }
 
 .attri-container {
     padding-top: 1px;
