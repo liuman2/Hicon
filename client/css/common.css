@@ -433,51 +433,73 @@ div.actionButtonContainer > a > span {
 #main .param-list .param-item {
   border: 1px solid #DCDBDB;
   border-radius: 4px;
-  background: #fff;
+  background: #efefef;
   padding: 10px;
+  margin-bottom: 10px;
 }
-/* line 410, ../sass/view/_hicon.scss */
+/* line 411, ../sass/view/_hicon.scss */
 #main .param-list .param-img {
   float: left;
   margin-right: 50px;
 }
-/* line 413, ../sass/view/_hicon.scss */
-#main .param-list .param-img.o2 {
+/* line 414, ../sass/view/_hicon.scss */
+#main .param-list .param-img.param_do {
   background: url(../content/img/icon/o2.png) 0px 45px no-repeat;
   height: 140px;
   width: 90px;
   overflow: hidden;
 }
 /* line 420, ../sass/view/_hicon.scss */
+#main .param-list .param-img.param_wt {
+  background: url(../content/img/icon/sw.png) 0px 45px no-repeat;
+  height: 140px;
+  width: 90px;
+  overflow: hidden;
+}
+/* line 426, ../sass/view/_hicon.scss */
+#main .param-list .param-img.param_ph {
+  background: url(../content/img/icon/ph.png) 0px 45px no-repeat;
+  height: 140px;
+  width: 90px;
+  overflow: hidden;
+}
+/* line 432, ../sass/view/_hicon.scss */
+#main .param-list .param-img.param_sat {
+  background: url(../content/img/icon/bh.png) 0px 45px no-repeat;
+  height: 140px;
+  width: 90px;
+  overflow: hidden;
+}
+/* line 439, ../sass/view/_hicon.scss */
 #main .param-list .param-content {
   float: left;
 }
-/* line 423, ../sass/view/_hicon.scss */
+/* line 442, ../sass/view/_hicon.scss */
 #main .param-list .param-line {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
 }
-/* line 428, ../sass/view/_hicon.scss */
+/* line 447, ../sass/view/_hicon.scss */
 #main .param-list .param-line-name {
   width: 80px;
   font-size: 28px;
   color: #727171;
   line-height: 73px;
 }
-/* line 434, ../sass/view/_hicon.scss */
+/* line 453, ../sass/view/_hicon.scss */
 #main .param-list .param-default-value {
   color: #727171;
   font-size: 12px;
   text-align: right;
 }
-/* line 439, ../sass/view/_hicon.scss */
+/* line 458, ../sass/view/_hicon.scss */
 #main .param-list .param-real-value {
   color: #358ac6;
   font-size: 28px;
   font-weight: bold;
 }
-/* line 445, ../sass/view/_hicon.scss */
+/* line 464, ../sass/view/_hicon.scss */
 #main .param-list .warning-icon.green {
   background: url(../content/img/icon/icon_warning_green.png) 0px 0px no-repeat;
   height: 34px;
@@ -486,45 +508,54 @@ div.actionButtonContainer > a > span {
   display: inline-block;
   background-size: cover;
 }
-/* line 455, ../sass/view/_hicon.scss */
+/* line 472, ../sass/view/_hicon.scss */
+#main .param-list .warning-icon.red {
+  background: url(../content/img/icon/icon_warning_red.png) 0px 0px no-repeat;
+  height: 34px;
+  width: 34px;
+  overflow: hidden;
+  display: inline-block;
+  background-size: cover;
+}
+/* line 482, ../sass/view/_hicon.scss */
 #main .param-list .param-real-date {
   color: #727171;
   font-size: 12px;
   text-align: right;
 }
-/* line 460, ../sass/view/_hicon.scss */
+/* line 487, ../sass/view/_hicon.scss */
 #main .param-list .param-line-value {
   -webkit-box-flex: 1;
   flex: 1;
 }
-/* line 464, ../sass/view/_hicon.scss */
+/* line 491, ../sass/view/_hicon.scss */
 #main .param-list .param-btns {
   text-align: center;
 }
-/* line 466, ../sass/view/_hicon.scss */
+/* line 493, ../sass/view/_hicon.scss */
 #main .param-list .param-btns a {
   margin: 0 30px;
 }
 
-/* line 473, ../sass/view/_hicon.scss */
+/* line 500, ../sass/view/_hicon.scss */
 .reg-phone {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
   align-items: center;
 }
-/* line 478, ../sass/view/_hicon.scss */
+/* line 505, ../sass/view/_hicon.scss */
 .reg-phone input {
   -webkit-box-flex: 1;
   flex: 1;
 }
 
-/* line 484, ../sass/view/_hicon.scss */
+/* line 511, ../sass/view/_hicon.scss */
 .input-row {
   text-align: center;
   margin-bottom: 15px;
 }
-/* line 487, ../sass/view/_hicon.scss */
+/* line 514, ../sass/view/_hicon.scss */
 .input-row input,
 .input-row select {
   width: 100%;
@@ -536,7 +567,7 @@ div.actionButtonContainer > a > span {
   -webkit-box-shadow: 1px 3px 6px #ccc;
   box-shadow: 1px 3px 6px #ccc;
 }
-/* line 498, ../sass/view/_hicon.scss */
+/* line 525, ../sass/view/_hicon.scss */
 .input-row #btnLogin {
   width: 340px;
   height: 45px;
@@ -545,7 +576,7 @@ div.actionButtonContainer > a > span {
   padding: 0px;
   font-size: 20px;
 }
-/* line 506, ../sass/view/_hicon.scss */
+/* line 533, ../sass/view/_hicon.scss */
 .input-row .send-code {
   height: 45px;
   line-height: 45px;
@@ -557,7 +588,7 @@ div.actionButtonContainer > a > span {
   padding: 0 5px;
   border-radius: 0;
 }
-/* line 517, ../sass/view/_hicon.scss */
+/* line 544, ../sass/view/_hicon.scss */
 .input-row .btn-hicon {
   width: 100%;
   height: 45px;

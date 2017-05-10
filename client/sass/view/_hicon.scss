@@ -404,14 +404,33 @@ div.actionButtonContainer > a > span {
     .param-item {
       border: 1px solid #DCDBDB;
       border-radius: 4px;
-      background: #fff;
+      background: #efefef;
       padding: 10px;
+      margin-bottom: 10px;
     }
     .param-img {
       float: left;
       margin-right: 50px;
-      &.o2 {
+      &.param_do {
         background: url(../content/img/icon/o2.png) 0px 45px no-repeat;
+        height: 140px;
+        width: 90px;
+        overflow: hidden;
+      }
+      &.param_wt {
+        background: url(../content/img/icon/sw.png) 0px 45px no-repeat;
+        height: 140px;
+        width: 90px;
+        overflow: hidden;
+      }
+      &.param_ph {
+        background: url(../content/img/icon/ph.png) 0px 45px no-repeat;
+        height: 140px;
+        width: 90px;
+        overflow: hidden;
+      }
+      &.param_sat {
+        background: url(../content/img/icon/bh.png) 0px 45px no-repeat;
         height: 140px;
         width: 90px;
         overflow: hidden;
@@ -444,6 +463,14 @@ div.actionButtonContainer > a > span {
     .warning-icon {
       &.green {
         background: url(../content/img/icon/icon_warning_green.png) 0px 0px no-repeat;
+        height: 34px;
+        width: 34px;
+        overflow: hidden;
+        display: inline-block;
+        background-size: cover;
+      }
+      &.red {
+        background: url(../content/img/icon/icon_warning_red.png) 0px 0px no-repeat;
         height: 34px;
         width: 34px;
         overflow: hidden;

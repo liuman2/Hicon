@@ -112,166 +112,31 @@
   <div id="waterPara" data-role="listview" data-view="view" style="display:none;margin-bottom:20px;">
     <ul  class="param-list" data-role="listview" id="ul-pond-w-params" data-ko="foreach: $data.waterList()" data-click="hicon.main.events.waterItemClick">
 
-      <li class="param-item">
-        <div class="param-img o2">
+      <li class="param-item"  data-ko="attr: {'data-ai': $data.AiParam}">
+        <div class="param-img" data-ko="css: $data.clsName">
         </div>
         <div class="param-content">
-          <div class="param-default-value">
-            参考值:4-12mg/L
+          <div class="param-default-value" data-ko="text: '参考值: '+$data.RefValue + $data.Unit">
+            <!-- 参考值:4-12mg/L -->
           </div>
+
+          <!-- ko foreach: {data: $data.items, as: 'item'} -->
           <div class="param-line">
-            <div class="param-line-name">上层</div>
+            <div class="param-line-name" data-ko="text: $index()==0 ? '上层' : '下层'"></div>
             <div class="param-line-value">
               <div class="param-real-value">
-                <span class="warning-icon green"></span>
-                <span class="param-num">90.10</span>
+                <span class="warning-icon" data-ko="css: item.Warn == 0 ? 'green' : 'red'"></span>
+                <span class="param-num" data-ko="text: item.AiValue"></span>
               </div>
-              <div class="param-real-date">
-                2015/12/24 6:49:00
+              <div class="param-real-date" data-ko="text: item.Stamp">
               </div>
             </div>
           </div>
-          <div class="param-line">
-            <div class="param-line-name">上层</div>
-            <div class="param-line-value">
-              <div class="param-real-value">
-                <span class="warning-icon green"></span>
-                <span class="param-num">90.10</span>
-              </div>
-              <div class="param-real-date">
-                2015/12/24 6:49:00
-              </div>
-            </div>
-          </div>
+          <!-- /ko -->
         </div>
         <div class="param-btns">
           <a data-role="button" data-icon="search" class="tableButton km-bluebtn" data-command-key="line-chart">曲线查看</a>
           <a data-role="button" data-icon="search" class="tableButton km-bluebtn" data-command-key="line-chart">曲线查看</a>
-        </div>
-      </li>
-
-      <li>
-        <div class="attri-container">
-          <table class="attr-table" data-ko="attr: {'data-ai': $data.AiParam}">
-            <tr class="bute-row">
-              <td class="attr-header" colspan="2" style="border:none;"><span data-ko="text: $data.AiParam"></span></td>
-              <td class="attr-header" colspan="1" style="border:none;"></td>
-            </tr>
-            <tr class="param-row">
-              <th rowspan="2" class="th-img">
-                <div data-ko="css: $data.clsName"></div>
-              </th>
-              <td style="width: 50px;">&nbsp;</td>
-              <td></td>
-            </tr>
-            <tr class="param-row">
-              <td>&nbsp;</td>
-              <td>
-                <span>
-                  <a data-role="button" data-icon="search" class="tableButton km-bluebtn" data-command-key="line-chart">曲线查看</a>
-                </span>
-              </td>
-            </tr>
-            <!-- ko if: $data.items.length == 2-->
-            <tr class="param-row">
-              <th class="attr-bute-name" rowspan="2">报警级别:</th>
-              <td class="attr-pos-name">上层</td>
-              <td class="attr-pos-value" data-role="ai-warm" data-ko="attr: {'data-aisn': $data.items[0].AiSN}"></td>
-            </tr>
-            <tr class="param-row">
-              <td class="attr-pos-name">下层</td>
-              <td class="attr-pos-value" data-role="ai-warm" data-ko="attr: {'data-aisn': $data.items[1].AiSN}"></td>
-            </tr>
-            <tr class="param-row">
-              <th class="attr-bute-name" rowspan="2">最新报值:</th>
-              <td class="attr-pos-value" data-role="ai-value" data-level="0" style="width: 75px;" data-ko="attr: {'data-aisn': $data.items[0].AiSN}"></td>
-              <td class="attr-pos-value" rowspan="2"><span data-ko="text: '参考值: '+$data.RefValue + $data.Unit"></span></td>
-            </tr>
-            <tr class="param-row">
-              <td class="attr-pos-value" data-role="ai-value" data-level="1" data-ko="attr: {'data-aisn': $data.items[1].AiSN}"></td>
-            </tr>
-            <tr class="param-row">
-              <th class="attr-bute-name" rowspan="2">更新时间:</th>
-              <td class="attr-pos-name">上层</td>
-              <td class="attr-pos-value" data-role="ai-time" data-ko="attr: {'data-aisn': $data.items[0].AiSN}"></td>
-            </tr>
-            <tr class="param-row">
-              <td class="attr-pos-name">下层</td>
-              <td class="attr-pos-value" data-role="ai-time" data-ko="attr: {'data-aisn': $data.items[1].AiSN}"></td>
-            </tr>
-            <!-- /ko -->
-            <!-- ko if: $data.items.length == 1-->
-            <tr class="param-row">
-              <th class="attr-bute-name" rowspan="2">报警级别:</th>
-              <td class="attr-pos-name">上层</td>
-              <td class="attr-pos-value" data-role="ai-warm" data-ko="attr: {'data-aisn': $data.items[0].AiSN}"></td>
-            </tr>
-            <tr class="param-row">
-              <td class="attr-pos-name">下层</td>
-              <td class="attr-pos-value" data-role="ai-warm" "></td>
-            </tr>
-            <tr class="param-row ">
-              <th class="attr-bute-name " rowspan="2 ">最新报值:</th>
-              <td class="attr-pos-value " data-role="ai-value " data-level="0 " style="width: 75px; " data-ko="attr: { 'data-aisn': $data.items[0].AiSN} "></td>
-              <td class="attr-pos-value " rowspan="2 "><span data-ko="text: '参考值: '+$data.RefValue + $data.Unit "></span></td>
-            </tr>
-            <tr class="param-row ">
-              <td class="attr-pos-value "  data-role="ai-value " data-level="1 "></td>
-            </tr>
-            <tr class="param-row ">
-              <th class="attr-bute-name " rowspan="2 ">更新时间:</th>
-              <td class="attr-pos-name ">上层</td>
-              <td class="attr-pos-value " data-role="ai-time " data-ko="attr: { 'data-aisn': $data.items[0].AiSN} "></td>
-            </tr>
-            <tr class="param-row ">
-              <td class="attr-pos-name ">下层</td>
-              <td class="attr-pos-value "  data-role="ai-time "></td>
-            </tr>
-            <!-- /ko -->
-
-            <!-- ko if: $data.AiParam == '水温'-->
-            <tr class="param-row ">
-              <th class="attr-bute-name ">参数设定:</th>
-              <td></td>
-              <td>
-                  <a data-role="button " class="tableButton km-bluebtn " data-icon="settings " data-command-key="setting ">参数设定</a>
-              </td>
-            </tr>
-            <!-- /ko -->
-
-            <!-- ko if: $data.AiParam == '溶解氧'-->
-            <tr class="param-row ">
-              <th class="attr-bute-name ">参数设定:</th>
-              <td></td>
-              <td>
-                <a data-role="button " class="tableButton km-bluebtn " data-icon="settings " data-command-key="oxygen_setting ">参数设定</a>
-              </td>
-            </tr>
-            <!-- /ko -->
-
-            <!-- ko if: $data.AiParam == 'PH'-->
-            <tr class="param-row ">
-              <th class="attr-bute-name ">校准:</th>
-              <td></td>
-              <td>
-                <a data-role="button " class="tableButton km-bluebtn " data-icon="check " data-command-key="phCheck ">
-                  <span id="lbPhCheck ">校准</span>
-                </a>
-                <a data-role="button " class="tableButton km-bluebtn " data-icon="settings " data-command-key="phSetting ">设定</a>
-              </td>
-            </tr>
-            <!-- /ko -->
-
-            <!-- ko if: $data.AiType == 1-->
-            <tr class="param-row ">
-              <th class="attr-bute-name ">参数设定:</th>
-              <td></td>
-              <td>
-                <a data-role="button " class="tableButton km-bluebtn " data-icon="settings " data-command-key="saturation_setting ">参数设定</a>
-              </td>
-            </tr>
-            <!-- /ko -->
-          </table>
         </div>
       </li>
     </ul>

@@ -339,7 +339,10 @@ hicon.main = (function() {
                   UpperAction: ai.UpperAction,
                   AiType: ai.AiType,
                   Y_Max: ai.Y_Max,
-                  Y_Min: ai.Y_Min
+                  Y_Min: ai.Y_Min,
+                  AiValue: '',
+                  Stamp: '',
+                  Warn: 0
                 })
               }
             }
@@ -349,6 +352,8 @@ hicon.main = (function() {
           }
 
           viewModelMain.waterList(params);
+
+          console.log(params)
           view.data.getLatestAiData();
 
           if (false === viewModelMain.initWaterModalDone) {
@@ -390,23 +395,43 @@ hicon.main = (function() {
           PondID: viewModelMain.currentPond().PondID
         },
         success: function(data) {
+          console.log(data)
+          var itemList = [];
+
+          var newWarters = $.extend(true, [], viewModelMain.waterList());
+
+          $.each(newWarters, function(i, w) {
+            itemList = itemList.concat(w.items)
+          })
+
           $.each(data, function(i, d) {
-            var tdAiVal = $('td[data-aisn="' + d.AiSN + '"][data-role="ai-value"]');
-            var tdAiTime = $('td[data-aisn="' + d.AiSN + '"][data-role="ai-time"]');
-            var levelName = '';
-            if (tdAiVal.data('level') == 0) {
-              levelName = '上: ';
-            } else if (tdAiVal.data('level') == 1) {
-              levelName = '下: ';
+            console.log(d);
+            var items = $.grep(itemList, function(item) {
+              return item.AiSN == d.AiSN;
+            });
+            if (items.length) {
+              items[0].AiValue = d.AiValue;
+              items[0].Stamp = d.Stamp;
             }
-            tdAiVal.text(levelName + d.AiValue);
-            $('td[data-aisn="' + d.AiSN + '"][data-role="ai-warm"]').html(d.Warn > 0 ? '<div>\
-                                            <div class="warn_red_img"></div>\
-                                        </div>' : '<div>\
-                                            <div class="warn_green_img"></div>\
-                                        </div>');
-            tdAiTime.text(d.Stamp);
+            // var tdAiVal = $('td[data-aisn="' + d.AiSN + '"][data-role="ai-value"]');
+            // var tdAiTime = $('td[data-aisn="' + d.AiSN + '"][data-role="ai-time"]');
+            // var levelName = '';
+            // if (tdAiVal.data('level') == 0) {
+            //   levelName = '上: ';
+            // } else if (tdAiVal.data('level') == 1) {
+            //   levelName = '下: ';
+            // }
+            // tdAiVal.text(levelName + d.AiValue);
+            // $('td[data-aisn="' + d.AiSN + '"][data-role="ai-warm"]').html(d.Warn > 0 ? '<div>\
+            //                                 <div class="warn_red_img"></div>\
+            //                             </div>' : '<div>\
+            //                                 <div class="warn_green_img"></div>\
+            //                             </div>');
+            // tdAiTime.text(d.Stamp);
           });
+
+          viewModelMain.waterList([]);
+          viewModelMain.waterList(newWarters);
         },
         error: function() {}
       });

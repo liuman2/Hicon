@@ -22,7 +22,7 @@ var api = function(req, res, next) {
         headers: {
             "Content-Type": 'application/json; charset=UTF-8', //req.headers.accept,
             "Content-Length": Buffer.byteLength(data, 'utf-8'),
-            "Cookie": req.headers.cookie
+            "Cookie": req.headers.cookie || 'cookie'
         }
     };
 
