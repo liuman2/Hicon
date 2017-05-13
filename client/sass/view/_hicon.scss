@@ -409,6 +409,11 @@ div.actionButtonContainer > a > span {
       margin-bottom: 10px;
       clear: both;
     }
+    .param-container {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+    }
     .param-img {
       float: left;
       margin-right: 10px;
@@ -438,7 +443,7 @@ div.actionButtonContainer > a > span {
       }
     }
     .param-content {
-      float: left;
+      flex: 1;
     }
     .param-line {
       display: -webkit-box;
@@ -450,6 +455,7 @@ div.actionButtonContainer > a > span {
       font-size: 28px;
       color: #727171;
       line-height: 73px;
+      text-align: right;
     }
     .param-default-value {
       color: #727171;
@@ -460,6 +466,7 @@ div.actionButtonContainer > a > span {
       color: #358ac6;
       font-size: 28px;
       font-weight: bold;
+      text-align: right;
     }
     .warning-icon {
       &.green {
@@ -491,8 +498,17 @@ div.actionButtonContainer > a > span {
     }
     .param-btns {
       text-align: center;
+      display: -webkit-box;
+      display: flex;
+      display: -ms-flex;
+      display: -webkit-flex;
       a {
-        margin: 0 30px;
+        margin-right: 10px;
+        box-shadow: 1px 3px 6px #ccc !important;
+        flex: 1;
+        -ms-flex: 1;
+        -webkit-flex: 1;
+        -webkit-box-flex: 1;
       }
     }
   }

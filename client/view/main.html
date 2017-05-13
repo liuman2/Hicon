@@ -25,6 +25,7 @@
       </li>
     </ul>
   </header>
+
   <!-- 鱼池列表 -->
   <div id="pondList" data-role="listview" data-view="view" style="display:none;margin-top:20px;">
     <ul data-role="listview" data-click="hicon.main.events.pondItemClick" style="margin-top: 30px;">
@@ -107,36 +108,48 @@
     </ul>
   </div>
 
-
   <!-- 水质参数 -->
   <div id="waterPara" data-role="listview" data-view="view" style="display:none;margin-bottom:20px;">
     <ul  class="param-list" data-role="listview" id="ul-pond-w-params" data-ko="foreach: $data.waterList()" data-click="hicon.main.events.waterItemClick">
-
       <li class="param-item"  data-ko="attr: {'data-ai': $data.AiParam}">
-        <div class="param-img" data-ko="css: $data.clsName">
-        </div>
-        <div class="param-content">
-          <div class="param-default-value" data-ko="text: '参考值: '+$data.RefValue + $data.Unit">
-            <!-- 参考值:4-12mg/L -->
+        <div class="param-container">
+          <div class="param-img" data-ko="css: $data.clsName">
           </div>
-
-          <!-- ko foreach: {data: $data.items, as: 'item'} -->
-          <div class="param-line">
-            <div class="param-line-name" data-ko="text: $index()==0 ? '上层' : '下层'"></div>
-            <div class="param-line-value">
-              <div class="param-real-value">
-                <span class="warning-icon" data-ko="css: item.Warn == 0 ? 'green' : 'red'"></span>
-                <span class="param-num" data-ko="text: item.AiValue"></span>
-              </div>
-              <div class="param-real-date" data-ko="text: item.Stamp">
+          <div class="param-content">
+            <div class="param-default-value" data-ko="text: '参考值: '+$data.RefValue + $data.Unit">
+            </div>
+            <!-- ko foreach: {data: $data.items, as: 'item'} -->
+            <div class="param-line">
+              <div class="param-line-name" data-ko="text: $index()==0 ? '上层' : '下层'"></div>
+              <div class="param-line-value">
+                <div class="param-real-value">
+                  <span class="warning-icon" data-ko="css: item.Warn == 0 ? 'green' : 'red'"></span>
+                  <span class="param-num" data-ko="text: item.AiValue"></span>
+                </div>
+                <div class="param-real-date" data-ko="text: item.Stamp">
+                </div>
               </div>
             </div>
+            <!-- /ko -->
           </div>
-          <!-- /ko -->
         </div>
         <div class="param-btns">
-          <a data-role="button" data-icon="search" class="tableButton km-bluebtn" data-command-key="line-chart">曲线查看</a>
-          <a data-role="button" data-icon="search" class="tableButton km-bluebtn" data-command-key="line-chart">曲线查看</a>
+          <!-- ko if: $data.AiParam == '水温'-->
+          <a data-role="button" class="tableButton km-bluebtn" data-command-key="setting">参数设定</a>
+          <!-- /ko -->
+          <!-- ko if: $data.AiParam == '溶解氧'-->
+          <a data-role="button" class="tableButton km-bluebtn" data-command-key="oxygen_setting">参数设定</a>
+          <!-- /ko -->
+          <!-- ko if: $data.AiType == 1-->
+          <a data-role="button" class="tableButton km-bluebtn" data-command-key="saturation_setting">参数设定</a>
+          <!-- /ko -->
+          <!-- ko if: $data.AiParam == 'PH'-->
+          <a data-role="button" class="tableButton km-bluebtn" data-command-key="phCheck">校准</a>
+          <!-- /ko -->
+          <!-- ko if: $data.AiParam == 'PH'-->
+          <a data-role="button" class="tableButton km-bluebtn" data-command-key="phSetting">参数设定</a>
+          <!-- /ko -->
+          <a data-role="button" class="tableButton km-bluebtn" data-command-key="line-chart">曲线查看</a>
         </div>
       </li>
     </ul>
@@ -148,66 +161,67 @@
       </span>
     </div>
   </div>
-    <!-- 增氧控制 -->
-    <div id="oxygControl " data-role="listview " data-view="view " style="display:none;margin-bottom:20px; ">
-        <ul class="four-col-special " >
-            <!-- ko foreach: $data.deviceZYList -->
-            <li class="enabled " data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO} ">
-                <div class="device-box ">
-                    <span style="color: #000; " data-ko="text: ($data.Name) "></span>
-                </div>
-                <div class="img-status warn_green_img " style="display:inline-block; "></div>
-            </li>
-            <!-- /ko -->
-        </ul>
-        <div>
-            <span>
-                <a data-role="button " class="km-default km-justified km-widget km-button km-bluebtn " data-role="device-add " data-icon="add " data-command-key="oxyg " data-click="hicon.main.events.controller ">
-                        添加增氧遥控器
-                </a>
-            </span>
-        </div>
-    </div>
-    <!-- 水泵控制 -->
-    <div id="pumpControl " data-role="listview " data-view="view " style="display:none;margin-bottom:20px; ">
-        <ul class="four-col-special ">
-            <!-- ko foreach: $data.deviceSBList -->
-                <li class="enabled " data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO} ">
-                     <div class="device-box ">
-                        <span style="color: #000; " data-ko="text: ($data.Name) "></span>
-                    </div>
-                    <div class="img-status warn_green_img " style="display:inline-block; "></div>
-                </li>
-            <!-- /ko -->
-        </ul>
-        <div>
-            <span>
-                <a data-role="button " class="km-default km-justified km-widget km-button km-bluebtn " data-role="device-add " data-icon="add " data-command-key="pump " data-click="hicon.main.events.controller ">
-                        添加水泵遥控器
-                </a>
-            </span>
-        </div>
-    </div>
-    <!-- 投饵控制 -->
-    <div id="feedControl " data-role="listview " data-view="view " style="display:none;margin-bottom:20px; ">
-        <ul class="four-col-special ">
-            <!-- ko foreach: $data.deviceTEList -->
-            <li class="enabled " data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO} ">
-                 <div class="device-box ">
-                    <span style="color: #000; " data-ko="text: ($data.Name) "></span>
-                </div>
-                <div class="img-status warn_green_img " style="display:inline-block; "></div>
-            </li>
-            <!-- /ko -->
-        </ul>
-        <div>
-            <span>
-                <a data-role="button " class="km-default km-justified km-widget km-button km-bluebtn " data-role="device-add " data-icon="add " data-command-key="feed " data-click="hicon.main.events.controller ">
-                    添加投饵遥控器
-                </a>
-            </span>
-        </div>
-    </div>
+
+  <!-- 增氧控制 -->
+  <div id="oxygControl " data-role="listview " data-view="view " style="display:none;margin-bottom:20px; ">
+      <ul class="four-col-special " >
+          <!-- ko foreach: $data.deviceZYList -->
+          <li class="enabled " data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO} ">
+              <div class="device-box ">
+                  <span style="color: #000; " data-ko="text: ($data.Name) "></span>
+              </div>
+              <div class="img-status warn_green_img " style="display:inline-block; "></div>
+          </li>
+          <!-- /ko -->
+      </ul>
+      <div>
+          <span>
+              <a data-role="button " class="km-default km-justified km-widget km-button km-bluebtn " data-role="device-add " data-icon="add " data-command-key="oxyg " data-click="hicon.main.events.controller ">
+                      添加增氧遥控器
+              </a>
+          </span>
+      </div>
+  </div>
+  <!-- 水泵控制 -->
+  <div id="pumpControl " data-role="listview " data-view="view " style="display:none;margin-bottom:20px; ">
+      <ul class="four-col-special ">
+          <!-- ko foreach: $data.deviceSBList -->
+              <li class="enabled " data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO} ">
+                   <div class="device-box ">
+                      <span style="color: #000; " data-ko="text: ($data.Name) "></span>
+                  </div>
+                  <div class="img-status warn_green_img " style="display:inline-block; "></div>
+              </li>
+          <!-- /ko -->
+      </ul>
+      <div>
+          <span>
+              <a data-role="button " class="km-default km-justified km-widget km-button km-bluebtn " data-role="device-add " data-icon="add " data-command-key="pump " data-click="hicon.main.events.controller ">
+                      添加水泵遥控器
+              </a>
+          </span>
+      </div>
+  </div>
+  <!-- 投饵控制 -->
+  <div id="feedControl " data-role="listview " data-view="view " style="display:none;margin-bottom:20px; ">
+      <ul class="four-col-special ">
+          <!-- ko foreach: $data.deviceTEList -->
+          <li class="enabled " data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO} ">
+               <div class="device-box ">
+                  <span style="color: #000; " data-ko="text: ($data.Name) "></span>
+              </div>
+              <div class="img-status warn_green_img " style="display:inline-block; "></div>
+          </li>
+          <!-- /ko -->
+      </ul>
+      <div>
+          <span>
+              <a data-role="button " class="km-default km-justified km-widget km-button km-bluebtn " data-role="device-add " data-icon="add " data-command-key="feed " data-click="hicon.main.events.controller ">
+                  添加投饵遥控器
+              </a>
+          </span>
+      </div>
+  </div>
 </div>
 
 <div data-role="drawer " id="my-drawer " style="width: 20em " data-use-native-scrolling="true " data-before-show="hicon.main.drawer.beforeShow ">
