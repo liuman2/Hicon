@@ -407,10 +407,11 @@ div.actionButtonContainer > a > span {
       background: #efefef;
       padding: 10px;
       margin-bottom: 10px;
+      clear: both;
     }
     .param-img {
       float: left;
-      margin-right: 50px;
+      margin-right: 10px;
       &.param_do {
         background: url(../content/img/icon/o2.png) 0px 45px no-repeat;
         height: 140px;
