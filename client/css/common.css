@@ -693,6 +693,129 @@ div.actionButtonContainer > a > span {
   border-radius: 0 !important;
 }
 
+/* line 642, ../sass/view/_hicon.scss */
+.controller-view {
+  background: #F0F4F7;
+}
+
+/* line 645, ../sass/view/_hicon.scss */
+.controller-header {
+  text-align: center;
+  height: 3.5em;
+  line-height: 3.5em;
+  background: #898989;
+  color: #fff;
+  font-size: 1.25em;
+}
+
+/* line 654, ../sass/view/_hicon.scss */
+.controller-body {
+  margin: 5px 10px 0 10px;
+}
+/* line 657, ../sass/view/_hicon.scss */
+.controller-body .controller-status {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  height: 2.5em;
+  line-height: 2.5em;
+  font-size: 20px;
+  color: #9fa0a0;
+  text-align: center;
+}
+/* line 667, ../sass/view/_hicon.scss */
+.controller-body .status-left {
+  width: 3.5em;
+  margin-right: 0.1875em;
+  background: #fff;
+}
+/* line 672, ../sass/view/_hicon.scss */
+.controller-body .status-right {
+  flex: 1;
+  background: #fff;
+}
+/* line 677, ../sass/view/_hicon.scss */
+.controller-body .status-icon.running {
+  position: relative;
+}
+/* line 679, ../sass/view/_hicon.scss */
+.controller-body .status-icon.running:before {
+  content: url(../content/img/icon/icon_warning_green.png);
+  display: block;
+  position: absolute;
+  top: -3px;
+  left: -38px;
+  width: 35px;
+  height: 35px;
+}
+/* line 689, ../sass/view/_hicon.scss */
+.controller-body .status-icon.stop {
+  position: relative;
+}
+/* line 691, ../sass/view/_hicon.scss */
+.controller-body .status-icon.stop:before {
+  content: url(../content/img/icon/icon_warning_red.png);
+  display: block;
+  position: absolute;
+  top: -3px;
+  left: -38px;
+  width: 35px;
+  height: 35px;
+}
+/* line 703, ../sass/view/_hicon.scss */
+.controller-body .controller-start {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  height: 2.5em;
+  line-height: 2.5em;
+  font-size: 20px;
+  text-align: center;
+  color: #9fa0a0;
+  margin-top: 5px;
+  background: #fff;
+}
+/* line 715, ../sass/view/_hicon.scss */
+.controller-body .start-left {
+  flex: 1;
+  border-radius: 0;
+  border: none;
+}
+/* line 720, ../sass/view/_hicon.scss */
+.controller-body .start-right {
+  flex: 1;
+  border-radius: 0;
+  border: none;
+}
+/* line 724, ../sass/view/_hicon.scss */
+.controller-body .start-right.km-state-active {
+  color: #666 !important;
+}
+/* line 728, ../sass/view/_hicon.scss */
+.controller-body .active {
+  background-color: #328AC5;
+  color: #fff;
+}
+/* line 731, ../sass/view/_hicon.scss */
+.controller-body .active.km-state-active {
+  background: #1d71a9 !important;
+}
+/* line 736, ../sass/view/_hicon.scss */
+.controller-body .controller-run {
+  height: 2.5em;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 15px;
+  background: #fff;
+  border-radius: 0;
+  border: none;
+  color: #358ac6;
+  width: 100%;
+  -moz-box-shadow: -1px 1px 11px #ccc, 2px 2px 5px #ccc;
+  -webkit-box-shadow: -1px 1px 11px #ccc, 2px 2px 5px #ccc;
+  box-shadow: -1px 1px 11px #ccc, 2px 2px 5px #ccc;
+}
+
 /* line 2, ../sass/view/_login.scss */
 #login {
   background-image: url(../content/img/lg.png);

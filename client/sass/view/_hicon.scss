@@ -638,3 +638,114 @@ div.actionButtonContainer > a > span {
     border-radius: 0!important;
   }
 }
+
+.controller-view {
+  background: #F0F4F7;
+}
+.controller-header {
+  text-align: center;
+  height: 3.5em;
+  line-height: 3.5em;
+  background: #898989;
+  color: #fff;
+  font-size: 1.25em;
+}
+
+.controller-body {
+  margin: 5px 10px 0 10px;
+
+  .controller-status {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    height: 2.5em;
+    line-height: 2.5em;
+    font-size:20px;
+    color: #9fa0a0;
+    text-align: center;
+  }
+  .status-left {
+    width: 3.5em;
+    margin-right: 0.1875em;
+    background: #fff;
+  }
+  .status-right {
+    flex: 1;
+    background: #fff;
+  }
+  .status-icon {
+    &.running {
+      position:relative;
+      &:before {
+        content: url(../content/img/icon/icon_warning_green.png);
+        display: block;
+        position: absolute;
+        top: -3px;
+        left: -38px;
+        width: 35px;
+        height: 35px;
+      }
+    }
+    &.stop {
+      position:relative;
+      &:before {
+        content: url(../content/img/icon/icon_warning_red.png);
+        display: block;
+        position: absolute;
+        top: -3px;
+        left: -38px;
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+
+  .controller-start {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    height: 2.5em;
+    line-height: 2.5em;
+    font-size:20px;
+    text-align: center;
+    color: #9fa0a0;
+    margin-top: 5px;
+    background: #fff;
+  }
+  .start-left {
+    flex: 1;
+    border-radius: 0;
+    border: none;
+  }
+  .start-right {
+    flex: 1;
+    border-radius: 0;
+    border: none;
+    &.km-state-active {
+        color: #666 !important;
+    }
+  }
+  .active {
+    background-color: #328AC5;
+    color: #fff;
+    &.km-state-active {
+        background: #1d71a9 !important;
+    }
+  }
+
+  .controller-run {
+    height: 2.5em;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
+    background: #fff;
+    border-radius: 0;
+    border: none;
+    color: #358ac6;
+    width: 100%;
+
+    -moz-box-shadow: -1px 1px 11px #ccc, 2px 2px 5px #ccc;
+    -webkit-box-shadow: -1px 1px 11px #ccc, 2px 2px 5px #ccc;
+    box-shadow: -1px 1px 11px #ccc, 2px 2px 5px #ccc;
+  }
+}

@@ -46,7 +46,7 @@ hicon.controller = (function () {
 
         var curentController = hicon.sessionStorage.getJson('CURRENT_CONTROLLER');
         viewModelController.curentController = curentController;
-        
+
         var controllerCommand = hicon.sessionStorage.item('CURRENT_CONTROLLER_COMMAND');
         if (controllerCommand != 'feed') {
             viewModelController.isFeed(false);
@@ -216,12 +216,17 @@ hicon.controller = (function () {
         doBack: function() {
             hicon.navigation.main();
         },
+        test: function() {
+            alert(1)
+        },
         deviceClick: function(e) {
             var device = ko.dataFor(e.target.closest("li")[0]),
                 commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
 
 
             switch(commandKey) {
+                case 'test':
+                    alert(0)
                 case 'add':
                     $("#modalview-device").kendoMobileModalView('open');
                     break;
