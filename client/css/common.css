@@ -619,6 +619,80 @@ div.actionButtonContainer > a > span {
   color: #fff;
 }
 
+/* line 574, ../sass/view/_hicon.scss */
+.controller-list {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+/* line 579, ../sass/view/_hicon.scss */
+.controller-list li {
+  display: inline-block;
+  width: 50%;
+  float: left;
+  height: 100px;
+  margin-bottom: 10px;
+}
+/* line 586, ../sass/view/_hicon.scss */
+.controller-list .controller-content {
+  height: 100%;
+  margin: 10px 5px;
+  background: #fff;
+  padding: 10px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+}
+/* line 594, ../sass/view/_hicon.scss */
+.controller-list .controller-content .img-status {
+  flex: 1;
+}
+/* line 596, ../sass/view/_hicon.scss */
+.controller-list .controller-content .img-status.warn_red_img {
+  background: url(../content/img/icon/icon_warning_red.png) 0px 0px no-repeat;
+  height: 32px;
+  width: 32px;
+  margin-top: 23px;
+}
+/* line 602, ../sass/view/_hicon.scss */
+.controller-list .controller-content .img-status.warn_green_img {
+  background: url(../content/img/icon/icon_warning_green.png) 0px 0px no-repeat;
+  height: 32px;
+  width: 32px;
+  margin-top: 23px;
+}
+/* line 608, ../sass/view/_hicon.scss */
+.controller-list .controller-content .img-status.warn_gray_img {
+  background: url(../content/img/icon/icon_warning_gray.png) 0px 0px no-repeat;
+  height: 32px;
+  width: 32px;
+  margin-top: 23px;
+}
+/* line 615, ../sass/view/_hicon.scss */
+.controller-list .controller-content .name {
+  flex: 1;
+  height: 80px;
+  line-height: 80px;
+  color: #358ac6;
+  font-size: 30px;
+}
+/* line 624, ../sass/view/_hicon.scss */
+.controller-list li.disabled .name {
+  color: #ccc;
+}
+
+/* line 630, ../sass/view/_hicon.scss */
+.controller-bottom {
+  margin-top: 10px;
+  width: 100%;
+  padding: 0 20px;
+}
+/* line 636, ../sass/view/_hicon.scss */
+.controller-bottom a {
+  font-size: 20px;
+  border-radius: 0 !important;
+}
+
 /* line 2, ../sass/view/_login.scss */
 #login {
   background-image: url(../content/img/lg.png);

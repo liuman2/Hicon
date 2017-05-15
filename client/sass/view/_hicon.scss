@@ -570,3 +570,71 @@ div.actionButtonContainer > a > span {
     color: #fff;
   }
 }
+
+.controller-list {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  li {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    height:100px;
+    margin-bottom: 10px;
+  }
+  .controller-content {
+    height: 100%;
+    margin: 10px 5px;
+    background: #fff;
+    padding: 10px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    .img-status {
+      flex: 1;
+      &.warn_red_img {
+        background: url(../content/img/icon/icon_warning_red.png) 0px 0px no-repeat;
+        height: 32px;
+        width: 32px;
+        margin-top: 23px;
+      }
+      &.warn_green_img {
+        background: url(../content/img/icon/icon_warning_green.png) 0px 0px no-repeat;
+        height: 32px;
+        width: 32px;
+        margin-top: 23px;
+      }
+      &.warn_gray_img {
+        background: url(../content/img/icon/icon_warning_gray.png) 0px 0px no-repeat;
+        height: 32px;
+        width: 32px;
+        margin-top: 23px;
+      }
+    }
+    .name {
+      flex: 1;
+      height: 80px;
+      line-height: 80px;
+      color: #358ac6;
+      font-size:30px;
+    }
+  }
+  li.disabled {
+    .name {
+      color: #ccc;
+    }
+  }
+}
+
+.controller-bottom {
+  // position: fixed;
+  // bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+  padding: 0 20px;
+  a {
+    font-size: 20px;
+    border-radius: 0!important;
+  }
+}

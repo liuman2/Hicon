@@ -153,7 +153,7 @@
         </div>
       </li>
     </ul>
-    <div style="width: 99%; ">
+    <div style="width: 99%;">
       <span>
         <a data-role="button" class="btn-hicon" data-click="hicon.main.events.monitor">
           监测主机管理
@@ -163,60 +163,66 @@
   </div>
 
   <!-- 增氧控制 -->
-  <div id="oxygControl " data-role="listview " data-view="view " style="display:none;margin-bottom:20px; ">
-      <ul class="four-col-special " >
+  <div id="oxygControl" data-role="listview" data-view="view" style="display:none;margin-bottom:20px;">
+      <ul class="controller-list">
           <!-- ko foreach: $data.deviceZYList -->
-          <li class="enabled " data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO} ">
-              <div class="device-box ">
-                  <span style="color: #000; " data-ko="text: ($data.Name) "></span>
+          <li class="enabled" data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO}">
+              <div class="controller-content">
+                <div class="img-status">
+                  <span style="color: #000;"></span>
+                </div>
+                <div class="name" data-ko="text: ($data.Name)"></div>
               </div>
-              <div class="img-status warn_green_img " style="display:inline-block; "></div>
           </li>
           <!-- /ko -->
       </ul>
-      <div>
+      <div class="controller-bottom">
           <span>
-              <a data-role="button " class="km-default km-justified km-widget km-button km-bluebtn " data-role="device-add " data-icon="add " data-command-key="oxyg " data-click="hicon.main.events.controller ">
-                      添加增氧遥控器
+              <a data-role="button" class="km-default km-justified km-widget km-button km-bluebtn" data-role="device-add" data-command-key="oxyg" data-click="hicon.main.events.controller">
+                  添加增氧遥控器
               </a>
           </span>
       </div>
   </div>
   <!-- 水泵控制 -->
-  <div id="pumpControl " data-role="listview " data-view="view " style="display:none;margin-bottom:20px; ">
-      <ul class="four-col-special ">
+  <div id="pumpControl" data-role="listview" data-view="view" style="display:none;margin-bottom:20px;">
+      <ul class="controller-list">
           <!-- ko foreach: $data.deviceSBList -->
-              <li class="enabled " data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO} ">
-                   <div class="device-box ">
-                      <span style="color: #000; " data-ko="text: ($data.Name) "></span>
-                  </div>
-                  <div class="img-status warn_green_img " style="display:inline-block; "></div>
-              </li>
+          <li class="enabled" data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO}">
+            <div class="controller-content">
+              <div class="img-status">
+                <span style="color: #000;"></span>
+              </div>
+              <div class="name" data-ko="text: ($data.Name)"></div>
+            </div>
+          </li>
           <!-- /ko -->
       </ul>
-      <div>
+      <div class="controller-bottom">
           <span>
-              <a data-role="button " class="km-default km-justified km-widget km-button km-bluebtn " data-role="device-add " data-icon="add " data-command-key="pump " data-click="hicon.main.events.controller ">
+              <a data-role="button" class="km-default km-justified km-widget km-button km-bluebtn" data-role="device-add" data-command-key="pump" data-click="hicon.main.events.controller">
                       添加水泵遥控器
               </a>
           </span>
       </div>
   </div>
   <!-- 投饵控制 -->
-  <div id="feedControl " data-role="listview " data-view="view " style="display:none;margin-bottom:20px; ">
-      <ul class="four-col-special ">
+  <div id="feedControl" data-role="listview" data-view="view" style="display:none;margin-bottom:20px;">
+      <ul class="controller-list">
           <!-- ko foreach: $data.deviceTEList -->
-          <li class="enabled " data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO} ">
-               <div class="device-box ">
-                  <span style="color: #000; " data-ko="text: ($data.Name) "></span>
+          <li class="enabled" data-ko="tap:hicon.main.events.controlItemClick.bind($(this)), css: { enabled: !$data.IsStopped, disabled: $data.IsStopped }, attr: { 'data-device-no': $data.DeviceNO, 'data-dtu-no': $data.DtuNO}">
+              <div class="controller-content">
+                <div class="img-status">
+                  <span style="color: #000;"></span>
+                </div>
+                <div class="name" data-ko="text: ($data.Name)"></div>
               </div>
-              <div class="img-status warn_green_img " style="display:inline-block; "></div>
           </li>
           <!-- /ko -->
       </ul>
-      <div>
+      <div class="controller-bottom">
           <span>
-              <a data-role="button " class="km-default km-justified km-widget km-button km-bluebtn " data-role="device-add " data-icon="add " data-command-key="feed " data-click="hicon.main.events.controller ">
+              <a data-role="button" class="km-default km-justified km-widget km-button km-bluebtn" data-role="device-add" data-command-key="feed" data-click="hicon.main.events.controller">
                   添加投饵遥控器
               </a>
           </span>
@@ -224,182 +230,179 @@
   </div>
 </div>
 
-<div data-role="drawer " id="my-drawer " style="width: 20em " data-use-native-scrolling="true " data-before-show="hicon.main.drawer.beforeShow ">
-    <header data-role="header ">
-        <div data-role="navbar ">
-            <span data-role="view-title ">我的</span>
+<div data-role="drawer" id="my-drawer" style="width: 20em" data-use-native-scrolling="true" data-before-show="hicon.main.drawer.beforeShow">
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title">我的</span>
         </div>
     </header>
-    <ul data-role="listview " class="km-listview-icons " data-click="hicon.main.drawer.itemClick ">
-        <li data-icon="bookmarks "><a href="view/basic.html " data-transition="none " >渔场资料</a></li>
-        <li data-icon="recents "><a href="view/log.html " data-transition="none ">事件</a></li>
+    <ul data-role="listview" class="km-listview-icons" data-click="hicon.main.drawer.itemClick">
+        <li data-icon="bookmarks"><a href="view/basic.html" data-transition="none" >渔场资料</a></li>
+        <li data-icon="recents"><a href="view/log.html" data-transition="none">事件</a></li>
 
-        <li data-icon="contacts "><a href="view/subAccount.html " data-transition="none ">子用户</a></li>
+        <li data-icon="contacts"><a href="view/subAccount.html" data-transition="none">子用户</a></li>
 
-        <li data-icon="edit "><a href="view/modifyPwd.html " data-transition="none " data-command-key="password ">修改密码</a></li>
-        <li data-icon="about "><a href="view/about.html " data-transition="none " data-command-key="about ">关于</a></li>
-        <li data-icon="history "><a data-transition="none " data-command-key="logout ">退出</a></li>
+        <li data-icon="edit"><a href="view/modifyPwd.html" data-transition="none" data-command-key="password">修改密码</a></li>
+        <li data-icon="about"><a href="view/about.html" data-transition="none" data-command-key="about">关于</a></li>
+        <li data-icon="history"><a data-transition="none" data-command-key="logout">退出</a></li>
     </ul>
 </div>
 
-<div data-role="modalview " id="modalview-water " style="width: 80%; ">
-    <div data-role="header ">
-        <div data-role="navbar ">
-            <span data-ko="text: $data.currentWater().AiParam "></span>
-            <a data-click="hicon.main.events.modalWaterClose " data-role="button " data-align="right ">关闭</a>
+<div data-role="modalview" id="modalview-water" style="width: 80%;">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span data-ko="text: $data.currentWater().AiParam"></span>
+            <a data-click="hicon.main.events.modalWaterClose" data-role="button" data-align="right">关闭</a>
         </div>
     </div>
 
-    <ul data-role="listview " data-style="inset ">
-        <li style="display: none; "><label for="water-stander-up ">上限标准值:<input type="number " id="water-stander-up " /></label></li>
-        <li style="display: none; "><label for="water-stander-down ">下限标准值:<input type="number " id="water-stander-down " /></label></li>
-        <li><label for="water-start-up ">上限启动临界值:<input type="number " id="water-start-up " style="text-align: right;margin-right: 33px; " /></label></li>
-        <li><label for="water-start-down ">下限启动临界值:<input type="number " id="water-start-down " style="text-align: right;margin-right: 33px; " /></label></li>
+    <ul data-role="listview" data-style="inset">
+        <li style="display: none;"><label for="water-stander-up">上限标准值:<input type="number" id="water-stander-up" /></label></li>
+        <li style="display: none;"><label for="water-stander-down">下限标准值:<input type="number" id="water-stander-down" /></label></li>
+        <li><label for="water-start-up">上限启动临界值:<input type="number" id="water-start-up" style="text-align: right;margin-right: 33px;" /></label></li>
+        <li><label for="water-start-down">下限启动临界值:<input type="number" id="water-start-down" style="text-align: right;margin-right: 33px;" /></label></li>
     </ul>
-    <div data-role="footer ">
-        <div data-role="navbar ">
-            <a data-click="hicon.main.events.setDefault " class="km-default " type="button " data-role="button " data-align="right ">恢复默认值</a>
-            <a data-click="hicon.main.events.saveWater " class="km-default " type="button " data-role="button " data-align="right ">保存</a>
-        </div>
-    </div>
-</div>
-
-<div data-role="modalview " id="modalview-saturation " style="width: 80%; ">
-    <div data-role="header ">
-        <div data-role="navbar ">
-            <span data-ko="text: $data.currentWater().AiParam "></span>
-            <a data-click="hicon.main.events.modalSaturationClose " data-role="button " data-align="right ">关闭</a>
-        </div>
-    </div>
-
-    <ul data-role="listview " data-style="inset ">
-        <li>
-            <label for="saturation-start-up ">上层饱和度:大于<input type="number " id="saturation-start-up " style="text-align: right;margin-right: 60px; " /></label>
-            <label style="float: right; margin-top: 3px; color: #333; ">%启动</label>
-        </li>
-        <li>
-            <label for="saturation-start-down ">下层饱和度:小于<input type="number " id="saturation-start-down " style="text-align: right;margin-right: 60px; " /></label>
-            <label style="float: right; margin-top: 3px; color: #333; ">%启动</label>
-        </li>
-        <li style="border: none; ">
-            <label for="saturation-start-down " style="width: 115px;text-align: right;display: inline-block; ">达到<input type="number " id="saturation-top-down " style="text-align: right;margin-right: 60px; " /></label>
-            <label style="float: right; margin-top: 3px; color: #333; ">%停止</label>
-        </li>
-        <li>
-            <input type="checkbox " data-radio-index="1 " id="saturation-check " class="km-checkbox "  data-role="device-auto ">
-            <label class="km-checkbox-label rember-label " for="saturation-check ">根据饱和度控制增氧机</label>
-        </li>
-    </ul>
-    <div data-role="footer ">
-        <div data-role="navbar ">
-            <a data-click="hicon.main.events.setSaturationDefault " class="km-default " type="button " data-role="button " data-align="right ">恢复默认值</a>
-            <a data-click="hicon.main.events.saveSaturation " class="km-default " type="button " data-role="button " data-align="right ">保存</a>
+    <div data-role="footer">
+        <div data-role="navbar">
+            <a data-click="hicon.main.events.setDefault" class="km-default" type="button" data-role="button" data-align="right">恢复默认值</a>
+            <a data-click="hicon.main.events.saveWater" class="km-default" type="button" data-role="button" data-align="right">保存</a>
         </div>
     </div>
 </div>
 
-<div data-role="modalview " id="modalview-oxygen " style="width: 80%; ">
-    <div data-role="header ">
-        <div data-role="navbar ">
+<div data-role="modalview" id="modalview-saturation" style="width: 80%;">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span data-ko="text: $data.currentWater().AiParam"></span>
+            <a data-click="hicon.main.events.modalSaturationClose" data-role="button" data-align="right">关闭</a>
+        </div>
+    </div>
+
+    <ul data-role="listview" data-style="inset">
+        <li>
+            <label for="saturation-start-up">上层饱和度:大于<input type="number" id="saturation-start-up" style="text-align: right;margin-right: 60px;" /></label>
+            <label style="float: right; margin-top: 3px; color: #333;">%启动</label>
+        </li>
+        <li>
+        <li style="border: none;">
+            <label for="saturation-start-down" style="width: 115px;text-align: right;display: inline-block;">达到<input type="number" id="saturation-top-down" style="text-align: right;margin-right: 60px;" /></label>
+            <label style="float: right; margin-top: 3px; color: #333;">%停止</label>
+        </li>
+        <li>
+            <input type="checkbox" data-radio-index="1" id="saturation-check" class="km-checkbox"  data-role="device-auto">
+            <label class="km-checkbox-label rember-label" for="saturation-check">根据饱和度控制增氧机</label>
+        </li>
+    </ul>
+    <div data-role="footer">
+        <div data-role="navbar">
+            <a data-click="hicon.main.events.setSaturationDefault" class="km-default" type="button" data-role="button" data-align="right">恢复默认值</a>
+            <a data-click="hicon.main.events.saveSaturation" class="km-default" type="button" data-role="button" data-align="right">保存</a>
+        </div>
+    </div>
+</div>
+
+<div data-role="modalview" id="modalview-oxygen" style="width: 80%;">
+    <div data-role="header">
+        <div data-role="navbar">
             <span>溶解氧</span>
-            <a data-click="hicon.main.events.modalOxygenClose " data-role="button " data-align="right ">关闭</a>
+            <a data-click="hicon.main.events.modalOxygenClose" data-role="button" data-align="right">关闭</a>
         </div>
     </div>
 
-    <ul data-role="listview " data-style="inset ">
-        <li style="display: none; ">
-            <label for="oxygen-stander-up ">上限标准值:<input type="number " id="oxygen-stander-up " /></label></li>
-        <li style="display: none; ">
-            <label for="oxygen-stander-down ">下限标准值:<input type="number " id="oxygen-stander-down " /></label></li>
-        <li style="display: none; ">
-            <label for="oxygen-start-up ">上限启动临界值:<input type="number " id="oxygen-start-up " /></label>
+    <ul data-role="listview" data-style="inset">
+        <li style="display: none;">
+            <label for="oxygen-stander-up">上限标准值:<input type="number" id="oxygen-stander-up" /></label></li>
+        <li style="display: none;">
+            <label for="oxygen-stander-down">下限标准值:<input type="number" id="oxygen-stander-down" /></label></li>
+        <li style="display: none;">
+            <label for="oxygen-start-up">上限启动临界值:<input type="number" id="oxygen-start-up" /></label>
         </li>
 
         <li>
-            <label for="oxygen-start-down ">下层溶氧:低于<input type="number " id="oxygen-start-down " style="text-align: right;margin-right: 90px; " /></label>
-            <label style="float: right; margin-top: 3px; color: #333; ">mg/L 启动</label>
+            <label for="oxygen-start-down">下层溶氧:低于<input type="number" id="oxygen-start-down" style="text-align: right;margin-right: 90px;" /></label>
+            <label style="float: right; margin-top: 3px; color: #333;">mg/L 启动</label>
         </li>
         <li>
-            <label for="oxygen-start-down ">下层溶氧:达到<input type="number " id="oxygen-stop-down " style="text-align: right;margin-right: 90px; " /></label>
-            <label style="float: right; margin-top: 3px; color: #333; ">mg/L 停止</label>
+            <label for="oxygen-start-down">下层溶氧:达到<input type="number" id="oxygen-stop-down" style="text-align: right;margin-right: 90px;" /></label>
+            <label style="float: right; margin-top: 3px; color: #333;">mg/L 停止</label>
         </li>
         <li>
-            <input type="checkbox " data-radio-index="1 " id="oxygen-check "  class="km-checkbox "  data-role="device-auto ">
-            <label class="km-checkbox-label rember-label " for="oxygen-check " >根据下层溶氧值启闭增氧机</label>
+            <input type="checkbox" data-radio-index="1" id="oxygen-check"  class="km-checkbox"  data-role="device-auto">
+            <label class="km-checkbox-label rember-label" for="oxygen-check" >根据下层溶氧值启闭增氧机</label>
         </li>
     </ul>
 
-    <div data-role="footer ">
-        <div data-role="navbar ">
-            <a data-click="hicon.main.events.setOxygenDefault " class="km-default " type="button " data-role="button " data-align="right ">恢复默认值</a>
-            <a data-click="hicon.main.events.saveOxygen " class="km-default " type="button " data-role="button " data-align="right ">保存</a>
+    <div data-role="footer">
+        <div data-role="navbar">
+            <a data-click="hicon.main.events.setOxygenDefault" class="km-default" type="button" data-role="button" data-align="right">恢复默认值</a>
+            <a data-click="hicon.main.events.saveOxygen" class="km-default" type="button" data-role="button" data-align="right">保存</a>
         </div>
     </div>
 </div>
 
-<div data-role="modalview " id="modalview-phCheck " style="width: 80%; ">
-    <div data-role="header ">
-        <div data-role="navbar ">
+<div data-role="modalview" id="modalview-phCheck" style="width: 80%;">
+    <div data-role="header">
+        <div data-role="navbar">
             <span>pH校准</span>
-            <a data-click="hicon.main.events.modalPHClose " data-role="button " data-align="right ">关闭</a>
+            <a data-click="hicon.main.events.modalPHClose" data-role="button" data-align="right">关闭</a>
         </div>
     </div>
 
-    <ul data-role="listview " data-style="inset ">
+    <ul data-role="listview" data-style="inset">
         <li>
-            <label for="oxygen-stander-up ">校准值:
-              <select id="PHCheck ">
-                <option value="4.0 ">4.0</option>
-                <option value="6.86 ">6.86</option>
-                <option value="7.0 ">7.0</option>
+            <label for="oxygen-stander-up">校准值:
+              <select id="PHCheck">
+                <option value="4.0">4.0</option>
+                <option value="6.86">6.86</option>
+                <option value="7.0">7.0</option>
               </select>
             </label>
         </li>
     </ul>
 
-    <div data-role="footer ">
-        <div data-role="navbar ">
-            <a data-click="hicon.main.events.modalPHClose " class="km-default " type="button " data-role="button " data-align="right ">取消</a>
-            <a data-click="hicon.main.events.savePHCheck " class="km-default " type="button " data-role="button " data-align="right ">校准</a>
+    <div data-role="footer">
+        <div data-role="navbar">
+            <a data-click="hicon.main.events.modalPHClose" class="km-default" type="button" data-role="button" data-align="right">取消</a>
+            <a data-click="hicon.main.events.savePHCheck" class="km-default" type="button" data-role="button" data-align="right">校准</a>
         </div>
     </div>
 </div>
 
-<div data-role="modalview " id="modalview-ph " style="width: 80%; ">
-    <div data-role="header ">
-        <div data-role="navbar ">
+<div data-role="modalview" id="modalview-ph" style="width: 80%;">
+    <div data-role="header">
+        <div data-role="navbar">
             <span>pH</span>
-            <a data-click="hicon.main.events.modalPHSettingClose " data-role="button " data-align="right ">关闭</a>
+            <a data-click="hicon.main.events.modalPHSettingClose" data-role="button" data-align="right">关闭</a>
         </div>
     </div>
 
-    <ul data-role="listview " data-style="inset ">
-        <li style="display: none; ">
-            <label for="ph-stander-up ">上限标准值:<input type="number " id="ph-stander-up " /></label></li>
-        <li style="display: none; ">
-            <label for="ph-stander-down ">下限标准值:<input type="number " id="ph-stander-down " /></label></li>
-        <li style="display: none; ">
-            <label for="ph-start-up ">上限启动临界值:<input type="number " id="ph-start-up " /></label>
+    <ul data-role="listview" data-style="inset">
+        <li style="display: none;">
+            <label for="ph-stander-up">上限标准值:<input type="number" id="ph-stander-up" /></label></li>
+        <li style="display: none;">
+            <label for="ph-stander-down">下限标准值:<input type="number" id="ph-stander-down" /></label></li>
+        <li style="display: none;">
+            <label for="ph-start-up">上限启动临界值:<input type="number" id="ph-start-up" /></label>
         </li>
 
         <li>
-            <label for="ph-start-up "> 上层pH:低于<input type="number " id="ph-start-down " style="text-align: right;margin-right: 90px; " /></label>
-            <label style="float: right; margin-top: 3px; color: #333; ">预警</label>
+            <label for="ph-start-up"> 上层pH:低于<input type="number" id="ph-start-down" style="text-align: right;margin-right: 90px;" /></label>
+            <label style="float: right; margin-top: 3px; color: #333;">预警</label>
         </li>
         <li>
-            <label for="ph-stop-down ">上层pH:超过<input type="number " id="ph-stop-down " style="text-align: right;margin-right: 90px; " /></label>
-            <label style="float: right; margin-top: 3px; color: #333; ">预警</label>
+            <label for="ph-stop-down">上层pH:超过<input type="number" id="ph-stop-down" style="text-align: right;margin-right: 90px;" /></label>
+            <label style="float: right; margin-top: 3px; color: #333;">预警</label>
         </li>
         <!-- <li>
-            <input type="checkbox " data-radio-index="1 " id="ph-check "  class="km-checkbox "  data-role="device-auto ">
-            <label class="km-checkbox-label rember-label " for="ph-check " >根据下层PH启闭PH机</label>
+            <input type="checkbox" data-radio-index="1" id="ph-check"  class="km-checkbox"  data-role="device-auto">
+            <label class="km-checkbox-label rember-label" for="ph-check" >根据下层PH启闭PH机</label>
         </li> -->
     </ul>
 
-    <div data-role="footer ">
-        <div data-role="navbar ">
-            <a data-click="hicon.main.events.setPHDefault " class="km-default " type="button " data-role="button " data-align="right ">恢复默认值</a>
-            <a data-click="hicon.main.events.savePHSetting " class="km-default " type="button " data-role="button " data-align="right ">保存</a>
+    <div data-role="footer">
+        <div data-role="navbar">
+            <a data-click="hicon.main.events.setPHDefault" class="km-default" type="button" data-role="button" data-align="right">恢复默认值</a>
+            <a data-click="hicon.main.events.savePHSetting" class="km-default" type="button" data-role="button" data-align="right">保存</a>
         </div>
     </div>
 </div>
