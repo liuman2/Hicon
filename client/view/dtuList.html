@@ -5,9 +5,9 @@
       <span data-role="view-title" data-ko="text: pond().Name"></span>
     </div>
   </header>
-  <ul data-role="listview" data-click="hicon.dtuList.events.itemClick" data-ko="foreach: $data.pond().Dtus" class="bue">
-    <li class="pond-item flex" data-command-key="pondClick">
-      <div class="pond-info">
+  <ul data-role="listview" class="list-wrapper" data-click="hicon.dtuList.events.itemClick" data-ko="foreach: $data.pond().Dtus" class="bue">
+    <li data-command-key="pondClick">
+      <div class="left">
         <p>
           <!-- ko if: $data.DtuNO.substr(0, 1) == '0'-->
           <span>水质监测</span>
@@ -25,10 +25,8 @@
           <span data-ko="text: $data.DtuNO"></span>
         </p>
       </div>
-      <div class="actionButtonContainers">
-        <div data-command-key="delete" class="actionButtonContainer">
-            <a data-role="button" class="clearButton" data-icon="unlock"></a>
-        </div>
+      <div class="right">
+        <a class="trash" data-command-key="delete"></a>
     </div>
     </li>
   </ul>

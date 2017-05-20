@@ -1,44 +1,48 @@
 <div id="timer" data-role="view" data-use-native-scrolling="true" data-init="hicon.timer.init" data-after-show="hicon.timer.aftershow" data-show="hicon.timer.show" data-transition="overlay:left" data-persist="true">
-    <header data-role="header">
-        <div data-role="navbar">
-            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.timer.events.doBack">返回</a>
-            <!-- <a data-align="right" data-role="button" class="clearButton" data-click="hicon.timer.events.add">新增</a> -->
-            <span data-role="view-title">定时设置</span>
-        </div>
-    </header>
-
-    <ul data-role="listview" data-click="hicon.timer.events.itemClick" data-ko="foreach: $data.timerList()" style="min-height:100px;">
-        <li>
-            <div>
-                <span>周期: </span>
-
-                <!-- ko if: $data.IsEveryDay == true-->
-                <span>每天</span>
-                <!-- /ko -->
-                <!-- ko if: $data.IsEveryDay == false-->
-                <span>仅一次</span>
-                <!-- /ko -->
-            </div>
-            <div>
-                <span>执行: </span>
-                <span>启动</span>
-            </div>
-            <div>
-                <span>开始时间: </span>
-                <span data-ko="text: $data.BeginTime"></span>
-            </div>
-            <div>
-                <span>时长: </span>
-                <span data-ko="text: $data.SpanDesc"></span>
-            </div>
-            <a data-role="detailbutton" data-icon="trash"  data-command-key="trash"></a>
-        </li>
-    </ul>
-    <div style="margin-top:10px;">
-        <span>
-            <a data-role="button" data-click="hicon.timer.events.add" class="km-default km-justified km-widget km-button km-bluebtn">
-                <span class="km-text">新增</span>
-            </a>
-        </span>
+  <header data-role="header">
+    <div data-role="navbar">
+      <a data-align="left" data-role="button" class="clearButton" data-click="hicon.timer.events.doBack">返回</a>
+      <!-- <a data-align="right" data-role="button" class="clearButton" data-click="hicon.timer.events.add">新增</a> -->
+      <span data-role="view-title">定时设置</span>
     </div>
+  </header>
+  <ul data-role="listview" class="list-wrapper" data-click="hicon.timer.events.itemClick" data-ko="foreach: $data.timerList()" style="min-height:100px;">
+    <li>
+      <div class="left">
+        <div>
+          <span>周期: </span>
+          <!-- ko if: $data.IsEveryDay == true-->
+          <span>每天</span>
+          <!-- /ko -->
+          <!-- ko if: $data.IsEveryDay == false-->
+          <span>仅一次</span>
+          <!-- /ko -->
+        </div>
+        <div>
+          <span>执行: </span>
+          <span>启动</span>
+        </div>
+        <div>
+          <span>开始时间: </span>
+          <span data-ko="text: $data.BeginTime"></span>
+        </div>
+        <div>
+          <span>时长: </span>
+          <span data-ko="text: $data.SpanDesc"></span>
+        </div>
+      </div>
+      <div class="right">
+        <a class="trash" data-command-key="trash"></a>
+      </div>
+    </li>
+  </ul>
+  <div style="margin:10px;">
+    <div class="input-row">
+      <div>
+        <a data-role="button" data-click="hicon.timer.events.add" class="btn-hicon">
+          <span class="km-text">新增</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>

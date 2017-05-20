@@ -27,7 +27,7 @@ hicon.controller = (function() {
     self.sysIntervals = ko.observableArray([]);
     self.isFeed = ko.observable(true);
 
-    self.Action = ko.observable(0);
+    // self.Action = ko.observable(0);
     self.deviceData = ko.observable({
       Action: 0,
       DeviceNO: 0,
@@ -87,8 +87,7 @@ hicon.controller = (function() {
     // } else {
     //   $('#radio2' + curentController.DeviceNO).prop('checked', true);
     // }
-
-    view.data.setEnableBtnStatus(curentController.IsStopped);
+    // view.data.setEnableBtnStatus(curentController.IsStopped);
 
     view.data.getLastestDeviceData();
     setInterval(function() {
@@ -141,38 +140,12 @@ hicon.controller = (function() {
           DeviceNO: viewModelController.curentController.DeviceNO
         },
         success: function(data) {
+          viewModelController.deviceData({});
           viewModelController.deviceData(data);
-          viewModelController.Action(data.Action);
-
-          data.DtuNO = viewModelController.curentController.DtuNO;
-          var d = data;
-          var action = $('div[data-command-key="start"][data-device-no="' + d.DeviceNO + '"]');
-          action.attr('data-action', d.Action);
-
-          action.html(d.Action == 1 ? '停止机器' : '启动机器');
-
-          // var status = $('td[data-cell="device-status"][data-device-no="' + d.DeviceNO + '"]');
-          // status.html(d.Action == 0 ? '<div><div class="warn_red_img" style="display: inline-block; width: auto;"><span class="red" style="margin-left: 25px;">已停止</span></div></div>' : '<div><div class="warn_green_img" style="display: inline-block; width: auto;"><span class="limegreen" style="margin-left: 25px;">已启动</span></div>\
-          //                           </div>')
         },
         error: function() {
         }
       });
-    },
-    setEnableBtnStatus: function(isStopped) {
-      $('#btnEnabledDevice').find('span').last().text(isStopped ? '启用机器' : '停用机器');
-      // $('#btnEnabledDevice').attr('data-icon', isStopped ? 'play' : 'stop');
-      if (isStopped) {
-        // $('#btnEnabledDevice').find('span').first().removeClass('km-stop').addClass('km-paly');
-        $('#btnEnabledDevice').css('color', '#fff');
-      } else {
-        // $('#btnEnabledDevice').find('span').first().removeClass('km-paly').addClass('km-stop');
-        $('#btnEnabledDevice').css('color', 'red');
-      }
-
-      $('#btnEnabledDevice').data('data-stop', isStopped);
-      $('#pond-d-params').find('input[type="radio"]').attr('disabled', isStopped);
-      $('#pond-d-params').find('input[type="checkbox"]').attr('disabled', isStopped);
     },
     deviceControl: function() {
       App.showLoading();
@@ -223,7 +196,7 @@ hicon.controller = (function() {
       alert(1)
     },
     deviceClick: function(e) {
-      var device = ko.dataFor(e.target.closest("li")[0]),
+      var device = viewModelController.curentController,
         commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
       switch (commandKey) {
         case 'add':
@@ -238,14 +211,21 @@ hicon.controller = (function() {
             hicon.utils.noty(cfg);
             return;
           };
-
-          if ($(e.target).closest('a').attr('data-action') == 0) {
+          if (viewModelController.deviceData().Action == 0) {
             $("#modalview-time").kendoMobileModalView('open');
           } else {
             view.data.deviceControl();
           }
           break;
         case 'timer':
+          if (viewModelController.curentController.IsStopped) {
+            var cfg = {
+              text: '设备已停用，无法设置',
+              type: 'error'
+            };
+            hicon.utils.noty(cfg);
+            return;
+          };
           hicon.sessionStorage.saveJson('CURRENT_DEVICE', device);
           hicon.navigation.timer();
           break;
@@ -288,6 +268,14 @@ hicon.controller = (function() {
           });
           break;
         case 'device-chart':
+          if (viewModelController.curentController.IsStopped) {
+            var cfg = {
+              text: '设备已停用',
+              type: 'error'
+            };
+            hicon.utils.noty(cfg);
+            return;
+          };
           hicon.sessionStorage.saveJson('CURRENT_DEVICE', device);
           hicon.navigation.deviceCurve();
           break;
@@ -296,10 +284,10 @@ hicon.controller = (function() {
           hicon.navigation.deviceLog();
           break;
         case 'stop':
+          var currentStop = viewModelController.curentController.IsStopped;
           hicon.utils.confirm({
-            message: '您确定要停用机器？',
+            message: currentStop ? '您确定要启用机器？' : '您确定要停用机器？',
             ok: function() {
-              var currentStop = $('#btnEnabledDevice').data('data-stop');
               hicon.server.ajax({
                 url: 'DeviceStop',
                 type: 'post',
@@ -317,8 +305,9 @@ hicon.controller = (function() {
                   };
                   hicon.utils.noty(cfg);
                   if (data.Result) {
-                    view.data.setEnableBtnStatus(!currentStop);
                     viewModelController.curentController.IsStopped = !currentStop;
+                    viewModelController.deviceList({});
+                    viewModelController.deviceList(viewModelController.curentController);
                   };
                 },
                 error: function() {}
@@ -396,9 +385,16 @@ hicon.controller = (function() {
     },
     deviceAuto: function(e) {
       var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
-      var isAuto = commandKey === 'auto' ? 1 : 0
-
+      var isAuto = commandKey === 'auto' ? 1 : 0;
       if (isAuto == viewModelController.curentController.IsAuto) {
+        return;
+      }
+      if (viewModelController.deviceList().IsStopped) {
+        var cfg = {
+          text: '设备已停用，无法设置',
+          type: 'error'
+        };
+        hicon.utils.noty(cfg);
         return;
       }
 
@@ -429,6 +425,20 @@ hicon.controller = (function() {
       });
     },
     deviceSetTimer: function(e) {
+      var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
+      var isOpen = commandKey === 'open' ? 1 : 0
+      if (isOpen == viewModelController.curentController.IsTimer) {
+        return;
+      }
+      if (viewModelController.deviceList().IsStopped) {
+        var cfg = {
+          text: '设备已停用，无法设置',
+          type: 'error'
+        };
+        hicon.utils.noty(cfg);
+        return;
+      }
+
       hicon.server.ajax({
         url: 'DeviceSetIsTimer',
         type: 'post',
@@ -436,10 +446,15 @@ hicon.controller = (function() {
           UserID: viewModelController.userInfo.UserID,
           PondID: viewModelController.currentPond.PondID,
           DtuNO: viewModelController.curentController.DtuNO,
-          DeviceNO: e.DeviceNO,
-          IsTimer: $(arguments[1].target).prop('checked') ? 1 : 0
+          DeviceNO: viewModelController.curentController.DeviceNO,
+          IsTimer: isOpen
         },
         success: function(data) {
+          viewModelController.curentController.IsTimer = isOpen;
+          hicon.sessionStorage.saveJson('CURRENT_CONTROLLER', viewModelController.curentController);
+          viewModelController.deviceList({});
+          viewModelController.deviceList(viewModelController.curentController);
+
           var cfg = {
             text: data.Result ? '保存成功' : (data.ErrorMsg ? data.ErrorMsg : '保存失败'),
             type: data.Result ? 'success' : 'error'
@@ -458,11 +473,9 @@ hicon.controller = (function() {
       } else {
         $('#pond-w-params').hide();
         $('#pond-d-params').show();
-
       }
     },
     start: function() {
-
       if (viewModelController.isFeed()) {
         var r = /^\d+$/.test($('#ddlStartTime').val() - 0);
         if (!r) {

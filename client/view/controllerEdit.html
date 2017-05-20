@@ -1,33 +1,44 @@
 <div id="controllerEdit" data-role="view" data-use-native-scrolling="true" data-init="hicon.controllerEdit.init" data-after-show="hicon.controllerEdit.aftershow" data-show="hicon.controllerEdit.show" data-transition="overlay:left" data-persist="true">
-    <header data-role="header">
-        <div data-role="navbar">
-            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.controllerEdit.events.doBack">返回</a>
-            <!-- <a data-align="right" data-role="button" class="clearButton" data-click="hicon.controllerEdit.events.save">保存</a> -->
-            <span data-role="view-title" data-ko="text:title()" >遥控器管理</span>
+  <header data-role="header">
+    <div data-role="navbar">
+      <a data-align="left" data-role="button" class="clearButton" data-click="hicon.controllerEdit.events.doBack">返回</a>
+      <a data-align="right" data-role="button" class="clearButton" data-click="hicon.controllerEdit.events.save">保存</a>
+      <span data-role="view-title" data-ko="text:title()">遥控器管理</span>
+    </div>
+  </header>
+  <ul data-role="listview" class="form-wrapper" data-click="hicon.controllerEdit.events.itemClick">
+    <!-- ko foreach: $data.controllerList -->
+      <li class="reg-phone" data-ko="attr: {'data-id': $data.guid}" style="border: 0;margin-bottom: 5px;padding: 0px;">
+        <input
+          type="text"
+          value=""
+          data-ko="value: $data.DtuNO, valueUpdate: 'keyup', attr: {'data-guid': $data.guid}"
+          placeholder="输入或扫描 遥控器"
+          style="margin-right: 3px; background: #fff; margin-top: 0; transform: none; -webkit-transform: none; padding: 10px;"
+        />
+        <div style="width: 70px; position: relative;">
+          <a
+            class="camera"
+            data-command-key="barcodeScan"
+            data-click="hicon.controllerEdit.events.itemClick"
+            data-role="button"
+          ></a>
+          <a
+            style="border: 0;background: transparent;top: 0px;right: 10px;"
+            class="trash"
+            data-command-key="delete"
+            data-click="hicon.controllerEdit.events.itemClick"
+            data-role="button"
+          ></a>
         </div>
-    </header>
-
-    <ul data-role="listview" data-click="hicon.controllerEdit.events.itemClick">
-        <!-- ko foreach: $data.controllerList -->
-            <li data-ko="attr: {'data-id': $data.guid}">
-                <div>
-                    <span style="display: inline-block; color: #9da2a4; width: 60px;">遥控器:</span>
-                    <a data-command-key="barcodeScan" class="tableButton" style="font-size: 1.5em; color:#00acc1;"><span class="km-icon km-camera"></span></a>
-                    <input type="text" value="" data-ko="value: $data.DtuNO, valueUpdate: 'keyup', attr: {'data-guid': $data.guid}" placeholder="输入或扫描" style="width: 65%; font-size: 16px;" />
-                    <a data-role="detailbutton" data-command-key="delete" ><span class="km-icon km-trash"></span></a>
-                </div>
-            </li>
-        <!-- /ko -->
-
-        <li>
-            <div style="clear: both; text-align: center;">                    
-                <a data-role="button" class="km-bluebtn" data-command-key="add" data-role="device-add" data-ko="text:btnCaption()" style="width: 50%;">
-                    添加
-                </a>
-                <a data-role="button" class="chooseBtn" data-command-key="save" data-role="device-save" style="width: 40%;">
-                    保存
-                </a>
-            </div>
-        </li>
-    </ul>
+      </li>
+    <!-- /ko -->
+    <li class="input-row" style="border: 0;margin-bottom: 5px;margin-top:10px;padding: 0px;">
+      <div>
+        <a data-role="button" data-command-key="add" class="btn-hicon">
+          <span class="km-text" data-ko="text:btnCaption()">添加</span>
+        </a>
+      </div>
+    </li>
+  </ul>
 </div>

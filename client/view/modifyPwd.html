@@ -1,28 +1,32 @@
 <div id="modifyPwd" data-role="view" data-use-native-scrolling="true" data-init="hicon.modifyPwd.init" data-after-show="hicon.modifyPwd.aftershow" data-show="hicon.modifyPwd.show" data-transition="overlay:left" data-persist="true">
-    <header data-role="header">
-        <div data-role="navbar">
-            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.modifyPwd.events.doBack">返回</a>
-            <!-- <a data-align="right" data-role="button" class="clearButton" data-click="hicon.modifyPwd.events.save">保存</a> -->
-            <span data-role="view-title">修改密码</span>
-        </div>
-    </header>
-
-    <ul data-role="listview">
-        <li>
-            <input type="password" class="form-input" id="modifyOldPassword" name="modifyOldPassword" placeholder="输入旧密码" />
-        </li>
-        <li>
-            <input type="password" class="form-input" id="modifyPassword" name="modifyPassword" placeholder="输入新密码" />
-        </li>
-        <li>
-            <input type="password" class="form-input" id="confirmModifyPassword" name="confirmModifyPassword" placeholder="确认新密码" />
-        </li>
-        <li>
-            <span>
-                <a data-role="button" data-click="hicon.modifyPwd.events.save" class="km-default km-justified km-widget km-button km-bluebtn">
-                    <span class="km-text">保存</span>
-                </a>
-            </span>
-        </li>
-    </ul>
+  <header data-role="header">
+    <div data-role="navbar">
+      <a data-align="left" data-role="button" class="clearButton" data-click="hicon.modifyPwd.events.doBack">返回</a>
+      <span data-role="view-title">修改密码</span>
+    </div>
+  </header>
+  <div class="form-wrapper">
+    <div class="input-row">
+      <div>
+        <input type="password" class="form-input" id="modifyOldPassword" name="modifyOldPassword" placeholder="输入旧密码" />
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <input type="password" class="form-input" id="modifyPassword" name="modifyPassword" placeholder="输入新密码" />
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <input type="password" class="form-input" id="confirmModifyPassword" name="confirmModifyPassword" placeholder="确认新密码" />
+      </div>
+    </div>
+    <div class="input-row">
+      <div>
+        <a data-role="button" data-click="hicon.modifyPwd.events.save" class="btn-hicon">
+          <span class="km-text">保存</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>

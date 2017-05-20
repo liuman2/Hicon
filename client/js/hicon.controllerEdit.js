@@ -210,7 +210,7 @@ hicon.controllerEdit = (function () {
         },
         itemClick: function(e) {
             var commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
-            var controller = ko.dataFor(e.target.closest("li")[0]);
+            var controller = ko.dataFor(e.target.closest("div")[0]);
 
             switch(commandKey) {
                 case 'barcodeScan':

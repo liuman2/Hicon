@@ -55,52 +55,50 @@
     <ul data-role="listview" class="pond-list" data-click="hicon.main.events.pondItemClick">
       <!-- ko foreach: $data.pondList -->
       <li class="hi-li-font" data-command-key="pondClick">
-        <div style="float: left;" class="pool_img"></div>
-        <div class="f-desc">
-          <span class="n-cl bl" data-ko="text: $data.Name"></span>
-          <!-- ko if: $data.Dtus.length > 0-->
-          <!-- ko foreach: $data.Dtus -->
-          <!-- ko if: $data.DtuNO.substring(0, 1) == '0'-->
-          <div>
-            <span data-ko="text: '监测主机：'"></span>
-            <!-- ko if: $data.IsLogin == true-->
-            <span class="limegreen">在线</span>
-            <!-- /ko -->
-            <!-- ko if: $data.IsLogin == false-->
-            <span class="red">离线</span>
-            <!-- /ko -->
-          </div>
-          <!-- /ko -->
-          <!-- /ko -->
-          <!-- ko if: $data.DTU_0_Desc != ''-->
-          <div>
-            <span data-ko="html: $data.DTU_0_Desc"></span>
-          </div>
-          <!-- /ko -->
-          <!-- ko if: $data.DTU_1_Desc != ''-->
-          <div>
-            <span data-ko="html: $data.DTU_1_Desc"></span>
-          </div>
-          <!-- /ko -->
-          <!-- ko if: $data.DTU_2_Desc != ''-->
-          <div>
-            <span data-ko="html: $data.DTU_2_Desc"></span>
-          </div>
-          <!-- /ko -->
-          <!-- /ko -->
-          <div>
-            <span>养殖种类：</span>
-            <span data-ko="text: $data.FishType"> </span>
-          </div>
+        <div class="left">
+          <div style="float: left;" class="pool_img"></div>
+            <div class="f-desc">
+              <span class="n-cl bl" data-ko="text: $data.Name"></span>
+              <!-- ko if: $data.Dtus.length > 0-->
+              <!-- ko foreach: $data.Dtus -->
+              <!-- ko if: $data.DtuNO.substring(0, 1) == '0'-->
+              <div>
+                <span data-ko="text: '监测主机：'"></span>
+                <!-- ko if: $data.IsLogin == true-->
+                <span class="limegreen">在线</span>
+                <!-- /ko -->
+                <!-- ko if: $data.IsLogin == false-->
+                <span class="red">离线</span>
+                <!-- /ko -->
+              </div>
+              <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko if: $data.DTU_0_Desc != ''-->
+              <div>
+                <span data-ko="html: $data.DTU_0_Desc"></span>
+              </div>
+              <!-- /ko -->
+              <!-- ko if: $data.DTU_1_Desc != ''-->
+              <div>
+                <span data-ko="html: $data.DTU_1_Desc"></span>
+              </div>
+              <!-- /ko -->
+              <!-- ko if: $data.DTU_2_Desc != ''-->
+              <div>
+                <span data-ko="html: $data.DTU_2_Desc"></span>
+              </div>
+              <!-- /ko -->
+              <!-- /ko -->
+              <div>
+                <span>养殖种类：</span>
+                <span data-ko="text: $data.FishType"> </span>
+              </div>
+            </div>
         </div>
-        <div class="actionButtonContainers">
-          <div data-command-key="delete" class="actionButtonContainer">
-            <a data-role="button" class="clearButton" data-icon="trash"></a>
-          </div>
+        <div class="right">
+          <a class="trash" data-command-key="delete"></a>
           <!-- ko if: $data.Dtus.length > 0-->
-          <div data-command-key="unlock" class="actionButtonContainer">
-            <a data-role="button" class="clearButton" data-icon="unlock"></a>
-          </div>
+          <a class="unlock" data-command-key="unlock"></a>
           <!-- /ko -->
         </div>
       </li>

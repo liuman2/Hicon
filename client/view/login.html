@@ -3,41 +3,44 @@
     <div class="logo">
     </div>
   </div>
-  <div class="reg-row">
-    <div>
-      <a data-role="button" data-click="hicon.login.events.doRegister" class="btn-register">
-        <span class="km-text">注册</span>
+  <div class="form-wrapper">
+    <div class="reg-row">
+      <div>
+        <a data-role="button" data-click="hicon.login.events.doRegister" class="btn-register">
+          <span class="km-text">注册</span>
+        </a>
+      </div>
+    </div>
+    <div class="input-row shadow">
+      <div>
+        <input type="text" id="username" placeholder="手机号码" />
+      </div>
+    </div>
+    <div class="input-row shadow">
+      <input type="password" id="password" placeholder="密码" />
+    </div>
+    <div class="input-row shadow">
+      <select id="identity">
+        <option value="">选择登录身份</option>
+        <option value="0">海控在线</option>
+        <option value="1">增氧控制</option>
+        <option value="2">水泵控制</option>
+        <option value="3">投饵控制</option>
+        <option value="99">海控在手</option>
+      </select>
+    </div>
+    <div class="input-row mb10">
+      <a id="btnLogin" data-role="button" data-click="hicon.login.events.doLogin" class="km-bluebtn">
+        登录
       </a>
     </div>
-  </div>
-  <div class="input-row">
-    <div>
-      <input type="text" id="username" placeholder="手机号码" />
-    </div>
-  </div>
-  <div class="input-row">
-    <input type="password" id="password" placeholder="密码" />
-  </div>
-  <div class="input-row">
-    <select id="identity">
-      <option value="">选择登录身份</option>
-      <option value="0">海控在线</option>
-      <option value="1">增氧控制</option>
-      <option value="2">水泵控制</option>
-      <option value="3">投饵控制</option>
-      <option value="99">海控在手</option>
-    </select>
-  </div>
-  <div class="input-row mb10">
-    <a id="btnLogin" data-role="button" data-click="hicon.login.events.doLogin" class="km-bluebtn">
-      登录
-    </a>
-  </div>
-  <div class="member-row">
-    <div>
-      <input type="checkbox" id="chkRember" data-bind="events: { change: rember }" />
-      <label for="chkRember">记住密码</label>
-      <a data-role="button" data-click="hicon.login.events.retrieve" class="btn-forget">忘记密码</a>
+
+    <div class="member-row">
+      <div>
+        <input type="checkbox" id="chkRember" data-bind="events: { change: rember }" />
+        <label for="chkRember">记住密码</label>
+        <a data-role="button" data-click="hicon.login.events.retrieve" class="btn-forget">忘记密码</a>
+      </div>
     </div>
   </div>
   <!-- <ul data-role="listview">

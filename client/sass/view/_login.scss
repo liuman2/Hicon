@@ -9,7 +9,7 @@
     text-align: right;
     margin-bottom: 10px;
     div {
-      width: 340px;
+      // width: 340px;
       margin: 0 auto;
     }
     a {
@@ -41,7 +41,7 @@
       content: url(../content/img/icon/icon_check_empty.png);
     }
     div {
-      width: 340px;
+      // width: 340px;
       margin: 0 auto;
       position: relative;
     }
@@ -103,10 +103,10 @@
   .btn-register {
     border: none;
   }
-  .input-row {
-    input,
-    select {
-      width: 340px;
-    }
-  }
+  // .input-row {
+  //   input,
+  //   select {
+  //     width: 340px;
+  //   }
+  // }
 }

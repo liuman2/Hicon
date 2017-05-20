@@ -2,7 +2,6 @@
   <header data-role="header">
     <div data-role="navbar">
       <a data-align="left" data-role="button" class="clearButton" data-click="hicon.controller.events.doBack">返回</a>
-      <!-- <span data-role="view-title" data-ko="text:title()">遥控器</span> -->
       <span data-role="view-title">&nbsp;</span>
     </div>
   </header>
@@ -13,10 +12,12 @@
         <div class="controller-status">
             <div class="status-left">状态</div>
             <div class="status-right">
-                <span class="status-icon" data-ko="css:(deviceData().Action == 1 ? 'running' : 'stop'), text:(deviceData().Action == 1 ? '已启动' : '已停止')"></span>
+                <span
+                  class="status-icon"
+                  data-ko="css:(deviceData().Action == 1 ? 'running' : 'stop'), text:deviceList().IsStopped ? '已停用' : (deviceData().Action == 1 ? '已启动' : '已停止')">
+                </span>
             </div>
         </div>
-
         <div class="controller-start">
             <div
               data-role="button"
@@ -39,7 +40,6 @@
               手动
             </div>
         </div>
-
         <div
           class="controller-run"
           data-role="button"
@@ -48,121 +48,72 @@
           data-click="hicon.controller.events.deviceClick"
         >
         </div>
-
         <div class="controller-timing">
-            <div class="start-left" data-ko="css:(deviceList().IsTimer ? 'active' : '')" data-click="hicon.controller.events.test" data-role="button">定时启动</div>
-            <div class="start-right" data-ko="css:(!deviceList().IsTimer ? 'active' : '')" data-role="button">定时关闭</div>
+            <div
+              class="start-left"
+              data-ko="css:(deviceList().IsTimer ? 'active' : '')"
+              data-command-key="open"
+              data-click="hicon.controller.events.deviceSetTimer"
+              data-role="button"
+            >
+              定时启动
+            </div>
+            <div
+              class="start-right"
+              data-ko="css:(!deviceList().IsTimer ? 'active' : '')"
+              data-command-key="close"
+              data-click="hicon.controller.events.deviceSetTimer"
+              data-role="button"
+            >
+              定时关闭
+            </div>
         </div>
-        <div class="controller-run" data-role="button">定时设置</div>
-
+        <div
+          class="controller-run"
+          data-role="button"
+          data-command-key="timer"
+          data-click="hicon.controller.events.deviceClick"
+        >
+          定时设置
+        </div>
         <div class="controller-btns">
           <div class="btn-left">
-            <a data-role="button" class="tableButton km-bluebtn" data-role="device-chart" data-command-key="device-chart">
+            <a
+              data-role="button"
+              class="tableButton km-bluebtn"
+              data-role="device-chart"
+              data-command-key="device-chart"
+              data-click="hicon.controller.events.deviceClick"
+            >
               <span class="ui-btn-text">曲线查看</span>
             </a>
           </div>
           <div class="btn-right">
-            <a data-role="button" class="tableButton km-bluebtn" data-role="device-event" data-command-key="events">
+            <a
+              data-role="button"
+              class="tableButton km-bluebtn"
+              data-role="device-event"
+              data-command-key="events"
+              data-click="hicon.controller.events.deviceClick"
+            >
               <span class="ui-btn-text">操作记录</span>
             </a>
           </div>
         </div>
 
         <div class="controller-footer">
-          <a data-role="button" class="tableButton km-bluebtn" data-role="device-trash" data-command-key="stop">
+          <a
+            data-role="button"
+            class="tableButton km-bluebtn"
+            data-role="device-trash"
+            data-command-key="stop"
+            data-click="hicon.controller.events.deviceClick"
+          >
             <span class="ui-btn-text" data-ko="text:deviceList().IsStopped ? '启用机器' : '停用机器'"></span>
           </a>
         </div>
-
     </div>
-
   </div>
-  <ul id="pond-d-params" data-role="listview" data-type="group">
-    <li>
-      <ul data-role="listview" id="ul-pond-d-params" data-click="hicon.controller.events.deviceClick">
-        <!-- ko foreach: $data.deviceList -->
-        <!-- <li>
-          <div class="attri-container">
-            <table class="attr-table" data-ko="attr: {'data-device-no': $data.DeviceNO}">
-              <tr class="bute-row">
-                <td class="attr-header" style="border:none;" data-ko="text: $data.Name"></td>
-                <td class="attr-header" style="border:none;"></td>
-                <td class="attr-header" style="border:none;"></td>
-                <td class="attr-header" style="border:none;"></td>
-              </tr>
-              <tr class="param-row param-radio">
-                <th class="th-img">
-                  <div data-ko="css: $data.clsName"></div>
-                </th>
-                <td>
-                  <input type="radio" data-radio-index="1" class="km-radio" name="r1" value="1" data-ko="checked: $data.IsAuto,attr: {'id': 'radio1'+$data.DeviceNO}, event: { change: hicon.controller.events.deviceAuto }" data-role="device-auto">
-                  <label class="km-radio-label rember-label" data-ko="attr: {'for': 'radio1'+$data.DeviceNO}">自动</label>
-                </td>
-                <td>
-                  <input type="radio" data-radio-index="0" class="km-radio" name="r1" value="0" data-ko="checked: $data.IsAuto, attr: {'id': 'radio2'+$data.DeviceNO}, event: { change: hicon.controller.events.deviceAuto }" data-role="device-auto">
-                  <label class="km -radio-label rember-label" data-ko="attr: {'for': 'radio2'+$data.DeviceNO}">手动</label>
-                </td>
-                <td>
-                  <input type="checkbox" class="km-checkbox" data-ko="checked: $data.IsTimer,attr: {'id': 'checkbox1'+$data.DeviceNO}, event: { change: hicon.controller.events.deviceSetTimer }" data-role="device-auto">
-                  <label class="km-checkbox-label rember-label" data-ko="attr: {'for': 'checkbox1'+$data.DeviceNO}">定时</label>
-                </td>
-              </tr>
-              <tr class="param-row">
-                <td></td>
-                <td colspan="3">
-                  <a id="btnDeviceStart" data-role="button" style="margin: 10px 0;" class="tableButton km-bluebtn" data-icon="play" data-ko="attr: {'data-device-no': $data.DeviceNO}" data-command-key="start">
-                                        机器启动
-                                    </a>
-                </td>
-              </tr>
-              <tr class="param-row">
-                <td class="attr-bute-name" style="width: 50px;">状态:</td>
-                <td colspan="3" class="attr-pos-value" data-ko="attr: {'data-device-no': $data.DeviceNO}" data-cell="device-status">
-                </td>
-              </tr>
-              <tr class="param-row">
-                <td style="width: 50px;">&nbsp;</td>
-                <td colspan="3">
-                  <a data-role="button" style="margin: 10px 0;" class="tableButton km-bluebtn" data-icon="recents" data-role="device-timer" data-command-key="timer">
-                    <span class="ui-btn-text">定时设置
-                                        </span>
-                  </a>
-                </td>
-              </tr>
-              <tr class="param-row">
-                <td>&nbsp;</td>
-                <td colspan="3">
-                  <a data-role="button" style="margin: 10px 0;" class="tableButton km-bluebtn" data-icon="search" data-role="device-chart" data-command-key="device-chart">
-                    <span class="ui-btn-text">曲线查看
-                                        </span>
-                  </a>
-                </td>
-              </tr>
-              <tr class="param-row">
-                <td>&nbsp;</td>
-                <td colspan="3">
-                  <a data-role="button" style="margin: 10px 0;" class="tableButton km-bluebtn" data-role="device-event" data-icon="events" data-command-key="events">
-                    <span class="ui-btn-text">操作记录
-                                        </span>
-                  </a>
-                </td>
-              </tr>
-              <tr class="param-row">
-                <td>&nbsp;</td>
-                <td colspan="3">
-                  <a id="btnEnabledDevice" data-role="button" style="margin: 10px 0;" class="tableButton km-bluebtn" data-role="device-trash" data-icon="play" data-command-key="stop">
-                    <span class="ui-btn-text">启用机器
-                                        </span>
-                  </a>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </li> -->
-        <!-- /ko -->
-      </ul>
-    </li>
-  </ul>
 </div>
 <div data-role="modalview" id="modalview-time" style="width: 80%;">
   <div data-role="header">

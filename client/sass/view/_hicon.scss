@@ -243,7 +243,7 @@ div.actionButtonContainer > a > span {
 //     padding: .5em .7em !important;
 // }
 .form-input {
-  margin-left: .7em !important;
+  // margin-left: .7em !important;
   left: 0 !important;
 }
 
@@ -293,8 +293,76 @@ div.actionButtonContainer > a > span {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #328AC5), color-stop(1, #328AC5));
 }
 
-.register-wrapper {
-  padding: 24px;
+.list-wrapper {
+  margin: 10px;
+  li {
+    background: #fff!important;
+    color: #378BC2!important;
+    margin-bottom: 3px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    border-width: 0!important;
+    .left {
+      flex: 1;
+    }
+    .right {
+      position: relative;
+      width: 24px;
+    }
+    .trash {
+      top: 20px;
+    }
+  }
+}
+.trash {
+  position: absolute;
+  display: block;
+  width: 24px;
+  height: 24px;
+  &:before {
+    content: "";
+    display: block;
+    position: relative;
+    background: url(../content/img/icon/icon_delete.png) -0px -0px no-repeat;
+    width: 24px;
+    height: 24px;
+  }
+}
+.camera {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 0!important;
+  border: none!important;
+  background:transparent!important;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    background: url(../content/img/icon/icon_camera.png) -0px -0px no-repeat;
+    width: 40px;
+    height: 40px;
+  }
+}
+.unlock {
+  position: absolute;
+  display: block;
+  width: 24px;
+  height: 24px;
+  &:before {
+    content: "";
+    display: block;
+    position: relative;
+    background: url(../content/img/icon/icon_unlock.png) -0px -0px no-repeat;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.form-wrapper {
+  padding: 14px;
 }
 
 #register {
@@ -371,8 +439,26 @@ div.actionButtonContainer > a > span {
       -moz-box-shadow: 1px 3px 6px #ccc;
       -webkit-box-shadow: 1px 3px 6px #ccc;
       box-shadow: 1px 3px 6px #ccc;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
       span {
         color: #9fa0a0;
+      }
+      .left {
+        flex: 1;
+      }
+      .right {
+        width: 24px;
+        position: relative;
+      }
+      .trash {
+        &:before {
+          top: 0;
+        }
+      }
+      .unlock {
+        top: 70px;
       }
     }
     .pool_img {
@@ -515,13 +601,14 @@ div.actionButtonContainer > a > span {
 }
 
 .reg-phone {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
+  display: -webkit-box!important;
+  display: flex!important;
+  -webkit-box-align: center!important;
   align-items: center;
   input {
-    -webkit-box-flex: 1;
-    flex: 1;
+    -webkit-box-flex: 1!important;
+    flex: 1!important;
+    position:relative!important;
   }
 }
 
@@ -535,12 +622,9 @@ div.actionButtonContainer > a > span {
     font-size: 14px;
     padding: 10px;
     border: none;
-    -moz-box-shadow: 1px 3px 6px #ccc;
-    -webkit-box-shadow: 1px 3px 6px #ccc;
-    box-shadow: 1px 3px 6px #ccc;
   }
   #btnLogin {
-    width: 340px;
+    width: 100%;
     height: 45px;
     line-height: 45px;
     border-radius: 0;
@@ -569,6 +653,11 @@ div.actionButtonContainer > a > span {
     border-color: #3193d5;
     color: #fff;
   }
+}
+.shadow {
+  -moz-box-shadow: 1px 3px 6px #ccc;
+  -webkit-box-shadow: 1px 3px 6px #ccc;
+  box-shadow: 1px 3px 6px #ccc;
 }
 
 .controller-list {
@@ -638,7 +727,15 @@ div.actionButtonContainer > a > span {
   }
 }
 
-.controller-view {
+#controller .km-content,
+#timerAdd .km-content,
+#timer .km-content,
+#dtuList .km-content,
+#basic .km-content,
+#controllerEdit .km-content,
+#modifyPwd .km-content,
+#log .km-content
+{
   background: #F0F4F7;
 }
 
@@ -786,6 +883,26 @@ div.actionButtonContainer > a > span {
       padding-left: 20px;
       padding-right: 20px;
       width: 100%;
+    }
+  }
+}
+
+.search-day {
+  text-align: center;
+  padding-top: 10px;
+  height: 50px;
+  background: #fff;
+  div {
+    width: 39%;
+    &:first-child {
+      width: 30%;
+    }
+    &:last-child {
+      width: 30%;
+    }
+    float: left;
+    input {
+      width: 100%;height: 30px;
     }
   }
 }
