@@ -575,12 +575,11 @@ div.actionButtonContainer > a > span {
   margin: 0;
   padding: 0;
   overflow: hidden;
-
   li {
     display: inline-block;
     width: 50%;
     float: left;
-    height:100px;
+    height: 100px;
     margin-bottom: 10px;
   }
   .controller-content {
@@ -617,7 +616,7 @@ div.actionButtonContainer > a > span {
       height: 80px;
       line-height: 80px;
       color: #358ac6;
-      font-size:30px;
+      font-size: 30px;
     }
   }
   li.disabled {
@@ -642,10 +641,11 @@ div.actionButtonContainer > a > span {
 .controller-view {
   background: #F0F4F7;
 }
+
 .controller-header {
   text-align: center;
-  height: 3.5em;
-  line-height: 3.5em;
+  height: 2.5em;
+  line-height: 2.5em;
   background: #898989;
   color: #fff;
   font-size: 1.25em;
@@ -653,14 +653,13 @@ div.actionButtonContainer > a > span {
 
 .controller-body {
   margin: 5px 10px 0 10px;
-
   .controller-status {
     display: -webkit-box;
     display: flex;
     -webkit-box-align: center;
     height: 2.5em;
     line-height: 2.5em;
-    font-size:20px;
+    font-size: 20px;
     color: #9fa0a0;
     text-align: center;
   }
@@ -675,7 +674,8 @@ div.actionButtonContainer > a > span {
   }
   .status-icon {
     &.running {
-      position:relative;
+      position: relative;
+      color: #9ECF93;
       &:before {
         content: url(../content/img/icon/icon_warning_green.png);
         display: block;
@@ -687,7 +687,8 @@ div.actionButtonContainer > a > span {
       }
     }
     &.stop {
-      position:relative;
+      position: relative;
+      color: #E83E50;
       &:before {
         content: url(../content/img/icon/icon_warning_red.png);
         display: block;
@@ -699,18 +700,21 @@ div.actionButtonContainer > a > span {
       }
     }
   }
-
-  .controller-start {
+  .controller-start,
+  .controller-timing {
     display: -webkit-box;
     display: flex;
     -webkit-box-align: center;
     height: 2.5em;
     line-height: 2.5em;
-    font-size:20px;
+    font-size: 20px;
     text-align: center;
     color: #9fa0a0;
     margin-top: 5px;
     background: #fff;
+  }
+  .controller-timing {
+    margin-top: 15px;
   }
   .start-left {
     flex: 1;
@@ -722,30 +726,66 @@ div.actionButtonContainer > a > span {
     border-radius: 0;
     border: none;
     &.km-state-active {
-        color: #666 !important;
+      color: #666 !important;
     }
   }
   .active {
     background-color: #328AC5;
     color: #fff;
     &.km-state-active {
-        background: #1d71a9 !important;
+      background: #1d71a9 !important;
     }
   }
-
   .controller-run {
     height: 2.5em;
     font-size: 20px;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 10px;
     background: #fff;
     border-radius: 0;
     border: none;
     color: #358ac6;
     width: 100%;
-
     -moz-box-shadow: -1px 1px 11px #ccc, 2px 2px 5px #ccc;
     -webkit-box-shadow: -1px 1px 11px #ccc, 2px 2px 5px #ccc;
     box-shadow: -1px 1px 11px #ccc, 2px 2px 5px #ccc;
+  }
+  .controller-btns {
+    margin-top: 10px;
+    text-align: center;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    margin: 0 30px;
+    .btn-left {
+      flex: 1;
+      text-align: left;
+    }
+    .btn-right {
+      flex: 1;
+      text-align: right;
+    }
+    a {
+      margin: 10px 0;
+      border-radius: 0;
+      font-size: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      -moz-box-shadow: 2px 2px 5px #333!important;
+      -webkit-box-shadow: 2px 2px 5px #333!important;
+      box-shadow: 2px 2px 5px #333!important;
+    }
+  }
+  .controller-footer {
+    text-align: center;
+    margin: 0 30px;
+    a {
+      margin: 10px 0;
+      border-radius: 0;
+      font-size: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      width: 100%;
+    }
   }
 }

@@ -8,26 +8,80 @@
   </header>
   <div data-role="listview" class="controller-view" data-click="hicon.controller.events.deviceClick">
     <div data-ko="text:title()" class="controller-header"></div>
+
     <div class="controller-body">
         <div class="controller-status">
             <div class="status-left">状态</div>
             <div class="status-right">
-                <span class="status-icon stop">已启动</span>
+                <span class="status-icon" data-ko="css:(deviceData().Action == 1 ? 'running' : 'stop'), text:(deviceData().Action == 1 ? '已启动' : '已停止')"></span>
             </div>
         </div>
+
         <div class="controller-start">
-            <div class="start-left active" data-click="hicon.controller.events.test" data-role="button">自动</div>
-            <div class="start-right" data-role="button">手动</div>
+            <div
+              data-role="button"
+              class="start-left"
+              data-ko="css:(deviceList().IsAuto ? 'active' : '')"
+              data-command-key="auto"
+              data-click="hicon.controller.events.deviceAuto"
+              data-role="button"
+            >
+              自动
+            </div>
+            <div
+              data-role="button"
+              class="start-right"
+              data-ko="css:(!deviceList().IsAuto ? 'active' : '')"
+              data-command-key="manual"
+              data-click="hicon.controller.events.deviceAuto"
+              data-role="button"
+            >
+              手动
+            </div>
         </div>
-        <div class="controller-run" data-role="button">机器启动</div>
+
+        <div
+          class="controller-run"
+          data-role="button"
+          data-ko="text:(deviceData().Action == 1 ? '停止机器' : '启动机器'), attr: {'data-device-no': deviceList().DeviceNO}"
+          data-command-key="start"
+          data-click="hicon.controller.events.deviceClick"
+        >
+        </div>
+
+        <div class="controller-timing">
+            <div class="start-left" data-ko="css:(deviceList().IsTimer ? 'active' : '')" data-click="hicon.controller.events.test" data-role="button">定时启动</div>
+            <div class="start-right" data-ko="css:(!deviceList().IsTimer ? 'active' : '')" data-role="button">定时关闭</div>
+        </div>
+        <div class="controller-run" data-role="button">定时设置</div>
+
+        <div class="controller-btns">
+          <div class="btn-left">
+            <a data-role="button" class="tableButton km-bluebtn" data-role="device-chart" data-command-key="device-chart">
+              <span class="ui-btn-text">曲线查看</span>
+            </a>
+          </div>
+          <div class="btn-right">
+            <a data-role="button" class="tableButton km-bluebtn" data-role="device-event" data-command-key="events">
+              <span class="ui-btn-text">操作记录</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="controller-footer">
+          <a data-role="button" class="tableButton km-bluebtn" data-role="device-trash" data-command-key="stop">
+            <span class="ui-btn-text" data-ko="text:deviceList().IsStopped ? '启用机器' : '停用机器'"></span>
+          </a>
+        </div>
 
     </div>
+
   </div>
   <ul id="pond-d-params" data-role="listview" data-type="group">
     <li>
       <ul data-role="listview" id="ul-pond-d-params" data-click="hicon.controller.events.deviceClick">
         <!-- ko foreach: $data.deviceList -->
-        <li>
+        <!-- <li>
           <div class="attri-container">
             <table class="attr-table" data-ko="attr: {'data-device-no': $data.DeviceNO}">
               <tr class="bute-row">
@@ -46,7 +100,7 @@
                 </td>
                 <td>
                   <input type="radio" data-radio-index="0" class="km-radio" name="r1" value="0" data-ko="checked: $data.IsAuto, attr: {'id': 'radio2'+$data.DeviceNO}, event: { change: hicon.controller.events.deviceAuto }" data-role="device-auto">
-                  <label class="km-radio-label rember-label" data-ko="attr: {'for': 'radio2'+$data.DeviceNO}">手动</label>
+                  <label class="km -radio-label rember-label" data-ko="attr: {'for': 'radio2'+$data.DeviceNO}">手动</label>
                 </td>
                 <td>
                   <input type="checkbox" class="km-checkbox" data-ko="checked: $data.IsTimer,attr: {'id': 'checkbox1'+$data.DeviceNO}, event: { change: hicon.controller.events.deviceSetTimer }" data-role="device-auto">
@@ -104,7 +158,7 @@
               </tr>
             </table>
           </div>
-        </li>
+        </li> -->
         <!-- /ko -->
       </ul>
     </li>
