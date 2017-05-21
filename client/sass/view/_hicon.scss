@@ -360,7 +360,20 @@ div.actionButtonContainer > a > span {
     height: 24px;
   }
 }
-
+.main {
+  position: absolute;
+  display: block;
+  width: 24px;
+  height: 24px;
+  &:before {
+    content: "";
+    display: block;
+    position: relative;
+    background: url(../content/img/icon/icon_main.png) -0px -0px no-repeat;
+    width: 24px;
+    height: 24px;
+  }
+}
 .form-wrapper {
   padding: 14px;
 }
@@ -734,7 +747,9 @@ div.actionButtonContainer > a > span {
 #basic .km-content,
 #controllerEdit .km-content,
 #modifyPwd .km-content,
-#log .km-content
+#log .km-content,
+#monitor .km-content,
+#subAccount .km-content
 {
   background: #F0F4F7;
 }

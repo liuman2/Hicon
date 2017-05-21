@@ -1,67 +1,76 @@
 <div id="subAccount" data-role="view" data-use-native-scrolling="true" data-init="hicon.subAccount.init" data-after-show="hicon.subAccount.aftershow" data-show="hicon.subAccount.show" data-transition="overlay:left" data-persist="true">
-    <header data-role="header">
-        <div data-role="navbar">
-            <a data-align="left" data-role="button" class="clearButton" data-click="hicon.subAccount.events.doBack">返回</a>
-            <!-- <a data-align="right" data-role="button" class="clearButton" data-click="hicon.subAccount.events.add">新增</a> -->
-            <span data-role="view-title">子用户</span>
+  <header data-role="header">
+    <div data-role="navbar">
+      <a data-align="left" data-role="button" class="clearButton" data-click="hicon.subAccount.events.doBack">返回</a>
+      <span data-role="view-title">子用户</span>
+    </div>
+  </header>
+  <ul data-role="listview" class="list-wrapper" id="subAccountList" data-click="hicon.subAccount.events.itemClick" data-ko="foreach: $data.accountList()">
+    <li style="height: 97px;">
+      <div class="left" data-ko="css: { limegreen: $data.IsMain==true }">
+        <div>
+          <span>用户名: </span>
+          <span data-ko="text: $data.UserNO"></span>
         </div>
-    </header>
-
-    <ul data-role="listview" id="subAccountList" data-click="hicon.subAccount.events.itemClick" data-ko="foreach: $data.accountList()">
-        <li  style="height: 97px;" data-ko="css: { limegreen: $data.IsMain==true }">
-            <div>
-                <span>用户名: </span>
-                <span data-ko="text: $data.UserNO"></span>
-            </div>
-            <div>
-                <span>主帐号: </span>
-                <span data-ko="text: ($data.IsMain==true) ? '是':'否'"></span>
-            </div>
-            <div style="margin-bottom:2px;">
-                <span>鱼池设置: </span>
-                <!-- ko if: $data.IsMain != true-->
-                <a data-command-key="setting" data-role="button" class="clearButton" data-icon="settings" style="font-size:20px;"></a>
-                <!-- /ko -->
-                <!-- ko if: $data.IsMain == true-->
-                <span>所有鱼池</span>
-                <!-- /ko -->
-            </div>
-
-
-            <div class="actionButtonContainers" style="top:0;">
-                <div data-command-key="main" class="actionButtonContainer">
-                    <a data-role="button" class="clearButton" data-icon="contacts"></a>
-                </div>
-                <div data-command-key="trash" class="actionButtonContainer">
-                    <a data-role="button" class="clearButton" data-icon="trash"></a>
-                </div>
-            </div>
-        </li>
-    </ul>
-    <div style="margin-top:10px;">
-        <a data-role="button" data-click="hicon.subAccount.events.add" class="km-default km-justified km-widget km-button km-bluebtn">
-            <span class="km-text">新增</span>
+        <div>
+          <span>主帐号: </span>
+          <span data-ko="text: ($data.IsMain==true) ? '是':'否'"></span>
+        </div>
+        <div style="margin-bottom:2px;">
+          <span>鱼池设置: </span>
+          <!-- ko if: $data.IsMain != true-->
+          <a data-command-key="setting" data-role="button" class="clearButton" data-icon="settings" style="font-size:20px;"></a>
+          <!-- /ko -->
+          <!-- ko if: $data.IsMain == true-->
+          <span>所有鱼池</span>
+          <!-- /ko -->
+        </div>
+      </div>
+      <div class="right">
+        <a class="main" data-command-key="main"></a>
+        <a class="trash" data-command-key="trash" style="top: 40px;"></a>
+      </div>
+    </li>
+  </ul>
+  <div style="margin:10px;">
+    <div class="input-row">
+      <div>
+        <a data-role="button" data-click="hicon.subAccount.events.add" class="btn-hicon">
+          <span class="km-text">新增</span>
         </a>
+      </div>
     </div>
+  </div>
 
-    <div data-role="modalview" id="modalview-sub" style="width: 80%;">
-        <div data-role="header">
-            <div data-role="navbar">
-                <span>新增子帐号</span>
-                <a data-click="hicon.subAccount.events.cancel" data-role="button" data-align="right">关闭</a>
-            </div>
-        </div>
-
-        <ul data-role="listview" data-style="inset">
-            <li><label for="newSubAccount">用户名: <input type="tel" placeholder="手机号码" id="newSubAccount" /></label></li>
-            <li><label for="newSubPwd">密码: <input type="password" placeholder="密码"  id="newSubPwd" /></label></li>
-            <li><label for="water-start-up">确认密码: <input type="password" placeholder="确认密码" id="newConfirmSubPwd" /></label></li>
-        </ul>
-        <div data-role="footer">
-            <div data-role="navbar">
-                <a data-click="hicon.subAccount.events.cancel" class="km-default" type="button" data-role="button" data-align="right">取消</a>
-                <a data-click="hicon.subAccount.events.save" class="km-default" type="button" data-role="button" data-align="right">保存</a>
-            </div>
-        </div>
+  <div data-role="modalview" id="modalview-sub" style="width: 80%;">
+    <div data-role="header">
+      <div data-role="navbar">
+        <span>新增子帐号</span>
+        <a data-click="hicon.subAccount.events.cancel" data-role="button" data-align="right">关闭</a>
+      </div>
     </div>
+    <ul data-role="listview" data-style="inset">
+      <li>
+        <label for="newSubAccount">用户名:
+          <input type="tel" placeholder="手机号码" id="newSubAccount" />
+        </label>
+      </li>
+      <li>
+        <label for="newSubPwd">密码:
+          <input type="password" placeholder="密码" id="newSubPwd" />
+        </label>
+      </li>
+      <li>
+        <label for="water-start-up">确认密码:
+          <input type="password" placeholder="确认密码" id="newConfirmSubPwd" />
+        </label>
+      </li>
+    </ul>
+    <div data-role="footer">
+      <div data-role="navbar">
+        <a data-click="hicon.subAccount.events.cancel" class="km-default" type="button" data-role="button" data-align="right">取消</a>
+        <a data-click="hicon.subAccount.events.save" class="km-default" type="button" data-role="button" data-align="right">保存</a>
+      </div>
+    </div>
+  </div>
 </div>
