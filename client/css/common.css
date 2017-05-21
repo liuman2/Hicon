@@ -295,6 +295,11 @@ div.actionButtonContainer > a > span {
   content: "\e100";
 }
 
+/* line 279, ../sass/view/_hicon.scss */
+#pond-d-params .km-group-title {
+  display: none;
+}
+
 /* line 3, ../sass/view/_login.scss */
 #login .action-buttons {
   text-align: center;

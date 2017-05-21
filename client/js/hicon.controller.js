@@ -191,6 +191,7 @@ hicon.controller = (function () {
             $('#btnEnabledDevice').data('data-stop', isStopped);
             $('#pond-d-params').find('input[type="radio"]').attr('disabled', isStopped);
             $('#pond-d-params').find('input[type="checkbox"]').attr('disabled', isStopped);
+            $('#dtuNotify').attr('disabled', isStopped);
         },
         deviceControl: function() {
             App.showLoading();
