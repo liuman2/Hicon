@@ -455,6 +455,7 @@ div.actionButtonContainer > a > span {
       display: -webkit-box;
       display: flex;
       -webkit-box-align: center;
+      min-height: 130px;
       span {
         color: #9fa0a0;
       }
@@ -476,9 +477,10 @@ div.actionButtonContainer > a > span {
     }
     .pool_img {
       background: url(../content/img/icon/icon_pond.png) -0px -0px no-repeat;
-      height: 80px;
-      width: 80px;
+      height: 50px;
+      width: 50px;
       overflow: hidden;
+      background-size: contain;
     }
   }
   .btn-hicon {
@@ -519,25 +521,57 @@ div.actionButtonContainer > a > span {
       &.param_do {
         background: url(../content/img/icon/o2.png) 0px 45px no-repeat;
         height: 140px;
-        width: 90px;
+        width: 80px;
+        background-size: contain;
         overflow: hidden;
       }
       &.param_wt {
         background: url(../content/img/icon/sw.png) 0px 45px no-repeat;
         height: 140px;
-        width: 90px;
+        width: 80px;
+        background-size: contain;
         overflow: hidden;
       }
       &.param_ph {
         background: url(../content/img/icon/ph.png) 0px 45px no-repeat;
         height: 140px;
-        width: 90px;
+        width: 80px;
+        background-size: contain;
         overflow: hidden;
       }
       &.param_sat {
         background: url(../content/img/icon/bh.png) 0px 45px no-repeat;
         height: 140px;
-        width: 90px;
+        width: 80px;
+        background-size: contain;
+        overflow: hidden;
+      }
+      &.param_tds {
+        background: url(../content/img/icon/tds.png) 0px 45px no-repeat;
+        height: 140px;
+        width: 80px;
+        background-size: contain;
+        overflow: hidden;
+      }
+      &.param_sal {
+        background: url(../content/img/icon/sal.png) 0px 45px no-repeat;
+        height: 140px;
+        width: 80px;
+        background-size: contain;
+        overflow: hidden;
+      }
+      &.param_ntu {
+        background: url(../content/img/icon/ntu.png) 0px 45px no-repeat;
+        height: 140px;
+        width: 80px;
+        background-size: contain;
+        overflow: hidden;
+      }
+      &.param_orp {
+        background: url(../content/img/icon/orp.png) 0px 45px no-repeat;
+        height: 140px;
+        width: 80px;
+        background-size: contain;
         overflow: hidden;
       }
     }

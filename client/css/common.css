@@ -495,36 +495,38 @@ div.actionButtonContainer > a > span {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
+  min-height: 130px;
 }
-/* line 458, ../sass/view/_hicon.scss */
+/* line 459, ../sass/view/_hicon.scss */
 #main .pond-list .hi-li-font span {
   color: #9fa0a0;
 }
-/* line 461, ../sass/view/_hicon.scss */
+/* line 462, ../sass/view/_hicon.scss */
 #main .pond-list .hi-li-font .left {
   flex: 1;
 }
-/* line 464, ../sass/view/_hicon.scss */
+/* line 465, ../sass/view/_hicon.scss */
 #main .pond-list .hi-li-font .right {
   width: 24px;
   position: relative;
 }
-/* line 469, ../sass/view/_hicon.scss */
+/* line 470, ../sass/view/_hicon.scss */
 #main .pond-list .hi-li-font .trash:before {
   top: 0;
 }
-/* line 473, ../sass/view/_hicon.scss */
+/* line 474, ../sass/view/_hicon.scss */
 #main .pond-list .hi-li-font .unlock {
   top: 70px;
 }
-/* line 477, ../sass/view/_hicon.scss */
+/* line 478, ../sass/view/_hicon.scss */
 #main .pond-list .pool_img {
   background: url(../content/img/icon/icon_pond.png) 0px 0px no-repeat;
-  height: 80px;
-  width: 80px;
+  height: 50px;
+  width: 50px;
   overflow: hidden;
+  background-size: contain;
 }
-/* line 484, ../sass/view/_hicon.scss */
+/* line 486, ../sass/view/_hicon.scss */
 #main .btn-hicon {
   height: 45px;
   line-height: 45px;
@@ -539,15 +541,15 @@ div.actionButtonContainer > a > span {
   border-color: #3193d5;
   text-align: center;
 }
-/* line 498, ../sass/view/_hicon.scss */
+/* line 500, ../sass/view/_hicon.scss */
 #main .param-list {
   margin: 10px;
 }
-/* line 500, ../sass/view/_hicon.scss */
+/* line 502, ../sass/view/_hicon.scss */
 #main .param-list li {
   border-style: none;
 }
-/* line 503, ../sass/view/_hicon.scss */
+/* line 505, ../sass/view/_hicon.scss */
 #main .param-list .param-item {
   border: 1px solid #DCDBDB;
   border-radius: 4px;
@@ -556,56 +558,92 @@ div.actionButtonContainer > a > span {
   margin-bottom: 10px;
   clear: both;
 }
-/* line 511, ../sass/view/_hicon.scss */
+/* line 513, ../sass/view/_hicon.scss */
 #main .param-list .param-container {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
 }
-/* line 516, ../sass/view/_hicon.scss */
+/* line 518, ../sass/view/_hicon.scss */
 #main .param-list .param-img {
   float: left;
   margin-right: 10px;
 }
-/* line 519, ../sass/view/_hicon.scss */
+/* line 521, ../sass/view/_hicon.scss */
 #main .param-list .param-img.param_do {
   background: url(../content/img/icon/o2.png) 0px 45px no-repeat;
   height: 140px;
-  width: 90px;
+  width: 80px;
+  background-size: contain;
   overflow: hidden;
 }
-/* line 525, ../sass/view/_hicon.scss */
+/* line 528, ../sass/view/_hicon.scss */
 #main .param-list .param-img.param_wt {
   background: url(../content/img/icon/sw.png) 0px 45px no-repeat;
   height: 140px;
-  width: 90px;
+  width: 80px;
+  background-size: contain;
   overflow: hidden;
 }
-/* line 531, ../sass/view/_hicon.scss */
+/* line 535, ../sass/view/_hicon.scss */
 #main .param-list .param-img.param_ph {
   background: url(../content/img/icon/ph.png) 0px 45px no-repeat;
   height: 140px;
-  width: 90px;
+  width: 80px;
+  background-size: contain;
   overflow: hidden;
 }
-/* line 537, ../sass/view/_hicon.scss */
+/* line 542, ../sass/view/_hicon.scss */
 #main .param-list .param-img.param_sat {
   background: url(../content/img/icon/bh.png) 0px 45px no-repeat;
   height: 140px;
-  width: 90px;
+  width: 80px;
+  background-size: contain;
   overflow: hidden;
 }
-/* line 544, ../sass/view/_hicon.scss */
+/* line 549, ../sass/view/_hicon.scss */
+#main .param-list .param-img.param_tds {
+  background: url(../content/img/icon/tds.png) 0px 45px no-repeat;
+  height: 140px;
+  width: 80px;
+  background-size: contain;
+  overflow: hidden;
+}
+/* line 556, ../sass/view/_hicon.scss */
+#main .param-list .param-img.param_sal {
+  background: url(../content/img/icon/sal.png) 0px 45px no-repeat;
+  height: 140px;
+  width: 80px;
+  background-size: contain;
+  overflow: hidden;
+}
+/* line 563, ../sass/view/_hicon.scss */
+#main .param-list .param-img.param_ntu {
+  background: url(../content/img/icon/ntu.png) 0px 45px no-repeat;
+  height: 140px;
+  width: 80px;
+  background-size: contain;
+  overflow: hidden;
+}
+/* line 570, ../sass/view/_hicon.scss */
+#main .param-list .param-img.param_orp {
+  background: url(../content/img/icon/orp.png) 0px 45px no-repeat;
+  height: 140px;
+  width: 80px;
+  background-size: contain;
+  overflow: hidden;
+}
+/* line 578, ../sass/view/_hicon.scss */
 #main .param-list .param-content {
   flex: 1;
 }
-/* line 547, ../sass/view/_hicon.scss */
+/* line 581, ../sass/view/_hicon.scss */
 #main .param-list .param-line {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
 }
-/* line 552, ../sass/view/_hicon.scss */
+/* line 586, ../sass/view/_hicon.scss */
 #main .param-list .param-line-name {
   width: 80px;
   font-size: 28px;
@@ -613,20 +651,20 @@ div.actionButtonContainer > a > span {
   line-height: 73px;
   text-align: right;
 }
-/* line 559, ../sass/view/_hicon.scss */
+/* line 593, ../sass/view/_hicon.scss */
 #main .param-list .param-default-value {
   color: #727171;
   font-size: 12px;
   text-align: right;
 }
-/* line 564, ../sass/view/_hicon.scss */
+/* line 598, ../sass/view/_hicon.scss */
 #main .param-list .param-real-value {
   color: #358ac6;
   font-size: 28px;
   font-weight: bold;
   text-align: right;
 }
-/* line 571, ../sass/view/_hicon.scss */
+/* line 605, ../sass/view/_hicon.scss */
 #main .param-list .warning-icon.green {
   background: url(../content/img/icon/icon_warning_green.png) 0px 0px no-repeat;
   height: 34px;
@@ -635,7 +673,7 @@ div.actionButtonContainer > a > span {
   display: inline-block;
   background-size: cover;
 }
-/* line 579, ../sass/view/_hicon.scss */
+/* line 613, ../sass/view/_hicon.scss */
 #main .param-list .warning-icon.red {
   background: url(../content/img/icon/icon_warning_red.png) 0px 0px no-repeat;
   height: 34px;
@@ -644,18 +682,18 @@ div.actionButtonContainer > a > span {
   display: inline-block;
   background-size: cover;
 }
-/* line 589, ../sass/view/_hicon.scss */
+/* line 623, ../sass/view/_hicon.scss */
 #main .param-list .param-real-date {
   color: #727171;
   font-size: 12px;
   text-align: right;
 }
-/* line 594, ../sass/view/_hicon.scss */
+/* line 628, ../sass/view/_hicon.scss */
 #main .param-list .param-line-value {
   -webkit-box-flex: 1;
   flex: 1;
 }
-/* line 598, ../sass/view/_hicon.scss */
+/* line 632, ../sass/view/_hicon.scss */
 #main .param-list .param-btns {
   text-align: center;
   display: -webkit-box;
@@ -663,7 +701,7 @@ div.actionButtonContainer > a > span {
   display: -ms-flex;
   display: -webkit-flex;
 }
-/* line 604, ../sass/view/_hicon.scss */
+/* line 638, ../sass/view/_hicon.scss */
 #main .param-list .param-btns a {
   margin-right: 10px;
   box-shadow: 1px 3px 6px #ccc !important;
@@ -673,26 +711,26 @@ div.actionButtonContainer > a > span {
   -webkit-box-flex: 1;
 }
 
-/* line 616, ../sass/view/_hicon.scss */
+/* line 650, ../sass/view/_hicon.scss */
 .reg-phone {
   display: -webkit-box !important;
   display: flex !important;
   -webkit-box-align: center !important;
   align-items: center;
 }
-/* line 621, ../sass/view/_hicon.scss */
+/* line 655, ../sass/view/_hicon.scss */
 .reg-phone input {
   -webkit-box-flex: 1 !important;
   flex: 1 !important;
   position: relative !important;
 }
 
-/* line 628, ../sass/view/_hicon.scss */
+/* line 662, ../sass/view/_hicon.scss */
 .input-row {
   text-align: center;
   margin-bottom: 15px;
 }
-/* line 631, ../sass/view/_hicon.scss */
+/* line 665, ../sass/view/_hicon.scss */
 .input-row input,
 .input-row select {
   width: 100%;
@@ -701,7 +739,7 @@ div.actionButtonContainer > a > span {
   padding: 10px;
   border: none;
 }
-/* line 639, ../sass/view/_hicon.scss */
+/* line 673, ../sass/view/_hicon.scss */
 .input-row #btnLogin {
   width: 100%;
   height: 45px;
@@ -710,7 +748,7 @@ div.actionButtonContainer > a > span {
   padding: 0px;
   font-size: 20px;
 }
-/* line 647, ../sass/view/_hicon.scss */
+/* line 681, ../sass/view/_hicon.scss */
 .input-row .send-code {
   height: 45px;
   line-height: 45px;
@@ -722,7 +760,7 @@ div.actionButtonContainer > a > span {
   padding: 0 5px;
   border-radius: 0;
 }
-/* line 658, ../sass/view/_hicon.scss */
+/* line 692, ../sass/view/_hicon.scss */
 .input-row .btn-hicon {
   width: 100%;
   height: 45px;
@@ -735,20 +773,20 @@ div.actionButtonContainer > a > span {
   color: #fff;
 }
 
-/* line 670, ../sass/view/_hicon.scss */
+/* line 704, ../sass/view/_hicon.scss */
 .shadow {
   -moz-box-shadow: 1px 3px 6px #ccc;
   -webkit-box-shadow: 1px 3px 6px #ccc;
   box-shadow: 1px 3px 6px #ccc;
 }
 
-/* line 676, ../sass/view/_hicon.scss */
+/* line 710, ../sass/view/_hicon.scss */
 .controller-list {
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
-/* line 680, ../sass/view/_hicon.scss */
+/* line 714, ../sass/view/_hicon.scss */
 .controller-list li {
   display: inline-block;
   width: 50%;
@@ -756,7 +794,7 @@ div.actionButtonContainer > a > span {
   height: 100px;
   margin-bottom: 10px;
 }
-/* line 687, ../sass/view/_hicon.scss */
+/* line 721, ../sass/view/_hicon.scss */
 .controller-list .controller-content {
   height: 100%;
   margin: 10px 5px;
@@ -766,32 +804,32 @@ div.actionButtonContainer > a > span {
   display: flex;
   -webkit-box-align: center;
 }
-/* line 695, ../sass/view/_hicon.scss */
+/* line 729, ../sass/view/_hicon.scss */
 .controller-list .controller-content .img-status {
   flex: 1;
 }
-/* line 697, ../sass/view/_hicon.scss */
+/* line 731, ../sass/view/_hicon.scss */
 .controller-list .controller-content .img-status.warn_red_img {
   background: url(../content/img/icon/icon_warning_red.png) 0px 0px no-repeat;
   height: 32px;
   width: 32px;
   margin-top: 23px;
 }
-/* line 703, ../sass/view/_hicon.scss */
+/* line 737, ../sass/view/_hicon.scss */
 .controller-list .controller-content .img-status.warn_green_img {
   background: url(../content/img/icon/icon_warning_green.png) 0px 0px no-repeat;
   height: 32px;
   width: 32px;
   margin-top: 23px;
 }
-/* line 709, ../sass/view/_hicon.scss */
+/* line 743, ../sass/view/_hicon.scss */
 .controller-list .controller-content .img-status.warn_gray_img {
   background: url(../content/img/icon/icon_warning_gray.png) 0px 0px no-repeat;
   height: 32px;
   width: 32px;
   margin-top: 23px;
 }
-/* line 716, ../sass/view/_hicon.scss */
+/* line 750, ../sass/view/_hicon.scss */
 .controller-list .controller-content .name {
   flex: 1;
   height: 80px;
@@ -799,24 +837,24 @@ div.actionButtonContainer > a > span {
   color: #358ac6;
   font-size: 30px;
 }
-/* line 725, ../sass/view/_hicon.scss */
+/* line 759, ../sass/view/_hicon.scss */
 .controller-list li.disabled .name {
   color: #ccc;
 }
 
-/* line 731, ../sass/view/_hicon.scss */
+/* line 765, ../sass/view/_hicon.scss */
 .controller-bottom {
   margin-top: 10px;
   width: 100%;
   padding: 0 20px;
 }
-/* line 737, ../sass/view/_hicon.scss */
+/* line 771, ../sass/view/_hicon.scss */
 .controller-bottom a {
   font-size: 20px;
   border-radius: 0 !important;
 }
 
-/* line 743, ../sass/view/_hicon.scss */
+/* line 777, ../sass/view/_hicon.scss */
 #controller .km-content,
 #timerAdd .km-content,
 #timer .km-content,
@@ -830,7 +868,7 @@ div.actionButtonContainer > a > span {
   background: #F0F4F7;
 }
 
-/* line 757, ../sass/view/_hicon.scss */
+/* line 791, ../sass/view/_hicon.scss */
 .controller-header {
   text-align: center;
   height: 2.5em;
@@ -840,11 +878,11 @@ div.actionButtonContainer > a > span {
   font-size: 1.25em;
 }
 
-/* line 766, ../sass/view/_hicon.scss */
+/* line 800, ../sass/view/_hicon.scss */
 .controller-body {
   margin: 5px 10px 0 10px;
 }
-/* line 768, ../sass/view/_hicon.scss */
+/* line 802, ../sass/view/_hicon.scss */
 .controller-body .controller-status {
   display: -webkit-box;
   display: flex;
@@ -855,23 +893,23 @@ div.actionButtonContainer > a > span {
   color: #9fa0a0;
   text-align: center;
 }
-/* line 778, ../sass/view/_hicon.scss */
+/* line 812, ../sass/view/_hicon.scss */
 .controller-body .status-left {
   width: 3.5em;
   margin-right: 0.1875em;
   background: #fff;
 }
-/* line 783, ../sass/view/_hicon.scss */
+/* line 817, ../sass/view/_hicon.scss */
 .controller-body .status-right {
   flex: 1;
   background: #fff;
 }
-/* line 788, ../sass/view/_hicon.scss */
+/* line 822, ../sass/view/_hicon.scss */
 .controller-body .status-icon.running {
   position: relative;
   color: #9ECF93;
 }
-/* line 791, ../sass/view/_hicon.scss */
+/* line 825, ../sass/view/_hicon.scss */
 .controller-body .status-icon.running:before {
   content: url(../content/img/icon/icon_warning_green.png);
   display: block;
@@ -881,12 +919,12 @@ div.actionButtonContainer > a > span {
   width: 35px;
   height: 35px;
 }
-/* line 801, ../sass/view/_hicon.scss */
+/* line 835, ../sass/view/_hicon.scss */
 .controller-body .status-icon.stop {
   position: relative;
   color: #E83E50;
 }
-/* line 804, ../sass/view/_hicon.scss */
+/* line 838, ../sass/view/_hicon.scss */
 .controller-body .status-icon.stop:before {
   content: url(../content/img/icon/icon_warning_red.png);
   display: block;
@@ -896,7 +934,7 @@ div.actionButtonContainer > a > span {
   width: 35px;
   height: 35px;
 }
-/* line 815, ../sass/view/_hicon.scss */
+/* line 849, ../sass/view/_hicon.scss */
 .controller-body .controller-start,
 .controller-body .controller-timing {
   display: -webkit-box;
@@ -910,36 +948,36 @@ div.actionButtonContainer > a > span {
   margin-top: 5px;
   background: #fff;
 }
-/* line 828, ../sass/view/_hicon.scss */
+/* line 862, ../sass/view/_hicon.scss */
 .controller-body .controller-timing {
   margin-top: 15px;
 }
-/* line 831, ../sass/view/_hicon.scss */
+/* line 865, ../sass/view/_hicon.scss */
 .controller-body .start-left {
   flex: 1;
   border-radius: 0;
   border: none;
 }
-/* line 836, ../sass/view/_hicon.scss */
+/* line 870, ../sass/view/_hicon.scss */
 .controller-body .start-right {
   flex: 1;
   border-radius: 0;
   border: none;
 }
-/* line 840, ../sass/view/_hicon.scss */
+/* line 874, ../sass/view/_hicon.scss */
 .controller-body .start-right.km-state-active {
   color: #666 !important;
 }
-/* line 844, ../sass/view/_hicon.scss */
+/* line 878, ../sass/view/_hicon.scss */
 .controller-body .active {
   background-color: #328AC5;
   color: #fff;
 }
-/* line 847, ../sass/view/_hicon.scss */
+/* line 881, ../sass/view/_hicon.scss */
 .controller-body .active.km-state-active {
   background: #1d71a9 !important;
 }
-/* line 851, ../sass/view/_hicon.scss */
+/* line 885, ../sass/view/_hicon.scss */
 .controller-body .controller-run {
   height: 2.5em;
   font-size: 20px;
@@ -954,7 +992,7 @@ div.actionButtonContainer > a > span {
   -webkit-box-shadow: -1px 1px 11px #ccc, 2px 2px 5px #ccc;
   box-shadow: -1px 1px 11px #ccc, 2px 2px 5px #ccc;
 }
-/* line 865, ../sass/view/_hicon.scss */
+/* line 899, ../sass/view/_hicon.scss */
 .controller-body .controller-btns {
   margin-top: 10px;
   text-align: center;
@@ -963,17 +1001,17 @@ div.actionButtonContainer > a > span {
   -webkit-box-align: center;
   margin: 0 30px;
 }
-/* line 872, ../sass/view/_hicon.scss */
+/* line 906, ../sass/view/_hicon.scss */
 .controller-body .controller-btns .btn-left {
   flex: 1;
   text-align: left;
 }
-/* line 876, ../sass/view/_hicon.scss */
+/* line 910, ../sass/view/_hicon.scss */
 .controller-body .controller-btns .btn-right {
   flex: 1;
   text-align: right;
 }
-/* line 880, ../sass/view/_hicon.scss */
+/* line 914, ../sass/view/_hicon.scss */
 .controller-body .controller-btns a {
   margin: 10px 0;
   border-radius: 0;
@@ -984,12 +1022,12 @@ div.actionButtonContainer > a > span {
   -webkit-box-shadow: 2px 2px 5px #333 !important;
   box-shadow: 2px 2px 5px #333 !important;
 }
-/* line 891, ../sass/view/_hicon.scss */
+/* line 925, ../sass/view/_hicon.scss */
 .controller-body .controller-footer {
   text-align: center;
   margin: 0 30px;
 }
-/* line 894, ../sass/view/_hicon.scss */
+/* line 928, ../sass/view/_hicon.scss */
 .controller-body .controller-footer a {
   margin: 10px 0;
   border-radius: 0;
@@ -999,27 +1037,27 @@ div.actionButtonContainer > a > span {
   width: 100%;
 }
 
-/* line 905, ../sass/view/_hicon.scss */
+/* line 939, ../sass/view/_hicon.scss */
 .search-day {
   text-align: center;
   padding-top: 10px;
   height: 50px;
   background: #fff;
 }
-/* line 910, ../sass/view/_hicon.scss */
+/* line 944, ../sass/view/_hicon.scss */
 .search-day div {
   width: 39%;
   float: left;
 }
-/* line 912, ../sass/view/_hicon.scss */
+/* line 946, ../sass/view/_hicon.scss */
 .search-day div:first-child {
   width: 30%;
 }
-/* line 915, ../sass/view/_hicon.scss */
+/* line 949, ../sass/view/_hicon.scss */
 .search-day div:last-child {
   width: 30%;
 }
-/* line 919, ../sass/view/_hicon.scss */
+/* line 953, ../sass/view/_hicon.scss */
 .search-day div input {
   width: 100%;
   height: 30px;
