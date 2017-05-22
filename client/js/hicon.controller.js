@@ -46,7 +46,7 @@ hicon.controller = (function () {
 
         var curentController = hicon.sessionStorage.getJson('CURRENT_CONTROLLER');
         viewModelController.curentController = curentController;
-        
+
         var controllerCommand = hicon.sessionStorage.item('CURRENT_CONTROLLER_COMMAND');
         if (controllerCommand != 'feed') {
             viewModelController.isFeed(false);
@@ -100,7 +100,28 @@ hicon.controller = (function () {
     };
 
     view.aftershow = function(e) {
-
+        hicon.server.ajax({
+            url: 'GetParam',
+            type: 'post',
+            data: {
+                UserID: viewModelController.userInfo.UserID,
+                PondID: viewModelController.currentPond.PondID,
+                FisheryID: viewModelController.userInfo.FisheryID,
+                DtuNO: viewModelController.curentController.DtuNO,
+                ParamKey: 'VoiceNotify'
+            },
+            success: function(data) {
+                App.hideLoading();
+                if (!data) {
+                    data = 0;
+                }
+                var notifyCheck = (data-0) || 0;
+                $('#dtuNotify').prop('checked', notifyCheck);
+            },
+            error: function() {
+                App.hideLoading();
+            }
+        })
     };
 
     view.data = {
@@ -213,6 +234,26 @@ hicon.controller = (function () {
     };
 
     view.events = {
+        dtuNotify: function() {
+            hicon.server.ajax({
+                url: 'SetParam',
+                type: 'post',
+                data: {
+                    UserID: viewModelController.userInfo.UserID,
+                    PondID: viewModelController.currentPond.PondID,
+                    FisheryID: viewModelController.userInfo.FisheryID,
+                    DtuNO: viewModelController.curentController.DtuNO,
+                    ParamKey: 'VoiceNotify',
+                    ParamValue: $('#dtuNotify').prop('checked') ? 1 : 0
+                },
+                success: function() {
+                    App.hideLoading();
+                },
+                error: function() {
+                    App.hideLoading();
+                }
+            })
+        },
         doBack: function() {
             hicon.navigation.main();
         },

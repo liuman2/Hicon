@@ -15,38 +15,38 @@
     <ul id="pond-d-params" data-role="listview" data-type="group">
         <li>
             <ul data-role="listview" id="ul-pond-d-params"  data-click="hicon.controller.events.deviceClick">
-                <!-- ko foreach: $data.deviceList -->
+
                 <li>
                     <div class="attri-container">
-                        <table class="attr-table" data-ko="attr: {'data-device-no': $data.DeviceNO}">
+                        <table class="attr-table" data-ko="attr: {'data-device-no': deviceList().DeviceNO}">
                             <tr class="bute-row">
-                                <td class="attr-header" style="border:none;" data-ko="text: $data.Name"></td>
+                                <td class="attr-header" style="border:none;" data-ko="text: deviceList().Name"></td>
                                 <td class="attr-header" style="border:none;">
                                 <td class="attr-header" style="border:none;">
                                 <td class="attr-header" style="border:none;">
                             </tr>
                             <tr class="param-row param-radio">
                                 <th class="th-img">
-                                    <div data-ko="css: $data.clsName"></div>
+                                    <div data-ko="css: deviceList().clsName"></div>
                                 </th>
 
                                 <td>
-                                    <input type="radio" data-radio-index="1"  class="km-radio" name="r1" value="1" data-ko="checked: $data.IsAuto,attr: {'id': 'radio1'+$data.DeviceNO}, event: { change: hicon.controller.events.deviceAuto }" data-role="device-auto">
-                                    <label class="km-radio-label rember-label" data-ko="attr: {'for': 'radio1'+$data.DeviceNO}">自动</label>
+                                    <input type="radio" data-radio-index="1"  class="km-radio" name="r1" value="1" data-ko="checked: deviceList().IsAuto,attr: {'id': 'radio1'+deviceList().DeviceNO}, event: { change: hicon.controller.events.deviceAuto }" data-role="device-auto">
+                                    <label class="km-radio-label rember-label" data-ko="attr: {'for': 'radio1'+deviceList().DeviceNO}">自动</label>
                                 </td>
                                 <td>
-                                    <input type="radio" data-radio-index="0" class="km-radio" name="r1" value="0" data-ko="checked: $data.IsAuto, attr: {'id': 'radio2'+$data.DeviceNO}, event: { change: hicon.controller.events.deviceAuto }" data-role="device-auto">
-                                    <label class="km-radio-label rember-label" data-ko="attr: {'for': 'radio2'+$data.DeviceNO}">手动</label>
+                                    <input type="radio" data-radio-index="0" class="km-radio" name="r1" value="0" data-ko="checked: deviceList().IsAuto, attr: {'id': 'radio2'+deviceList().DeviceNO}, event: { change: hicon.controller.events.deviceAuto }" data-role="device-auto">
+                                    <label class="km-radio-label rember-label" data-ko="attr: {'for': 'radio2'+deviceList().DeviceNO}">手动</label>
                                 </td>
                                 <td>
-                                    <input type="checkbox" class="km-checkbox" data-ko="checked: $data.IsTimer,attr: {'id': 'checkbox1'+$data.DeviceNO}, event: { change: hicon.controller.events.deviceSetTimer }" data-role="device-auto">
-                                    <label class="km-checkbox-label rember-label" data-ko="attr: {'for': 'checkbox1'+$data.DeviceNO}">定时</label>
+                                    <input type="checkbox" class="km-checkbox" data-ko="checked: deviceList().IsTimer,attr: {'id': 'checkbox1'+deviceList().DeviceNO}, event: { change: hicon.controller.events.deviceSetTimer }" data-role="device-auto">
+                                    <label class="km-checkbox-label rember-label" data-ko="attr: {'for': 'checkbox1'+deviceList().DeviceNO}">定时</label>
                                 </td>
                             </tr>
                             <tr class="param-row">
                                 <td></td>
                                 <td colspan="3">
-                                    <a id="btnDeviceStart" data-role="button" style="margin: 10px 0;" class="tableButton km-bluebtn" data-icon="play" data-ko="attr: {'data-device-no': $data.DeviceNO}" data-command-key="start">
+                                    <a id="btnDeviceStart" data-role="button" style="margin: 10px 0;" class="tableButton km-bluebtn" data-icon="play" data-ko="attr: {'data-device-no': deviceList().DeviceNO}" data-command-key="start">
                                         机器启动
                                     </a>
                                 </td>
@@ -54,7 +54,14 @@
                             <tr class="param-row">
                                 <td class="attr-bute-name" style="width: 50px;">状态:</td>
 
-                                <td  colspan="3" class="attr-pos-value" data-ko="attr: {'data-device-no': $data.DeviceNO}" data-cell="device-status">
+                                <td  colspan="3" class="attr-pos-value" data-ko="attr: {'data-device-no': deviceList().DeviceNO}" data-cell="device-status">
+                                </td>
+                            </tr>
+                            <tr class="param-row">
+                                <td class="attr-bute-name" style="width: 50px;">语音通知:</td>
+                                <td colspan="3">
+                                    <input type="checkbox" id="dtuNotify" class="km-checkbox" data-ko="event: { change: hicon.controller.events.dtuNotify }" />
+                                    <label class="km-checkbox-label rember-label" for="dtuNotify">通知</label>
                                 </td>
                             </tr>
                             <tr class="param-row">
@@ -100,9 +107,9 @@
                         </table>
                     </div>
                 </li>
-                <!-- /ko -->
+
             </ul>
-        </li>        
+        </li>
     </ul>
 </div>
 
@@ -116,9 +123,9 @@
 
     <ul data-role="listview" data-style="inset">
         <li>
-            <label for="water-stander-up">启动时长: 
+            <label for="water-stander-up">启动时长:
                 <!-- ko if: $data.isFeed() == false -->
-                <select id="ddlStartTime" data-ko="options: sysIntervals, 
+                <select id="ddlStartTime" data-ko="options: sysIntervals,
                     optionsText: 'Description',
                     optionsValue: 'Val',
                     optionsCaption: '请选择...'">

@@ -608,6 +608,29 @@ hicon.main = (function() {
               $("#modalview-oxygen").kendoMobileModalView('open');
             }
           });
+
+          hicon.server.ajax({
+            url: 'GetParam',
+            type: 'post',
+            data: {
+              UserID: viewModelMain.userInfo.UserID,
+              PondID: viewModelMain.currentPond().PondID,
+              FisheryID: viewModelMain.userInfo.FisheryID,
+              DtuNO: '',
+              ParamKey: 'VoiceNotify'
+            },
+            success: function(data) {
+              App.hideLoading();
+              if (!data) {
+                    data = 0;
+              }
+              var notifyCheck = (data-0) || 0;
+              $('#notify-check').prop('checked', notifyCheck);
+            },
+            error: function() {
+              App.hideLoading();
+            }
+          })
           break;
         case 'line-chart':
           hicon.sessionStorage.saveJson('CURRENT_AI', ai);
@@ -1138,6 +1161,25 @@ hicon.main = (function() {
           App.hideLoading();
         }
       });
+
+      hicon.server.ajax({
+        url: 'SetParam',
+        type: 'post',
+        data: {
+          UserID: viewModelMain.userInfo.UserID,
+          PondID: viewModelMain.currentPond().PondID,
+          FisheryID: viewModelMain.userInfo.FisheryID,
+          DtuNO: '',
+          ParamKey: 'VoiceNotify',
+          ParamValue: $('#notify-check').prop('checked') ? 1 : 0
+        },
+        success: function() {
+          App.hideLoading();
+        },
+        error: function() {
+          App.hideLoading();
+        }
+      })
     },
 
     savePHSetting: function() {
