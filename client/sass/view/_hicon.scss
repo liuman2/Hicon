@@ -274,3 +274,9 @@ div.actionButtonContainer > a {
 .km-unlock:before, .km-unlock:after {
     content:"\e100";
 }
+
+#pond-d-params {
+    .km-group-title {
+        display: none;
+    }
+}

@@ -15,7 +15,6 @@
     <ul id="pond-d-params" data-role="listview" data-type="group">
         <li>
             <ul data-role="listview" id="ul-pond-d-params"  data-click="hicon.controller.events.deviceClick">
-
                 <li>
                     <div class="attri-container">
                         <table class="attr-table" data-ko="attr: {'data-device-no': deviceList().DeviceNO}">
@@ -44,6 +43,13 @@
                                 </td>
                             </tr>
                             <tr class="param-row">
+                                <td class="attr-bute-name" style="width: 50px;">语音通知:</td>
+                                <td colspan="3">
+                                    <input type="checkbox" id="dtuNotify" class="km-checkbox" data-ko="event: { change: hicon.controller.events.dtuNotify }" />
+                                    <label class="km-checkbox-label rember-label" for="dtuNotify">通知</label>
+                                </td>
+                            </tr>
+                            <tr class="param-row">
                                 <td></td>
                                 <td colspan="3">
                                     <a id="btnDeviceStart" data-role="button" style="margin: 10px 0;" class="tableButton km-bluebtn" data-icon="play" data-ko="attr: {'data-device-no': deviceList().DeviceNO}" data-command-key="start">
@@ -55,13 +61,6 @@
                                 <td class="attr-bute-name" style="width: 50px;">状态:</td>
 
                                 <td  colspan="3" class="attr-pos-value" data-ko="attr: {'data-device-no': deviceList().DeviceNO}" data-cell="device-status">
-                                </td>
-                            </tr>
-                            <tr class="param-row">
-                                <td class="attr-bute-name" style="width: 50px;">语音通知:</td>
-                                <td colspan="3">
-                                    <input type="checkbox" id="dtuNotify" class="km-checkbox" data-ko="event: { change: hicon.controller.events.dtuNotify }" />
-                                    <label class="km-checkbox-label rember-label" for="dtuNotify">通知</label>
                                 </td>
                             </tr>
                             <tr class="param-row">
@@ -107,7 +106,6 @@
                         </table>
                     </div>
                 </li>
-
             </ul>
         </li>
     </ul>
