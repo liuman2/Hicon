@@ -442,7 +442,7 @@ hicon.controller = (function () {
                     UserID: viewModelController.userInfo.UserID,
                     PondID: viewModelController.currentPond.PondID,
                     DtuNO: viewModelController.curentController.DtuNO,
-                    DeviceNO: e.DeviceNO,
+                    DeviceNO: viewModelController.curentController.DeviceNO,
                     IsAuto: isAuto
                 },
                 success: function(data) {
@@ -468,7 +468,7 @@ hicon.controller = (function () {
                     UserID: viewModelController.userInfo.UserID,
                     PondID: viewModelController.currentPond.PondID,
                     DtuNO: viewModelController.curentController.DtuNO,
-                    DeviceNO: e.DeviceNO,
+                    DeviceNO: viewModelController.curentController.DeviceNO,
                     IsTimer: $(arguments[1].target).prop('checked') ? 1 : 0
                 },
                 success: function(data) {
