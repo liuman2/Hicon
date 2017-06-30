@@ -21,8 +21,8 @@
           溶氧
         </div>
         <div class="param-value">
-          <span data-ko="text: ($data.checkingData().ox === '' ? '--' : $data.checkingData().ox)"></span>
-          <span class="param-unit" data-ko="text: ($data.checkingData().ox == '' ? '' : 'mg/L')"></span>
+          <span data-ko="text: ($data.ox() === '' ? '--' : $data.ox())"></span>
+          <span class="param-unit" data-ko="text: ($data.ox() == '' ? '' : 'mg/L')"></span>
         </div>
       </li>
       <li class="param-box">
@@ -30,8 +30,8 @@
           水温
         </div>
         <div class="param-value">
-          <span data-ko="text: ($data.checkingData().water === '' ? '--' : $data.checkingData().water)"></span>
-          <span class="param-unit" data-ko="text: ($data.checkingData().water == '' ? '' : '℃')"></span>
+          <span data-ko="text: ($data.water() === '' ? '--' : $data.water())"></span>
+          <span class="param-unit" data-ko="text: ($data.water() == '' ? '' : '℃')"></span>
         </div>
       </li>
       <li class="param-box">
@@ -39,7 +39,7 @@
           pH
         </div>
         <div class="param-value">
-          <span data-ko="text: ($data.checkingData().ph === '' ? '--' : $data.checkingData().ph)"></span>
+          <span data-ko="text: ($data.ph() === '' ? '--' : $data.ph())"></span>
         </div>
       </li>
       <li class="param-box">
@@ -65,8 +65,8 @@
           饱和度
         </div>
         <div class="param-value">
-          <span data-ko="text: ($data.checkingData().sat === '' ? '--' : $data.checkingData().sat)"></span>
-          <span class="param-unit" data-ko="text: ($data.checkingData().sat === '' ? '' : '%')"></span>
+          <span data-ko="text: ($data.sat() === '' ? '--' : $data.sat())"></span>
+          <span class="param-unit" data-ko="text: ($data.sat() === '' ? '' : '%')"></span>
         </div>
       </li>
     </ul>

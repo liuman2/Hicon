@@ -1,10 +1,10 @@
 <div id="main" data-role="view" data-init="hicon.main.init" data-after-show="hicon.main.aftershow" data-show="hicon.main.show" data-use-native-scrolling="true"  data-transition="overlay:left" data-persist="true">
-  <header data-role="header">
+  <header data-role="header" style="background:#fff;">
         <div data-role="navbar">
             <a data-role="button" data-rel="drawer" href="#my-drawer" data-icon="hamburger" data-align="left"></a>
             <a data-align="left" data-role="button" class="clearButton" data-ko="visible: currentIndexPond() > 0 && tabIndex() > 0" data-click="hicon.main.events.prev" data-pond-nav>上一池</a>
             <a data-align="right" data-role="button" class="clearButton" data-ko="visible: currentIndexPond() < (pondList().length - 1) && tabIndex() > 0" data-click="hicon.main.events.next" data-pond-nav>下一池</a>
-            <a data-align="right" data-role="button" class="clearButton" data-ko="visible: (tabIndex() == 0 || currentIndexPond() >= (pondList().length - 1))" data-click="hicon.main.events.addPond" data-pond-add>新增鱼池</a>
+            <a data-align="right" data-role="button" class="clearButton" data-ko="visible: isMainAccount() && (tabIndex() == 0 || currentIndexPond() >= (pondList().length - 1))" data-click="hicon.main.events.addPond" data-pond-add>新增鱼池</a>
             <span data-role="view-title" data-ko="text: (tabIndex() == 0 ? '鱼池列表' : currentPond().Name)"></span>
         </div>
 

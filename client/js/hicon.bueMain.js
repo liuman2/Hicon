@@ -42,6 +42,11 @@ hicon.bueMain = (function() {
     self.statusInterval = null;
     self.notifyInterval = null;
 
+    self.ox = ko.observable('');
+    self.water = ko.observable('');
+    self.sat = ko.observable('');
+
+    self.ph = ko.observable('');
   };
 
   view.init = function() {
@@ -214,6 +219,17 @@ hicon.bueMain = (function() {
               sat: HexObj.sat,
               power: HexObj.power,
             };
+
+            if (prefixStr == '55aa01') {
+              viewModelBueMain.ox(((isNaN(appData.ox) ? '' : appData.ox) - 0.0).toFixed(2));
+
+              viewModelBueMain.water(((isNaN(appData.water) ? '' : appData.water) - 0.0).toFixed(2));
+              viewModelBueMain.sat(HexObj.sat);
+            }
+            if (prefixStr == '55aa02') {
+              viewModelBueMain.ph(((isNaN(appData.ph) ? '' : appData.ph) - 0.0).toFixed(2));
+            }
+
             console.log(JSON.stringify(decimalObj))
             if (viewModelBueMain.isMonitoring()) {
               viewModelBueMain.checkingData(decimalObj);
@@ -247,6 +263,16 @@ hicon.bueMain = (function() {
           console.log(JSON.stringify(decimalObj))
           if (viewModelBueMain.isMonitoring()) {
             viewModelBueMain.checkingData(decimalObj);
+          }
+
+          if (prefixStr == '55aa01') {
+            viewModelBueMain.ox(((isNaN(appData.ox) ? '' : appData.ox) - 0.0).toFixed(2));
+
+            viewModelBueMain.water(((isNaN(appData.water) ? '' : appData.water) - 0.0).toFixed(2));
+            viewModelBueMain.sat(HexObj.sat);
+          }
+          if (prefixStr == '55aa02') {
+            viewModelBueMain.ph(((isNaN(appData.ph) ? '' : appData.ph) - 0.0).toFixed(2));
           }
 
           view.bueLib.saveCheckData(decimalObj);

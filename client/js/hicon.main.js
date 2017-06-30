@@ -41,6 +41,7 @@ hicon.main = (function() {
     self.deviceTEList = ko.observableArray([]); // 投饵设备
 
     self.currentpH = ko.observable();
+    self.isMainAccount = ko.observable(true);
 
     var currentAi = null;
   };
@@ -65,6 +66,8 @@ hicon.main = (function() {
       location.href = "index.html";
       return;
     };
+
+    viewModelMain.isMainAccount(userInfo.IsMain);
 
     App.showLoading();
 
