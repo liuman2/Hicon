@@ -259,7 +259,7 @@ hicon.controller = (function () {
             hicon.navigation.main();
         },
         deviceClick: function(e) {
-            var device = ko.dataFor(e.target.closest("li")[0]),
+            var device = viewModelController.curentController, // ko.dataFor(e.target.closest("li")[0]),
                 commandKey = e.target ? e.target.closest("[data-command-key]").data("command-key") : null;
 
 
